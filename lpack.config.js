@@ -30,7 +30,7 @@ const lpackConfig = {
   // 变量，业务模块可通过process.env.xxx获取相关值
   variables: {
     // 开发环境模拟用户身份
-    xAuthDebugger: 'jm',
+    xAuthDebugger: 'caixy',
     // 模块名
     moduleName: moduleName,
     // 平台，desktop、manage、mobile
@@ -47,7 +47,7 @@ const lpackConfig = {
     },
     // elementsUrlPrefix: 'http://127.0.0.1:8008',
     // 服务端域名
-    apiUrlPrefix: 'http://mktest.ywork.me/data',
+    apiUrlPrefix: 'http://192.168.50.145:7101/data',
     //多语言服务
     langUrlPrefix: 'http://mktest.ywork.me/data/sys-lang'
   },

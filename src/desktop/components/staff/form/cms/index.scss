@@ -1,0 +1,15 @@
+
+.record-modal{
+  .lui-template-list-page{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    .lui-pagination-rc-pagination{
+      padding: 0;
+      .lui-pagination-main{
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}
