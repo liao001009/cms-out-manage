@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: ':cmsOutConfig.list.Config',
+  title: 'cms-out-manage:cmsOutConfig.list.Config',
   // 路由
   router: '/listConfig',
   // 模块内容区

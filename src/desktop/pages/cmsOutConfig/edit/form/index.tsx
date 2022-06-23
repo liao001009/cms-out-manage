@@ -4,11 +4,11 @@ import './index.scss'
 import { fmtMsg } from '@ekp-infra/respect'
 import { Form } from '@lui/core'
 import { useApi, useSystem } from '@/desktop/shared/formHooks-staff'
-import XformAppearance from '@/desktop/components/order/XformAppearance'
-import LayoutGrid from '@/desktop/components/order/LayoutGrid'
-import GridItem from '@/desktop/components/order/GridItem'
-import XformAddress from '@/desktop/components/order/XformAddress'
-import XformFieldset from '@/desktop/components/order/XformFieldset'
+import XformAppearance from '@/desktop/components/XformAppearance'
+import LayoutGrid from '@/desktop/components/LayoutGrid'
+import GridItem from '@/desktop/components/GridItem'
+import XformAddress from '@/desktop/components/XformAddress'
+import XformFieldset from '@/desktop/components/XformFieldset'
 
 const MECHANISMNAMES = {}
 

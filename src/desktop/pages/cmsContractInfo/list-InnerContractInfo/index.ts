@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: ':cmsContractInfo.list.InnerContractInfo',
+  title: 'cms-out-manage:cmsContractInfo.list.InnerContractInfo',
   // 路由
   router: '/listInnerContractInfo',
   // 模块内容区

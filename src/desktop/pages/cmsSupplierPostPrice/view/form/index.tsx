@@ -3,15 +3,14 @@ import './index.scss'
 import { fmtMsg } from '@ekp-infra/respect'
 import { Form } from '@lui/core'
 import { useApi, useSystem } from '@/desktop/shared/formHooks-supplier'
-import XformAppearance from '@/desktop/components/supplier/XformAppearance'
-import LayoutGrid from '@/desktop/components/supplier/LayoutGrid'
-import GridItem from '@/desktop/components/supplier/GridItem'
-import XformDescription from '@/desktop/components/supplier/XformDescription'
-import XformFieldset from '@/desktop/components/supplier/XformFieldset'
-import XformRelation from '@/desktop/components/supplier/XformRelation'
-import XformDetailTable from '@/desktop/components/supplier/XformDetailTable'
-import XformMoney from '@/desktop/components/supplier/XformMoney'
-
+import XformAppearance from '@/desktop/components/XformAppearance'
+import LayoutGrid from '@/desktop/components/LayoutGrid'
+import GridItem from '@/desktop/components/GridItem'
+import XformDescription from '@/desktop/components/XformDescription'
+import XformFieldset from '@/desktop/components/XformFieldset'
+import XformRelation from '@/desktop/components/XformRelation'
+import XformDetailTable from '@/desktop/components/XformDetailTable'
+import XformMoney from '@/desktop/components/XformMoney'
 const MECHANISMNAMES = {}
 
 const XForm = (props) => {

@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: ':cmsPostInfo.list.PostInfo',
+  title: 'cms-out-manage:cmsPostInfo.list.PostInfo',
   // 路由
   router: '/listPostInfo',
   // 模块内容区

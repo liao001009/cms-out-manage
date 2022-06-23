@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: ':cmsLevelInfo.list.LevelInfo',
+  title: 'cms-out-manage:cmsLevelInfo.list.LevelInfo',
   // 路由
   router: '/listLevelInfo',
   // 模块内容区

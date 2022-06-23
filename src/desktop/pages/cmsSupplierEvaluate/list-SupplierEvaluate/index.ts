@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: ':cmsSupplierEvaluate.list.SupplierEvaluate',
+  title: 'cms-out-manage:cmsSupplierEvaluate.list.SupplierEvaluate',
   // 路由
   router: '/listSupplierEvaluate',
   // 模块内容区

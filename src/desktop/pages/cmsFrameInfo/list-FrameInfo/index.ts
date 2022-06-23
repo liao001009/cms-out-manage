@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: ':cmsFrameInfo.list.FrameInfo',
+  title: 'cms-out-manage:cmsFrameInfo.list.FrameInfo',
   // 路由
   router: '/listFrameInfo',
   // 模块内容区

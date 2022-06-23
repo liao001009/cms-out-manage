@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: ':cmsOutStaffInfo.list.InnerStaffInfo',
+  title: 'cms-out-manage:cmsOutStaffInfo.list.InnerStaffInfo',
   // 路由
   router: '/listInnerStaffInfo',
   // 模块内容区

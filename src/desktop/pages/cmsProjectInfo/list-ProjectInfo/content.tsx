@@ -9,7 +9,7 @@ import Table, { useTable } from '@elem/mk-table'
 import api from '@/api/cmsProjectInfo'
 import { useAdd } from '@/desktop/shared/add'
 import { $deleteAll } from '@/desktop/shared/deleteAll'
-import ListImport from '@/desktop/components/project/listImport'
+import ListImport from '@/desktop/components/listImport'
 import './index.scss'
 
 const Content: React.FC<IContentViewProps> = (props) => {

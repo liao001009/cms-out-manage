@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: ':cmsStaffEntrance.list.Entrance',
+  title: 'cms-out-manage:cmsStaffEntrance.list.Entrance',
   // 路由
   router: '/listEntrance',
   // 模块内容区

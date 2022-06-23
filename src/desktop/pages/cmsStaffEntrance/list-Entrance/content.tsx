@@ -10,7 +10,7 @@ import api from '@/api/cmsStaffEntrance'
 import AddComponent from '@/manage/pages/cmsStaffEntranceTemplate/baseList'
 import { useAdd } from '@/desktop/shared/add-staff'
 import { $deleteAll } from '@/desktop/shared/deleteAll'
-import ExportModal from '@/desktop/components/staff/export'
+import ExportModal from '@/desktop/components/export'
 
 import './index.scss'
 
