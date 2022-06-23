@@ -1,0 +1,854 @@
+{
+    "name": "科技人才管理",
+    "cmsPostInfoTemplate": {
+        "name": "岗位信息模板"
+    },
+    "cmsLevelInfoTemplate": {
+        "name": "级别信息模板"
+    },
+    "cmsFrameBudgetAdjustTemplate": {
+        "name": "框架预算调整模板"
+    },
+    "cmsFrameBudgetTemplate": {
+        "name": "框架预算模板"
+    },
+    "cmsFrameInfoTemplate": {
+        "name": "框架信息模板"
+    },
+    "cmsPostInfo": {
+        "form": {
+            "!{l3gpyjl8qwu0o4wcuce}": "核心要求",
+            "!{l3gpyjlf5ogawato7g7}": "请输入",
+            "!{l3gpyfscmw81miq2be}": "基本要求",
+            "!{l3gpyfsh6fs72lrsqpp}": "请输入",
+            "!{l3gpye3kyy9kpcwf8o}": "排序号",
+            "!{l3gpye3pxgbea9lrze}": "请输入",
+            "!{l3md1s15d82kxfxv69q}": "框架类型",
+            "!{l3gpz0x1fjc8xlzwrjq}": " 岗位信息",
+            "!{l3gpy6z2uhsr075nrdj}": "岗位名称",
+            "!{l3gpy6zd2nn2r7gwgui}": "请输入"
+        },
+        "list": {
+            "PostInfo": "岗位信息"
+        }
+    },
+    "cmsLevelInfo": {
+        "form": {
+            "!{l3gqmc4vsurzm7wo8r}": "学历与经验要求",
+            "!{l3gqmc4zo25tzsdrt9s}": "请输入",
+            "!{l3gqm2hexkr8xwwllua}": "排序号",
+            "!{l3gqm2hhsg5uvvhaxok}": "请输入",
+            "!{l3md8je7ynndxj3bw6d}": "框架类型",
+            "!{l3gqlranb4740bhtdy}": "级别名称",
+            "!{l3gqlrasbudrkvweomi}": "请输入",
+            "!{l3gql65ukfdw8zhf4ma}": "级别信息"
+        },
+        "list": {
+            "LevelInfo": "级别信息"
+        }
+    },
+    "cmsFrameBudgetAdjust": {
+        "form": {
+            "!{l3o3xqp9pb1c50pr02f}": "调整时间",
+            "!{l3o3xqpcxvpamivy5hp}": "请输入",
+            "!{l3o3xm6k47yn4v0mtv5}": "调整后金额（万元）",
+            "!{l3o3xm6mcckhhgtq30p}": "请输入",
+            "!{l3o3xkxjtdwun8xgnp}": "预算金额（万元）",
+            "!{l3o3xkxmq0yusbxv6en}": "请输入",
+            "!{l3o3xeytqcd6s18ftg}": "所属框架",
+            "!{l3o3xa3x1ox68x0eevwi}": "预算执行结束日期",
+            "!{l3o3xa40ej7onx5wcgi}": "请输入",
+            "!{l3o3x8sk0e0dq0mdoadi}": "预算执行开始日期",
+            "!{l3o3x8sn1d1b0kut0ie}": "请输入",
+            "!{l3o3wtuy8w7brnyu3ze}": "预算年度",
+            "!{l3o3wtv2ag6b5s83ck}": "请输入",
+            "!{l3o3vuv6nwbs0mb8dza}": "框架预算调整"
+        },
+        "list": {
+            "InnerBudgetAdjust": "框架预算内嵌列表",
+            "BudgetAdjust": "框架预算调整"
+        }
+    },
+    "cmsFrameBudget": {
+        "form": {
+            "!{l3o3kj1ojsa7qw2486i}": "请输入",
+            "!{l3o3kj1k0z4fsvjjuaw}": "预算金额（万元）",
+            "!{l3o3kgyfdq94ksbejzj}": "所属框架",
+            "!{l3o3jyt5yg2968at9nq}": "明细表1",
+            "!{l3o3j76lvrvcuw25bq}": "预算执行结束日期",
+            "!{l3o3j76os1klw6jdmxf}": "请输入",
+            "!{l3o3j5xkrirvukco55d}": "预算执行开始日期",
+            "!{l3o3j5xnkjsw4iw8j58}": "请输入",
+            "!{l3o3g8xppu0i6x45lh}": "预算年度",
+            "!{l3o3g8xxtir389moi9d}": "请输入",
+            "!{l3o3fbngwpazf90fn1f}": "框架预算"
+        },
+        "list": {
+            "FrameBudget": "框架预算"
+        }
+    },
+    "cmsFrameInfo": {
+        "form": {
+            "!{l3nu3xe7weeonzm680d}": "说明",
+            "!{l3nu3xecxjkpegm6qkf}": "请输入",
+            "!{l3nu35ef4vhrh7886fv}": "是否项目类",
+            "!{l3nu3tu7epl12a7dalb}": "项目",
+            "!{l3nu3tu6z13sgdvspid}": "框架",
+            "!{l3nu2qru2dacsv731ws}": "排序号",
+            "!{l3nu2qs0hq2iqahq0rh}": "请输入",
+            "!{l3mcxnhj7176yrlqogh}": "框架名称",
+            "!{l3mcxnhp0xelx30q9ujl}": "请输入",
+            "!{l3mcwzg4q2r7lqbavt}": "框架信息"
+        },
+        "list": {
+            "FrameInfo": "框架信息"
+        }
+    },
+    "menu": {
+        "cmsBasicInformation": "基本信息管理",
+        "cmsPersonnelManagement": "人员管理",
+        "cmsProjectManagement": "项目管理",
+        "cmsWorkOrder": "工单管理",
+        "cmsPostInfoTemplate": "岗位信息模板",
+        "cmsLevelInfoTemplate": "级别信息模板",
+        "cmsFrameBudgetAdjustTemplate": "框架预算调整模板",
+        "cmsFrameBudgetTemplate": "框架预算模板",
+        "cmsFrameInfoTemplate": "框架信息模板",
+        "cmsPostInfo": "岗位信息",
+        "cmsLevelInfo": "级别信息",
+        "cmsFrameBudgetAdjust": "框架预算调整",
+        "cmsFrameBudget": "框架预算",
+        "cmsFrameInfo": "框架信息",
+        "cmsStaffAdjustTemplate": "驻场人员调整模板",
+        "cmsStaffEntranceTemplate": "入场申请模板",
+        "cmsStaffLeaveTemplate": "离场申请模板",
+        "cmsStaffAttConfigTemplate": "附件模板配置模板",
+        "me1g6jcuktze": "离场申请",
+        "mdip4klbk717": "驻场人员调整",
+        "mjeghuh20rd": "入场申请",
+        "cmsSupplierInfoTemplate": "供应商信息模板",
+        "cmsSupplierEvalScoreTemplate": "供应商评价打分模板",
+        "cmsSupplierPostPriceTemplate": "供应商岗位价格模板",
+        "cmsStaffReviewUpgradeTemplate": "外包人员评审（调级）模板",
+        "cmsOutStaffInfoTemplate": "外包人员信息模板",
+        "cmsSupplierEvaluateTemplate": "供应商评价模板",
+        "cmsContractInfoTemplate": "合同信息模板",
+        "mpc2wyyz6le8": "供应商管理",
+        "cmsSupplierEvalScore": {
+            "listEvaluateScore": "供应商评价打分"
+        },
+        "cmsSupplierEvaluate": {
+            "listSupplierEvaluate": "供应商评价"
+        },
+        "cmsStaffReviewUpgrade": {
+            "listStaffReview": "外包人员评审（调级）"
+        },
+        "cmsOutStaffInfo": {
+            "listStaffInfo": "外包人员信息"
+        },
+        "cmsSupplierPostPrice": {
+            "listPostPrice": "岗位价格"
+        },
+        "cmsContractInfo": {
+            "listContractInfo": "合同信息"
+        },
+        "cmsSupplierInfo": {
+            "listSupplierInfo": "供应商信息"
+        },
+        "cmsProjectInfoTemplate": "项目库模板",
+        "mbvr4bpjdbc": "项目库",
+        "cmsOutOrderTemplate": "工单管理模板",
+        "cmsOutConfigTemplate": "权限配置模板",
+        "cmsOutConfig": "权限配置",
+        "cmsOutOrder": "工单管理"
+    },
+    "cmsStaffAdjustTemplate": {
+        "name": "驻场人员调整模板"
+    },
+    "cmsStaffEntranceTemplate": {
+        "name": "入场申请模板"
+    },
+    "cmsStaffLeaveTemplate": {
+        "name": "离场申请模板"
+    },
+    "cmsStaffAttConfigTemplate": {
+        "name": "附件模板配置模板"
+    },
+    "cmsStaffAttConfig": {
+        "form": {
+            "!{l4mbeyq1brtk7oxvxy7}": "人员调整附件模板",
+            "!{l4mbb1un4ysq155hpr}": "入场申请附件模板",
+            "!{l4mbgrk63hdiamvhsdx}": "附件模板配置"
+        },
+        "list": {
+            "Config": "附件配置"
+        }
+    },
+    "cmsStaffAdjust": {
+        "form": {
+            "!{l482x9oheg8kfwghnzk}": "资料上传",
+            "!{l4830o1sjl5qofdcw48}": "模板下载",
+            "!{l482yeygbgd7o2bh3cm}": "（需分别上传包含“身份证”、“保密承诺书签字”字样的扫描）",
+            "!{l482wwj1opgyw8jrtzh}": "供应商上传资料",
+            "!{l482w3gv0iehzw5tmva7}": "具体说明",
+            "!{l482w3gzhs16kg22ni6}": "请输入",
+            "!{l482v2yuetsjeqv3onq}": "门禁范围调整",
+            "!{l4dxrxa7obh519w7gvc}": "武汉302",
+            "!{l4dxrxa6c2lpifd84z6}": "武汉301",
+            "!{l4dxrxa9u7zdy4xzs5}": "威新6楼",
+            "!{l4dxrxa8ha24qodt5b}": "威新5楼",
+            "!{l4dxrxa8qghseott9y}": "威新4楼",
+            "!{l4dxrxa8jinbrrct4a}": "威新1楼",
+            "!{l482tzs47za4h2j5hxr}": "门禁处理调整",
+            "!{l482tzshvt438g3rkus}": "不涉及",
+            "!{l482tzsbzdit39nzk6j}": "是",
+            "!{l482sf4jla56zux83gm}": "网络权限调整",
+            "!{l483auz7dctbx7vyj5}": "不涉及",
+            "!{l483auz7fdoryp397la}": "是",
+            "!{l4dynw3s6nz6jg60429}": "工位地点",
+            "!{l4dyo8iry6lmc8tlbwo}": "武汉",
+            "!{l4dyo8irztd6c84jlr}": "深圳",
+            "!{l482sh1j6m8hzuxviel}": "工位处理调整",
+            "!{l4838nr77ksqe0q7seb}": "不涉及",
+            "!{l4838nr85dnpaffekrv}": "是",
+            "!{l482sd8f5o2ezowr4cd}": "VPN账号调整",
+            "!{l4839pqxxirscdum7en}": "不涉及",
+            "!{l4839pqyyvt0zfsym4}": "是",
+            "!{l482nz2vtk08rczjmp}": "桌面助手调整",
+            "!{l483b4aw62250ecg8bo}": "不涉及",
+            "!{l483b4axnwvnwbvwmg}": "是",
+            "!{l482peikh2dws298nmn}": "是否需要coding账号",
+            "!{l483b8rd5w0ex4u1cnk}": "不涉及",
+            "!{l483b8reid8079pnngg}": "是",
+            "!{l482nw3zmlt617j4tmi}": "是否需要物理机",
+            "!{l483bd06kn8kkx4u8l}": "不涉及",
+            "!{l483bd07kapet31qv7}": "是",
+            "!{l482nsax4701h2qqkpk}": "悟空账号调整",
+            "!{l483blgdysjrk97nwfq}": "不涉及",
+            "!{l483blgeq8rb0ssep7}": "是",
+            "!{l482nufstu97ks4u25}": "码云账号调整",
+            "!{l483bi2k8f7e2f87iqc}": "不涉及",
+            "!{l483bi2lhxnv686lma}": "是",
+            "!{l47vah7yn9f2xm4kg2r}": "云主机账号调整",
+            "!{l47vfj0h5w1jnx4h7bm}": "",
+            "!{l47vah8bhla1kfguv54}": "不涉及",
+            "!{l47vah86nuc10jznin}": "是",
+            "!{l485jbczbrw391vxmnp}": "完成应用权限调整",
+            "!{l485jbd9ue6d0orernd}": "不涉及",
+            "!{l485jbd4vax228ix7h}": "是",
+            "!{l47v9sxmgj8dir4egol}": "资源、账号、权限变更",
+            "!{l47uk9k0ylj9507ayb}": "请输入",
+            "!{l47uk9jyj0hq8h5cex}": "各类系统默认账号",
+            "!{l47ufjyyxv7t9gzeju}": "请输入",
+            "!{l47ufjytb8fbpuu478}": "邮箱",
+            "!{l47ufnh0dgokdxysj36}": "请输入",
+            "!{l47ufngwxwcd6pkfn1}": "手机号",
+            "!{l47ufatfw9bq6eb3ll}": "请输入",
+            "!{l47ufatcqumgt0z87bj}": "姓名拼音",
+            "!{l47ucie6axg62p00qnq}": "姓名",
+            "!{l47ubnidlwzsgmgcbxm}": "调整人员信息",
+            "!{l485c9auoq6hz0d4tvq}": "调整后内部负责人",
+            "!{l485c6iq7eqo22vs64v}": "调整后项目负责人",
+            "!{l485bc49yijf5fspqf}": "调整后项目",
+            "!{l47tvd32luja2sqot3t}": "当前内部负责人",
+            "!{l47tv9c980rr18iqk8u}": "当前项目负责人",
+            "!{l47tsmjxv026iy3m5pq}": "当前项目",
+            "!{l4858bbwnyvzr3uofpc}": "调整意见",
+            "!{l4858bcx0t80bavs1csb}": "变更权限",
+            "!{l4858bcafos6a0qeoin}": "更换项目",
+            "!{l47tew2ifoxlw7bkh0n}": "联系电话",
+            "!{l47tew2lx3mngvk63i}": "请输入",
+            "!{l47tdsgnsqlan2qugs}": "主题",
+            "!{l47tdsgrggkbannq8wq}": "请输入",
+            "!{l47tccxkxgt8l4u79b}": "驻场人员调整"
+        },
+        "fdCreateTime": "创建时间",
+        "fdCreatorDept": "创建者部门",
+        "fdCreator": "创建者",
+        "list": {
+            "Adjust": "人员调整"
+        }
+    },
+    "cmsStaffEntrance": {
+        "form": {
+            "!{l482x9oheg8kfwghnzk}": "资料上传",
+            "!{l4830o1sjl5qofdcw48}": "模板下载",
+            "!{l482yeygbgd7o2bh3cm}": "（需分别上传包含“身份证”、“保密承诺书签字”字样的扫描）",
+            "!{l482wwj1opgyw8jrtzh}": "供应商上传资料",
+            "!{l482w3gv0iehzw5tmva7}": "具体说明",
+            "!{l482w3gzhs16kg22ni6}": "请输入",
+            "!{l482vgpujftrilq2m6q}": "驻场原因",
+            "!{l48348h67i3abzl71io}": "响应及时性",
+            "!{l48348h50xpyfw96jix}": "集成测试",
+            "!{l48348h5ln4q86gq93n}": "数据安全",
+            "!{l48348h3dhp3d1m4ssh}": "代码(知识产权)保护",
+            "!{l482v2yuetsjeqv3onq}": "门禁范围",
+            "!{l4di1lpbhkisdkqss8}": "武汉302",
+            "!{l4di1lpaak2p3yrhypi}": "武汉301",
+            "!{l4di1lpejzvzonhvp5}": "威新6楼",
+            "!{l4di1lpdijeevxs3fu}": "威新5楼",
+            "!{l4di1lpc1zddlgsinkc}": "威新4楼",
+            "!{l4di1lpb5radf8hwwkf}": "威新1楼",
+            "!{l482tzs47za4h2j5hxr}": "是否需要门禁",
+            "!{l482tzsbzdit39nzk6j}": "是",
+            "!{l482tzshvt438g3rkus}": "否",
+            "!{l4dhyr0daw870ql51wr}": "工位地点",
+            "!{l4dhyr0tueb2u2axp4}": "武汉",
+            "!{l4dhyr0n42xi9zwiozl}": "深圳",
+            "!{l482sh1j6m8hzuxviel}": "是否需要工位",
+            "!{l4838nr77ksqe0q7seb}": "否",
+            "!{l4838nr85dnpaffekrv}": "是",
+            "!{l482sf4jla56zux83gm}": "是否需要开通网络权限",
+            "!{l4dhxzkriipb2ev3048}": "(使用云主机一般无需额外开通网络权限)",
+            "!{l483auz7dctbx7vyj5}": "否",
+            "!{l483auz7fdoryp397la}": "是",
+            "!{l482sd8f5o2ezowr4cd}": "是否需要VPN",
+            "!{l4839pqxxirscdum7en}": "否",
+            "!{l4839pqyyvt0zfsym4}": "是",
+            "!{l482nz2vtk08rczjmp}": "是否需要桌面助手账号",
+            "!{l483b4aw62250ecg8bo}": "否",
+            "!{l483b4axnwvnwbvwmg}": "是",
+            "!{l482peikh2dws298nmn}": "是否需要coding账号",
+            "!{l483b8rd5w0ex4u1cnk}": "否",
+            "!{l483b8reid8079pnngg}": "是",
+            "!{l482pgo8cd0h1sdqde}": "具体原因",
+            "!{l482pgock1xi6mp1vv}": "请输入",
+            "!{l482nw3zmlt617j4tmi}": "是否需要物理机",
+            "!{l483bd06kn8kkx4u8l}": "否",
+            "!{l483bd07kapet31qv7}": "是",
+            "!{l482nufstu97ks4u25}": "是否需要码云账号",
+            "!{l483bi2k8f7e2f87iqc}": "否",
+            "!{l483bi2lhxnv686lma}": "是",
+            "!{l482nsax4701h2qqkpk}": "是否需要悟空账号",
+            "!{l483blgdysjrk97nwfq}": "否",
+            "!{l483blgeq8rb0ssep7}": "是",
+            "!{l47vah7yn9f2xm4kg2r}": "是否需要云主机账号",
+            "!{l47vfj0h5w1jnx4h7bm}": "（除苹果MAC机器外都要申请云主机）",
+            "!{l47vah8bhla1kfguv54}": "否",
+            "!{l47vah86nuc10jznin}": "是",
+            "!{l47v9sxmgj8dir4egol}": "资源、账号、权限开通",
+            "!{l47v5tsfqb7lmyilvtp}": "优先级",
+            "!{l47v749fs9zznp9bzw9}": "低",
+            "!{l47v749fispc1sckdc}": "中",
+            "!{l47v749ebtsm7tkwvg9}": "高",
+            "!{l47v5plwbbgd9v9lti}": "预计离岗日期",
+            "!{l47v5plycz81bn55jug}": "请输入",
+            "!{l47v5nwx60spol1k2mr}": "预计到岗日期",
+            "!{l47v5nx4b662jj4pnrd}": "请输入",
+            "!{l47uub9dsgb0dqohvcr}": "请输入",
+            "!{l47uub9dpblxl89qfo9}": "各类系统默认账号",
+            "!{l47uub9dvrnp3vacbdc}": "岗位",
+            "!{l47uub9d11220hthujig}": "请输入",
+            "!{l47uub9d2vfscw9hlco}": "手机号",
+            "!{l47uub9d5otd4og7e3a}": "请输入",
+            "!{l47uub9dytm2k66g0lb}": "邮箱",
+            "!{l47uub9deedc5vhkuq8}": "请输入",
+            "!{l47uub9d0wbq7aqz8etq}": "身份证号码",
+            "!{l47uub9dctz2xfjdr9i}": "请输入",
+            "!{l47uub9dm1d1kyt74}": "姓名拼音",
+            "!{l47uub9dzc90y11elro}": "女",
+            "!{l47uub9dw8kirlo7dd}": "男",
+            "!{l47uub9dbq88pweuhyc}": "性别",
+            "!{l47uv8na7hxt6u8xg1v}": "请输入",
+            "!{l47uv8n5vj2vtorgor}": "姓名",
+            "!{l47uub9dsn08ldijk8}": "厂商实施人员信息",
+            "!{l483iuh5fvpjdici4mr}": "增补",
+            "!{l483iuh5ed5rvk1mb2l}": "中选",
+            "!{l483i8mz523tvxz157u}": "请输入",
+            "!{l483i8mwq03pbk2tcd}": "中选/增补",
+            "!{l47uk9k0ylj9507ayb}": "请输入",
+            "!{l47uk9jyj0hq8h5cex}": "各类系统默认账号",
+            "!{l47uj8xqn12hrn7qfeg}": "岗位",
+            "!{l47ufnh0dgokdxysj36}": "请输入",
+            "!{l47ufngwxwcd6pkfn1}": "手机号",
+            "!{l47ufjyyxv7t9gzeju}": "请输入",
+            "!{l47ufjytb8fbpuu478}": "邮箱",
+            "!{l47ufcydfs2q42e7lo}": "请输入",
+            "!{l47ufcy9axbvwljm4b}": "身份证号码",
+            "!{l47ufatfw9bq6eb3ll}": "请输入",
+            "!{l47ufatcqumgt0z87bj}": "姓名拼音",
+            "!{l47uf529hxbmedxyhn}": "女",
+            "!{l47uf529t7fwxd78ive}": "男",
+            "!{l47uex7008osj31yh4i}": "性别",
+            "!{l47ucie6axg62p00qnq}": "姓名",
+            "!{l47ubnidlwzsgmgcbxm}": "项目外包人员信息",
+            "!{l47u969syof5zpb4gw}": "入场供应商",
+            "!{l47tvd32luja2sqot3t}": "内部负责人",
+            "!{l47tv9c980rr18iqk8u}": "项目负责人",
+            "!{l47tvat3dedkd23oqtn}": "所属组/团队",
+            "!{l47tv7qef3air72gz8d}": "所属部门",
+            "!{l47ttg3tiiqpx7grzy}": "项目性质",
+            "!{l47ty6pk7x34hzxmf5j}": "厂商驻场实施",
+            "!{l47ty6pkj20dw7rf8kk}": "项目外包",
+            "!{l47ttg3xezj8mzsyof8}": "请输入",
+            "!{l47tsmjxv026iy3m5pq}": "所属系统/项目",
+            "!{l47tew2ifoxlw7bkh0n}": "联系电话",
+            "!{l47tew2lx3mngvk63i}": "请输入",
+            "!{l47tdsgnsqlan2qugs}": "主题",
+            "!{l47tdsgrggkbannq8wq}": "请输入",
+            "!{l47tccxkxgt8l4u79b}": "入场申请"
+        },
+        "fdCreateTime": "创建时间",
+        "fdCreatorDept": "创建者部门",
+        "fdCreator": "创建者",
+        "list": {
+            "Entrance": "入场申请"
+        }
+    },
+    "cmsStaffLeave": {
+        "form": {
+            "!{l482w3gv0iehzw5tmva7}": "具体说明",
+            "!{l482w3gzhs16kg22ni6}": "请输入",
+            "!{l482sh1j6m8hzuxviel}": "工位",
+            "!{l4838nr77ksqe0q7seb}": "不涉及",
+            "!{l4838nr85dnpaffekrv}": "是",
+            "!{l482tzs47za4h2j5hxr}": "门禁",
+            "!{l482tzshvt438g3rkus}": "不涉及",
+            "!{l482tzsbzdit39nzk6j}": "是",
+            "!{l482sf4jla56zux83gm}": "网络权限",
+            "!{l483auz7dctbx7vyj5}": "不涉及",
+            "!{l483auz7fdoryp397la}": "是",
+            "!{l482sd8f5o2ezowr4cd}": "VPN账号",
+            "!{l4839pqxxirscdum7en}": "不涉及",
+            "!{l4839pqyyvt0zfsym4}": "是",
+            "!{l482nz2vtk08rczjmp}": "桌面助手账号",
+            "!{l483b4aw62250ecg8bo}": "不涉及",
+            "!{l483b4axnwvnwbvwmg}": "是",
+            "!{l4c4v4ns88vz6afxleb}": "云主机设备编号",
+            "!{l4c4v4o3z5ckp8b45mj}": "不涉及",
+            "!{l4c4v4nxg5baj7276up}": "是",
+            "!{l47vah7yn9f2xm4kg2r}": "云主机账号",
+            "!{l47vfj0h5w1jnx4h7bm}": "",
+            "!{l47vah8bhla1kfguv54}": "不涉及",
+            "!{l47vah86nuc10jznin}": "是",
+            "!{l482nw3zmlt617j4tmi}": "物理机主机设备编号",
+            "!{l483bd06kn8kkx4u8l}": "不涉及",
+            "!{l483bd07kapet31qv7}": "是",
+            "!{l482peikh2dws298nmn}": "coding账号",
+            "!{l483b8rd5w0ex4u1cnk}": "不涉及",
+            "!{l483b8reid8079pnngg}": "是",
+            "!{l482nsax4701h2qqkpk}": "悟空账号",
+            "!{l483blgdysjrk97nwfq}": "不涉及",
+            "!{l483blgeq8rb0ssep7}": "是",
+            "!{l482nufstu97ks4u25}": "码云账号",
+            "!{l483bi2k8f7e2f87iqc}": "不涉及",
+            "!{l483bi2lhxnv686lma}": "是",
+            "!{l47v9sxmgj8dir4egol}": "资源、账号、权限注销",
+            "!{l4c4l0idb5sq9ddym3r}": "请输入",
+            "!{l4c4l0i9wr8qoee1tr}": "项目负责人评价：评语",
+            "!{l4c57z0gitm3oceic8}": "否",
+            "!{l4c57z09nljamtqa6p8}": "是",
+            "!{l4c57z05apvjrkx66v5}": "项目负责人评价：是否推荐",
+            "!{l4c4o04x82w75lqximv}": "供应商主动撤回",
+            "!{l4c4o04xhmcr44b9dua}": "不胜任退回",
+            "!{l4c4o04xyvitdfobqih}": "项目结束",
+            "!{l4c4o04xs7jpy7j5t3}": "个人离职",
+            "!{l4c4kldgtm46ieyh9k}": "请输入",
+            "!{l4c4kldeq93hjsg361d}": "离场原因",
+            "!{l47uk9k0ylj9507ayb}": "请输入",
+            "!{l47uk9jyj0hq8h5cex}": "各类系统默认账号",
+            "!{l47ufjyyxv7t9gzeju}": "请输入",
+            "!{l47ufjytb8fbpuu478}": "邮箱",
+            "!{l47ufnh0dgokdxysj36}": "请输入",
+            "!{l47ufngwxwcd6pkfn1}": "手机号",
+            "!{l47ufatfw9bq6eb3ll}": "请输入",
+            "!{l47ufatcqumgt0z87bj}": "姓名拼音",
+            "!{l47ucie6axg62p00qnq}": "外包人员姓名",
+            "!{l47ubnidlwzsgmgcbxm}": "离场人员信息",
+            "!{l485c9auoq6hz0d4tvq}": "内部负责人",
+            "!{l485c6iq7eqo22vs64v}": "项目负责人",
+            "!{l47tvd32luja2sqot3t}": "所属组/团队",
+            "!{l47tv9c980rr18iqk8u}": "所属部门",
+            "!{l4c4ekcd8kuc1d5n256}": "项目性质",
+            "!{l4c4fn86c8xwk5xux2d}": "厂商实施",
+            "!{l4c4fn859c17rdwyprj}": "项目外包",
+            "!{l4c4ekcizq25wsebdeh}": "请输入",
+            "!{l47tsmjxv026iy3m5pq}": "所属系统/项目",
+            "!{l47tew2ifoxlw7bkh0n}": "联系电话",
+            "!{l47tew2lx3mngvk63i}": "请输入",
+            "!{l47tdsgnsqlan2qugs}": "主题",
+            "!{l47tdsgrggkbannq8wq}": "请输入",
+            "!{l47tccxkxgt8l4u79b}": "离场申请"
+        },
+        "fdCreateTime": "创建时间",
+        "fdCreatorDept": "创建者部门",
+        "fdCreator": "创建者",
+        "list": {
+            "Leave": "离场申请"
+        }
+    },
+    "required": "内容不能为空",
+    "cmsSupplierInfoTemplate": {
+        "name": "供应商信息模板"
+    },
+    "cmsSupplierEvalScoreTemplate": {
+        "name": "供应商评价打分模板"
+    },
+    "cmsSupplierPostPriceTemplate": {
+        "name": "供应商岗位价格模板"
+    },
+    "cmsStaffReviewUpgradeTemplate": {
+        "name": "外包人员评审（调级）模板"
+    },
+    "cmsOutStaffInfoTemplate": {
+        "name": "外包人员信息模板"
+    },
+    "cmsSupplierEvaluateTemplate": {
+        "name": "供应商评价模板"
+    },
+    "cmsContractInfoTemplate": {
+        "name": "合同信息模板"
+    },
+    "cmsSupplierInfo": {
+        "form": {
+            "!{l3i2wvpurup5wssj97f}": "请输入",
+            "!{l3i2wvprj00q7f9lnhm}": "手机号",
+            "!{l3i2wthlpsshma2vl1}": "请输入",
+            "!{l3i2wthioode9hcoa8f}": "邮箱",
+            "!{l3i2wmbfvq1k29cyec}": "请输入",
+            "!{l3i2wmbcplplicv72xn}": "岗位职责",
+            "!{l3i2wkfgrfd7imfeso}": "请输入",
+            "!{l3i2wkfe54mpnx1cjze}": "姓名",
+            "!{l3i2pzdxvcyz4dcze6i}": "联系人",
+            "!{l3i2oqozugw47dh4jo}": "开通管理员账号",
+            "!{l3i2oqp2xi64jnrg0qq}": "建议填写邮箱@前的字符",
+            "!{l3i2og6qiafbgkik6l}": "供应商简称",
+            "!{l3i2og6tk4zxjwwtwo}": "请输入",
+            "!{l3i2oerpzfu7yvucvi}": "供应商邮箱",
+            "!{l3i2oersdair2j07z9e}": "请输入",
+            "!{l3me38ucc667r165wr}": "所属框架",
+            "!{l3o4pdwkhdk8l4atd}": "供应商简介",
+            "!{l3o4pdwozeldrxxyqkm}": "请输入",
+            "!{l3i2nisbl941j9tayi}": "供应商合作状态",
+            "!{l3i2t1y6wcs9zyxvqgs}": "合同过期",
+            "!{l3i2t1y67injfpbkzfa}": "已签合同",
+            "!{l3i2t1y56ei7qcr1m9j}": "未签合同",
+            "!{l3i2n52nsm2wx489otn}": "组织机构代码",
+            "!{l3i2n52qm7p7wzsqug}": "请输入",
+            "!{l3i2mxnncrl27o7sw8}": "供应商名称",
+            "!{l3i2mxnsd72iksqmq3t}": "请输入",
+            "!{l3i2m1rj7ofj5euqvkv}": "供应商信息"
+        },
+        "list": {
+            "SupplierInfo": "供应商信息"
+        }
+    },
+    "cmsSupplierEvalScore": {
+        "form": {
+            "!{l3sg5r6b5wqdnbfv9fd}": "100",
+            "!{l3sg5y5ofwgo68iz1rs}": "总分",
+            "!{l3sfsz069bmpyifvs}": "请输入",
+            "!{l3sfortzupor4gcgmy8}": "40",
+            "!{l3sfoo4y7nzazj2regj}": "项目尾款支付时由项目经理基于供应商评价表作评价，根据评价表得分折算，按项目数累计求平均值",
+            "!{l3sfokkgojr1fupm8v}": "服务综合质量评价",
+            "!{l3sfogkdoyu7clt4hik}": "项目完成质量",
+            "!{l3sfsxajqnwij1pibl}": "请输入",
+            "!{l3sfopyfun61h5sktdh}": "10",
+            "!{l3sfom8fremgb62u3t}": "被行政人员、保安人员等发现不遵守职场行为规范的情况，每发现一人次扣0.5分，重复发现加倍扣分",
+            "!{l3sfoim6muezo99wdg}": "职场行为规范情况",
+            "!{l3sfoemxixxcg71l27}": "人员管理",
+            "!{l3sfstzx0c3t9knlpics}": "请输入",
+            "!{l3sfkhe9w7ni3ag29l}": "10",
+            "!{l3sfkfrjwwpm0vx1ovs}": "考察人员质量，以主动淘汰人员数/入场人数计算，以当前季度所有框架内供应商平均入场人员淘汰率为基准，评价期内离职率不大于基准比例的满分，超出基准比例1倍的扣5分，超过2倍的扣10分，其余超比例按此折算扣分，按项目数累计求平均值",
+            "!{l3sfkcab72r4z1pgvsv}": "入场人员淘汰率",
+            "!{l3sfss6g46lbz09jr8b}": "请输入",
+            "!{l3sfk4qssssf1wje9bg}": "10",
+            "!{l3sfk65zeomuyno8k56}": "考察人员稳定性，以离职人员数（不含主动淘汰人数）/入场人数计算，以当前季度所有框架内供应商平均入场人员离职率为基准，评价期内离职率不大于基准比例的满分，超出基准比例1倍的扣5分，超过2倍的扣10分，其余超比例按此折算扣分，按项目数累计求平均值",
+            "!{l3sfjx6o5at22qn7r6}": "入场人员离职率",
+            "!{l3sfsp3fhp3e66h2k1d}": "请输入",
+            "!{l3sfk33bw1hnvq6ixc}": "5",
+            "!{l3sfk7l26af8i3puce}": "考察交付效率，以需求订单中明确的交付时间要求为基准，在交付时间内完成所有人员交付的满分，超期超过1倍时间扣2.5分，超过2倍时间扣5分，其余超期按此折算扣分，按项目数累计求平均值",
+            "!{l3sfk91s2y0642hg1di}": "人员交付周期/时效",
+            "!{l3sfsni4b3u28h05hot}": "请输入",
+            "!{l3sfk1g685g5qe5407}": "10",
+            "!{l3sfjzz1jdb49v87e7b}": "考察订单获取的真实性，以中选人数为基数，按实际入场人数折算，按项目数累计求平均值",
+            "!{l3sfjyjoi3d0khbpj4}": "中选人员入场率",
+            "!{l3sfskv95c7fnm1jylu}": "请输入",
+            "!{l3sfgledswkbspza4b}": "5",
+            "!{l3sffs8pkv6g4ih88b9}": "评价期间中选率最高的满分，完全未中选的0分，其余在此区间折算",
+            "!{l3sffph0xmjuo1pw0nd}": "中选率",
+            "!{l3sfsg6g5gktynavwgv}": "请输入",
+            "!{l3sfgfhrx5230lh2wg}": "10",
+            "!{l3sfgdtefpsw0hg3lie}": "以评价期间发出的订单数为基数，按响应数量折算",
+            "!{l3sffr6lriib0m9qjhn}": "需求响应率",
+            "!{l3sfgh9v9ioor6k898}": "这里是文本内容",
+            "!{l3sfd3p140p16drajcy}": "得分",
+            "!{l3sfd1sdrrvay4jisr}": "满分值",
+            "!{l3sfcy6zxirwv444e5}": "说明",
+            "!{l3sfcwemuawhiad7au}": "评价指标",
+            "!{l3sfjw0am9h7mjp8opd}": "交付能力",
+            "!{l3sfgqfq7x05iuodqvn}": "支持力度",
+            "!{l3sfcnpcx5qml9wq8fl}": "维度",
+            "!{l3sfau04cu02dh6zgpg}": "外包供应商服务情况季度评价表",
+            "!{l3sf6z8e81jwir1r2e2}": "供应商合作状态",
+            "!{l3sfact3p6p8u2zp1lj}": "合同过期",
+            "!{l3sfact3itclngd7ml}": "已签合同",
+            "!{l3sfact2cqbc8i6pflv}": "未签合同",
+            "!{l3sf6z8hj1qh3n41nv7}": "请输入",
+            "!{l3sf6ome8v85b5bsc88}": "所属框架",
+            "!{l3sf6i8n20fnh656j6n}": "评价人",
+            "!{l3sf6exe2sf3hxy8rt4}": "供应商",
+            "!{l3siy5lmo68vobyeyjq}": "第4季度",
+            "!{l3siy5lmj52xjr43tz}": "第3季度",
+            "!{l3siy5ll6caioquer7n}": "第2季度",
+            "!{l3siy5lkf9w293eg16s}": "第1季度",
+            "!{l3siwtlcxfyrxi5j6c}": "请输入",
+            "!{l3siwq7dt54kgi38q2h}": "请输入",
+            "!{l3tkeu75xm6ht3vt7ul}": "评价周期",
+            "!{l3sf5n8sn5bdxs9qef}": "主题",
+            "!{l3sf5n8wuiceij4x3c8}": "请输入"
+        },
+        "list": {
+            "EvaluateScore": "评价打分"
+        }
+    },
+    "cmsSupplierPostPrice": {
+        "form": {
+            "!{l3ik351ad34xgmxct8}": "请输入",
+            "!{l3ik3516rienjv9ya7}": "人月单价（元）",
+            "!{l3ik31j0lhv5eup140p}": "级别",
+            "!{l3meh1fipx4pk8eqr7}": "所属框架",
+            "!{l3ik2so5ido05litgh}": "岗位名称",
+            "!{l3ijzx11zmu6abkktgk}": "明细表1",
+            "!{l3ijy44u2dskj1ubuq3}": "供应商名称",
+            "!{l3ijwthh29rbcu28v0f}": "供应商岗位价格"
+        },
+        "list": {
+            "PostPrice": "供应商岗位价格"
+        }
+    },
+    "cmsStaffReviewUpgrade": {
+        "form": {
+            "!{l3sbe1y86xxe9axisdb}": "请输入",
+            "!{l3sbe1y63kojk24t3zj}": "生效日期",
+            "!{l3sbexkdb7mrw7irnas}": "初级",
+            "!{l3sbexkccdi2c52esb}": "中级",
+            "!{l3sbexkcdiuk4ijpmw7}": "高级",
+            "!{l3sbexkbkv6ef6moh2c}": "资深",
+            "!{l3sbcsrv0e02hgauyon}": "请输入",
+            "!{l3sbcsrt7celutm5fd8}": "调级结果",
+            "!{l3sbbbl9iihg770o19b}": "请输入",
+            "!{l3sbbbl53wftpzuy1u4}": "调级说明",
+            "!{l3sbbwxiyi8xjd9w10p}": "初级",
+            "!{l3sbbwxiv41f0teyrxb}": "中级",
+            "!{l3sbbwximzo8o6s6we9}": "高级",
+            "!{l3sbbwxhcwv7u5rab4w}": "资深",
+            "!{l3sbb934fxuclwe3j1j}": "请输入",
+            "!{l3sbb931ob9ia7fgn3j}": "当前级别",
+            "!{l3sb94v5khrdveqw90f}": "请输入",
+            "!{l3sb94v34687jh19czy}": "工作年限",
+            "!{l3sbadffynine98e9v}": "研究生",
+            "!{l3sbadff6tzbkqyr09}": "本科",
+            "!{l3sbadfelcahury8w5}": "专科",
+            "!{l3sbadfeou89k2k6d6p}": "高中",
+            "!{l3sb91q7vi4t09qtc6f}": "请输入",
+            "!{l3sb91q4us8j5t2rkyd}": "最高学历",
+            "!{l3s55dzkh1h2xgc3qmi}": "岗位",
+            "!{l3n3z1kfc220wrv66oi}": "姓名",
+            "!{l3n3yzhbo2xn9mkov6}": "供应商名称",
+            "!{l3n3w2qjbk89yx8grub}": "明细表1",
+            "!{l3n3tdme4n276aie82o}": "主题",
+            "!{l3n3tdmkvi88iyf5su}": "请输入",
+            "!{l3n3rqhbnel7xfgj6p}": "外包人员评审（调级）"
+        },
+        "fdCreateTime": "创建时间",
+        "fdCreator": "创建者",
+        "list": {
+            "StaffReview": "外包人员评审"
+        }
+    },
+    "cmsOutStaffInfo": {
+        "form": {
+            "!{l3lck9saekqx64dnhqn}": "当前项目性质",
+            "!{l3lczdwvyl7lvnhyv1}": "厂商驻场实施",
+            "!{l3lczdwvquws1ec70yr}": "项目外包",
+            "!{l3lck9se47688gycoqr}": "请输入",
+            "!{l3lcarixaeowio47r3n}": "当前项目",
+            "!{l3lcarj0oecsznx9sq}": "请输入",
+            "!{l3lc9l7am9lx5gkwgj}": "状态信息",
+            "!{l3lcaf1rmz1s31keypa}": "已离职",
+            "!{l3lcaf1rg0ar3ng3i7q}": "已离场",
+            "!{l3lcaf1rmlg344zk2lp}": "项目中-驻场",
+            "!{l3lcaf1rcqvoswe9ogc}": "项目中-远程",
+            "!{l3lcaf1rldn1bxp8z8}": "中选待入场",
+            "!{l3lcaf1qz79vs7ew9a}": "未参与项目",
+            "!{l3lc9l7feamjxxvz7da}": "请输入",
+            "!{l3lba61aig5uztqgiob}": "学历证明附件",
+            "!{l3lb9g9b7ew87yb5ytp}": "专业",
+            "!{l3lb9g9rr2ptz9l6axr}": "请输入",
+            "!{l3lb6ebsedf8dqx3mc}": "最高学历",
+            "!{l3lb8gpvwi2j25x1zbt}": "研究生",
+            "!{l3lb8gptifemq19c12}": "本科",
+            "!{l3lb8gpqsa1dkyunv4g}": "专科",
+            "!{l3lb8gpoaz0xj1znu5e}": "高中",
+            "!{l3lb6eccp4syfrn9daq}": "请输入",
+            "!{l3lb0nknmtcpq84iap8}": "简历附件",
+            "!{l3sb66ib59bbaunf3i5}": "参加工作日期",
+            "!{l3sb66ifqthkl78l9zr}": "请输入",
+            "!{l3lb0kaezssxcpa6l9}": "技能",
+            "!{l3lb0kalnrolo26qai}": "请输入",
+            "!{l3ld0mr2k796uaafvk}": "上次调级时间",
+            "!{l3ld0mr4gjrbtofso2h}": "请输入",
+            "!{l3ld0l9hh2caymedodf}": "首次入场时间",
+            "!{l3ld0l9l51wc9fnxwu9}": "请输入",
+            "!{l3lczrijlhuq7nplue}": "当前所属招证内部团队",
+            "!{l3lczrinlld5s182hb}": "请输入",
+            "!{l3mpxl7e8qek5ooy28o}": "定级级别",
+            "!{l3mpyi0us0ndoe5a7z7}": "初级",
+            "!{l3mpyi0u3j08op5wzfz}": "中级",
+            "!{l3mpyi0ucliz64p00kq}": "高级",
+            "!{l3mpyi0tfoxsncsy0ks}": "资深",
+            "!{l3mpxl7izzanc6s2rh}": "请输入",
+            "!{l3lazgahjztp6y71d7}": "自评技能级别",
+            "!{l3lazgbfi57oychqbg}": "请输入",
+            "!{l3ld971ubpyylqag4j9}": "工作地",
+            "!{l3ld971zgn9zm7bkq9p}": "请输入",
+            "!{l3ld95gh5x188j0qqo9}": "邮箱",
+            "!{l3ld95gkaijjuvfn1r}": "请输入",
+            "!{l3iu06zv4njsha5uee5}": "手机号",
+            "!{l3iu06zyamxii97y79f}": "请输入",
+            "!{l3iu0b3khy6a43lnpkn}": "出生日期",
+            "!{l3iu0b3nrlmp1tkiqia}": "请输入",
+            "!{l3lb3n6libr50hydes}": "岗位",
+            "!{l3mpotu09e4th32vklr}": "组织信息/所属供应商",
+            "!{l3lbm56har7emj2pss}": "性别",
+            "!{l3lbm56yji7hy6ld8f}": "女",
+            "!{l3lbm56pw6rmvlbkwg}": "男",
+            "!{l3iu027izyoihkz5ze9}": "身份证号",
+            "!{l3iu027lnwn4jq6xve}": "请输入",
+            "!{l3lbnn2zuf7qg81itg}": "姓名拼音",
+            "!{l3lbnn33xk8y2texnm}": "请输入",
+            "!{l3itzc38htt05cm1ltm}": "个人照片",
+            "!{l3itzy1crvjqnpzbnt8}": "姓名",
+            "!{l3itzy1gfrzqcit0dtl}": "请输入",
+            "!{l3itxz3pqakhb2vx9r}": "外包人员信息"
+        },
+        "list": {
+            "InnerStaffInfo": "供应商内嵌列表",
+            "StaffInfo": "外包人员信息"
+        }
+    },
+    "cmsSupplierEvaluate": {
+        "form": {
+            "!{l3sesdri2lje2q222e3}": "合同过期",
+            "!{l3sesdrhdxo6f0bv8pq}": "已签合同",
+            "!{l3sesdrgswfebvpk16}": "未签合同",
+            "!{l3seqh93j1957cn8l1}": "请输入",
+            "!{l3seqh90nj3ul38m3ar}": "供应商合作状态",
+            "!{l3seq63mggyn44ny83a}": "所选框架",
+            "!{l3seq49nqgd10x7yakm}": "供应商名称",
+            "!{l3selfi9o2mjlph370f}": "明细表1",
+            "!{l3sela7yl29ogb6ok5c}": "挑选供应商",
+            "!{l3sekqaslx6jqu3n55q}": "评价人",
+            "!{l3sir8bbth4alqyjuf}": "第4季度",
+            "!{l3sir8bbopne48dqhyn}": "第3季度",
+            "!{l3sir8bbtsm2exw0nqk}": "第2季度",
+            "!{l3sir8ba17pjqu9k8hl}": "第1季度",
+            "!{l3siog7xa9boqqb3729}": "请输入",
+            "!{l3sipk6sa1dur4z20xp}": "请输入",
+            "!{l3sisw5w4aewxhykdlt}": "评价周期",
+            "!{l3sek2gtuigb3zvu1en}": "主题",
+            "!{l3sek2gxmno5vpqnxd}": "请输入",
+            "!{l3sejhocnh880gy9z1r}": "供应商评价"
+        },
+        "fdCreateTime": "创建时间",
+        "fdCreator": "创建者",
+        "list": {
+            "SupplierEvaluate": "供应商评价"
+        }
+    },
+    "cmsContractInfo": {
+        "form": {
+            "!{l3gwhoszf8sp3rwnr44}": "附件",
+            "!{l3o53856kyd36hba8xs}": "合同签订方式",
+            "!{l3o54mxpft63rorgfn4}": "续约合同",
+            "!{l3o54mxoq5zgtpd0lfr}": "新合同",
+            "!{l3jyji3tc632kphqs5p}": "（万元）",
+            "!{l3hatjhsxla0q0amp5g}": "合同总金额",
+            "!{l3hatji0tjcr3fnp0p}": "请输入",
+            "!{l3gwhiyfg98txa51fdl}": "合同结束日期",
+            "!{l3gwhiyisrnpqm43l0t}": "请输入",
+            "!{l3gwhhu749t46p6gfxo}": "合同开始日期",
+            "!{l3gwhhuaz7qbu6iom1r}": "请输入",
+            "!{l3mdydlnb2158rye74g}": "所属框架",
+            "!{l3gwmqgpkr8hk82epl8}": "供应商名称",
+            "!{l3gwgyfieeasl38ndw}": "合同名称",
+            "!{l3gwgyfousrbns41tdb}": "请输入",
+            "!{l3gwgng5uch64kkrjl}": "合同信息"
+        },
+        "fdCreateTime": "创建时间",
+        "fdCreator": "创建者",
+        "list": {
+            "InnerContractInfo": "供应商内嵌列表",
+            "ContractInfo": "合同信息"
+        }
+    },
+    "cmsProjectInfoTemplate": {
+        "name": "项目库模板"
+    },
+    "cmsProjectInfo": {
+        "form": {
+            "!{l47sgh46l1ahpgby3cb}": "预计结束日期",
+            "!{l47sgh496ph195ayp68}": "请输入",
+            "!{l47sgg0zn6wzc3ukv7}": "预计开始时间",
+            "!{l47sgg12fckhecvwwho}": "请输入",
+            "!{l47sgez8tcuawseqs2a}": "项目立项时间",
+            "!{l47sgezcgg3tpw1payl}": "请输入",
+            "!{l47sfd36r349zf59xxg}": "项目性质",
+            "!{l47sfrrsm8set33swh8}": "厂商驻场实施",
+            "!{l47sfrrrok1nmlb0tw}": "项目外包",
+            "!{l47sfd3bplubk8x7ajm}": "请输入",
+            "!{l47s8bsqziln6fgdbd}": "项目所属框架",
+            "!{l47sjeg41qyf3n63q5g}": "内部责任人",
+            "!{l47sjd9hp4ye7ccl0b}": "项目负责人",
+            "!{l47sjboxx5zvzn3c1kg}": "所属组/团队",
+            "!{l47sjaxpzb906zmknn}": "所属部门",
+            "!{l470lkjy8xm11z9ta7t}": "项目编号",
+            "!{l470lkk38gp25ho2dum}": "请输入",
+            "!{l470jwldimflokpfrzh}": "项目名称",
+            "!{l470jwlpnq3xw2ch55}": "请输入",
+            "!{l470kiqmfuah40n41sq}": "项目库"
+        },
+        "list": {
+            "ProjectInfo": "项目库"
+        }
+    },
+    "cmsOutOrderTemplate": {
+        "name": "工单管理模板"
+    },
+    "cmsOutConfigTemplate": {
+        "name": "权限配置模板"
+    },
+    "cmsOutOrder": {
+        "form": {
+            "!{l4m5yx1j70uflvtclh2}": "是否己处理",
+            "!{l4m6frdxc2l7q38c6re}": "说明",
+            "!{l4m6frdyp04sdwk2ef}": "请输入",
+            "!{l4m6cv8ybejj8m773mt}": "权限项目",
+            "!{l4m6cv90ajemoeg87l}": "请输入",
+            "!{l4m5xxe6baf7cerkkuc}": "处理人"
+        },
+        "fdCreateTime": "创建时间",
+        "fdCreator": "创建者",
+        "list": {
+            "Order": "工单管理"
+        }
+    },
+    "cmsOutConfig": {
+        "form": {
+            "!{l4m44mdir8z81kk89g}": "网络权限",
+            "!{l4m44jqcr83ujayhd2}": "门禁(武汉)",
+            "!{l4m44hnmkrmaf33hgd}": "门禁(深圳)",
+            "!{l4m44f389cb7d4msevo}": "VPN",
+            "!{l4m44d0zvp90m3ysfxh}": "桌面助手",
+            "!{l4m44aicuop78fja9t}": "悟空",
+            "!{l4m447999fkczhl7d06}": "码云",
+            "!{l4m441acwtq6wmsygt}": "云主机",
+            "!{l4m43zr5d9698rvhsov}": "工位地点(武汉)",
+            "!{l4m40sd6usk04pb2c6e}": "工位地点(深圳)"
+        },
+        "list": {
+            "Config": "权限配置"
+        }
+    }
+}
