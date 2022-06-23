@@ -22,5 +22,15 @@ export default [
       { key: '/cmsSupplierEvalScore/listEvaluateScore', label: ':menu.cmsSupplierEvalScore.listEvaluateScore' }
     ]
   },
-  { key: '/cmsProjectInfo', label: ':menu.mbvr4bpjdbc', icon: 'add-document' }
+  { key: '/cmsProjectInfo', label: ':menu.mbvr4bpjdbc', icon: 'add-document' },
+  {
+    key: '/cmsOutOrder',
+    label: ':menu.cmsOutOrder',
+    icon: 'add-document',
+  },
+  {
+    key: '/cmsOutConfig',
+    label: ':menu.cmsOutConfig',
+    icon: 'add-document',
+  }
 ]

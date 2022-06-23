@@ -69,7 +69,9 @@
         "cmsSupplierInfo": {},
         "cmsStaffAdjustTemplate": "CmsStaffAdjustTemplate",
         "cmsStaffEntranceTemplate": "CmsStaffEntranceTemplate",
-        "cmsStaffLeaveTemplate": "CmsStaffLeaveTemplate"
+        "cmsStaffLeaveTemplate": "CmsStaffLeaveTemplate",
+        "cmsOutOrderTemplate": "CmsOutOrderTemplate",
+        "cmsOutConfigTemplate": "CmsOutConfigTemplate"
     },
     "cmsProjectInfoTemplate": {
         "name": "CmsProjectInfoTemplate"
@@ -170,6 +172,24 @@
         "form": {},
         "list": {
             "Leave": "Leave"
+        }
+    },
+    "cmsOutOrderTemplate": {
+        "name": "CmsOutOrderTemplate"
+    },
+    "cmsOutConfigTemplate": {
+        "name": "CmsOutConfigTemplate"
+    },
+    "cmsOutOrder": {
+        "form": {},
+        "list": {
+            "Order": "Order"
+        }
+    },
+    "cmsOutConfig": {
+        "form": {},
+        "list": {
+            "Config": "Config"
         }
     }
 }
