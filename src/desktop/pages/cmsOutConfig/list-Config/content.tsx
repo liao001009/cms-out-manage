@@ -3,14 +3,14 @@ import { IContentViewProps } from '@ekp-runtime/render-module'
 import Icon from '@lui/icons'
 import { Input, Button, Space, Pagination } from '@lui/core'
 import Criteria from '@elem/criteria'
-import { $reduceCriteria } from '@/desktop/order-shared/criteria'
+import { $reduceCriteria } from '@/desktop/shared/criteria-order'
 import Operation from '@elem/operation'
 import Table, { useTable } from '@elem/mk-table'
 import api from '@/api/cmsOutConfig'
 //@ts-ignore
 import AddComponent from '@/manage/pages/cmsOutConfigTemplate/baseList'
-import { useAdd } from '@/desktop/order-shared/add'
-import { $deleteAll } from '@/desktop/order-shared/deleteAll'
+import { useAdd } from '@/desktop/shared/add'
+import { $deleteAll } from '@/desktop/shared/deleteAll'
 import './index.scss'
 
 const Content: React.FC<IContentViewProps> = (props) => {
@@ -129,7 +129,6 @@ const Content: React.FC<IContentViewProps> = (props) => {
     (event) => {
       event.stopPropagation()
       $deleteAll({
-        history: history,
         api: api,
         selectedRows: selectedRows,
         refresh: refresh

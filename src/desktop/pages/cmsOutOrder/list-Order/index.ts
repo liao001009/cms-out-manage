@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-order:cmsOutOrder.list.Order',
+  title: ':cmsOutOrder.list.Order',
   // 路由
   router: '/listOrder',
   // 模块内容区

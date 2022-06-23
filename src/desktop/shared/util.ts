@@ -58,7 +58,7 @@ export const lastHandlerList = (listData) => {
   const arr = listData.map(item => (
     {
       text: (item.lbpm_last_handler && item.lbpm_last_handler.lastHandlerName) || '无',
-      value: (item.lbpm_last_handler &&item.lbpm_last_handler.lastHandlerId) || ''
+      value: (item.lbpm_last_handler && item.lbpm_last_handler.lastHandlerId) || ''
     }
   ))
   const res = new Map()
@@ -169,9 +169,9 @@ export const getUrlParameter = (url, param) => {
   // @ts-ignore
   const re = new RegExp()
   // @ts-ignore
-  re.compile('[\\?&]'+param+'=([^(&|#)]*)', 'i')
+  re.compile('[\\?&]' + param + '=([^(&|#)]*)', 'i')
   const arr = re.exec(url)
-  if(arr==null) {
+  if (arr == null) {
     return null
   }
   return decodeURIComponent(arr[1])

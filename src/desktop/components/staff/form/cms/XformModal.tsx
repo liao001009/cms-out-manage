@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Input, Message, Modal, Pagination } from '@lui/core'
 import Table, { useTable } from '@elem/mk-table'
 import Criteria from '@elem/criteria'
-import { $reduceCriteria } from '@/desktop/staff-shared/criteria'
+import { $reduceCriteria } from '@/desktop/shared/criteria'
 import './index.scss'
 import { criertiaObj } from '@/desktop/common'
 

@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-staff:cmsStaffAdjust.list.Adjust',
+  title: ':cmsStaffAdjust.list.Adjust',
   // 路由
   router: '/listAdjust',
   // 模块内容区

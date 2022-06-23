@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-supplier:cmsOutStaffInfo.list.StaffInfo',
+  title: ':cmsOutStaffInfo.list.StaffInfo',
   // 路由
   router: '/listStaffInfo',
   // 模块内容区

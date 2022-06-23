@@ -170,7 +170,7 @@ export const useSystem = (payload: ISystem) => {
     templateId,
     entityName,
     $$tableType: 'main',
-    $$tableName: 'cmsSupplierInfo',
+    $$tableName: 'cmsPostInfo',
     onValuesChange,
     lengthValidator
   }
@@ -246,21 +246,32 @@ const VALUE_EXECUTOR = {
 // 对外暴露接口
 export const useApi = (payload: IApi) => {
   const { form, formRef, value, MECHANISMNAMES } = payload
-
   // 初始化表单
   useEffect(() => {
     if (!value) {
       return
     }
-    const { mechanisms, ...values } = value
+    const { mechanisms } = value
+    let { ...values } = value
+
     Object.keys(MECHANISMNAMES).forEach((name) => {
       const dict = MECHANISMNAMES[name]
       if (VALUE_EXECUTOR[dict]) {
         VALUE_EXECUTOR[dict].set(values, mechanisms, name)
       }
     })
+    console.log('values', values)
+    // @ts-ignore
+    if (values.fdFrame) {
+      values = {
+        ...values,
+        // @ts-ignore
+        fdFrame: values.fdFrame.fdId
+      }
+    }
     form.setFieldsValue(values)
   }, [form, value])
+
 
   useImperativeHandle(
     formRef,
@@ -276,7 +287,6 @@ export const useApi = (payload: IApi) => {
       // 获取表单值
       getValue: () => {
         const values = form.getFieldsValue() || {}
-        console.log('表单值',values)
         const mechanisms = {}
         Object.keys(MECHANISMNAMES).forEach((name) => {
           const dict = MECHANISMNAMES[name]

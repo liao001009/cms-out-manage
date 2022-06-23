@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-basedata:cmsFrameBudget.list.FrameBudget',
+  title: ':cmsFrameBudget.list.FrameBudget',
   // 路由
   router: '/listFrameBudget',
   // 模块内容区

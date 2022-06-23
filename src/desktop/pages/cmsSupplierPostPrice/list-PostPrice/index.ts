@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-supplier:cmsSupplierPostPrice.list.PostPrice',
+  title: ':cmsSupplierPostPrice.list.PostPrice',
   // 路由
   router: '/listPostPrice',
   // 模块内容区

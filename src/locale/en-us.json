@@ -47,6 +47,10 @@
         }
     },
     "menu": {
+        "cmsBasicInformation": "Basic Information Management",
+        "cmsPersonnelManagement": "Personnel management",
+        "cmsProjectManagement": "Project management",
+        "cmsWorkOrder": "Work order management",
         "cmsPostInfoTemplate": "CmsPostInfoTemplate",
         "cmsLevelInfoTemplate": "CmsLevelInfoTemplate",
         "cmsFrameBudgetAdjustTemplate": "CmsFrameBudgetAdjustTemplate",

@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-supplier:cmsSupplierEvalScore.list.EvaluateScore',
+  title: ':cmsSupplierEvalScore.list.EvaluateScore',
   // 路由
   router: '/listEvaluateScore',
   // 模块内容区
