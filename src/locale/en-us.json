@@ -1,0 +1,175 @@
+{
+    "name": "cms-out-basedata",
+    "cmsPostInfoTemplate": {
+        "name": "CmsPostInfoTemplate"
+    },
+    "cmsLevelInfoTemplate": {
+        "name": "CmsLevelInfoTemplate"
+    },
+    "cmsFrameBudgetAdjustTemplate": {
+        "name": "CmsFrameBudgetAdjustTemplate"
+    },
+    "cmsFrameBudgetTemplate": {
+        "name": "CmsFrameBudgetTemplate"
+    },
+    "cmsFrameInfoTemplate": {
+        "name": "CmsFrameInfoTemplate"
+    },
+    "cmsPostInfo": {
+        "form": {},
+        "list": {
+            "PostInfo": "PostInfo"
+        }
+    },
+    "cmsLevelInfo": {
+        "form": {},
+        "list": {
+            "LevelInfo": "LevelInfo"
+        }
+    },
+    "cmsFrameBudgetAdjust": {
+        "form": {},
+        "list": {
+            "InnerBudgetAdjust": "InnerBudgetAdjust",
+            "BudgetAdjust": "BudgetAdjust"
+        }
+    },
+    "cmsFrameBudget": {
+        "form": {},
+        "list": {
+            "FrameBudget": "FrameBudget"
+        }
+    },
+    "cmsFrameInfo": {
+        "form": {},
+        "list": {
+            "FrameInfo": "FrameInfo"
+        }
+    },
+    "menu": {
+        "cmsPostInfoTemplate": "CmsPostInfoTemplate",
+        "cmsLevelInfoTemplate": "CmsLevelInfoTemplate",
+        "cmsFrameBudgetAdjustTemplate": "CmsFrameBudgetAdjustTemplate",
+        "cmsFrameBudgetTemplate": "CmsFrameBudgetTemplate",
+        "cmsFrameInfoTemplate": "CmsFrameInfoTemplate",
+        "cmsProjectInfoTemplate": "CmsProjectInfoTemplate",
+        "cmsSupplierInfoTemplate": "CmsSupplierInfoTemplate",
+        "cmsSupplierEvalScoreTemplate": "CmsSupplierEvalScoreTemplate",
+        "cmsSupplierPostPriceTemplate": "CmsSupplierPostPriceTemplate",
+        "cmsStaffReviewUpgradeTemplate": "CmsStaffReviewUpgradeTemplate",
+        "cmsOutStaffInfoTemplate": "CmsOutStaffInfoTemplate",
+        "cmsSupplierEvaluateTemplate": "CmsSupplierEvaluateTemplate",
+        "cmsContractInfoTemplate": "CmsContractInfoTemplate",
+        "cmsSupplierEvalScore": {},
+        "cmsSupplierEvaluate": {},
+        "cmsStaffReviewUpgrade": {},
+        "cmsOutStaffInfo": {},
+        "cmsSupplierPostPrice": {},
+        "cmsContractInfo": {},
+        "cmsSupplierInfo": {},
+        "cmsStaffAdjustTemplate": "CmsStaffAdjustTemplate",
+        "cmsStaffEntranceTemplate": "CmsStaffEntranceTemplate",
+        "cmsStaffLeaveTemplate": "CmsStaffLeaveTemplate"
+    },
+    "cmsProjectInfoTemplate": {
+        "name": "CmsProjectInfoTemplate"
+    },
+    "cmsProjectInfo": {
+        "form": {},
+        "list": {
+            "ProjectInfo": "ProjectInfo"
+        }
+    },
+    "cmsSupplierInfoTemplate": {
+        "name": "CmsSupplierInfoTemplate"
+    },
+    "cmsSupplierEvalScoreTemplate": {
+        "name": "CmsSupplierEvalScoreTemplate"
+    },
+    "cmsSupplierPostPriceTemplate": {
+        "name": "CmsSupplierPostPriceTemplate"
+    },
+    "cmsStaffReviewUpgradeTemplate": {
+        "name": "CmsStaffReviewUpgradeTemplate"
+    },
+    "cmsOutStaffInfoTemplate": {
+        "name": "CmsOutStaffInfoTemplate"
+    },
+    "cmsSupplierEvaluateTemplate": {
+        "name": "CmsSupplierEvaluateTemplate"
+    },
+    "cmsContractInfoTemplate": {
+        "name": "CmsContractInfoTemplate"
+    },
+    "cmsSupplierInfo": {
+        "form": {},
+        "list": {
+            "SupplierInfo": "SupplierInfo"
+        }
+    },
+    "cmsSupplierEvalScore": {
+        "form": {},
+        "list": {
+            "EvaluateScore": "EvaluateScore"
+        }
+    },
+    "cmsSupplierPostPrice": {
+        "form": {},
+        "list": {
+            "PostPrice": "PostPrice"
+        }
+    },
+    "cmsStaffReviewUpgrade": {
+        "form": {},
+        "list": {
+            "StaffReview": "StaffReview"
+        }
+    },
+    "cmsOutStaffInfo": {
+        "form": {},
+        "list": {
+            "InnerStaffInfo": "InnerStaffInfo",
+            "StaffInfo": "StaffInfo"
+        }
+    },
+    "cmsSupplierEvaluate": {
+        "form": {},
+        "list": {
+            "SupplierEvaluate": "SupplierEvaluate"
+        }
+    },
+    "cmsContractInfo": {
+        "form": {},
+        "list": {
+            "InnerContractInfo": "InnerContractInfo",
+            "ContractInfo": "ContractInfo"
+        }
+    },
+    "cmsStaffAdjustTemplate": {
+        "name": "CmsStaffAdjustTemplate"
+    },
+    "cmsStaffEntranceTemplate": {
+        "name": "CmsStaffEntranceTemplate"
+    },
+    "cmsStaffLeaveTemplate": {
+        "name": "CmsStaffLeaveTemplate"
+    },
+    "cmsStaffAdjust": {
+        "form": {},
+        "list": {
+            "Adjust": "Adjust"
+        }
+    },
+    "cmsStaffEntrance": {
+        "form": {},
+        "list": {
+            "Entrance": "Entrance"
+        }
+    },
+    "cmsStaffLeave": {
+        "form": {},
+        "list": {
+            "Leave": "Leave"
+        }
+    }
+}
