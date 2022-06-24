@@ -7,8 +7,6 @@ import { $reduceCriteria } from '@/desktop/shared/criteria-order'
 import Operation from '@elem/operation'
 import Table, { useTable } from '@elem/mk-table'
 import api from '@/api/cmsOutOrder'
-//@ts-ignore
-import AddComponent from '@/manage/pages/cmsOutOrderTemplate/baseList'
 import { useAdd } from '@/desktop/shared/add'
 import { $deleteAll } from '@/desktop/shared/deleteAll'
 import './index.scss'

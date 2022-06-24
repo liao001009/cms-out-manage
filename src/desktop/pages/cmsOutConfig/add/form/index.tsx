@@ -1,5 +1,4 @@
-//@ts-ignore
-import React, { useRef, createRef } from 'react'
+import React, { useRef } from 'react'
 import './index.scss'
 import { fmtMsg } from '@ekp-infra/respect'
 import { Form } from '@lui/core'
@@ -24,7 +23,7 @@ const XForm = (props) => {
     MECHANISMNAMES
   })
   // 内置$$form对象，组件间的内部调用， 长度校验规则，此逻辑禁止移除与修改
-  const { onValuesChange, lengthValidator, ...sysProps } = useSystem({
+  const { onValuesChange, ...sysProps } = useSystem({
     props,
     form,
     detailForms

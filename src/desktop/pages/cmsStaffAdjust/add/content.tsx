@@ -19,7 +19,7 @@ const RightFragment = Module.getComponent('sys-right', 'RightFragment', { loadin
 const Content: React.FC<IContentViewProps> = props => {
   const { data, match, history } = props
   // 模板id
-  const templateId = match.params['templateId']
+  const templateId = match && match.params['templateId']
   // 机制组件引用
   const formComponentRef = useRef<any>()
   const lbpmComponentRef = useRef<any>()
