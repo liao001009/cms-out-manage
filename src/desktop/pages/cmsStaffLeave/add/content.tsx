@@ -132,7 +132,7 @@ const Content: React.FC<IContentViewProps> = props => {
       {/* 操作区 */}
       <div className='lui-approve-template-header'>
         <Breadcrumb>
-          <Breadcrumb.Item>驻场人员管理</Breadcrumb.Item>
+          <Breadcrumb.Item>离场人员管理</Breadcrumb.Item>
           <Breadcrumb.Item>新建</Breadcrumb.Item>
         </Breadcrumb>
         <div className='buttons'>
