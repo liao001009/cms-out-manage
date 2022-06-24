@@ -12,6 +12,9 @@ import AddComponent from '@/manage/pages/cmsOutConfigTemplate/baseList'
 import { useAdd } from '@/desktop/shared/add'
 import { $deleteAll } from '@/desktop/shared/deleteAll'
 import './index.scss'
+import { Auth } from '@ekp-infra/common'
+//@ts-ignore
+import Status, { EStatusType } from '@elements/status'
 
 const Content: React.FC<IContentViewProps> = (props) => {
   const { status, data, queryChange, query, refresh, history } = props
@@ -211,75 +214,83 @@ const Content: React.FC<IContentViewProps> = (props) => {
 
   return (
     <React.Fragment>
-      <div className="lui-template-list">
-        <div className="lui-template-list-criteria">
-          <div className="left">
-            {/* 搜索 */}
-            <Input.Search allowClear placeholder="请输入关键词搜索" onSearch={handleSearch} />
+      <Auth.Auth
+        authURL='/order/cmsOutConfig/listConfig'
+        authModuleName='cms-out-manage'
+        unauthorizedPage={
+          <Status type={EStatusType._403} title='抱歉，您暂无权限访问当前页面' />
+        }
+      >
+        <div className="lui-template-list">
+          <div className="lui-template-list-criteria">
+            <div className="left">
+              {/* 搜索 */}
+              <Input.Search allowClear placeholder="请输入关键词搜索" onSearch={handleSearch} />
+            </div>
+            <div className="right">
+              {/* 筛选器 */}
+              <Criteria key="criteria" onChange={handleCriteriaChange}>
+                <Criteria.Org orgType={8} title="工位地点(深圳)" name="fdStationSz.fdId"></Criteria.Org>
+                <Criteria.Org orgType={8} title="工位地点(武汉)" name="fdStationWh.fdId"></Criteria.Org>
+                <Criteria.Org orgType={8} title="云主机" name="fdCloudHost.fdId"></Criteria.Org>
+                <Criteria.Org orgType={8} title="码云" name="fdGitee.fdId"></Criteria.Org>
+                <Criteria.Org orgType={8} title="悟空" name="fdWukong.fdId"></Criteria.Org>
+                <Criteria.Org orgType={8} title="桌面助手" name="fdDesktopAide.fdId"></Criteria.Org>
+                <Criteria.Org orgType={8} title="VPN" name="fdVpn.fdId"></Criteria.Org>
+                <Criteria.Org orgType={8} title="门禁(深圳)" name="fdEntranceGuardSz.fdId"></Criteria.Org>
+                <Criteria.Org orgType={8} title="门禁(武汉)" name="fdEntranceGuardWh.fdId"></Criteria.Org>
+                <Criteria.Org orgType={8} title="网络权限" name="fdNetworkPrem.fdId"></Criteria.Org>
+              </Criteria>
+            </div>
           </div>
-          <div className="right">
-            {/* 筛选器 */}
-            <Criteria key="criteria" onChange={handleCriteriaChange}>
-              <Criteria.Org orgType={8} title="工位地点(深圳)" name="fdStationSz.fdId"></Criteria.Org>
-              <Criteria.Org orgType={8} title="工位地点(武汉)" name="fdStationWh.fdId"></Criteria.Org>
-              <Criteria.Org orgType={8} title="云主机" name="fdCloudHost.fdId"></Criteria.Org>
-              <Criteria.Org orgType={8} title="码云" name="fdGitee.fdId"></Criteria.Org>
-              <Criteria.Org orgType={8} title="悟空" name="fdWukong.fdId"></Criteria.Org>
-              <Criteria.Org orgType={8} title="桌面助手" name="fdDesktopAide.fdId"></Criteria.Org>
-              <Criteria.Org orgType={8} title="VPN" name="fdVpn.fdId"></Criteria.Org>
-              <Criteria.Org orgType={8} title="门禁(深圳)" name="fdEntranceGuardSz.fdId"></Criteria.Org>
-              <Criteria.Org orgType={8} title="门禁(武汉)" name="fdEntranceGuardWh.fdId"></Criteria.Org>
-              <Criteria.Org orgType={8} title="网络权限" name="fdNetworkPrem.fdId"></Criteria.Org>
-            </Criteria>
-          </div>
-        </div>
-        <div className="lui-template-list-toolbar">
-          <div className="left">
-            <Operation key="operation" onChange={handleSorter}>
-              {/* 排序 */}
-              <Operation.SortGroup>
-                <Operation.Sort key="fdCreateTime" name="fdCreateTime" title="创建时间"></Operation.Sort>
-              </Operation.SortGroup>
-              {totalSize && (
-                <Operation.Paging name="pageNo" value={offset / pageSize} pageSize={pageSize} total={totalSize} />
-              )}
-            </Operation>
-          </div>
-          <div className="right">
-            <Space>
-              <Button onClick={refresh}>
-                <Icon name="redo" />
-              </Button>
-              {/* 操作栏 */}
-              <React.Fragment>
-                <Button type="primary" onClick={handleAdd}>
-                  新建
+          <div className="lui-template-list-toolbar">
+            <div className="left">
+              <Operation key="operation" onChange={handleSorter}>
+                {/* 排序 */}
+                <Operation.SortGroup>
+                  <Operation.Sort key="fdCreateTime" name="fdCreateTime" title="创建时间"></Operation.Sort>
+                </Operation.SortGroup>
+                {totalSize && (
+                  <Operation.Paging name="pageNo" value={offset / pageSize} pageSize={pageSize} total={totalSize} />
+                )}
+              </Operation>
+            </div>
+            <div className="right">
+              <Space>
+                <Button onClick={refresh}>
+                  <Icon name="redo" />
                 </Button>
-                {/*<AddComponent visible={$addVisible} callback={$addClose}></AddComponent>*/}
-                <Button type="default" onClick={handleDeleteAll}>
-                  批量删除
-                </Button>
-              </React.Fragment>
-            </Space>
+                {/* 操作栏 */}
+                <React.Fragment>
+                  <Button type="primary" onClick={handleAdd}>
+                    新建
+                  </Button>
+                  {/*<AddComponent visible={$addVisible} callback={$addClose}></AddComponent>*/}
+                  <Button type="default" onClick={handleDeleteAll}>
+                    批量删除
+                  </Button>
+                </React.Fragment>
+              </Space>
+            </div>
+          </div>
+          <div className="lui-template-list-table">
+            <Table loading={status === 'loading'} {...tableProps} onRow={onRowClick} />
+          </div>
+          <div className="lui-template-list-page">
+            {totalSize ? (
+              <Pagination
+                showQuickJumper
+                showSizeChanger
+                refresh={true}
+                total={totalSize}
+                pageSize={pageSize}
+                onChange={handlePage}
+                onRefresh={refresh}
+              />
+            ) : null}
           </div>
         </div>
-        <div className="lui-template-list-table">
-          <Table loading={status === 'loading'} {...tableProps} onRow={onRowClick} />
-        </div>
-        <div className="lui-template-list-page">
-          {totalSize ? (
-            <Pagination
-              showQuickJumper
-              showSizeChanger
-              refresh={true}
-              total={totalSize}
-              pageSize={pageSize}
-              onChange={handlePage}
-              onRefresh={refresh}
-            />
-          ) : null}
-        </div>
-      </div>
+      </Auth.Auth>
     </React.Fragment>
   )
 }
