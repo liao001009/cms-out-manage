@@ -1,14 +1,4 @@
 {
-  "@elem/icon": {
-    "hash": "GlrZyWE6xy",
-    "type": "online",
-    "url": "http://mktest.ywork.me/web/sys/component-types/elements"
-  },
-  "@elem/button": {
-    "hash": "7si1xOXG1S",
-    "type": "online",
-    "url": "http://mktest.ywork.me/web/sys/component-types/elements"
-  },
   "@elem/checkbox": {
     "hash": "LA4nMA5kXZ",
     "type": "online",
@@ -16,6 +6,11 @@
   },
   "@elem/radio": {
     "hash": "cDicdIypr0",
+    "type": "online",
+    "url": "http://mktest.ywork.me/web/sys/component-types/elements"
+  },
+  "@elem/icon": {
+    "hash": "GlrZyWE6xy",
     "type": "online",
     "url": "http://mktest.ywork.me/web/sys/component-types/elements"
   },
@@ -34,13 +29,8 @@
     "type": "online",
     "url": "http://mktest.ywork.me/web/sys/component-types/elements"
   },
-  "@elem/input": {
-    "hash": "jWTHEY9IHo",
-    "type": "online",
-    "url": "http://mktest.ywork.me/web/sys/component-types/elements"
-  },
-  "@elem/input-number": {
-    "hash": "Eh9RWyOpOB",
+  "@elem/button": {
+    "hash": "7si1xOXG1S",
     "type": "online",
     "url": "http://mktest.ywork.me/web/sys/component-types/elements"
   },
@@ -59,6 +49,51 @@
     "type": "online",
     "url": "http://mktest.ywork.me/web/sys/component-types/antd"
   },
+  "@antd/button": {
+    "hash": "jAafmT+W2N",
+    "type": "online",
+    "url": "http://mktest.ywork.me/web/sys/component-types/antd"
+  },
+  "@antd/input": {
+    "hash": "0oaWsoPe1K",
+    "type": "online",
+    "url": "http://mktest.ywork.me/web/sys/component-types/antd"
+  },
+  "@elem/input-number": {
+    "hash": "Eh9RWyOpOB",
+    "type": "online",
+    "url": "http://mktest.ywork.me/web/sys/component-types/elements"
+  },
+  "@antd/select": {
+    "hash": "RA6VuCz3n6",
+    "type": "online",
+    "url": "http://mktest.ywork.me/web/sys/component-types/antd"
+  },
+  "@elem/loading": {
+    "hash": "1BgSIPd4pi",
+    "type": "online",
+    "url": "http://mktest.ywork.me/web/sys/component-types/elements"
+  },
+  "@antd/dropdown": {
+    "hash": "vBPXnMMrDp",
+    "type": "online",
+    "url": "http://mktest.ywork.me/web/sys/component-types/antd"
+  },
+  "@elem/input": {
+    "hash": "jWTHEY9IHo",
+    "type": "online",
+    "url": "http://mktest.ywork.me/web/sys/component-types/elements"
+  },
+  "@elem/folder": {
+    "hash": "jK6xeJqWyK",
+    "type": "online",
+    "url": "http://mktest.ywork.me/web/sys/component-types/elements"
+  },
+  "@elem/criteria": {
+    "hash": "l76zNpl2vT",
+    "type": "online",
+    "url": "http://mktest.ywork.me/web/sys/component-types/elements"
+  },
   "@antd/tooltip": {
     "hash": "T7CpTNCs5R",
     "type": "online",
@@ -66,11 +101,6 @@
   },
   "@antd/popover": {
     "hash": "CtFXy1QgOF",
-    "type": "online",
-    "url": "http://mktest.ywork.me/web/sys/component-types/antd"
-  },
-  "@antd/button": {
-    "hash": "jAafmT+W2N",
     "type": "online",
     "url": "http://mktest.ywork.me/web/sys/component-types/antd"
   },
@@ -94,16 +124,6 @@
     "type": "online",
     "url": "http://mktest.ywork.me/web/sys/component-types/antd"
   },
-  "@antd/dropdown": {
-    "hash": "vBPXnMMrDp",
-    "type": "online",
-    "url": "http://mktest.ywork.me/web/sys/component-types/antd"
-  },
-  "@antd/select": {
-    "hash": "RA6VuCz3n6",
-    "type": "online",
-    "url": "http://mktest.ywork.me/web/sys/component-types/antd"
-  },
   "@antd/grid": {
     "hash": "4qjXDyLjEg",
     "type": "online",
@@ -124,11 +144,6 @@
     "type": "online",
     "url": "http://mktest.ywork.me/web/sys/component-types/antd"
   },
-  "@elem/loading": {
-    "hash": "1BgSIPd4pi",
-    "type": "online",
-    "url": "http://mktest.ywork.me/web/sys/component-types/elements"
-  },
   "@elem/empty": {
     "hash": "xdgTpart1d",
     "type": "online",
@@ -136,21 +151,6 @@
   },
   "@elem/mk-table": {
     "hash": "8clKoUcSVb",
-    "type": "online",
-    "url": "http://mktest.ywork.me/web/sys/component-types/elements"
-  },
-  "@antd/input": {
-    "hash": "0oaWsoPe1K",
-    "type": "online",
-    "url": "http://mktest.ywork.me/web/sys/component-types/antd"
-  },
-  "@elem/folder": {
-    "hash": "jK6xeJqWyK",
-    "type": "online",
-    "url": "http://mktest.ywork.me/web/sys/component-types/elements"
-  },
-  "@elem/criteria": {
-    "hash": "l76zNpl2vT",
     "type": "online",
     "url": "http://mktest.ywork.me/web/sys/component-types/elements"
   },
@@ -218,6 +218,11 @@
     "hash": "i7V9uUTj8c",
     "type": "online",
     "url": "http://mktest.ywork.me/web/sys/component-types/elements"
+  },
+  "@antd/message": {
+    "hash": "IP+nOnJLwu",
+    "type": "online",
+    "url": "http://mktest.ywork.me/web/sys/component-types/antd"
   },
   "@elem/alert": {
     "hash": "8s0MJNTesx",
@@ -571,11 +576,6 @@
   },
   "@antd/mentions": {
     "hash": "q4xs40FRfi",
-    "type": "online",
-    "url": "http://mktest.ywork.me/web/sys/component-types/antd"
-  },
-  "@antd/message": {
-    "hash": "IP+nOnJLwu",
     "type": "online",
     "url": "http://mktest.ywork.me/web/sys/component-types/antd"
   },

@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-basedata:cmsFrameBudgetAdjust.list.BudgetAdjust',
+  title: 'cms-out-manage:cmsFrameBudgetAdjust.list.BudgetAdjust',
   // 路由
   router: '/listBudgetAdjust',
   // 模块内容区

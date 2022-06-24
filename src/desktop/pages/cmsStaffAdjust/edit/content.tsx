@@ -195,7 +195,7 @@ const Content: React.FC<IContentViewProps> = props => {
               auditType={data.fdProcessStatus === '30' ? 'baseInfo' : 'audit'}
               approveLayout='right'
               wrappedComponentRef={lbpmComponentRef}
-              moduleCode='cms-out-staff'
+              moduleCode='cms-out-manage'
               mode='edit'
               mechanism={{
                 formId: data?.fdTemplate?.fdId,

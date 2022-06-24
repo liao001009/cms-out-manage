@@ -23,4 +23,14 @@ export default [
     ]
   },
   { key: '/cmsProjectInfo', label: ':menu.mbvr4bpjdbc', icon: 'add-document' }
+  // {
+  //   key: '/sysWatermark',
+  //   label:'导入',
+  //   module: 'sys-admin',
+  //   icon: 'global',
+  //   auth: {
+  //     url: '/sysLangResource/importExcel',
+  //     module: 'sys-lang'
+  //   }
+  // }
 ]
