@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { IContentViewProps } from '@ekp-runtime/render-module'
 import Icon from '@lui/icons'
 import { Input, Button, Space, Pagination, Tooltip } from '@lui/core'
@@ -7,8 +7,7 @@ import { $reduceCriteria } from '@/desktop/shared/criteria'
 import Operation from '@elem/operation'
 import Table, { useTable } from '@elem/mk-table'
 import api from '@/api/cmsStaffLeave'
-import AddComponent from '@/manage/pages/cmsStaffLeaveTemplate/baseList'
-import { useAdd } from '@/desktop/shared/add-staff'
+import apiTemplate from '@/api/cmsStaffLeaveTemplate'
 import { $deleteAll } from '@/desktop/shared/deleteAll'
 import ExportModal from '@/desktop/components/export'
 import './index.scss'
@@ -19,6 +18,23 @@ const Content: React.FC<IContentViewProps> = (props) => {
   const { status, data, queryChange, query, refresh, history } = props
   const { content, totalSize, pageSize, offset } = data
   const [visible, setVisible] = useState<boolean>(false)
+  const [templateData, setTemplateData] = useState<any>({})
+  useEffect(()=>{
+    loadTemplateData()
+  },[])
+
+  const loadTemplateData = async () =>{
+    try {
+      const res = await apiTemplate.list({
+        sorts: { fdCreateTime: 'desc' },
+        columns: ['fdId', 'fdName', 'fdCode', 'fdCreator', 'fdCreateTime'],
+        ...query
+      })
+      setTemplateData(res?.data?.content[0])
+    } catch (error) {
+      console.error(error)
+    }
+  }
   // 表格列定义
   const columns = useMemo(
     () => [
@@ -181,21 +197,13 @@ const Content: React.FC<IContentViewProps> = (props) => {
     }
   })
 
-  /** 操作函数集 */
-
   //新建
-  const { $add: $add, $addClose: $addClose, $addVisible: $addVisible } = useAdd('/cmsStaffLeave/add/!{selectedRow}')
   const handleAdd = useCallback(
     (event) => {
       event.stopPropagation()
-      $add({
-        history: history,
-        api: api,
-        selectedRows: selectedRows,
-        refresh: refresh
-      })
+      history.goto(`/cmsStaffLeave/add/${templateData.fdId}`)
     },
-    [history, selectedRows, refresh]
+    [history, selectedRows, refresh,templateData]
   )
   //批量删除
   const handleDeleteAll = useCallback(
@@ -269,14 +277,6 @@ const Content: React.FC<IContentViewProps> = (props) => {
                 acc[cur.name] = cur.value
                 return acc
               }, {})
-          })
-      }
-      // 分页
-      if (curSorter.type === 'paging') {
-        queryChange &&
-          queryChange({
-            ...query,
-            pageNo: curSorter.value || 1
           })
       }
     },
@@ -392,16 +392,6 @@ const Content: React.FC<IContentViewProps> = (props) => {
                   name="fdProcessStatus"
                   title="文档状态"
                 ></Criteria.Criterion>
-                {/* <Criteria.Org
-                orgType={8}
-                name="lbpm_current_processor"
-                title="当前处理人"
-              ></Criteria.Org>
-              <Criteria.Org
-                name="lbpm_current_node"
-                title="当前处理节点"
-                orgType={8}
-              ></Criteria.Org> */}
               </Criteria>
             </div>
           </div>
@@ -412,9 +402,6 @@ const Content: React.FC<IContentViewProps> = (props) => {
                 <Operation.SortGroup>
                   <Operation.Sort key="fdCreateTime" name="fdCreateTime" title="创建时间"></Operation.Sort>
                 </Operation.SortGroup>
-                {totalSize && (
-                  <Operation.Paging name="pageNo" value={offset / pageSize} pageSize={pageSize} total={totalSize} />
-                )}
               </Operation>
             </div>
             <div className="right">
@@ -427,7 +414,6 @@ const Content: React.FC<IContentViewProps> = (props) => {
                   <Button type="primary" onClick={handleAdd}>
                     新建
                   </Button>
-                  <AddComponent visible={$addVisible} callback={$addClose}></AddComponent>
                   <Button type="default" onClick={handleDeleteAll}>
                     批量删除
                   </Button>
