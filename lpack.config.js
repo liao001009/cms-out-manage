@@ -47,7 +47,7 @@ const lpackConfig = {
     },
     // elementsUrlPrefix: 'http://127.0.0.1:8008',
     // 服务端域名
-    apiUrlPrefix: 'http://192.168.50.145:7101/data',
+    apiUrlPrefix: 'http://192.168.50.145:8101/data',
     //多语言服务
     langUrlPrefix: 'http://mktest.ywork.me/data/sys-lang'
   },

@@ -344,32 +344,28 @@ const Content: React.FC<IContentViewProps> = (props) => {
                   canMulti={false}
                   options={[
                     {
-                      text: '不限',
-                      value: 'undefined'
+                      value: '1',
+                      text: '未参与项目'
                     },
                     {
-                      text: 'undefined',
-                      value: '1'
+                      value: '2',
+                      text: '中选待入场'
                     },
                     {
-                      text: 'undefined',
-                      value: '2'
+                      value: '3',
+                      text: '项目中-远程'
                     },
                     {
-                      text: 'undefined',
-                      value: '3'
+                      value: '4',
+                      text: '项目中-驻场'
                     },
                     {
-                      text: 'undefined',
-                      value: '4'
+                      value: '5',
+                      text: '已离场'
                     },
                     {
-                      text: 'undefined',
-                      value: '5'
-                    },
-                    {
-                      text: 'undefined',
-                      value: '6'
+                      value: '6',
+                      text: '已离职'
                     }
                   ]}
                   name="fdStatusInfo"
