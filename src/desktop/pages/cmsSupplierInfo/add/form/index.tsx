@@ -1,4 +1,4 @@
-import React, { useRef, createRef } from 'react'
+import React, { useRef, createRef, useState, useEffect } from 'react'
 import './index.scss'
 import { fmtMsg } from '@ekp-infra/respect'
 import { Form } from '@lui/core'
@@ -11,10 +11,10 @@ import XformFieldset from '@/desktop/components/XformFieldset'
 import XformInput from '@/desktop/components/XformInput'
 import XformRadio from '@/desktop/components/XformRadio'
 import XformTextarea from '@/desktop/components/XformTextarea'
-// import XformRelation from '@/desktop/components/form/XformRelation'
 import XformDetailTable from '@/desktop/components/XformDetailTable'
+import XformSelect from '@/desktop/components/XformSelect'
+import api from '@/api/cmsFrameInfo'
 
-// const { Option } = Select
 const MECHANISMNAMES = {}
 
 const XForm = (props) => {
@@ -24,7 +24,26 @@ const XForm = (props) => {
   const { formRef: formRef } = props
   let { value: value } = props
   const [form] = Form.useForm()
-
+  const [frameArr, setFrameArr] = useState<any>([])
+  const init = async () => {
+    try {
+      const res = await api.listFrameInfo({})
+      const newValue = res.data.content.map(i => {
+        const item = {
+          label: i.fdName,
+          value: i.fdId
+        }
+        return item
+      })
+      setFrameArr(newValue)
+      form.setFieldsValue({
+        fdFrame: value.fdFrame.fdId
+      })
+    } catch (error) {
+      console.warn('框架类型出错', error)
+    }
+  }
+  useEffect(() => { init() }, [])
   value = {
     ...value,
     fdCooperationStatus: '1'
@@ -201,12 +220,14 @@ const XForm = (props) => {
                 title={fmtMsg(':cmsSupplierInfo.form.!{l3me38ucc667r165wr}', '所属框架')}
                 layout={'horizontal'}
               >
-                <Form.Item>
-                  <XformInput
+                <Form.Item name={'fdFrame'}>
+                  <XformSelect
                     {...sysProps}
-                    placeholder={fmtMsg(':cmsSupplierInfo.form.!{l3i2n52qm7p7wzsqug}', '请输入')}
-                    showStatus="readOnly"
-                  ></XformInput>
+                    placeholder={fmtMsg(':cmsProjectInfo.form.!{l47sfd3bplubk8x7ajm}', '请输入')}
+                    options={frameArr}
+                    optionSource={'custom'}
+                    showStatus="edit"
+                  ></XformSelect>
                 </Form.Item>
               </XformFieldset>
             </GridItem>
