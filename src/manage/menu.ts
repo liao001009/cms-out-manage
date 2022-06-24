@@ -4,4 +4,5 @@ export default [
   { key: '/cmsStaffEntranceTemplate', label: ':menu.cmsStaffEntranceTemplate', icon: 'desktop' },
   { key: '/cmsStaffAdjustTemplate', label: ':menu.cmsStaffAdjustTemplate', icon: 'desktop' },
   { key: '/cmsStaffLeaveTemplate', label: ':menu.cmsStaffLeaveTemplate', icon: 'desktop' },
+  { key: '/cmsOutConfig', label: ':menu.cmsOutConfig', icon: 'desktop' }
 ]
