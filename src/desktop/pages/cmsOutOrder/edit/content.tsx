@@ -1,5 +1,5 @@
 //@ts-ignore
-import React, { createElement as h, useRef, useCallback } from 'react'
+import React, { createElement as h, useRef } from 'react'
 import { Module } from '@ekp-infra/common'
 import { IContentViewProps } from '@ekp-runtime/render-module'
 import Icon from '@lui/icons'
@@ -20,10 +20,8 @@ const RightFragment = Module.getComponent('sys-right', 'RightFragment', { loadin
 // const PrintRuntime = Module.getComponent('sys-mech-print', 'PrintRuntimeFRagment', { loading: <React.Fragment></React.Fragment> })
 
 const Content: React.FC<IContentViewProps> = props => {
-  const { data, match, history, routerPrefix } = props
+  const { data, history, routerPrefix } = props
   // 文档id
-  //@ts-ignore
-  const id = match.params['id']
   // 机制组件引用
   const formComponentRef = useRef<any>()
   const lbpmComponentRef = useRef<any>()
@@ -80,7 +78,7 @@ const Content: React.FC<IContentViewProps> = props => {
   }
 
   // 提交前事件
-  const _beforeSave = async (isDraft: boolean, value) => {
+  const _beforeSave = async (isDraft: boolean) => {
     // 提交前表单预处理
     if (formComponentRef.current) {
       const beforeFormErrors = await formComponentRef.current.beforeSubmit({ isDraft })
@@ -104,7 +102,7 @@ const Content: React.FC<IContentViewProps> = props => {
     // 拼装提交数据
     const values = await _formatValue(isDraft)
     // 文档提交前事件
-    if (await _beforeSave(isDraft, values) === false) {
+    if (await _beforeSave(isDraft) === false) {
       return
     }
     // 编辑提交
@@ -195,7 +193,7 @@ const Content: React.FC<IContentViewProps> = props => {
               auditType='audit'
               approveLayout='right'
               wrappedComponentRef={lbpmComponentRef}
-              moduleCode='cms-out-order'
+              moduleCode='cms-out-manage'
               mechanism={{
                 formId: data?.fdTemplate?.fdId,
                 processTemplateId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdTemplateId,

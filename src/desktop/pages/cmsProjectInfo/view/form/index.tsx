@@ -209,7 +209,7 @@ const XForm = (props) => {
                 layout={'horizontal'}
               >
                 <Form.Item name={'fdFrame'}>
-                  <span>{value.fdFrame.fdName}</span>
+                  <span>{value?.fdFrame?.fdName || ''}</span>
                 </Form.Item>
               </XformFieldset>
             </GridItem>

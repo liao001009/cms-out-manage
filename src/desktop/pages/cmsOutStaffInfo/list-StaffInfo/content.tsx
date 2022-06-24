@@ -10,6 +10,9 @@ import api from '@/api/cmsOutStaffInfo'
 import { useAdd } from '@/desktop/shared/add'
 import { $deleteAll } from '@/desktop/shared/deleteAll'
 import './index.scss'
+import { Auth } from '@ekp-infra/common'
+//@ts-ignore
+import Status, { EStatusType } from '@elements/status'
 
 const Content: React.FC<IContentViewProps> = (props) => {
   const { status, data, queryChange, query, refresh, history } = props
@@ -281,143 +284,147 @@ const Content: React.FC<IContentViewProps> = (props) => {
 
   return (
     <React.Fragment>
-      <div className="lui-template-list">
-        <div className="lui-template-list-criteria">
-          <div className="left">
-            {/* 搜索 */}
-            <Input.Search allowClear placeholder="请输入关键词搜索" onSearch={handleSearch} />
-          </div>
-          <div className="right">
-            {/* 筛选器 */}
-            <Criteria key="criteria" onChange={handleCriteriaChange}>
-              <Criteria.Input name="fdPost" title="岗位"></Criteria.Input>
-              <Criteria.Criterion
-                canMulti={false}
-                options={[
-                  {
-                    text: '不限',
-                    value: ''
-                  },
-                  {
-                    text: '初级',
-                    value: '1'
-                  },
-                  {
-                    text: '中级',
-                    value: '2'
-                  },
-                  {
-                    text: '高级',
-                    value: '3'
-                  },
-                  {
-                    text: '资深',
-                    value: '4'
-                  }
-                ]}
-                name="fdConfirmLevel"
-                title="定级级别"
-              ></Criteria.Criterion>
-              <Criteria.Input name="fdProject" title="当前项目"></Criteria.Input>
-              <Criteria.Input name="fdInnerTeam" title="当前所属招证内部团队"></Criteria.Input>
-              <Criteria.Calendar
-                options={Criteria.Calendar.buildOptions()}
-                name="fdFirstEntranceDate"
-                title="首次入场时间"
-              ></Criteria.Calendar>
-              <Criteria.Calendar
-                options={Criteria.Calendar.buildOptions()}
-                name="fdLastUpgradeDate"
-                title="上次调级时间"
-              ></Criteria.Calendar>
-              <Criteria.Criterion
-                canMulti={false}
-                options={[
-                  {
-                    text: '不限',
-                    value: 'undefined'
-                  },
-                  {
-                    text: 'undefined',
-                    value: '1'
-                  },
-                  {
-                    text: 'undefined',
-                    value: '2'
-                  },
-                  {
-                    text: 'undefined',
-                    value: '3'
-                  },
-                  {
-                    text: 'undefined',
-                    value: '4'
-                  },
-                  {
-                    text: 'undefined',
-                    value: '5'
-                  },
-                  {
-                    text: 'undefined',
-                    value: '6'
-                  }
-                ]}
-                name="fdStatusInfo"
-                title="状态信息"
-              ></Criteria.Criterion>
-            </Criteria>
-          </div>
-        </div>
-        <div className="lui-template-list-toolbar">
-          <div className="left">
-            <Operation key="operation" onChange={handleSorter}>
-              {/* 排序 */}
-              <Operation.SortGroup>
-                <Operation.Sort key="fdCreateTime" name="fdCreateTime" title="创建时间"></Operation.Sort>
-                <Operation.Sort key="fdConfirmLevel" name="fdConfirmLevel" title="定级级别"></Operation.Sort>
-                <Operation.Sort
-                  key="fdFirstEntranceDate"
+      <Auth.Auth
+        authURL='/supplier/cmsOutStaffInfo/listStaffInfo'
+        authModuleName='cms-out-manage'
+        unauthorizedPage={
+          <Status type={EStatusType._403} title='抱歉，您暂无权限访问当前页面' />
+        }
+      >
+        <div className="lui-template-list">
+          <div className="lui-template-list-criteria">
+            <div className="left">
+              {/* 搜索 */}
+              <Input.Search allowClear placeholder="请输入关键词搜索" onSearch={handleSearch} />
+            </div>
+            <div className="right">
+              {/* 筛选器 */}
+              <Criteria key="criteria" onChange={handleCriteriaChange}>
+                <Criteria.Input name="fdPost" title="岗位"></Criteria.Input>
+                <Criteria.Criterion
+                  canMulti={false}
+                  options={[
+                    {
+                      text: '不限',
+                      value: ''
+                    },
+                    {
+                      text: '初级',
+                      value: '1'
+                    },
+                    {
+                      text: '中级',
+                      value: '2'
+                    },
+                    {
+                      text: '高级',
+                      value: '3'
+                    },
+                    {
+                      text: '资深',
+                      value: '4'
+                    }
+                  ]}
+                  name="fdConfirmLevel"
+                  title="定级级别"
+                ></Criteria.Criterion>
+                <Criteria.Input name="fdProject" title="当前项目"></Criteria.Input>
+                <Criteria.Input name="fdInnerTeam" title="当前所属招证内部团队"></Criteria.Input>
+                <Criteria.Calendar
+                  options={Criteria.Calendar.buildOptions()}
                   name="fdFirstEntranceDate"
                   title="首次入场时间"
-                ></Operation.Sort>
-                <Operation.Sort key="fdLastUpgradeDate" name="fdLastUpgradeDate" title="上次调级时间"></Operation.Sort>
-              </Operation.SortGroup>
-            </Operation>
+                ></Criteria.Calendar>
+                <Criteria.Calendar
+                  options={Criteria.Calendar.buildOptions()}
+                  name="fdLastUpgradeDate"
+                  title="上次调级时间"
+                ></Criteria.Calendar>
+                <Criteria.Criterion
+                  canMulti={false}
+                  options={[
+                    {
+                      value: '1',
+                      text: '未参与项目'
+                    },
+                    {
+                      value: '2',
+                      text: '中选待入场'
+                    },
+                    {
+                      value: '3',
+                      text: '项目中-远程'
+                    },
+                    {
+                      value: '4',
+                      text: '项目中-驻场'
+                    },
+                    {
+                      value: '5',
+                      text: '已离场'
+                    },
+                    {
+                      value: '6',
+                      text: '已离职'
+                    }
+                  ]}
+                  name="fdStatusInfo"
+                  title="状态信息"
+                ></Criteria.Criterion>
+              </Criteria>
+            </div>
           </div>
-          <div className="right">
-            <Space>
-              <Button onClick={refresh}>
-                <Icon name="redo" />
-              </Button>
-              {/* 操作栏 */}
-              <React.Fragment>
-                <Button type="primary" onClick={handleAdd}>
-                  新建
+          <div className="lui-template-list-toolbar">
+            <div className="left">
+              <Operation key="operation" onChange={handleSorter}>
+                {/* 排序 */}
+                <Operation.SortGroup>
+                  <Operation.Sort key="fdCreateTime" name="fdCreateTime" title="创建时间"></Operation.Sort>
+                  <Operation.Sort key="fdConfirmLevel" name="fdConfirmLevel" title="定级级别"></Operation.Sort>
+                  <Operation.Sort
+                    key="fdFirstEntranceDate"
+                    name="fdFirstEntranceDate"
+                    title="首次入场时间"
+                  ></Operation.Sort>
+                  <Operation.Sort key="fdLastUpgradeDate" name="fdLastUpgradeDate" title="上次调级时间"></Operation.Sort>
+                </Operation.SortGroup>
+              </Operation>
+            </div>
+            <div className="right">
+              <Space>
+                <Button onClick={refresh}>
+                  <Icon name="redo" />
                 </Button>
-                <Button type="default" onClick={handleDeleteAll}>
-                  批量删除
-                </Button>
-              </React.Fragment>
-            </Space>
+                {/* 操作栏 */}
+                <React.Fragment>
+                  <Button type="primary" onClick={handleAdd}>
+                    新建
+                  </Button>
+                  <Button type="default" onClick={handleDeleteAll}>
+                    批量删除
+                  </Button>
+                </React.Fragment>
+              </Space>
+            </div>
+          </div>
+          <div className="lui-template-list-table">
+            <Table loading={status === 'loading'} {...tableProps} onRow={onRowClick} />
+          </div>
+          <div className="lui-template-list-page">
+            {totalSize ? (
+              <Pagination
+                showQuickJumper
+                showSizeChanger
+                refresh={true}
+                total={totalSize}
+                pageSize={pageSize}
+                onChange={handlePage}
+                onRefresh={refresh}
+              />
+            ) : null}
           </div>
         </div>
-        <div className="lui-template-list-table">
-          <Table loading={status === 'loading'} {...tableProps} onRow={onRowClick} />
-        </div>
-        <div className="lui-template-list-page">
-          {totalSize ? (
-            <Pagination
-              showQuickJumper
-              showSizeChanger
-              refresh={true}
-              total={totalSize}
-              pageSize={pageSize}
-              onChange={handlePage}
-              onRefresh={refresh}
-            />
-          ) : null}
-        </div>
-      </div>
+      </Auth.Auth>
     </React.Fragment>
   )
 }

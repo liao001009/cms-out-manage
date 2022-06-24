@@ -1,5 +1,5 @@
 import React, { createElement as h, useMemo, useRef, useState } from 'react'
-import { Module } from '@ekp-infra/common'
+import { Auth, Module } from '@ekp-infra/common'
 import { IContentViewProps } from '@ekp-runtime/render-module'
 import Icon from '@lui/icons'
 import { Loading, Breadcrumb, Button, Message, Modal } from '@lui/core'
@@ -7,7 +7,7 @@ import { EBtnType } from '@lui/core/es/components/Button'
 import XForm from './form'
 import api from '@/api/cmsStaffEntrance'
 import './index.scss'
-import { ESysLbpmProcessStatus, getFlowStatus } from '@/desktop/shared/util'
+import { ESysLbpmProcessStatus, getFlowStatus, isFlowTaskRole } from '@/desktop/shared/util'
 import { EOperationType } from '@/utils/status'
 
 Message.config({ maxCount: 1 })
@@ -163,24 +163,20 @@ const Content: React.FC<IContentViewProps> = props => {
       }
     })
   }
+  
   // 提交按钮
   const _btn_submit = useMemo(() => {
+    const role = isFlowTaskRole(flowData)
+    const status = data?.fdProcessStatus || getFlowStatus(flowData)
+    const validStatus = status !== ESysLbpmProcessStatus.COMPLETED && status !== ESysLbpmProcessStatus.ABANDONED
     const submitBtn = <Button type='primary' onClick={() => handleSave(false)}>提交</Button>
-    return !hasDraftBtn ? submitBtn:null
-  }, [ data, flowData])
+    return !hasDraftBtn ? (
+      <Auth.Auth authURL='/staff/cmsStaffEntrance/save' params={{
+        vo: { fdId:params['fdId']},
+      }}>{submitBtn}</Auth.Auth>
+    ): (role && validStatus) && submitBtn
 
-  // 编辑按钮
-  // const _btn_edit = useMemo(() => {
-  //   const status = data?.fdProcessStatus
-  //   const editBtn = <Button onClick={handleEdit}>{fmtMsg('common:button.edit', '编辑')}</Button>
-  //   const authEditBtn = <Auth.Auth
-  //     authURL='/cmsStaffEntrance/edit'
-  //     params={{vo: { fdId: params['fdId'] } }}
-  //   >
-  //     {editBtn}
-  //   </Auth.Auth>  
-  //   return mode === 'view' && status !== ESysLbpmProcessStatus.COMPLETED && authEditBtn
-  // }, [lbpmLayout,  params,data])
+  }, [ data, flowData,params])
 
   // 暂存按钮
   const _btn_draft = useMemo(() => {
@@ -201,7 +197,11 @@ const Content: React.FC<IContentViewProps> = props => {
       // 如果有回复协同的操作，则要校验权限
       status === ESysLbpmProcessStatus.DRAFT && !lbpmComponentRef.current.checkOperationTypeExist(flowData.identity, EOperationType.handler_replyDraftCooperate)
         ? deleteBtn
-        : null
+        :  <Auth.Auth authURL='/staff/cmsStaffEntrance/delete' params={{
+          vo: { fdId: params['fdId'] }
+        }}>
+          {deleteBtn}
+        </Auth.Auth>
     )
   }, [ flowData, params ])
 
@@ -210,7 +210,7 @@ const Content: React.FC<IContentViewProps> = props => {
       {/* 操作区 */}
       <div className='lui-approve-template-header'>
         <Breadcrumb>
-          <Breadcrumb.Item>驻场人员管理</Breadcrumb.Item>
+          <Breadcrumb.Item>入场人员管理</Breadcrumb.Item>
           <Breadcrumb.Item>编辑</Breadcrumb.Item>
         </Breadcrumb>
         <div className='buttons'>
