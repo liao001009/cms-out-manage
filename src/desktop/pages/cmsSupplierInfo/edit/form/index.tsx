@@ -18,10 +18,12 @@ import api from '@/api/cmsFrameInfo'
 const MECHANISMNAMES = {}
 
 const XForm = (props) => {
+  console.log('props111',props)
+
   const detailForms = useRef({
     cmsSupplierLinkman: createRef() as any,
   })
-  const { formRef: formRef, value: value } = props
+  const { formRef: formRef, value: value,mode } = props
   const [form] = Form.useForm()
   const [frameArr, setFrameArr] = useState<any>([])
   // 对外暴露接口
@@ -37,7 +39,10 @@ const XForm = (props) => {
     form,
     detailForms,
   })
+  useEffect(() => { init() }, [])
   const init = async () => {
+    console.log(mode)
+    
     try {
       const res = await api.listFrameInfo({})
       const newValue = res.data.content.map(i => {
@@ -49,13 +54,13 @@ const XForm = (props) => {
       })
       setFrameArr(newValue)
       form.setFieldsValue({
-        fdFrame: value.fdFrame.fdId
+        fdFrame: Object.keys(value).length && value.fdFrame.fdId,
+        fdCooperationStatus: Object.keys(value).length ? value.fdCooperationStatus :'1'
       })
     } catch (error) {
       console.warn('框架类型出错', error)
     }
   }
-  useEffect(() => { init() }, [])
   return (
     <div className="lui-xform">
       <Form form={form} colPadding={false} onValuesChange={onValuesChange}>

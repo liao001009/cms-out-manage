@@ -46,12 +46,14 @@ const XForm = (props) => {
     value,
     MECHANISMNAMES
   })
+
   // 内置$$form对象，组件间的内部调用， 长度校验规则，此逻辑禁止移除与修改
   const { onValuesChange, lengthValidator, ...sysProps } = useSystem({
     props,
     form,
     detailForms
   })
+
   // 通过身份证获取性别和日期
   const handleIdCard = (v) => {
     const targetValue = v.target.value
@@ -79,10 +81,11 @@ const XForm = (props) => {
       //通过正则表达式来指定输出格式为:1990-01-01
     }
     form.setFieldsValue({
-      fdColMw1yjc: new Date(birthday).getTime(),
+      fdBirthDate: new Date(birthday).getTime(),
       fdSex: sexVal
     })
   }
+
   return (
     <div className="lui-xform">
       <Form form={form} colPadding={false} onValuesChange={onValuesChange}>
@@ -125,6 +128,10 @@ const XForm = (props) => {
                   rules={[
                     {
                       validator: lengthValidator(200)
+                    },
+                    {
+                      required: true,
+                      message: fmtMsg(':required', '内容不能为空')
                     }
                   ]}
                 >
@@ -167,6 +174,10 @@ const XForm = (props) => {
                   rules={[
                     {
                       validator: lengthValidator(100)
+                    },
+                    {
+                      required: true,
+                      message: fmtMsg(':required', '内容不能为空')
                     }
                   ]}
                 >
@@ -200,6 +211,10 @@ const XForm = (props) => {
                   rules={[
                     {
                       validator: lengthValidator(100)
+                    },
+                    {
+                      required: true,
+                      message: fmtMsg(':required', '内容不能为空')
                     }
                   ]}
                 >
@@ -231,6 +246,10 @@ const XForm = (props) => {
                   rules={[
                     {
                       validator: lengthValidator(50)
+                    },
+                    {
+                      required: true,
+                      message: fmtMsg(':required', '内容不能为空')
                     }
                   ]}
                 >
@@ -239,7 +258,7 @@ const XForm = (props) => {
                     options={[
                       {
                         label: fmtMsg(':cmsOutStaffInfo.form.!{l3lbm56pw6rmvlbkwg}', '男'),
-                        value: 'M'
+                        value: 'M',
                       },
                       {
                         label: fmtMsg(':cmsOutStaffInfo.form.!{l3lbm56yji7hy6ld8f}', '女'),
@@ -250,7 +269,7 @@ const XForm = (props) => {
                     direction={'column'}
                     serialType={'empty'}
                     optionSource={'custom'}
-                    showStatus="edit"
+                    showStatus="add"
                   ></XformRadio>
                 </Form.Item>
               </XformFieldset>
@@ -307,7 +326,7 @@ const XForm = (props) => {
                 layout={'horizontal'}
               >
                 <Form.Item name={'fdSupplier'}>
-                  <XformModal {...props} showStatus={EShowStatus.edit} />
+                  <XformModal {...props} showStatus={EShowStatus.add} />
                 </Form.Item>
               </XformFieldset>
             </GridItem>
@@ -319,29 +338,20 @@ const XForm = (props) => {
                 layout={'horizontal'}
                 required={true}
               >
-                <Form.Item name={'fdPost'}>
+                <Form.Item
+                  name={'fdPost'}
+                  rules={[
+                    {
+                      required: true,
+                      message: fmtMsg(':required', '内容不能为空')
+                    }
+                  ]}
+                >
                   <CMSXformRelation {...props} apiRequest={apiPostInfo.listPostInfo({})} showStatus={EShowStatus.add}></CMSXformRelation>
                 </Form.Item>
               </XformFieldset>
             </GridItem>
-            <GridItem column={1} row={6} rowSpan={1} columnSpan={1}>
-              <XformFieldset
-                labelTextAlign={'left'}
-                mobileContentAlign={'right'}
-                title={fmtMsg(':cmsOutStaffInfo.form.!{l3iu0b3khy6a43lnpkn}', '出生日期')}
-                layout={'horizontal'}
-                required={true}
-              >
-                <Form.Item name={'fdBirthDate'}>
-                  <XformDatetime
-                    {...sysProps}
-                    placeholder={fmtMsg(':cmsOutStaffInfo.form.!{l3iu0b3nrlmp1tkiqia}', '请输入')}
-                    dataPattern={'yyyy-MM-dd'}
-                    showStatus="edit"
-                  ></XformDatetime>
-                </Form.Item>
-              </XformFieldset>
-            </GridItem>
+
             <GridItem
               column={2}
               row={6}
@@ -364,6 +374,10 @@ const XForm = (props) => {
                   rules={[
                     {
                       validator: lengthValidator(100)
+                    },
+                    {
+                      required: true,
+                      message: fmtMsg(':required', '内容不能为空')
                     }
                   ]}
                 >
@@ -397,6 +411,10 @@ const XForm = (props) => {
                   rules={[
                     {
                       validator: lengthValidator(100)
+                    },
+                    {
+                      required: true,
+                      message: fmtMsg(':required', '内容不能为空')
                     }
                   ]}
                 >
@@ -509,9 +527,15 @@ const XForm = (props) => {
                   rules={[
                     {
                       validator: lengthValidator(100)
+                    },
+                    {
+                      required: true,
+                      message: fmtMsg(':required', '内容不能为空')
                     }
                   ]}
                 >
+                  {/* <XformCmsRelation {...props} showStatus={EShowStatus.add} /> */}
+
                   <XformInput
                     {...sysProps}
                     placeholder={fmtMsg(':cmsOutStaffInfo.form.!{l3lb0kalnrolo26qai}', '请输入')}
@@ -528,137 +552,21 @@ const XForm = (props) => {
                 layout={'horizontal'}
                 required={true}
               >
-                <Form.Item name={'fdEntryWorkDate'}>
+                <Form.Item
+                  name={'fdEntryWorkDate'}
+                  rules={[
+                    {
+                      required: true,
+                      message: fmtMsg(':required', '内容不能为空')
+                    }
+                  ]}
+                >
                   <XformDatetime
                     {...sysProps}
                     placeholder={fmtMsg(':cmsOutStaffInfo.form.!{l3sb66ifqthkl78l9zr}', '请输入')}
                     dataPattern={'yyyy-MM-dd'}
                     showStatus="edit"
                   ></XformDatetime>
-                </Form.Item>
-              </XformFieldset>
-            </GridItem>
-            <GridItem column={1} row={12} rowSpan={1} columnSpan={2}>
-              <XformFieldset
-                labelTextAlign={'left'}
-                mobileContentAlign={'right'}
-                title={fmtMsg(':cmsOutStaffInfo.form.!{l3lb0nknmtcpq84iap8}', '简历附件')}
-                layout={'horizontal'}
-                required={true}
-              >
-                <Form.Item
-                  name={'fdResumeAtt'}
-                  rules={[
-                    {
-                      validator: lengthValidator(200)
-                    }
-                  ]}
-                >
-                  <Upload
-                    mode='file'
-                    fdEntityName='com.landray.cms.out.manage.core.entity.supplier.CmsOutStaffInfo'
-                    multiple={false}
-                    fdEntityKey='fdResumeAtt'
-                    operation={{ edit: false, preview: false, download: false }}
-                  />
-                </Form.Item>
-              </XformFieldset>
-            </GridItem>
-            <GridItem column={1} row={13} rowSpan={1} columnSpan={2}>
-              <XformFieldset
-                labelTextAlign={'left'}
-                mobileContentAlign={'right'}
-                title={fmtMsg(':cmsOutStaffInfo.form.!{l3lb6ebsedf8dqx3mc}', '最高学历')}
-                layout={'horizontal'}
-                required={true}
-              >
-                <Form.Item
-                  name={'fdHighestEducation'}
-                  rules={[
-                    {
-                      validator: lengthValidator(50)
-                    }
-                  ]}
-                >
-                  <XformSelect
-                    {...sysProps}
-                    placeholder={fmtMsg(':cmsOutStaffInfo.form.!{l3lb6eccp4syfrn9daq}', '请输入')}
-                    options={[
-                      {
-                        label: fmtMsg(':cmsOutStaffInfo.form.!{l3lb8gpoaz0xj1znu5e}', '高中'),
-                        value: '1'
-                      },
-                      {
-                        label: fmtMsg(':cmsOutStaffInfo.form.!{l3lb8gpqsa1dkyunv4g}', '专科'),
-                        value: '2'
-                      },
-                      {
-                        label: fmtMsg(':cmsOutStaffInfo.form.!{l3lb8gptifemq19c12}', '本科'),
-                        value: '3'
-                      },
-                      {
-                        label: fmtMsg(':cmsOutStaffInfo.form.!{l3lb8gpvwi2j25x1zbt}', '研究生'),
-                        value: '4'
-                      }
-                    ]}
-                    optionSource={'custom'}
-                    showStatus="edit"
-                  ></XformSelect>
-                </Form.Item>
-              </XformFieldset>
-            </GridItem>
-            <GridItem column={1} row={14} rowSpan={1} columnSpan={2}>
-              <XformFieldset
-                labelTextAlign={'left'}
-                mobileContentAlign={'right'}
-                title={fmtMsg(':cmsOutStaffInfo.form.!{l3lb9g9b7ew87yb5ytp}', '专业')}
-                layout={'horizontal'}
-                required={true}
-              >
-                <Form.Item
-                  name={'fdMajor'}
-                  rules={[
-                    {
-                      validator: lengthValidator(100)
-                    }
-                  ]}
-                >
-                  <XformInput
-                    {...sysProps}
-                    placeholder={fmtMsg(':cmsOutStaffInfo.form.!{l3lb9g9rr2ptz9l6axr}', '请输入')}
-                    showStatus="edit"
-                  ></XformInput>
-                </Form.Item>
-              </XformFieldset>
-            </GridItem>
-            <GridItem column={1} row={15} rowSpan={1} columnSpan={2}>
-              <XformFieldset
-                labelTextAlign={'left'}
-                mobileContentAlign={'right'}
-                title={fmtMsg(':cmsOutStaffInfo.form.!{l3lba61aig5uztqgiob}', '学历证明附件')}
-                layout={'horizontal'}
-                required={true}
-              >
-                <Form.Item
-                  name={'fdSchoolingAtt'}
-                  rules={[
-                    {
-                      validator: lengthValidator(200)
-                    }
-                  ]}
-                >
-                  <Upload
-                    mode='file'
-                    fdEntityName='com.landray.cms.out.manage.core.entity.supplier.CmsOutStaffInfo'
-                    multiple={false}
-                    fdEntityKey='fdSchoolingAtt'
-                    operation={{
-                      edit: false,
-                      change: true,
-                      download: false,
-                      print: false,
-                    }}
-                  />
                 </Form.Item>
               </XformFieldset>
             </GridItem>
@@ -707,48 +615,76 @@ const XForm = (props) => {
                 </Form.Item>
               </XformFieldset>
             </GridItem>
-            {/* <GridItem column={1} row={16} rowSpan={1} columnSpan={2}>
+            <GridItem column={1} row={12} rowSpan={1} columnSpan={2}>
               <XformFieldset
                 labelTextAlign={'left'}
                 mobileContentAlign={'right'}
-                title={fmtMsg(':cmsOutStaffInfo.form.!{l3lc9l7am9lx5gkwgj}', '状态信息')}
+                title={fmtMsg(':cmsOutStaffInfo.form.!{l3lb0nknmtcpq84iap8}', '简历附件')}
                 layout={'horizontal'}
+                required={true}
               >
                 <Form.Item
-                  name={'fdStatusInfo'}
+                  name={'fdResumeAtt'}
+                  rules={[
+                    {
+                      validator: lengthValidator(200)
+                    },
+                    {
+                      required: true,
+                      message: fmtMsg(':required', '内容不能为空')
+                    }
+                  ]}
+                >
+                  <Upload
+                    mode='file'
+                    fdEntityName='com.landray.cms.out.manage.core.entity.supplier.CmsOutStaffInfo'
+                    multiple={false}
+                    fdEntityKey='fdResumeAtt'
+                    operation={{ edit: false, preview: false, download: false }}
+                  />
+                  {/* <XformAttach {...sysProps} singleMaxSize={51200000} showStatus="edit"></XformAttach> */}
+                </Form.Item>
+              </XformFieldset>
+            </GridItem>
+            <GridItem column={1} row={13} rowSpan={1} columnSpan={2}>
+              <XformFieldset
+                labelTextAlign={'left'}
+                mobileContentAlign={'right'}
+                title={fmtMsg(':cmsOutStaffInfo.form.!{l3lb6ebsedf8dqx3mc}', '最高学历')}
+                layout={'horizontal'}
+                required={true}
+              >
+                <Form.Item
+                  name={'fdHighestEducation'}
                   rules={[
                     {
                       validator: lengthValidator(50)
+                    },
+                    {
+                      required: true,
+                      message: fmtMsg(':required', '内容不能为空')
                     }
                   ]}
                 >
                   <XformSelect
                     {...sysProps}
-                    placeholder={fmtMsg(':cmsOutStaffInfo.form.!{l3lc9l7feamjxxvz7da}', '请输入')}
+                    placeholder={fmtMsg(':cmsOutStaffInfo.form.!{l3lb6eccp4syfrn9daq}', '请输入')}
                     options={[
                       {
-                        label: fmtMsg(':cmsOutStaffInfo.form.!{l3lcaf1qz79vs7ew9a}', '未参与项目'),
+                        label: fmtMsg(':cmsOutStaffInfo.form.!{l3lb8gpoaz0xj1znu5e}', '高中'),
                         value: '1'
                       },
                       {
-                        label: fmtMsg(':cmsOutStaffInfo.form.!{l3lcaf1rldn1bxp8z8}', '中选待入场'),
+                        label: fmtMsg(':cmsOutStaffInfo.form.!{l3lb8gpqsa1dkyunv4g}', '专科'),
                         value: '2'
                       },
                       {
-                        label: fmtMsg(':cmsOutStaffInfo.form.!{l3lcaf1rcqvoswe9ogc}', '项目中-远程'),
+                        label: fmtMsg(':cmsOutStaffInfo.form.!{l3lb8gptifemq19c12}', '本科'),
                         value: '3'
                       },
                       {
-                        label: fmtMsg(':cmsOutStaffInfo.form.!{l3lcaf1rmlg344zk2lp}', '项目中-驻场'),
+                        label: fmtMsg(':cmsOutStaffInfo.form.!{l3lb8gpvwi2j25x1zbt}', '研究生'),
                         value: '4'
-                      },
-                      {
-                        label: fmtMsg(':cmsOutStaffInfo.form.!{l3lcaf1rg0ar3ng3i7q}', '已离场'),
-                        value: '5'
-                      },
-                      {
-                        label: fmtMsg(':cmsOutStaffInfo.form.!{l3lcaf1rmz1s31keypa}', '已离职'),
-                        value: '6'
                       }
                     ]}
                     optionSource={'custom'}
@@ -757,125 +693,68 @@ const XForm = (props) => {
                 </Form.Item>
               </XformFieldset>
             </GridItem>
-            <GridItem column={1} row={17} rowSpan={1} columnSpan={1}>
+            <GridItem column={1} row={14} rowSpan={1} columnSpan={2}>
               <XformFieldset
                 labelTextAlign={'left'}
                 mobileContentAlign={'right'}
-                title={fmtMsg(':cmsOutStaffInfo.form.!{l3lcarixaeowio47r3n}', '当前项目')}
+                title={fmtMsg(':cmsOutStaffInfo.form.!{l3lb9g9b7ew87yb5ytp}', '专业')}
                 layout={'horizontal'}
+                required={true}
               >
                 <Form.Item
-                  name={'fdProject'}
+                  name={'fdMajor'}
                   rules={[
                     {
                       validator: lengthValidator(100)
+                    },
+                    {
+                      required: true,
+                      message: fmtMsg(':required', '内容不能为空')
                     }
                   ]}
                 >
                   <XformInput
                     {...sysProps}
-                    placeholder={fmtMsg(':cmsOutStaffInfo.form.!{l3lcarj0oecsznx9sq}', '请输入')}
+                    placeholder={fmtMsg(':cmsOutStaffInfo.form.!{l3lb9g9rr2ptz9l6axr}', '请输入')}
                     showStatus="edit"
                   ></XformInput>
                 </Form.Item>
               </XformFieldset>
             </GridItem>
-            <GridItem column={2} row={17} rowSpan={1} columnSpan={1}>
+            <GridItem column={1} row={15} rowSpan={1} columnSpan={2}>
               <XformFieldset
                 labelTextAlign={'left'}
                 mobileContentAlign={'right'}
-                title={fmtMsg(':cmsOutStaffInfo.form.!{l3lck9saekqx64dnhqn}', '当前项目性质')}
+                title={fmtMsg(':cmsOutStaffInfo.form.!{l3lba61aig5uztqgiob}', '学历证明附件')}
                 layout={'horizontal'}
+                required={true}
               >
                 <Form.Item
-                  name={'fdCurrentProjectNature'}
+                  name={'fdSchoolingAtt'}
                   rules={[
                     {
-                      validator: lengthValidator(50)
+                      validator: lengthValidator(200)
+                    },
+                    {
+                      required: true,
+                      message: fmtMsg(':required', '内容不能为空')
                     }
                   ]}
                 >
-                  <XformSelect
-                    {...sysProps}
-                    placeholder={fmtMsg(':cmsOutStaffInfo.form.!{l3lck9se47688gycoqr}', '请输入')}
-                    options={[
-                      {
-                        label: fmtMsg(':cmsOutStaffInfo.form.!{l3lczdwvquws1ec70yr}', '项目外包'),
-                        value: '1'
-                      },
-                      {
-                        label: fmtMsg(':cmsOutStaffInfo.form.!{l3lczdwvyl7lvnhyv1}', '厂商驻场实施'),
-                        value: '2'
-                      }
-                    ]}
-                    optionSource={'custom'}
-                    showStatus="edit"
-                  ></XformSelect>
+                  <Upload
+                    mode='file'
+                    fdEntityName='com.landray.cms.out.manage.core.entity.supplier.CmsOutStaffInfo'
+                    multiple={false}
+                    fdEntityKey='fdSchoolingAtt'
+                    operation={{ edit: false, preview: false, download: false }}
+                  />
                 </Form.Item>
               </XformFieldset>
             </GridItem>
-            <GridItem column={1} row={18} rowSpan={1} columnSpan={2}>
-              <XformFieldset
-                labelTextAlign={'left'}
-                mobileContentAlign={'right'}
-                title={fmtMsg(':cmsOutStaffInfo.form.!{l3lczrijlhuq7nplue}', '当前所属招证内部团队')}
-                layout={'horizontal'}
-              >
-                <Form.Item
-                  name={'fdInnerTeam'}
-                  rules={[
-                    {
-                      validator: lengthValidator(100)
-                    }
-                  ]}
-                >
-                  <XformInput
-                    {...sysProps}
-                    placeholder={fmtMsg(':cmsOutStaffInfo.form.!{l3lczrinlld5s182hb}', '请输入')}
-                    showStatus="edit"
-                  ></XformInput>
-                </Form.Item>
-              </XformFieldset>
-            </GridItem>
-            <GridItem column={1} row={19} rowSpan={1} columnSpan={1}>
-              <XformFieldset
-                labelTextAlign={'left'}
-                mobileContentAlign={'right'}
-                title={fmtMsg(':cmsOutStaffInfo.form.!{l3ld0l9hh2caymedodf}', '首次入场时间')}
-                layout={'horizontal'}
-              >
-                <Form.Item name={'fdFirstEntranceDate'}>
-                  <XformDatetime
-                    {...sysProps}
-                    placeholder={fmtMsg(':cmsOutStaffInfo.form.!{l3ld0l9l51wc9fnxwu9}', '请输入')}
-                    dataPattern={'yyyy-MM-dd'}
-                    showStatus="edit"
-                  ></XformDatetime>
-                </Form.Item>
-              </XformFieldset>
-            </GridItem>
-            <GridItem column={2} row={19} rowSpan={1} columnSpan={1}>
-              <XformFieldset
-                labelTextAlign={'left'}
-                mobileContentAlign={'right'}
-                title={fmtMsg(':cmsOutStaffInfo.form.!{l3ld0mr2k796uaafvk}', '上次调级时间')}
-                layout={'horizontal'}
-              >
-                <Form.Item name={'fdLastUpgradeDate'}>
-                  <XformDatetime
-                    {...sysProps}
-                    placeholder={fmtMsg(':cmsOutStaffInfo.form.!{l3ld0mr4gjrbtofso2h}', '请输入')}
-                    dataPattern={'yyyy-MM-dd'}
-                    showStatus="edit"
-                  ></XformDatetime>
-                </Form.Item>
-              </XformFieldset>
-            </GridItem>
-            <GridItem column={1} row={20} rowSpan={1} columnSpan={2}></GridItem>
-            <GridItem column={1} row={21} rowSpan={1} columnSpan={2}></GridItem> */}
           </LayoutGrid>
         </XformAppearance>
       </Form>
+
     </div>
   )
 }
