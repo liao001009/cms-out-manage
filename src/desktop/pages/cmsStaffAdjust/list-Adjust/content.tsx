@@ -56,7 +56,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
       {
         title: '当前项目',
         dataIndex: 'fdProject',
-        render: (value) => value.fdName
+        render: (value) => value && value.fdName
       },
       /*当前项目负责人*/
       {

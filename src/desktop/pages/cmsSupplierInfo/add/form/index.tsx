@@ -165,7 +165,7 @@ const XForm = (props) => {
                     serialType={'empty'}
                     optionSource={'custom'}
                     showContent={'selectedItem'}
-                    showStatus="readOnly"
+                    showStatus="edit"
                   ></XformRadio>
                 </Form.Item>
               </XformFieldset>

@@ -108,12 +108,17 @@ const XForm = (props) => {
                 mobileContentAlign={'right'}
                 title={fmtMsg(':cmsFrameInfo.form.!{l3nu35ef4vhrh7886fv}', '是否项目类')}
                 layout={'horizontal'}
+                required={true}
               >
                 <Form.Item
                   name={'fdIsProject'}
                   rules={[
                     {
                       validator: lengthValidator(50)
+                    },
+                    {
+                      required: true,
+                      message: fmtMsg(':required', '内容不能为空')
                     }
                   ]}
                 >
