@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react'
 import { IContentViewProps } from '@ekp-runtime/render-module'
 import { InfiniteScroll, Radio } from '@mui/core'
 import { ToolBarButton, BottomContainer } from '@mui/core'
-import List, { useDataSource } from '@/mobile/components/supplier/list'
+import List, { useDataSource } from '@/mobile/components/list'
 import './index.scss'
 
 export interface IProps extends IContentViewProps {

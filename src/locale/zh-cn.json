@@ -105,6 +105,10 @@
         }
     },
     "menu": {
+        "cmsBasicInformation": "基本信息管理",
+        "cmsPersonnelManagement": "人员管理",
+        "cmsProjectManagement": "项目管理",
+        "cmsWorkOrder": "工单管理",
         "cmsPostInfoTemplate": "岗位信息模板",
         "cmsLevelInfoTemplate": "级别信息模板",
         "cmsFrameBudgetAdjustTemplate": "框架预算调整模板",
@@ -129,7 +133,7 @@
         "cmsOutStaffInfoTemplate": "外包人员信息模板",
         "cmsSupplierEvaluateTemplate": "供应商评价模板",
         "cmsContractInfoTemplate": "合同信息模板",
-        "mpc2wyyz6le8": "供应商选择管理",
+        "mpc2wyyz6le8": "供应商管理",
         "cmsSupplierEvalScore": {
             "listEvaluateScore": "供应商评价打分"
         },
@@ -152,7 +156,11 @@
             "listSupplierInfo": "供应商信息"
         },
         "cmsProjectInfoTemplate": "项目库模板",
-        "mbvr4bpjdbc": "项目库"
+        "mbvr4bpjdbc": "项目库",
+        "cmsOutOrderTemplate": "工单管理模板",
+        "cmsOutConfigTemplate": "权限配置模板",
+        "cmsOutConfig": "权限配置",
+        "cmsOutOrder": "工单管理"
     },
     "cmsStaffAdjustTemplate": {
         "name": "驻场人员调整模板"
@@ -803,6 +811,44 @@
         },
         "list": {
             "ProjectInfo": "项目库"
+        }
+    },
+    "cmsOutOrderTemplate": {
+        "name": "工单管理模板"
+    },
+    "cmsOutConfigTemplate": {
+        "name": "权限配置模板"
+    },
+    "cmsOutOrder": {
+        "form": {
+            "!{l4m5yx1j70uflvtclh2}": "是否己处理",
+            "!{l4m6frdxc2l7q38c6re}": "说明",
+            "!{l4m6frdyp04sdwk2ef}": "请输入",
+            "!{l4m6cv8ybejj8m773mt}": "权限项目",
+            "!{l4m6cv90ajemoeg87l}": "请输入",
+            "!{l4m5xxe6baf7cerkkuc}": "处理人"
+        },
+        "fdCreateTime": "创建时间",
+        "fdCreator": "创建者",
+        "list": {
+            "Order": "工单管理"
+        }
+    },
+    "cmsOutConfig": {
+        "form": {
+            "!{l4m44mdir8z81kk89g}": "网络权限",
+            "!{l4m44jqcr83ujayhd2}": "门禁(武汉)",
+            "!{l4m44hnmkrmaf33hgd}": "门禁(深圳)",
+            "!{l4m44f389cb7d4msevo}": "VPN",
+            "!{l4m44d0zvp90m3ysfxh}": "桌面助手",
+            "!{l4m44aicuop78fja9t}": "悟空",
+            "!{l4m447999fkczhl7d06}": "码云",
+            "!{l4m441acwtq6wmsygt}": "云主机",
+            "!{l4m43zr5d9698rvhsov}": "工位地点(武汉)",
+            "!{l4m40sd6usk04pb2c6e}": "工位地点(深圳)"
+        },
+        "list": {
+            "Config": "权限配置"
         }
     }
 }

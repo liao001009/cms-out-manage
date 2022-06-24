@@ -1,8 +1,8 @@
 import React, { useRef, createRef } from 'react'
 import './index.scss'
 import { Form } from '@lui/core'
-import { useApi, useSystem } from '@/mobile/supplier-shared/formHooks'
-import XformAppearance from '@/mobile/components/supplier/form/XformAppearance'
+import { useApi, useSystem } from '@/mobile/shared/formHooks'
+import XformAppearance from '@/mobile/components/form/XformAppearance'
 
 const MECHANISMNAMES = {}
 

@@ -7,7 +7,7 @@ import { EBtnType } from '@lui/core/es/components/Button'
 import XForm from './form'
 import api from '@/api/cmsStaffEntrance'
 import './index.scss'
-import { ESysLbpmProcessStatus, getFlowStatus } from '@/desktop/staff-shared/util'
+import { ESysLbpmProcessStatus, getFlowStatus } from '@/desktop/shared/util'
 import { EOperationType } from '@/utils/status'
 
 Message.config({ maxCount: 1 })
