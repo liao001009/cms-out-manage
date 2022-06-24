@@ -24,19 +24,24 @@ const Content: React.FC<IContentViewProps> = props => {
 
   const handleDel = useCallback(() => {
     confirm({
-      content: '确认删除此记录？',
+      content: '确认删除此记录1？',
       onOk () {
-        api.delete({ fdId: data.fdId }).then(res => {
-          console.log('删除结果', res)
-          if (res.success) {
-            Message.success('删除成功')
-            history.goBack()
-          }
-        })
-      },
-      onCancel () {
-        console.log('Cancel')
-      },
+        api.delete({ fdId: data.fdId })
+          .then(res => {
+            console.log('删除结果', res)
+            if (res.success) {
+              Message.success('删除成功')
+              history.goBack()
+            }else{
+              Message.error('删除失败')
+            }
+          },error=>{
+            Message.error(error?.response?.data?.msg)
+          })
+          .catch(error=>{
+            Message.error(error?.response?.data?.msg)
+          })
+      }
     })
   }, [])
 

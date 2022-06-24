@@ -177,7 +177,7 @@ const Content: React.FC<IContentViewProps> = props => {
               mode='add'
               approveLayout='right'
               wrappedComponentRef={lbpmComponentRef}
-              moduleCode='cms-out-staff'
+              moduleCode='cms-out-manage'
               mechanism={{
                 formId: templateId,
                 processTemplateId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdTemplateId,
