@@ -2096,17 +2096,12 @@ const XForm = (props) => {
                 mobileContentAlign={'right'}
                 title={fmtMsg(':cmsStaffEntrance.form.!{l482x9oheg8kfwghnzk}', '资料上传')}
                 layout={'horizontal'}
-                required={true}
               >
                 <Form.Item
                   name={'fdAtt'}
                   rules={[
                     {
                       validator: lengthValidator(200)
-                    },
-                    {
-                      required: true,
-                      message: fmtMsg(':required', '内容不能为空')
                     }
                   ]}
                 >
