@@ -120,7 +120,7 @@ const Content: React.FC<IContentViewProps> = props => {
     // 编辑暂存
     saveApi({
       ...values,
-      cmsStaffLeaveDetail: values.cmsStaffLeaveDetail.values
+      cmsStaffLeaveDetail: values?.cmsStaffLeaveDetail?.values || undefined
     }).then(res => {
       if (res.success) {
         Message.success(isDraft ? '暂存成功' : '提交成功', 1, () => {
