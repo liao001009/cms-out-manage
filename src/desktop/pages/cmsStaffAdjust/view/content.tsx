@@ -1,10 +1,14 @@
-import React, { useRef, useCallback, useMemo } from 'react'
-import { Module } from '@ekp-infra/common'
+import React, { useRef, useCallback, useMemo, useState } from 'react'
+import { Auth, Module } from '@ekp-infra/common'
 import { IContentViewProps } from '@ekp-runtime/render-module'
 import { Loading, Breadcrumb, Button, Message, Modal } from '@lui/core'
 import XForm from './form'
 import api from '@/api/cmsStaffAdjust'
 import './index.scss'
+import { EOperationType, ESysLbpmProcessStatus } from '@/utils/status'
+import { getFlowStatus, isFlowTaskRole } from '@/desktop/shared/util'
+//@ts-ignore
+import Status, { EStatusType } from '@elements/status'
 
 Message.config({ maxCount: 1 })
 // 流程页签
@@ -18,10 +22,18 @@ const { confirm } = Modal
 
 const Content: React.FC<IContentViewProps> = props => {
   const { data, match, history } = props
+  const params = match?.params
   // 模板id
   const templateId = useMemo(() => {
     return data?.fdTemplate?.fdId
   }, [data])
+  const [flowData, setFlowData] = useState<any>({}) // 流程数据
+
+  const hasDraftBtn = useMemo(() => {
+    const status = data?.fdProcessStatus || getFlowStatus(flowData)
+    /* 新建文档和草稿有暂存按钮 */
+    return status === ESysLbpmProcessStatus.DRAFT || status === ESysLbpmProcessStatus.REJECT || status === ESysLbpmProcessStatus.WITHDRAW
+  }, [data?.fdProcessStatus, flowData])
   // 机制组件引用
   const formComponentRef = useRef<any>()
   const lbpmComponentRef = useRef<any>()
@@ -149,23 +161,76 @@ const Content: React.FC<IContentViewProps> = props => {
     })
   }, [])
 
-  // const toPrintPage = useCallback(() => {
-  //   // const params = `?fdEntityName=${'com.landray.km.hr.core.entity.HrAudit'}&fdType=${'normal'}&fdEntityCode=${'km-HRrevive'}`
-  //   const params = `?fdEntityName=${'com.landray.cms.out.manage.core.entity.staff.CmsStaffAdjust'}&fdType=${'normal'}&fdEntityCode=${'cms-staff'}`
-  //   history.goto(`/cmsStaffAdjust/print/${data.fdId}${params}`)
-  // }, [history])
+  // 提交按钮
+  const _btn_submit = useMemo(() => {
+    const role = isFlowTaskRole(flowData)
+    const status = data?.fdProcessStatus || getFlowStatus(flowData)
+    if (status === ESysLbpmProcessStatus.ABANDONED) return null
+    const validStatus = status !== ESysLbpmProcessStatus.COMPLETED && status !== ESysLbpmProcessStatus.ABANDONED
+    const submitBtn = <Button type='primary' onClick={() => handleSave(false)}>提交</Button>
+    return !hasDraftBtn ? (
+      <Auth.Auth authURL='/staff/cmsStaffAdjust/save' params={{
+        vo: { fdId: params['fdId'] },
+      }}>{submitBtn}</Auth.Auth>
+    ) : (role && validStatus) && submitBtn
+
+  }, [data, flowData, params])
+
+  // 编辑按钮
+  const _btn_edit = useMemo(() => {
+    const status = data.fdProcessStatus || getFlowStatus(flowData)
+    if (status === ESysLbpmProcessStatus.ABANDONED) return null
+    const editBtn = <Button onClick={handleEdit}>编辑</Button>
+    const authEditBtn = <Auth.Auth
+      authURL='/staff/cmsStaffAdjust/edit'
+      params={{
+        vo: { fdId: params['fdId'] }
+      }}
+    >
+      {editBtn}
+    </Auth.Auth>
+    return (
+      status === ESysLbpmProcessStatus.DRAFT || status === ESysLbpmProcessStatus.REJECT || status === ESysLbpmProcessStatus.WITHDRAW)
+      ? authEditBtn
+      // 流程流转中并且有编辑权限，可编辑表单
+      : (status === ESysLbpmProcessStatus.ACTIVATED
+        && authEditBtn
+      )
+  }, [params, data])
+
+  // 删除按钮
+  const _btn_delete = useMemo(() => {
+    const status = getFlowStatus(flowData)
+    const deleteBtn = <Button type='default' onClick={handleDel}>删除</Button>
+    return (
+      // 如果有回复协同的操作，则要校验权限
+      status === ESysLbpmProcessStatus.DRAFT && !lbpmComponentRef.current.checkOperationTypeExist(flowData.identity, EOperationType.handler_replyDraftCooperate)
+        ? deleteBtn
+        : <Auth.Auth authURL='/staff/cmsStaffAdjust/delete' params={{
+          vo: { fdId: params['fdId'] }
+        }}>
+          {deleteBtn}
+        </Auth.Auth>
+    )
+  }, [flowData, params])
 
   return (
-    <div className='lui-approve-template'>
-      {/* 操作区 */}
-      <div className='lui-approve-template-header'>
-        <Breadcrumb>
-          <Breadcrumb.Item>驻场人员管理</Breadcrumb.Item>
-          <Breadcrumb.Item>查看</Breadcrumb.Item>
-        </Breadcrumb>
-        <div className='buttons'>
-          {/* <Button onClick={toPrintPage}>打印</Button> */}
-          {
+    <Auth.Auth
+      authURL='/staff/cmsStaffAdjust/get'
+      authModuleName='cms-out-manage'
+      unauthorizedPage={
+        <Status type={EStatusType._403} title='抱歉，您暂无权限访问当前页面' />
+      }
+    >
+      <div className='lui-approve-template'>
+        {/* 操作区 */}
+        <div className='lui-approve-template-header'>
+          <Breadcrumb>
+            <Breadcrumb.Item>驻场人员管理</Breadcrumb.Item>
+            <Breadcrumb.Item>查看</Breadcrumb.Item>
+          </Breadcrumb>
+          <div className='buttons'>
+            {/* {
             data.fdProcessStatus !== '30' && data.fdProcessStatus !== '00' ? (
               <React.Fragment>
                 <Button type='primary' onClick={() => handleSave(false)}>提交</Button>
@@ -173,57 +238,65 @@ const Content: React.FC<IContentViewProps> = props => {
               </React.Fragment>
             ) : null
           }
-          <Button type='default' onClick={handleDel}>删除</Button>
-          <Button type='default' onClick={handleClose}>关闭</Button>
+          <Button type='default' onClick={handleDel}>删除</Button> */}
+            {_btn_submit}
+            {_btn_edit}
+            {_btn_delete}
+            <Button type='default' onClick={handleClose}>关闭</Button>
+
+          </div>
+        </div>
+        {/* 内容区 */}
+        <div className='lui-approve-template-content'>
+          <div className='left'>
+            {/* 表单信息 */}
+            <div className='form'>
+              <XForm formRef={formComponentRef} value={data || {}} />
+            </div>
+            {/* 机制页签 */}
+            <div className='tabs'>
+              <LBPMTabs
+                fdId={templateId}
+                processId={data?.mechanisms && data.mechanisms['lbpmProcess']?.fdProcessId}
+                getFormValue={() => formComponentRef.current && formComponentRef.current.getValue()}
+                extra={[
+                  {
+                    key: 'right',
+                    name: '权限管理',
+                    children: (
+                      <RightFragment
+                        wrapperRef={rightComponentRef}
+                        hasFlow={true}
+                        mechanism={data?.mechanisms && data?.mechanisms['sys-right']}
+                        getFormValue={() => formComponentRef.current && formComponentRef.current.getValue()} />
+                    )
+                  }
+                ]} />
+            </div>
+          </div>
+          <div className='right'>
+            {/* 审批操作 */}
+            <div className='lui-approve-template-main'>
+              <LBPMFormFragment
+                auditType={data.fdProcessStatus === '30' ? 'baseInfo' : 'audit'}
+                approveLayout='right'
+                mode='view'
+                wrappedComponentRef={lbpmComponentRef}
+                moduleCode='cms-out-manage'
+                onChange={(v) => setFlowData(v)}
+                mechanism={{
+                  formId: templateId,
+                  processTemplateId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdTemplateId,
+                  processId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdProcessId
+                }}
+                getFormValue={() => formComponentRef.current && formComponentRef.current.getValue()} />
+            </div>
+          </div>
         </div>
       </div>
-      {/* 内容区 */}
-      <div className='lui-approve-template-content'>
-        <div className='left'>
-          {/* 表单信息 */}
-          <div className='form'>
-            <XForm formRef={formComponentRef} value={data || {}} />
-          </div>
-          {/* 机制页签 */}
-          <div className='tabs'>
-            <LBPMTabs
-              fdId={templateId}
-              processId={data?.mechanisms && data.mechanisms['lbpmProcess']?.fdProcessId}
-              getFormValue={() => formComponentRef.current && formComponentRef.current.getValue()}
-              extra={[
-                {
-                  key: 'right',
-                  name: '权限管理',
-                  children: (
-                    <RightFragment
-                      wrapperRef={rightComponentRef}
-                      hasFlow={true}
-                      mechanism={data?.mechanisms && data?.mechanisms['sys-right']}
-                      getFormValue={() => formComponentRef.current && formComponentRef.current.getValue()} />
-                  )
-                }
-              ]} />
-          </div>
-        </div>
-        <div className='right'>
-          {/* 审批操作 */}
-          <div className='lui-approve-template-main'>
-            <LBPMFormFragment
-              auditType={data.fdProcessStatus === '30' ? 'baseInfo' : 'audit'}
-              approveLayout='right'
-              mode='view'
-              wrappedComponentRef={lbpmComponentRef}
-              moduleCode='cms-out-staff'
-              mechanism={{
-                formId: templateId,
-                processTemplateId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdTemplateId,
-                processId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdProcessId
-              }}
-              getFormValue={() => formComponentRef.current && formComponentRef.current.getValue()} />
-          </div>
-        </div>
-      </div>
-    </div>
+
+    </Auth.Auth>
+
   )
 }
 

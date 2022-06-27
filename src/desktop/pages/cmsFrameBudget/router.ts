@@ -2,11 +2,10 @@ import ListFrameBudgetCmpt from './list-FrameBudget'
 import AddCmpt from './add'
 import ViewCmpt from './view'
 import EditCmpt from './edit'
-import PrintCmpt from './print'
 
 export default {
   /** 路由前缀 */
   router: '/cmsFrameBudget',
   /** 页面配置，第一个为首页 */
-  pages: [ListFrameBudgetCmpt, AddCmpt, ViewCmpt, EditCmpt, PrintCmpt]
+  pages: [ListFrameBudgetCmpt, AddCmpt, ViewCmpt, EditCmpt]
 }

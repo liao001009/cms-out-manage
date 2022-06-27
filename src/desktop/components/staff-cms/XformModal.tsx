@@ -43,6 +43,8 @@ export interface IProps extends IContentViewProps {
   criteriaProps?: any
   /** 行号 */
   rowIndex?: number
+  /** 默认的表格列筛选 */
+  defaultTableCriteria?:any
 }
 
 const XformModal: React.FC<IProps> = (props) => {
@@ -62,14 +64,28 @@ const XformModal: React.FC<IProps> = (props) => {
     apiName,
     onChangeProps,
     criteriaProps = [],
-    rowIndex
+    rowIndex,
+    defaultTableCriteria={}
   } = props
   const [listData, setListData] = useState<any>({})
   const [visible, setVisible] = useState<boolean>(false)
   const [fdName, setFdName] = useState<string>(value && value.fdName || '')
+  /** 组装表格列头筛选项 */
+  const getDefaultTableColumns = useCallback(()=>{
+    if(Object.keys(defaultTableCriteria).length<=0)return {}
+    const newConditions = {}
+    Object.keys(defaultTableCriteria).forEach(key=>{
+      const newConditionsKey = {}
+      newConditionsKey[defaultTableCriteria[key]['searchKey']] = defaultTableCriteria[key]['searchValue']
+      newConditions[key] = defaultTableCriteria[key] ?  newConditionsKey : undefined
+    })
+    return newConditions
+  },[])
   useEffect(() => {
     if (showStatus === EShowStatus.add || showStatus === EShowStatus.edit) {
-      getListData({})
+      getListData({
+        conditions:{...getDefaultTableColumns()}
+      })
     }
   }, [])
 

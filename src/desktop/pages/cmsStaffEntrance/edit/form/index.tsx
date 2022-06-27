@@ -524,6 +524,12 @@ const XForm = (props) => {
                                 apiName: 'listStaffInfo',
                                 chooseFdName: 'fdName',
                                 criteriaKey: 'presonCriertia',
+                                defaultTableCriteria:{
+                                  'fdStatusInfo':{
+                                    'searchKey':'$notIn',
+                                    'searchValue':['3','4']
+                                  }
+                                },
                                 columnsProps: outStaffInfoColumns,
                                 modalTitle: '外包人员信息',
                                 title: fmtMsg(':cmsStaffEntrance.form.!{l47ucie6axg62p00qnq}', '姓名'),
@@ -2096,17 +2102,12 @@ const XForm = (props) => {
                 mobileContentAlign={'right'}
                 title={fmtMsg(':cmsStaffEntrance.form.!{l482x9oheg8kfwghnzk}', '资料上传')}
                 layout={'horizontal'}
-                required={true}
               >
                 <Form.Item
                   name={'fdAtt'}
                   rules={[
                     {
                       validator: lengthValidator(200)
-                    },
-                    {
-                      required: true,
-                      message: fmtMsg(':required', '内容不能为空')
                     }
                   ]}
                 >

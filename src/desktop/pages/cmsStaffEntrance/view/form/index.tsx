@@ -975,7 +975,7 @@ const XForm = (props) => {
               }}
               columnSpan={1}
             ></GridItem>
-            <GridItem column={1} row={27} rowSpan={1} columnSpan={2}>
+            {/* <GridItem column={1} row={27} rowSpan={1} columnSpan={2}>
               <XformFieldset
                 labelTextAlign={'left'}
                 mobileContentAlign={'right'}
@@ -1005,7 +1005,7 @@ const XForm = (props) => {
                   />
                 </Form.Item>
               </XformFieldset>
-            </GridItem>
+            </GridItem> */}
             <GridItem
               column={2}
               row={20}
@@ -1597,47 +1597,6 @@ const XForm = (props) => {
                               }
                             },
                             {
-                              type: XformRadio,
-                              controlProps: {
-                                title: fmtMsg(':cmsStaffEntrance.form.!{l47uub9dbq88pweuhyc}', '性别'),
-                                maxLength: 50,
-                                name: 'fdSex',
-                                options: [
-                                  {
-                                    label: fmtMsg(':cmsStaffEntrance.form.!{l47uub9dw8kirlo7dd}', '男'),
-                                    value: 'M'
-                                  },
-                                  {
-                                    label: fmtMsg(':cmsStaffEntrance.form.!{l47uub9dzc90y11elro}', '女'),
-                                    value: 'F'
-                                  }
-                                ],
-                                rowCount: 3,
-                                direction: 'column',
-                                serialType: 'empty',
-                                optionSource: 'custom',
-                                desktop: {
-                                  type: XformRadio
-                                },
-                                fdSysNumber: {},
-                                type: XformRadio,
-                                showStatus: 'view'
-                              },
-                              labelProps: {
-                                title: fmtMsg(':cmsStaffEntrance.form.!{l47uub9dbq88pweuhyc}', '性别'),
-                                desktop: {
-                                  layout: 'vertical'
-                                }
-                              },
-                              label: fmtMsg(':cmsStaffEntrance.form.!{l47uub9dbq88pweuhyc}', '性别'),
-                              options: {
-                                validateRules: {
-                                  required: true,
-                                  message: fmtMsg(':required', '内容不能为空')
-                                }
-                              }
-                            },
-                            {
                               type: XformInput,
                               controlProps: {
                                 title: fmtMsg(':cmsStaffEntrance.form.!{l47uub9dm1d1kyt74}', '姓名拼音'),
@@ -1686,6 +1645,47 @@ const XForm = (props) => {
                                 }
                               },
                               label: fmtMsg(':cmsStaffEntrance.form.!{l47uub9d0wbq7aqz8etq}', '身份证号码'),
+                              options: {
+                                validateRules: {
+                                  required: true,
+                                  message: fmtMsg(':required', '内容不能为空')
+                                }
+                              }
+                            },
+                            {
+                              type: XformRadio,
+                              controlProps: {
+                                title: fmtMsg(':cmsStaffEntrance.form.!{l47uub9dbq88pweuhyc}', '性别'),
+                                maxLength: 50,
+                                name: 'fdSex',
+                                options: [
+                                  {
+                                    label: fmtMsg(':cmsStaffEntrance.form.!{l47uub9dw8kirlo7dd}', '男'),
+                                    value: 'M'
+                                  },
+                                  {
+                                    label: fmtMsg(':cmsStaffEntrance.form.!{l47uub9dzc90y11elro}', '女'),
+                                    value: 'F'
+                                  }
+                                ],
+                                rowCount: 3,
+                                direction: 'column',
+                                serialType: 'empty',
+                                optionSource: 'custom',
+                                desktop: {
+                                  type: XformRadio
+                                },
+                                fdSysNumber: {},
+                                type: XformRadio,
+                                showStatus: 'view'
+                              },
+                              labelProps: {
+                                title: fmtMsg(':cmsStaffEntrance.form.!{l47uub9dbq88pweuhyc}', '性别'),
+                                desktop: {
+                                  layout: 'vertical'
+                                }
+                              },
+                              label: fmtMsg(':cmsStaffEntrance.form.!{l47uub9dbq88pweuhyc}', '性别'),
                               options: {
                                 validateRules: {
                                   required: true,

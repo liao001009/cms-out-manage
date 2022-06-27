@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-supplier:cmsContractInfo.list.ContractInfo',
+  title: 'cms-out-manage:cmsContractInfo.list.ContractInfo',
   // 路由
   router: '/listContractInfo',
   // 模块内容区

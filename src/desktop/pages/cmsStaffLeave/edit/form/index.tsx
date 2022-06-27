@@ -46,7 +46,9 @@ const XForm = (props) => {
     form.setFieldsValue({
       fdBelongDept: v.fdBelongDept,
       fdBelongTeam: v.fdBelongTeam,
-      fdProjectNature: v.fdProjectNature
+      fdProjectNature: v.fdProjectNature,
+      fdProjectPrincipal: v.fdProjectPrincipal,
+      fdInnerPrincipal: v.fdInnerPrincipal
     })
   }
   return (

@@ -1,4 +1,4 @@
-import React, { useRef, createRef } from 'react'
+import React, { useRef, createRef, useState, useEffect } from 'react'
 import './index.scss'
 import { fmtMsg } from '@ekp-infra/respect'
 import { Form } from '@lui/core'
@@ -12,15 +12,20 @@ import XformInput from '@/desktop/components/XformInput'
 import XformRadio from '@/desktop/components/XformRadio'
 import XformTextarea from '@/desktop/components/XformTextarea'
 import XformDetailTable from '@/desktop/components/XformDetailTable'
+import XformSelect from '@/desktop/components/XformSelect'
+import api from '@/api/cmsFrameInfo'
 
 const MECHANISMNAMES = {}
 
 const XForm = (props) => {
+  console.log('props111',props)
+
   const detailForms = useRef({
     cmsSupplierLinkman: createRef() as any,
   })
-  const { formRef: formRef, value: value } = props
+  const { formRef: formRef, value: value,mode } = props
   const [form] = Form.useForm()
+  const [frameArr, setFrameArr] = useState<any>([])
   // 对外暴露接口
   useApi({
     form,
@@ -34,6 +39,28 @@ const XForm = (props) => {
     form,
     detailForms,
   })
+  useEffect(() => { init() }, [])
+  const init = async () => {
+    console.log(mode)
+    
+    try {
+      const res = await api.listFrameInfo({})
+      const newValue = res.data.content.map(i => {
+        const item = {
+          label: i.fdName,
+          value: i.fdId
+        }
+        return item
+      })
+      setFrameArr(newValue)
+      form.setFieldsValue({
+        fdFrame: Object.keys(value).length && value.fdFrame.fdId,
+        fdCooperationStatus: Object.keys(value).length ? value.fdCooperationStatus :'1'
+      })
+    } catch (error) {
+      console.warn('框架类型出错', error)
+    }
+  }
   return (
     <div className="lui-xform">
       <Form form={form} colPadding={false} onValuesChange={onValuesChange}>
@@ -77,6 +104,10 @@ const XForm = (props) => {
                     {
                       validator: lengthValidator(100),
                     },
+                    {
+                      required: true,
+                      message: fmtMsg(':required', '内容不能为空')
+                    }
                   ]}
                 >
                   <XformInput
@@ -184,45 +215,14 @@ const XForm = (props) => {
                 title={fmtMsg(':cmsSupplierInfo.form.!{l3me38ucc667r165wr}', '所属框架')}
                 layout={'horizontal'}
               >
-                <Form.Item>
-                  <XformInput
+                <Form.Item name={'fdFrame'}>
+                  <XformSelect
                     {...sysProps}
-                    placeholder={fmtMsg(':cmsSupplierInfo.form.!{l3i2n52qm7p7wzsqug}', '请输入')}
-                    showStatus="readOnly"
-                  ></XformInput>
-                  {/* <XformRelation
-                    {...sysProps}
-                    renderMode={'checkbox'}
-                    direction={'column'}
-                    rowCount={10}
-                    modelName={'com.landray.sys.xform.core.entity.design.SysXFormDesign'}
-                    isForwardView={'no'}
-                    options={[
-                      {
-                        fdName: '选项1',
-                        fdId: '1'
-                      },
-                      {
-                        fdName: '选项2',
-                        fdId: '2'
-                      },
-                      {
-                        fdName: '选项3',
-                        fdId: '3'
-                      }
-                    ]}
-                    multi={true}
-                    relationCfg={{
-                      appCode: '1g3bqa9aqwjk0w1ks2w1lnvus8toemcp33w0',
-                      xformName: '框架信息',
-                      modelId: '1g44id731w8wkbow1ug79a31094ejk3253w0',
-                      tableType: 'main',
-                      tableName: 'mk_model_20220528mgn2n',
-                      showFields: '$名称$',
-                      refFieldName: '$fd_name$'
-                    }}
+                    placeholder={fmtMsg(':cmsProjectInfo.form.!{l47sfd3bplubk8x7ajm}', '请输入')}
+                    options={frameArr}
+                    optionSource={'custom'}
                     showStatus="edit"
-                  ></XformRelation> */}
+                  ></XformSelect>
                 </Form.Item>
               </XformFieldset>
             </GridItem>

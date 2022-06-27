@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import { IContentViewProps } from '@ekp-runtime/render-module'
 import Icon from '@lui/icons'
-import { Input, Button, Space, Pagination, Modal } from '@lui/core'
+import { Input, Button, Space, Pagination } from '@lui/core'
 import Criteria from '@elem/criteria'
 import { $reduceCriteria } from '@/desktop/shared/criteria'
 import Operation from '@elem/operation'
@@ -9,16 +9,14 @@ import Table, { useTable } from '@elem/mk-table'
 import api from '@/api/cmsSupplierInfo'
 import { useAdd } from '@/desktop/shared/add'
 import { $deleteAll } from '@/desktop/shared/deleteAll'
-import { Module } from '@ekp-infra/common'
 import './index.scss'
-
-const Import = Module.getComponent('sys-mech-transport', 'Import')
+import { Auth } from '@ekp-infra/common'
+import ListImport from '@/desktop/components/listImport'
 
 const Content: React.FC<IContentViewProps> = (props) => {
   const { status, data, queryChange, query, refresh, history } = props
   const { content, totalSize, pageSize } = data
-  const [importVisible, setImportVisible] = useState<boolean>(false)
-
+  const [modalVisible, setModalVisible] = useState<boolean>(false)
 
   // 表格列定义
   const columns = useMemo(
@@ -63,12 +61,6 @@ const Content: React.FC<IContentViewProps> = (props) => {
           return option.label
         }
       },
-      /*所属框架*/
-      // {
-      //   title: '所属框架',
-      //   dataIndex: 'fdFrame',
-      //   render: (value) => value
-      // },
       /*创建时间*/
       {
         title: '创建时间',
@@ -194,7 +186,17 @@ const Content: React.FC<IContentViewProps> = (props) => {
     [history]
   )
 
+  //导入
+  const handleImportData = useCallback(
+    (event) => {
+      event.stopPropagation()
+      setModalVisible(true)
+    },
+    [history, selectedRows, refresh]
+  )
+
   return (
+
     <React.Fragment>
       <div className="lui-template-list">
         <div className="lui-template-list-criteria">
@@ -250,14 +252,26 @@ const Content: React.FC<IContentViewProps> = (props) => {
               </Button>
               {/* 操作栏 */}
               <React.Fragment>
-                <Button type="primary" onClick={handleAdd}>
-                  新建
-                </Button>
-                <Button type="default" onClick={() => setImportVisible(true)}>
+                <Auth.Auth
+                  authURL='/supplier/cmsSupplierInfo/add'
+                  authModuleName='cms-out-manage'
+                  unauthorizedPage={null}
+                >
+                  <Button type="primary" onClick={handleAdd}>
+                    新建
+                  </Button>
+                </Auth.Auth>
+                <Auth.Auth
+                  authURL='/supplier/cmsSupplierInfo/delete'
+                  authModuleName='cms-out-manage'
+                  unauthorizedPage={null}
+                >
+                  <Button type="default" onClick={handleDeleteAll}>
+                    批量删除
+                  </Button>
+                </Auth.Auth>
+                <Button type="default" onClick={handleImportData}>
                   导入
-                </Button>
-                <Button type="default" onClick={handleDeleteAll}>
-                  批量删除
                 </Button>
               </React.Fragment>
             </Space>
@@ -280,20 +294,25 @@ const Content: React.FC<IContentViewProps> = (props) => {
           ) : null}
         </div>
       </div>
-      <Modal
-        visible={importVisible}
-        title={false}
-        onCancel={() => setImportVisible(false)}
-        modalType='oversized'
-        footer={null}
-        destroyOnClose={true}
-      >
-        <Import
-          isDefault={false}
-          isMasterTemplate={true}
-          fdEntityName='com.landray.cms.out.manage.core.entity.supplier.CmsSupplierInfo'
-        />
-      </Modal>
+      {/* <Modal
+          visible={importVisible}
+          title={false}
+          onCancel={() => setImportVisible(false)}
+          modalType='oversized'
+          footer={null}
+          destroyOnClose={true}
+        >
+          <Import
+            isDefault={false}
+            isMasterTemplate={true}
+            fdEntityName='com.landray.cms.out.manage.core.entity.supplier.CmsSupplierInfo'
+          />
+        </Modal> */}
+      <ListImport
+        fdEntityName='com.landray.cms.out.manage.core.entity.supplier.CmsSupplierInfo'
+        visible={modalVisible}
+        onCancle={() => setModalVisible(false)}
+      />
     </React.Fragment>
   )
 }

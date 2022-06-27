@@ -9,6 +9,7 @@ import Table, { useTable } from '@elem/mk-table'
 import api from '@/api/cmsContractInfo'
 import { useAdd } from '@/desktop/shared/add'
 import { $deleteAll } from '@/desktop/shared/deleteAll'
+import { Auth } from '@ekp-infra/common'
 import './index.scss'
 
 const Content: React.FC<IContentViewProps> = (props) => {
@@ -173,6 +174,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
 
   return (
     <React.Fragment>
+
       <div className="lui-template-list">
         <div className="lui-template-list-criteria">
           <div className="left">
@@ -203,12 +205,24 @@ const Content: React.FC<IContentViewProps> = (props) => {
               </Button>
               {/* 操作栏 */}
               <React.Fragment>
-                <Button type="primary" onClick={handleAdd}>
-                  新建
-                </Button>
-                <Button type="default" onClick={handleDeleteAll}>
-                  批量删除
-                </Button>
+                <Auth.Auth
+                  authURL='supplier/cmsContractInfo/add'
+                  authModuleName='cms-out-manage'
+                  unauthorizedPage={null}
+                >
+                  <Button type="primary" onClick={handleAdd}>
+                    新建
+                  </Button>
+                </Auth.Auth>
+                <Auth.Auth
+                  authURL='supplier/cmsContractInfo/delete'
+                  authModuleName='cms-out-manage'
+                  unauthorizedPage={null}
+                >
+                  <Button type="default" onClick={handleDeleteAll}>
+                    批量删除
+                  </Button>
+                </Auth.Auth>
               </React.Fragment>
             </Space>
           </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './index.scss'
 import { fmtMsg } from '@ekp-infra/respect'
-import { Form, Select } from '@lui/core'
+import { Form } from '@lui/core'
 import { useApi, useSystem } from '@/desktop/shared/formHooks-project'
 import XformAppearance from '@/desktop/components/XformAppearance'
 import LayoutGrid from '@/desktop/components/LayoutGrid'
@@ -14,7 +14,6 @@ import XformSelect from '@/desktop/components/XformSelect'
 import XformDatetime from '@/desktop/components/XformDatetime'
 import api from '@/api/cmsFrameInfo'
 
-const { Option } = Select
 const MECHANISMNAMES = {}
 
 const XForm = (props) => {
@@ -30,7 +29,14 @@ const XForm = (props) => {
   const init = async () => {
     try {
       const res = await api.listFrameInfo({})
-      setFrameArray(res.data.content)
+      const newValue = res.data.content.map(i => {
+        const item = {
+          label: i.fdName,
+          value: i.fdId
+        }
+        return item
+      })
+      setFrameArray(newValue)
       form.setFieldsValue({
         fdFrame: value.fdFrame.fdId
       })
@@ -227,16 +233,14 @@ const XForm = (props) => {
                 title={fmtMsg(':cmsProjectInfo.form.!{l47s8bsqziln6fgdbd}', '项目所属框架')}
                 layout={'horizontal'}
               >
-                <Form.Item name={'fdFrame'}>
-                  <Select
-                    placeholder="请选择"
-                  >
-                    {
-                      frameArray.map(item => (
-                        <Option key={item.fdId} value={item.fdId}>{item.fdName}</Option>
-                      ))
-                    }
-                  </Select>
+                <Form.Item name={'fdFrame'} >
+                  <XformSelect
+                    {...sysProps}
+                    placeholder={fmtMsg(':cmsProjectInfo.form.!{l47sfd3bplubk8x7ajm}', '请输入')}
+                    options={frameArray}
+                    optionSource={'custom'}
+                    showStatus="edit"
+                  ></XformSelect>
                 </Form.Item>
               </XformFieldset>
             </GridItem>

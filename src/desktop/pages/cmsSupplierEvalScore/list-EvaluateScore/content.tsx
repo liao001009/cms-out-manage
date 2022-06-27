@@ -11,7 +11,7 @@ import api from '@/api/cmsSupplierEvalScore'
 import { useAdd } from '@/desktop/shared/add'
 import { $deleteAll } from '@/desktop/shared/deleteAll'
 import './index.scss'
-
+import { Auth } from '@ekp-infra/common'
 const Content: React.FC<IContentViewProps> = (props) => {
   const { status, data, queryChange, query, refresh, history } = props
   const { content, totalSize, pageSize, offset } = data
@@ -212,6 +212,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
 
   return (
     <React.Fragment>
+
       <div className="lui-template-list">
         <div className="lui-template-list-criteria">
           <div className="left">
@@ -270,13 +271,25 @@ const Content: React.FC<IContentViewProps> = (props) => {
               </Button>
               {/* 操作栏 */}
               <React.Fragment>
-                <Button type="primary" onClick={handleAdd}>
-                  新建
-                </Button>
+                <Auth.Auth
+                  authURL='/supplier/cmsSupplierEvalScore/add'
+                  authModuleName='cms-out-manage'
+                  unauthorizedPage={null}
+                >
+                  <Button type="primary" onClick={handleAdd}>
+                    新建
+                  </Button>
+                </Auth.Auth>
+                <Auth.Auth
+                  authURL='/supplier/cmsSupplierEvalScore/delete'
+                  authModuleName='cms-out-manage'
+                  unauthorizedPage={null}
+                >
+                  <Button type="default" onClick={handleDeleteAll}>
+                    批量删除
+                  </Button>
+                </Auth.Auth>
                 {/* <AddComponent visible={$addVisible} callback={$addClose}></AddComponent> */}
-                <Button type="default" onClick={handleDeleteAll}>
-                  批量删除
-                </Button>
               </React.Fragment>
             </Space>
           </div>

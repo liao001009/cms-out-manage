@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import { IContentViewProps } from '@ekp-runtime/render-module'
 import Icon from '@lui/icons'
 import { Input, Button, Space, Pagination } from '@lui/core'
@@ -10,10 +10,13 @@ import api from '@/api/cmsOutStaffInfo'
 import { useAdd } from '@/desktop/shared/add'
 import { $deleteAll } from '@/desktop/shared/deleteAll'
 import './index.scss'
+import { Auth } from '@ekp-infra/common'
+import ListImport from '@/desktop/components/listImport'
 
 const Content: React.FC<IContentViewProps> = (props) => {
   const { status, data, queryChange, query, refresh, history } = props
   const { content, totalSize, pageSize } = data
+  const [modalVisible, setModalVisible] = useState<boolean>(false)
 
   // 表格列定义
   const columns = useMemo(
@@ -112,7 +115,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
       {
         title: '当前项目',
         dataIndex: 'fdProject',
-        render: (value) => value
+        render: (value) => value && value.fdName
       },
       /*首次入场时间*/
       {
@@ -176,9 +179,6 @@ const Content: React.FC<IContentViewProps> = (props) => {
       })
     }
   })
-  console.log(selectedRows)
-
-  /** 操作函数集 */
 
   //新建
   const { $add: $add } = useAdd('/cmsOutStaffInfo/add')
@@ -259,7 +259,6 @@ const Content: React.FC<IContentViewProps> = (props) => {
     },
     [query, queryChange]
   )
-
   /** 分页操作 */
   const handlePage = useCallback(
     (pageNo: number, pageSize: number) => {
@@ -279,8 +278,18 @@ const Content: React.FC<IContentViewProps> = (props) => {
     [history]
   )
 
+  //导入
+  const handleImportData = useCallback(
+    (event) => {
+      event.stopPropagation()
+      setModalVisible(true)
+    },
+    [history, selectedRows, refresh]
+  )
+
   return (
     <React.Fragment>
+
       <div className="lui-template-list">
         <div className="lui-template-list-criteria">
           <div className="left">
@@ -334,32 +343,28 @@ const Content: React.FC<IContentViewProps> = (props) => {
                 canMulti={false}
                 options={[
                   {
-                    text: '不限',
-                    value: 'undefined'
+                    value: '1',
+                    text: '未参与项目'
                   },
                   {
-                    text: 'undefined',
-                    value: '1'
+                    value: '2',
+                    text: '中选待入场'
                   },
                   {
-                    text: 'undefined',
-                    value: '2'
+                    value: '3',
+                    text: '项目中-远程'
                   },
                   {
-                    text: 'undefined',
-                    value: '3'
+                    value: '4',
+                    text: '项目中-驻场'
                   },
                   {
-                    text: 'undefined',
-                    value: '4'
+                    value: '5',
+                    text: '已离场'
                   },
                   {
-                    text: 'undefined',
-                    value: '5'
-                  },
-                  {
-                    text: 'undefined',
-                    value: '6'
+                    value: '6',
+                    text: '已离职'
                   }
                 ]}
                 name="fdStatusInfo"
@@ -391,11 +396,26 @@ const Content: React.FC<IContentViewProps> = (props) => {
               </Button>
               {/* 操作栏 */}
               <React.Fragment>
-                <Button type="primary" onClick={handleAdd}>
-                  新建
-                </Button>
-                <Button type="default" onClick={handleDeleteAll}>
-                  批量删除
+                <Auth.Auth
+                  authURL='/supplier/cmsOutStaffInfo/add'
+                  authModuleName='cms-out-manage'
+                  unauthorizedPage={null}
+                >
+                  <Button type="primary" onClick={handleAdd}>
+                    新建
+                  </Button>
+                </Auth.Auth>
+                <Auth.Auth
+                  authURL='/supplier/cmsOutStaffInfo/delete'
+                  authModuleName='cms-out-manage'
+                  unauthorizedPage={null}
+                >
+                  <Button type="default" onClick={handleDeleteAll}>
+                    批量删除
+                  </Button>
+                </Auth.Auth>
+                <Button type="default" onClick={handleImportData}>
+                  导入
                 </Button>
               </React.Fragment>
             </Space>
@@ -418,6 +438,11 @@ const Content: React.FC<IContentViewProps> = (props) => {
           ) : null}
         </div>
       </div>
+      <ListImport
+        fdEntityName='com.landray.cms.out.manage.core.entity.supplier.CmsOutStaffInfo'
+        visible={modalVisible}
+        onCancle={() => setModalVisible(false)}
+      />
     </React.Fragment>
   )
 }

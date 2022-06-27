@@ -1,5 +1,5 @@
-import React, { createElement as h, useRef } from 'react'
-import { Module } from '@ekp-infra/common'
+import React, { createElement as h, useMemo, useRef, useState } from 'react'
+import { Auth, Module } from '@ekp-infra/common'
 import { IContentViewProps } from '@ekp-runtime/render-module'
 import Icon from '@lui/icons'
 import { Loading, Breadcrumb, Button, Message, Modal } from '@lui/core'
@@ -7,6 +7,8 @@ import { EBtnType } from '@lui/core/es/components/Button'
 import XForm from './form'
 import api from '@/api/cmsStaffLeave'
 import './index.scss'
+import { ESysLbpmProcessStatus, getFlowStatus, isFlowTaskRole } from '@/desktop/shared/util'
+import { EOperationType } from '@/utils/status'
 
 Message.config({ maxCount: 1 })
 // 流程页签
@@ -15,15 +17,21 @@ const LBPMTabs = Module.getComponent('sys-lbpm', 'LBPMTabs', { loading: <Loading
 const LBPMFormFragment = Module.getComponent('sys-lbpm', 'LBPMFormFragment', { loading: <Loading /> })
 // 权限机制
 const RightFragment = Module.getComponent('sys-right', 'RightFragment', { loading: <Loading /> })
-// 打印机制
-// const PrintRuntime = Module.getComponent('sys-mech-print', 'PrintRuntimeFRagment', { loading: <React.Fragment></React.Fragment> })
 
 const Content: React.FC<IContentViewProps> = props => {
-  const { data, history, routerPrefix } = props
+  const { data, history, match, routerPrefix } = props
+  const params = match?.params
   // 机制组件引用
   const formComponentRef = useRef<any>()
   const lbpmComponentRef = useRef<any>()
   const rightComponentRef = useRef<any>()
+  const [flowData, setFlowData] = useState<any>({}) // 流程数据
+
+  const hasDraftBtn = useMemo(() => {
+    const status = data?.fdProcessStatus || getFlowStatus(flowData)
+    /* 新建文档和草稿有暂存按钮 */
+    return status === ESysLbpmProcessStatus.DRAFT || status === ESysLbpmProcessStatus.REJECT || status === ESysLbpmProcessStatus.WITHDRAW
+  }, [data?.fdProcessStatus, flowData])
 
   // 校验
   const _validate = async (isDraft: boolean) => {
@@ -98,17 +106,22 @@ const Content: React.FC<IContentViewProps> = props => {
       return
     }
     // 拼装提交数据
-    let values = await _formatValue(isDraft)
+    const values = await _formatValue(isDraft)
     // 文档提交前事件
     if (await _beforeSave(isDraft) === false) {
       return
     }
-    values = {
+    // 编辑页面文档状态为草稿时点击暂存存为草稿，点击提交流程流转，其他文档状态提交按钮只保存表单
+    const saveApi = isDraft ?
+      api.save
+      : (values.fdProcessStatus === ESysLbpmProcessStatus.DRAFT
+        || values.fdProcessStatus === ESysLbpmProcessStatus.WITHDRAW
+        || values.fdProcessStatus === ESysLbpmProcessStatus.REJECT ? api.update : api.save)
+    // 编辑暂存
+    saveApi({
       ...values,
       cmsStaffLeaveDetail: values.cmsStaffLeaveDetail.values
-    }
-    // 编辑提交
-    api.save(values as any).then(res => {
+    }).then(res => {
       if (res.success) {
         Message.success(isDraft ? '暂存成功' : '提交成功', 1, () => {
           history.goBack()
@@ -147,17 +160,59 @@ const Content: React.FC<IContentViewProps> = props => {
     })
   }
 
+  // 提交按钮
+  const _btn_submit = useMemo(() => {
+    const role = isFlowTaskRole(flowData)
+    const status = data?.fdProcessStatus || getFlowStatus(flowData)
+    const validStatus = status !== ESysLbpmProcessStatus.COMPLETED && status !== ESysLbpmProcessStatus.ABANDONED
+    const submitBtn = <Button type='primary' onClick={() => handleSave(false)}>提交</Button>
+    return !hasDraftBtn ? (
+      <Auth.Auth authURL='/staff/cmsStaffLeave/save' params={{
+        vo: { fdId: params['fdId'] },
+      }}>{submitBtn}</Auth.Auth>
+    ) : (role && validStatus) && submitBtn
+
+  }, [data, flowData, params])
+
+  // 暂存按钮
+  const _btn_draft = useMemo(() => {
+    if (
+      !flowData ||
+      lbpmComponentRef.current?.checkOperationTypeExist?.(flowData?.identity, EOperationType.drafter_cancelDraftCooperate)
+    ) return null
+    const draftBtn = <Button type='primary' onClick={() => handleSave(true)}>暂存</Button>
+    //  新建文档和草稿有暂存按钮, 当流程布局是底部卡片时，顶部不显示暂存按钮
+    return hasDraftBtn ? draftBtn : null
+  }, [hasDraftBtn, data, flowData, params])
+
+  // 删除按钮
+  const _btn_delete = useMemo(() => {
+    const status = getFlowStatus(flowData)
+    const deleteBtn = <Button type='default' onClick={handleDelete}>删除</Button>
+    return (
+      // 如果有回复协同的操作，则要校验权限
+      status === ESysLbpmProcessStatus.DRAFT && !lbpmComponentRef.current.checkOperationTypeExist(flowData.identity, EOperationType.handler_replyDraftCooperate)
+        ? deleteBtn
+        : <Auth.Auth authURL='/staff/cmsStaffLeave/delete' params={{
+          vo: { fdId: params['fdId'] }
+        }}>
+          {deleteBtn}
+        </Auth.Auth>
+    )
+  }, [flowData, params])
+
   return (
     <div className='lui-approve-template'>
       {/* 操作区 */}
       <div className='lui-approve-template-header'>
         <Breadcrumb>
-          <Breadcrumb.Item>驻场人员管理</Breadcrumb.Item>
+          <Breadcrumb.Item>离场人员管理</Breadcrumb.Item>
           <Breadcrumb.Item>编辑</Breadcrumb.Item>
         </Breadcrumb>
         <div className='buttons'>
-          <Button type='primary' onClick={() => handleSave(true)}>保存</Button>
-          <Button type='default' onClick={handleDelete}>删除</Button>
+          {_btn_submit}
+          {_btn_draft}
+          {_btn_delete}
         </div>
       </div>
       {/* 内容区 */}
@@ -196,7 +251,8 @@ const Content: React.FC<IContentViewProps> = props => {
               mode='edit'
               approveLayout='right'
               wrappedComponentRef={lbpmComponentRef}
-              moduleCode='cms-out-staff'
+              moduleCode='cms-out-manage'
+              onChange={(v) => setFlowData(v)}
               mechanism={{
                 formId: data?.fdTemplate?.fdId,
                 processTemplateId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdTemplateId,

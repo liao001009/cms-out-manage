@@ -19,7 +19,7 @@ const RightFragment = Module.getComponent('sys-right', 'RightFragment', { loadin
 const Content: React.FC<IContentViewProps> = props => {
   const { data, match, history } = props
   // 模板id
-  const templateId = match.params['templateId']
+  const templateId = match && match.params['templateId']
   // 机制组件引用
   const formComponentRef = useRef<any>()
   const lbpmComponentRef = useRef<any>()
@@ -133,7 +133,7 @@ const Content: React.FC<IContentViewProps> = props => {
       {/* 操作区 */}
       <div className='lui-approve-template-header'>
         <Breadcrumb>
-          <Breadcrumb.Item>驻场人员管理</Breadcrumb.Item>
+          <Breadcrumb.Item>入场人员管理</Breadcrumb.Item>
           <Breadcrumb.Item>新建</Breadcrumb.Item>
         </Breadcrumb>
         <div className='buttons'>
@@ -177,7 +177,7 @@ const Content: React.FC<IContentViewProps> = props => {
               auditType='audit'
               approveLayout='right'
               wrappedComponentRef={lbpmComponentRef}
-              moduleCode='cms-out-staff'
+              moduleCode='cms-out-manage'
               mode='add'
               mechanism={{
                 formId: templateId,

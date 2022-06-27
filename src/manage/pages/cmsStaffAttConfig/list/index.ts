@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-staff:cmsStaffAttConfig.list.Config',
+  title: 'cms-out-manage:cmsStaffAttConfig.list.Config',
   // 路由
   router: '/listConfig',
   // 模块内容区

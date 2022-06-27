@@ -11,7 +11,7 @@ import { useAdd } from '@/desktop/shared/add'
 import { $deleteAll } from '@/desktop/shared/deleteAll'
 import ListImport from '@/desktop/components/listImport'
 import './index.scss'
-
+import { Auth } from '@ekp-infra/common'
 const Content: React.FC<IContentViewProps> = (props) => {
   const { status, data, queryChange, query, refresh, history } = props
   const { content, totalSize, pageSize } = data
@@ -245,6 +245,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
   )
 
   return (
+
     <React.Fragment>
       <div className="lui-template-list">
         <div className="lui-template-list-criteria">
@@ -314,12 +315,24 @@ const Content: React.FC<IContentViewProps> = (props) => {
               </Button>
               {/* 操作栏 */}
               <React.Fragment>
-                <Button type="primary" onClick={handleAdd}>
-                  新建
-                </Button>
-                <Button type="default" onClick={handleDeleteAll}>
-                  批量删除
-                </Button>
+                <Auth.Auth
+                  authURL='/project/cmsProjectInfo/add'
+                  authModuleName='cms-out-manage'
+                  unauthorizedPage={null}
+                >
+                  <Button type="primary" onClick={handleAdd}>
+                    新建
+                  </Button>
+                </Auth.Auth>
+                <Auth.Auth
+                  authURL='/project/cmsProjectInfo/delete'
+                  authModuleName='cms-out-manage'
+                  unauthorizedPage={null}
+                >
+                  <Button type="default" onClick={handleDeleteAll}>
+                    批量删除
+                  </Button>
+                </Auth.Auth>
                 <Button type="default" onClick={handleImportData}>
                   导入
                 </Button>

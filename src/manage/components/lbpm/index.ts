@@ -15,14 +15,14 @@ export interface IProps {
 const LBPMEditor: React.FC<IProps> = (props) => {
   return h(LBPMEditFragment, {
     ...props,
-    moduleCode: 'cms-out-staff',
+    moduleCode: 'cms-out-manage',
     integrateMode: 'third',
     displayMode: 'edit',
     formId: props.id,
     innerForm: [
       {
         fdSystemCode: 'INNER_SYSTEM', // 系统标示
-        fdModuleCode: 'cms-out-staff' // 模块标识
+        fdModuleCode: 'cms-out-manage' // 模块标识
       }
     ]
   })
