@@ -106,7 +106,7 @@ const Content: React.FC<IContentViewProps> = props => {
     }
     values = {
       ...values,
-      cmsStaffLeaveDetail: values.cmsStaffLeaveDetail.values
+      cmsStaffLeaveDetail: values?.cmsStaffLeaveDetail?.values || undefined
     }
     // 提交
     api.add(values as any).then(res => {
