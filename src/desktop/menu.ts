@@ -73,11 +73,6 @@ export default [
         key: '/cmsOutOrder',
         label: ':menu.cmsOutOrder',
         icon: 'add-document',
-      },
-      {
-        key: '/cmsOutConfig',
-        label: ':menu.cmsOutConfig',
-        icon: 'add-document',
       }
     ]
   }

@@ -519,10 +519,10 @@ const XForm = (props) => {
                                 apiKey: apiStaffInfo,
                                 apiName: 'listStaffInfo',
                                 criteriaKey: 'presonCriertia',
-                                defaultTableCriteria:{
-                                  'fdStatusInfo':{
-                                    'searchKey':'$notIn',
-                                    'searchValue':['3','4']
+                                defaultTableCriteria: {
+                                  'fdStatusInfo': {
+                                    'searchKey': '$notIn',
+                                    'searchValue': ['3', '4']
                                   }
                                 },
                                 chooseFdName: 'fdName',
@@ -2090,7 +2090,7 @@ const XForm = (props) => {
               }}
               columnSpan={1}
             ></GridItem>
-            {/* <GridItem column={1} row={27} rowSpan={1} columnSpan={2}>
+            <GridItem column={1} row={27} rowSpan={1} columnSpan={2}>
               <XformFieldset
                 labelTextAlign={'left'}
                 mobileContentAlign={'right'}
@@ -2110,7 +2110,7 @@ const XForm = (props) => {
                     fdEntityName='com.landray.cms.out.manage.core.entity.staff.CmsStaffEntrance'
                     multiple={false}
                     fdEntityKey='fdAtt'
-                    operation={{ edit: false, preview: false, download: false,print:false }}
+                    operation={{ edit: false, preview: false, download: false, print: false }}
                     buttonType='text'
                   />
                 </Form.Item>
@@ -2124,7 +2124,7 @@ const XForm = (props) => {
                 display: 'none'
               }}
               columnSpan={1}
-            ></GridItem> */}
+            ></GridItem>
             <GridItem
               column={2}
               row={20}

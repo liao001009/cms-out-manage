@@ -106,7 +106,7 @@ const Content: React.FC<IContentViewProps> = props => {
     }
     values = {
       ...values,
-      cmsStaffAdjustDetail: values.cmsStaffAdjustDetail.values
+      cmsStaffAdjustDetail: values?.cmsStaffAdjustDetail?.values || undefined
     }
     // 提交
     api.add(values as any).then(res => {
