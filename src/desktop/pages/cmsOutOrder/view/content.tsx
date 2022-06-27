@@ -11,7 +11,7 @@ const { confirm } = Modal
 
 const Content: React.FC<IContentViewProps> = props => {
   //@ts-ignore
-  const { data, history } = props
+  const { data,refresh, history } = props
   // 模板id
 
   // 机制组件引用
@@ -23,9 +23,9 @@ const Content: React.FC<IContentViewProps> = props => {
   }, [])
 
 
-  const handleEdit = useCallback(() => {
-    history.goto(`/cmsOutOrder/edit/${data.fdId}`)
-  }, [history])
+  // const handleEdit = useCallback(() => {
+  //   history.goto(`/cmsOutOrder/edit/${data.fdId}`)
+  // }, [history])
 
   const handleDel = useCallback(() => {
     confirm({
@@ -53,7 +53,7 @@ const Content: React.FC<IContentViewProps> = props => {
           console.log('处理结果', res)
           if (res.success) {
             Message.success('处理成功')
-            history.goBack()
+            refresh()
           }
         })
       },
@@ -73,7 +73,7 @@ const Content: React.FC<IContentViewProps> = props => {
         </Breadcrumb>
         <div className='buttons'>
           <Button type='primary' onClick={handleDone}>处理</Button>
-          <Button type='primary' onClick={handleEdit}>编辑</Button>
+          {/*<Button type='primary' onClick={handleEdit}>编辑</Button>*/}
           <Button type='default' onClick={handleDel}>删除</Button>
           <Button type='default' onClick={handleClose}>关闭</Button>
         </div>
