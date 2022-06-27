@@ -165,7 +165,7 @@ const Content: React.FC<IContentViewProps> = props => {
   const _btn_submit = useMemo(() => {
     const role = isFlowTaskRole(flowData)
     const status = data?.fdProcessStatus || getFlowStatus(flowData)
-    if (status === ESysLbpmProcessStatus.ABANDONED) return null
+    if (status === ESysLbpmProcessStatus.ABANDONED||status === ESysLbpmProcessStatus.COMPLETED) return null
     const validStatus = status !== ESysLbpmProcessStatus.COMPLETED && status !== ESysLbpmProcessStatus.ABANDONED
     const submitBtn = <Button type='primary' onClick={() => handleSave(false)}>提交</Button>
     return !hasDraftBtn ? (
@@ -179,7 +179,7 @@ const Content: React.FC<IContentViewProps> = props => {
   // 编辑按钮
   const _btn_edit = useMemo(() => {
     const status = data.fdProcessStatus || getFlowStatus(flowData)
-    if (status === ESysLbpmProcessStatus.ABANDONED) return null
+    if (status === ESysLbpmProcessStatus.ABANDONED||status === ESysLbpmProcessStatus.COMPLETED) return null
     const editBtn = <Button onClick={handleEdit}>编辑</Button>
     const authEditBtn = <Auth.Auth
       authURL='/staff/cmsStaffAdjust/edit'

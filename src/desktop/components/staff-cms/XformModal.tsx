@@ -39,7 +39,7 @@ export interface IProps extends IContentViewProps {
   apiKey: any
   /** apiName */
   apiName: string
-  /** 要改变的筛选项 */
+  /** 要改变的筛选项,将$eq改成$contains */
   criteriaProps?: any
   /** 行号 */
   rowIndex?: number
@@ -71,24 +71,28 @@ const XformModal: React.FC<IProps> = (props) => {
   const [visible, setVisible] = useState<boolean>(false)
   const [fdName, setFdName] = useState<string>(value && value.fdName || '')
   /** 组装表格列头筛选项 */
-  const getDefaultTableColumns = useCallback(()=>{
+  const getDefaultTableColumns = ()=>{
     if(Object.keys(defaultTableCriteria).length<=0)return {}
     const newConditions = {}
     Object.keys(defaultTableCriteria).forEach(key=>{
       const newConditionsKey = {}
       newConditionsKey[defaultTableCriteria[key]['searchKey']] = defaultTableCriteria[key]['searchValue']
-      newConditions[key] = defaultTableCriteria[key] ?  newConditionsKey : undefined
+      newConditions[key] = defaultTableCriteria[key]['searchValue'] && newConditionsKey
     })
-    return newConditions
-  },[])
+    return {
+      conditions:{...newConditions}
+    }
+  }
+  
   useEffect(() => {
     if (showStatus === EShowStatus.add || showStatus === EShowStatus.edit) {
       getListData({
-        conditions:{...getDefaultTableColumns()}
+        ...getDefaultTableColumns()
       })
     }
-  }, [])
+  }, [JSON.stringify(defaultTableCriteria)])
 
+  
   const getListData = async (data) => {
     try {
       const res = await apiKey[apiName](data)
@@ -144,7 +148,7 @@ const XformModal: React.FC<IProps> = (props) => {
       })
       getListData({
         ...query,
-        conditions: { ...conditions, ...newConditions }
+        conditions: {...conditions, ...newConditions }
       })
     },
     [query]

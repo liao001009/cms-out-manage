@@ -1,4 +1,4 @@
-import React, { useRef, createRef } from 'react'
+import React, { useRef, createRef, useState } from 'react'
 import './index.scss'
 import { fmtMsg } from '@ekp-infra/respect'
 import { Form } from '@lui/core'
@@ -27,6 +27,7 @@ const XForm = (props) => {
     cmsStaffLeaveDetail: createRef() as any
   })
   const { formRef: formRef, value: value } = props
+  const [fdCurrProject,setFdCurrProject] = useState<any>({})
   const [form] = Form.useForm()
   // 对外暴露接口
   useApi({
@@ -44,6 +45,7 @@ const XForm = (props) => {
 
   // 当前项目选择返回数据
   const handleProjectChange = (v) => {
+    setFdCurrProject(v)
     form.setFieldsValue({
       fdBelongDept: v.fdBelongDept,
       fdBelongTeam: v.fdBelongTeam,
@@ -1001,6 +1003,16 @@ const XForm = (props) => {
                           chooseFdName: 'fdName',
                           criteriaKey: 'presonCriertia',
                           criteriaProps: ['fdPost.fdName', 'fdProject.fdName'],
+                          defaultTableCriteria:{
+                            'fdStatusInfo':{
+                              'searchKey':'$in',
+                              'searchValue':['3','4']
+                            },
+                            'fdProject.fdName':{
+                              'searchKey':'$contains',
+                              'searchValue':Object.keys(fdCurrProject).length ? fdCurrProject.fdName : undefined
+                            }
+                          },
                           title: fmtMsg(':cmsStaffLeave.form.!{l47ucie6axg62p00qnq}', '外包人员姓名'),
                           name: 'fdStaffName',
                           columnsProps: outStaffInfoColumns,
