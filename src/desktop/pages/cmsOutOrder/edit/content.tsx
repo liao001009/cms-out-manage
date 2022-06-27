@@ -1,23 +1,14 @@
 //@ts-ignore
-import React, { createElement as h, useRef } from 'react'
-import { Module } from '@ekp-infra/common'
-import { IContentViewProps } from '@ekp-runtime/render-module'
+import React, {createElement as h, useCallback, useRef} from 'react'
+import {IContentViewProps} from '@ekp-runtime/render-module'
 import Icon from '@lui/icons'
-import { Loading, Breadcrumb, Button, Message, Modal } from '@lui/core'
-import { EBtnType } from '@lui/core/es/components/Button'
+import {Breadcrumb, Button, Message, Modal} from '@lui/core'
+import {EBtnType} from '@lui/core/es/components/Button'
 import XForm from './form'
 import api from '@/api/cmsOutOrder'
 import './index.scss'
 
 Message.config({ maxCount: 1 })
-// 流程页签
-const LBPMTabs = Module.getComponent('sys-lbpm', 'LBPMTabs', { loading: <Loading /> })
-// 流程机制
-const LBPMFormFragment = Module.getComponent('sys-lbpm', 'LBPMFormFragment', { loading: <Loading /> })
-// 权限机制
-const RightFragment = Module.getComponent('sys-right', 'RightFragment', { loading: <Loading /> })
-// 打印机制
-// const PrintRuntime = Module.getComponent('sys-mech-print', 'PrintRuntimeFRagment', { loading: <React.Fragment></React.Fragment> })
 
 const Content: React.FC<IContentViewProps> = props => {
   const { data, history, routerPrefix } = props
@@ -160,48 +151,13 @@ const Content: React.FC<IContentViewProps> = props => {
       </div>
       {/* 内容区 */}
       <div className='lui-approve-template-content'>
-        <div className='left'>
-          {/* 表单信息 */}
-          <div className='form'>
-            <XForm formRef={formComponentRef} value={data || {}} />
-          </div>
-          {/* 机制页签 */}
-          <div className='tabs'>
-            <LBPMTabs
-              fdId={data?.fdTemplate?.fdId}
-              processId={data?.mechanisms && data.mechanisms['lbpmProcess']?.fdProcessId}
-              getFormValue={() => formComponentRef.current && formComponentRef.current.getValue()}
-              extra={[
-                {
-                  key: 'right',
-                  name: '权限管理',
-                  children: (
-                    <RightFragment
-                      wrapperRef={rightComponentRef}
-                      hasFlow={true}
-                      mechanism={data?.mechanisms && data?.mechanisms['sys-right']}
-                      getFormValue={() => formComponentRef.current && formComponentRef.current.getValue()} />
-                  )
-                }
-              ]} />
-          </div>
+        {/*<div className='left'>*/}
+        {/* 表单信息 */}
+        <div className='form'>
+          <XForm formRef={formComponentRef} value={data || {}} />
         </div>
-        <div className='right'>
-          {/* 审批操作 */}
-          <div className='lui-approve-template-main'>
-            <LBPMFormFragment
-              auditType='audit'
-              approveLayout='right'
-              wrappedComponentRef={lbpmComponentRef}
-              moduleCode='cms-out-manage'
-              mechanism={{
-                formId: data?.fdTemplate?.fdId,
-                processTemplateId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdTemplateId,
-                processId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdProcessId
-              }}
-              getFormValue={() => formComponentRef.current && formComponentRef.current.getValue()} />
-          </div>
-        </div>
+        {/*</div>*/}
+
       </div>
     </div>
   )

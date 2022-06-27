@@ -101,21 +101,24 @@ const XForm = (props) => {
                 title={fmtMsg(':cmsOutOrder.form.!{l4m6frdxc2l7q38c6re}', '说明')}
                 layout={'horizontal'}
               >
-                <Form.Item
-                  name={'fdExplain'}
-                  rules={[
-                    {
-                      validator: lengthValidator(2000)
-                    }
-                  ]}
-                >
-                  <XformTextarea
-                    {...sysProps}
-                    placeholder={fmtMsg(':cmsOutOrder.form.!{l4m6frdyp04sdwk2ef}', '请输入')}
-                    height={3}
-                    showStatus="view"
-                  ></XformTextarea>
-                </Form.Item>
+                <a target={'_blank'} href={value.fdExplain} rel="noreferrer">
+                  <Form.Item
+                    style={{color:'#4285f4'}}
+                    name={'fdExplain'}
+                    rules={[
+                      {
+                        validator: lengthValidator(2000)
+                      }
+                    ]}
+                  >
+                    <XformTextarea
+                      {...sysProps}
+                      placeholder={fmtMsg(':cmsOutOrder.form.!{l4m6frdyp04sdwk2ef}', '请输入')}
+                      height={3}
+                      showStatus="view"
+                    ></XformTextarea>
+                  </Form.Item>
+                </a>
               </XformFieldset>
             </GridItem>
             <GridItem column={1} row={4} rowSpan={1} columnSpan={1}>

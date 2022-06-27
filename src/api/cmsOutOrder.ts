@@ -8,7 +8,9 @@ const api = {
   ...commonApi,
   save: Api.build('order/cmsOutOrder/save', http),
   // 工单管理(列表请求)
-  listOrder: Api.build('order/cmsOutOrder/listOrder', http)
+  listOrder: Api.build('order/cmsOutOrder/listOrder', http),
+  //处理待办
+  updateRemoveTodo : Api.build('order/cmsOutOrder/updateRemoveTodo', http)
 }
 
 export default api

@@ -1,13 +1,13 @@
 import React, { useCallback, useMemo } from 'react'
 import { IContentViewProps } from '@ekp-runtime/render-module'
 import Icon from '@lui/icons'
-import { Input, Button, Space, Pagination } from '@lui/core'
+import { Button, Space, Pagination } from '@lui/core'
 import Criteria from '@elem/criteria'
 import { $reduceCriteria } from '@/desktop/shared/criteria-order'
 import Operation from '@elem/operation'
 import Table, { useTable } from '@elem/mk-table'
 import api from '@/api/cmsOutOrder'
-import { useAdd } from '@/desktop/shared/add'
+// import { useAdd } from '@/desktop/shared/add'
 import { $deleteAll } from '@/desktop/shared/deleteAll'
 import './index.scss'
 
@@ -19,11 +19,11 @@ const Content: React.FC<IContentViewProps> = (props) => {
   const columns = useMemo(
     () => [
       /*文档标题*/
-      {
-        title: '文档标题',
-        dataIndex: 'fdSubject',
-        render: (value) => value
-      },
+      // {
+      //   title: '文档标题',
+      //   dataIndex: 'fdSubject',
+      //   render: (value) => value
+      // },
       /*权限项目*/
       {
         title: '权限项目',
@@ -73,19 +73,19 @@ const Content: React.FC<IContentViewProps> = (props) => {
   /** 操作函数集 */
 
   //新建
-  const { $add: $add } = useAdd('/cmsOutOrder/add/!{selectedRow}')
-  const handleAdd = useCallback(
-    (event) => {
-      event.stopPropagation()
-      $add({
-        history: history,
-        api: api,
-        selectedRows: selectedRows,
-        refresh: refresh
-      })
-    },
-    [history, selectedRows, refresh]
-  )
+  // const { $add: $add } = useAdd('/cmsOutOrder/add/!{selectedRow}')
+  // const handleAdd = useCallback(
+  //   (event) => {
+  //     event.stopPropagation()
+  //     $add({
+  //       history: history,
+  //       api: api,
+  //       selectedRows: selectedRows,
+  //       refresh: refresh
+  //     })
+  //   },
+  //   [history, selectedRows, refresh]
+  // )
   //批量删除
   const handleDeleteAll = useCallback(
     (event) => {
@@ -100,15 +100,15 @@ const Content: React.FC<IContentViewProps> = (props) => {
   )
 
   /** 搜索 */
-  const handleSearch = useCallback((keyword: string) => {
-    queryChange({
-      ...query,
-      conditions: {
-        ...query.conditions,
-        fdSubject: { $contains: keyword.trim() }
-      }
-    })
-  }, [])
+  // const handleSearch = useCallback((keyword: string) => {
+  //   queryChange({
+  //     ...query,
+  //     conditions: {
+  //       ...query.conditions,
+  //       fdSubject: { $contains: keyword.trim() }
+  //     }
+  //   })
+  // }, [])
 
   /** 筛选 */
   const handleCriteriaChange = useCallback(
@@ -176,13 +176,13 @@ const Content: React.FC<IContentViewProps> = (props) => {
 
       <div className="lui-template-list">
         <div className="lui-template-list-criteria">
-          <div className="left">
-            {/* 搜索 */}
-            <Input.Search allowClear placeholder="请输入关键词搜索" onSearch={handleSearch} />
-          </div>
+          {/*<div className="left">*/}
+          {/*  /!* 搜索 *!/*/}
+          {/*  <Input.Search allowClear placeholder="请输入关键词搜索" onSearch={handleSearch} />*/}
+          {/*</div>*/}
           <div className="right">
             {/* 筛选器 */}
-            <Criteria key="criteria" onChange={handleCriteriaChange}>
+            <Criteria key="criteria" defaultExpand={true} onChange={handleCriteriaChange}>
               <Criteria.Input name="fdPermissionItem" title="权限项目"></Criteria.Input>
               <Criteria.Org orgType={8} title="处理人" name="fdHandler.fdId"></Criteria.Org>
             </Criteria>
@@ -207,9 +207,9 @@ const Content: React.FC<IContentViewProps> = (props) => {
               </Button>
               {/* 操作栏 */}
               <React.Fragment>
-                <Button type="primary" onClick={handleAdd}>
+                {/* <Button type="primary" onClick={handleAdd}>
                   新建
-                </Button>
+                </Button> */}
                 {/*<AddComponent visible={$addVisible} callback={$addClose}></AddComponent>*/}
                 <Button type="default" onClick={handleDeleteAll}>
                   批量删除
