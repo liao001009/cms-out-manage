@@ -12,19 +12,17 @@ import { $deleteAll } from '@/desktop/shared/deleteAll'
 import ExportModal from '@/desktop/components/export'
 import './index.scss'
 import { Auth } from '@ekp-infra/common'
-//@ts-ignore
-import Status, { EStatusType } from '@elements/status'
 const Content: React.FC<IContentViewProps> = (props) => {
   const { status, data, queryChange, query, refresh, history } = props
   const { content, totalSize, pageSize, offset } = data
   const [visible, setVisible] = useState<boolean>(false)
 
   const [templateData, setTemplateData] = useState<any>({})
-  useEffect(()=>{
+  useEffect(() => {
     loadTemplateData()
-  },[])
+  }, [])
 
-  const loadTemplateData = async () =>{
+  const loadTemplateData = async () => {
     try {
       const res = await apiTemplate.list({
         sorts: { fdCreateTime: 'desc' },
@@ -192,7 +190,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
       event.stopPropagation()
       history.goto(`/cmsStaffAdjust/add/${templateData.fdId}`)
     },
-    [history, selectedRows, refresh,templateData]
+    [history, selectedRows, refresh, templateData]
   )
   //批量删除
   const handleDeleteAll = useCallback(
@@ -288,146 +286,157 @@ const Content: React.FC<IContentViewProps> = (props) => {
   )
   return (
     <React.Fragment>
-      <Auth.Auth
-        authURL='/staff/cmsStaffAdjust/listAdjust'
-        authModuleName='cms-out-manage'
-        unauthorizedPage={
-          <Status type={EStatusType._403} title='抱歉，您暂无权限访问当前页面' />
-        }
-      >
-        <div className="lui-template-list">
-          <div className="lui-template-list-criteria">
-            <div className="left">
-              {/* 搜索 */}
-              <Input.Search allowClear placeholder="请输入关键词搜索" onSearch={handleSearch} />
-            </div>
-            <div className="right">
-              {/* 筛选器 */}
-              <Criteria key="criteria" expandable={true} onChange={handleCriteriaChange}>
-                <Criteria.Criterion
-                  canMulti={false}
-                  options={[
-                    {
-                      value: '1',
-                      text: '更换项目'
-                    },
-                    {
-                      value: '2',
-                      text: '变更权限'
-                    }
-                  ]}
-                  name="fdAdjustReason"
-                  title="调整意见"
-                ></Criteria.Criterion>
-                <Criteria.Input name="fdProject" title="当前项目"></Criteria.Input>
-                <Criteria.Org orgType={8} title="当前项目负责人" name="fdProjectPrincipal.fdId"></Criteria.Org>
-                <Criteria.Org orgType={8} title="当前内部负责人" name="fdInnerPrincipal.fdId"></Criteria.Org>
-                <Criteria.Calendar
-                  options={Criteria.Calendar.buildOptions()}
-                  name="fdCreateTime"
-                  title="创建时间"
-                ></Criteria.Calendar>
-                <Criteria.Criterion
-                  canMulti={false}
-                  options={[
-                    {
-                      value: '00',
-                      text: '废弃'
-                    },
-                    {
-                      value: '10',
-                      text: '草稿'
-                    },
-                    {
-                      value: '11',
-                      text: '驳回'
-                    },
-                    {
-                      value: '12',
-                      text: '撤回'
-                    },
-                    {
-                      value: '20',
-                      text: '待审'
-                    },
-                    {
-                      value: '21',
-                      text: '挂起'
-                    },
-                    {
-                      value: '29',
-                      text: '异常'
-                    },
-                    {
-                      value: '30',
-                      text: '结束'
-                    }
-                  ]}
-                  name="fdProcessStatus"
-                  title="文档状态"
-                ></Criteria.Criterion>
-              </Criteria>
-            </div>
+
+      <div className="lui-template-list">
+        <div className="lui-template-list-criteria">
+          <div className="left">
+            {/* 搜索 */}
+            <Input.Search allowClear placeholder="请输入关键词搜索" onSearch={handleSearch} />
           </div>
-          <div className="lui-template-list-toolbar">
-            <div className="left">
-              <Operation key="operation" onChange={handleSorter}>
-                {/* 排序 */}
-                <Operation.SortGroup>
-                  <Operation.Sort key="fdCreateTime" name="fdCreateTime" title="创建时间"></Operation.Sort>
-                </Operation.SortGroup>
-              </Operation>
-            </div>
-            <div className="right">
-              <Space>
-                <Button onClick={refresh}>
-                  <Icon name="redo" />
-                </Button>
-                {/* 操作栏 */}
-                <React.Fragment>
+          <div className="right">
+            {/* 筛选器 */}
+            <Criteria key="criteria" expandable={true} onChange={handleCriteriaChange}>
+              <Criteria.Criterion
+                canMulti={false}
+                options={[
+                  {
+                    value: '1',
+                    text: '更换项目'
+                  },
+                  {
+                    value: '2',
+                    text: '变更权限'
+                  }
+                ]}
+                name="fdAdjustReason"
+                title="调整意见"
+              ></Criteria.Criterion>
+              <Criteria.Input name="fdProject" title="当前项目"></Criteria.Input>
+              <Criteria.Org orgType={8} title="当前项目负责人" name="fdProjectPrincipal.fdId"></Criteria.Org>
+              <Criteria.Org orgType={8} title="当前内部负责人" name="fdInnerPrincipal.fdId"></Criteria.Org>
+              <Criteria.Calendar
+                options={Criteria.Calendar.buildOptions()}
+                name="fdCreateTime"
+                title="创建时间"
+              ></Criteria.Calendar>
+              <Criteria.Criterion
+                canMulti={false}
+                options={[
+                  {
+                    value: '00',
+                    text: '废弃'
+                  },
+                  {
+                    value: '10',
+                    text: '草稿'
+                  },
+                  {
+                    value: '11',
+                    text: '驳回'
+                  },
+                  {
+                    value: '12',
+                    text: '撤回'
+                  },
+                  {
+                    value: '20',
+                    text: '待审'
+                  },
+                  {
+                    value: '21',
+                    text: '挂起'
+                  },
+                  {
+                    value: '29',
+                    text: '异常'
+                  },
+                  {
+                    value: '30',
+                    text: '结束'
+                  }
+                ]}
+                name="fdProcessStatus"
+                title="文档状态"
+              ></Criteria.Criterion>
+            </Criteria>
+          </div>
+        </div>
+        <div className="lui-template-list-toolbar">
+          <div className="left">
+            <Operation key="operation" onChange={handleSorter}>
+              {/* 排序 */}
+              <Operation.SortGroup>
+                <Operation.Sort key="fdCreateTime" name="fdCreateTime" title="创建时间"></Operation.Sort>
+              </Operation.SortGroup>
+            </Operation>
+          </div>
+          <div className="right">
+            <Space>
+              <Button onClick={refresh}>
+                <Icon name="redo" />
+              </Button>
+              {/* 操作栏 */}
+              <React.Fragment>
+                <Auth.Auth
+                  authURL='/staff/cmsStaffAdjust/add'
+                  authModuleName='cms-out-manage'
+                  unauthorizedPage={null}
+                >
                   <Button type="primary" onClick={handleAdd}>
                     新建
                   </Button>
+                </Auth.Auth>
+                <Auth.Auth
+                  authURL='/staff/cmsStaffAdjust/delete'
+                  authModuleName='cms-out-manage'
+                  unauthorizedPage={null}
+                >
                   <Button type="default" onClick={handleDeleteAll}>
                     批量删除
                   </Button>
-                  <Button type="default" onClick={handleExportData} disabled={!selectedRows.length}>
-                    导出
-                  </Button>
-                </React.Fragment>
-              </Space>
-            </div>
+                </Auth.Auth>
+                {/* <Auth.Auth
+                  authURL='/staff/cmsStaffAdjust/listAdjust'
+                  authModuleName='cms-out-manage'
+                  unauthorizedPage={null}
+                > */}
+                <Button type="default" onClick={handleExportData} disabled={!selectedRows.length}>
+                  导出
+                </Button>
+                {/* </Auth.Auth> */}
+              </React.Fragment>
+            </Space>
           </div>
-          <div className="lui-template-list-table">
-            <Table loading={status === 'loading'} {...tableProps} onRow={onRowClick} />
-          </div>
-          <div className="lui-template-list-page">
-            {totalSize ? (
-              <Pagination
-                showQuickJumper
-                showSizeChanger
-                refresh={true}
-                total={totalSize}
-                pageSize={pageSize}
-                onChange={handlePage}
-                onRefresh={refresh}
-              />
-            ) : null}
-          </div>
-          {
-            // @ts-ignore
-            visible ? <ExportModal
-              visible={visible}
-              setVisible={setVisible}
-              totalSize={selectedRows.length}
-              fdEntityName={'com.landray.cms.out.manage.core.entity.staff.CmsStaffAdjust'}
-              pageNo={offset / pageSize + 1}
-              pageSize={pageSize}
-              conditions={query}
-            /> : null
-          }
         </div>
-      </Auth.Auth>
+        <div className="lui-template-list-table">
+          <Table loading={status === 'loading'} {...tableProps} onRow={onRowClick} />
+        </div>
+        <div className="lui-template-list-page">
+          {totalSize ? (
+            <Pagination
+              showQuickJumper
+              showSizeChanger
+              refresh={true}
+              total={totalSize}
+              pageSize={pageSize}
+              onChange={handlePage}
+              onRefresh={refresh}
+            />
+          ) : null}
+        </div>
+        {
+          // @ts-ignore
+          visible ? <ExportModal
+            visible={visible}
+            setVisible={setVisible}
+            totalSize={selectedRows.length}
+            fdEntityName={'com.landray.cms.out.manage.core.entity.staff.CmsStaffAdjust'}
+            pageNo={offset / pageSize + 1}
+            pageSize={pageSize}
+            conditions={query}
+          /> : null
+        }
+      </div>
     </React.Fragment>
   )
 }

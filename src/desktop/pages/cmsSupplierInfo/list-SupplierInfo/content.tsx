@@ -12,8 +12,6 @@ import { $deleteAll } from '@/desktop/shared/deleteAll'
 import { Module } from '@ekp-infra/common'
 import './index.scss'
 import { Auth } from '@ekp-infra/common'
-//@ts-ignore
-import Status, { EStatusType } from '@elements/status'
 const Import = Module.getComponent('sys-mech-transport', 'Import')
 
 const Content: React.FC<IContentViewProps> = (props) => {
@@ -197,114 +195,119 @@ const Content: React.FC<IContentViewProps> = (props) => {
   )
 
   return (
-    <Auth.Auth
-      authURL='/supplier/cmsSupplierInfo/listSupplierInfo'
-      authModuleName='cms-out-manage'
-      unauthorizedPage={
-        <Status type={EStatusType._403} title='抱歉，您暂无权限访问当前页面' />
-      }
-    >
-      <React.Fragment>
-        <div className="lui-template-list">
-          <div className="lui-template-list-criteria">
-            <div className="left">
-              {/* 搜索 */}
-              <Input.Search allowClear placeholder="请输入关键词搜索" onSearch={handleSearch} />
-            </div>
-            <div className="right">
-              {/* 筛选器 */}
-              <Criteria key="criteria" onChange={handleCriteriaChange}>
-                {/* <Criteria.Input name="fdSupplierSimpleName" title="供应商简称"></Criteria.Input> */}
-                <Criteria.Input name="fdOrgCode" title="组织机构代码"></Criteria.Input>
-                <Criteria.Criterion
-                  canMulti={false}
-                  options={[
-                    {
-                      text: '不限',
-                      value: ''
-                    },
-                    {
-                      text: '未签合同',
-                      value: '1'
-                    },
-                    {
-                      text: '已签合同',
-                      value: '2'
-                    },
-                    {
-                      text: '合同过期',
-                      value: '3'
-                    }
-                  ]}
-                  name="fdCooperationStatus"
-                  title="供应商合作状态"
-                ></Criteria.Criterion>
-                <Criteria.Input name="fdFrame" title="所属框架"></Criteria.Input>
-              </Criteria>
-            </div>
+
+    <React.Fragment>
+      <div className="lui-template-list">
+        <div className="lui-template-list-criteria">
+          <div className="left">
+            {/* 搜索 */}
+            <Input.Search allowClear placeholder="请输入关键词搜索" onSearch={handleSearch} />
           </div>
-          <div className="lui-template-list-toolbar">
-            <div className="left">
-              <Operation key="operation" onChange={handleSorter}>
-                {/* 排序 */}
-                <Operation.SortGroup>
-                  <Operation.Sort key="fdCreateTime" name="fdCreateTime" title="创建时间"></Operation.Sort>
-                </Operation.SortGroup>
-              </Operation>
-            </div>
-            <div className="right">
-              <Space>
-                <Button onClick={refresh}>
-                  <Icon name="redo" />
-                </Button>
-                {/* 操作栏 */}
-                <React.Fragment>
+          <div className="right">
+            {/* 筛选器 */}
+            <Criteria key="criteria" onChange={handleCriteriaChange}>
+              {/* <Criteria.Input name="fdSupplierSimpleName" title="供应商简称"></Criteria.Input> */}
+              <Criteria.Input name="fdOrgCode" title="组织机构代码"></Criteria.Input>
+              <Criteria.Criterion
+                canMulti={false}
+                options={[
+                  {
+                    text: '不限',
+                    value: ''
+                  },
+                  {
+                    text: '未签合同',
+                    value: '1'
+                  },
+                  {
+                    text: '已签合同',
+                    value: '2'
+                  },
+                  {
+                    text: '合同过期',
+                    value: '3'
+                  }
+                ]}
+                name="fdCooperationStatus"
+                title="供应商合作状态"
+              ></Criteria.Criterion>
+              <Criteria.Input name="fdFrame" title="所属框架"></Criteria.Input>
+            </Criteria>
+          </div>
+        </div>
+        <div className="lui-template-list-toolbar">
+          <div className="left">
+            <Operation key="operation" onChange={handleSorter}>
+              {/* 排序 */}
+              <Operation.SortGroup>
+                <Operation.Sort key="fdCreateTime" name="fdCreateTime" title="创建时间"></Operation.Sort>
+              </Operation.SortGroup>
+            </Operation>
+          </div>
+          <div className="right">
+            <Space>
+              <Button onClick={refresh}>
+                <Icon name="redo" />
+              </Button>
+              {/* 操作栏 */}
+              <React.Fragment>
+                <Auth.Auth
+                  authURL='/supplier/cmsSupplierInfo/add'
+                  authModuleName='cms-out-manage'
+                  unauthorizedPage={null}
+                >
                   <Button type="primary" onClick={handleAdd}>
                     新建
                   </Button>
-                  <Button type="default" onClick={() => setImportVisible(true)}>
-                    导入
-                  </Button>
+                </Auth.Auth>
+                <Button type="default" onClick={() => setImportVisible(true)}>
+                  导入
+                </Button>
+                <Auth.Auth
+                  authURL='/supplier/cmsSupplierInfo/delete'
+                  authModuleName='cms-out-manage'
+                  unauthorizedPage={null}
+                >
                   <Button type="default" onClick={handleDeleteAll}>
                     批量删除
                   </Button>
-                </React.Fragment>
-              </Space>
-            </div>
-          </div>
-          <div className="lui-template-list-table">
-            <Table loading={status === 'loading'} {...tableProps} onRow={onRowClick} />
-          </div>
-          <div className="lui-template-list-page">
-            {totalSize ? (
-              <Pagination
-                showQuickJumper
-                showSizeChanger
-                refresh={true}
-                total={totalSize}
-                pageSize={pageSize}
-                onChange={handlePage}
-                onRefresh={refresh}
-              />
-            ) : null}
+                </Auth.Auth>
+              </React.Fragment>
+            </Space>
           </div>
         </div>
-        <Modal
-          visible={importVisible}
-          title={false}
-          onCancel={() => setImportVisible(false)}
-          modalType='oversized'
-          footer={null}
-          destroyOnClose={true}
-        >
-          <Import
-            isDefault={false}
-            isMasterTemplate={true}
-            fdEntityName='com.landray.cms.out.manage.core.entity.supplier.CmsSupplierInfo'
-          />
-        </Modal>
-      </React.Fragment>
-    </Auth.Auth>
+        <div className="lui-template-list-table">
+          <Table loading={status === 'loading'} {...tableProps} onRow={onRowClick} />
+        </div>
+        <div className="lui-template-list-page">
+          {totalSize ? (
+            <Pagination
+              showQuickJumper
+              showSizeChanger
+              refresh={true}
+              total={totalSize}
+              pageSize={pageSize}
+              onChange={handlePage}
+              onRefresh={refresh}
+            />
+          ) : null}
+        </div>
+      </div>
+      <Modal
+        visible={importVisible}
+        title={false}
+        onCancel={() => setImportVisible(false)}
+        modalType='oversized'
+        footer={null}
+        destroyOnClose={true}
+      >
+        <Import
+          isDefault={false}
+          isMasterTemplate={true}
+          fdEntityName='com.landray.cms.out.manage.core.entity.supplier.CmsSupplierInfo'
+        />
+      </Modal>
+    </React.Fragment>
   )
 }
 

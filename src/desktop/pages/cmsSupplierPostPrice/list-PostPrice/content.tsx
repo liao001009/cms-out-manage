@@ -12,8 +12,6 @@ import { useAdd } from '@/desktop/shared/add'
 import { $deleteAll } from '@/desktop/shared/deleteAll'
 import './index.scss'
 import { Auth } from '@ekp-infra/common'
-//@ts-ignore
-import Status, { EStatusType } from '@elements/status'
 const Content: React.FC<IContentViewProps> = (props) => {
   const { status, data, queryChange, query, refresh, history } = props
   const { content, totalSize, pageSize, offset } = data
@@ -162,72 +160,77 @@ const Content: React.FC<IContentViewProps> = (props) => {
 
   return (
     <React.Fragment>
-      <Auth.Auth
-        authURL='/supplier/cmsSupplierPostPrice/listPostPrice'
-        authModuleName='cms-out-manage'
-        unauthorizedPage={
-          <Status type={EStatusType._403} title='抱歉，您暂无权限访问当前页面' />
-        }
-      >
-        <div className="lui-template-list">
-          <div className="lui-template-list-criteria">
-            <div className="left">
-              {/* 搜索 */}
-              <Input.Search allowClear placeholder="请输入关键词搜索" onSearch={handleSearch} />
-            </div>
-            <div className="right">
-              {/* 筛选器 */}
-              <Criteria key="criteria" onChange={handleCriteriaChange}></Criteria>
-            </div>
+
+      <div className="lui-template-list">
+        <div className="lui-template-list-criteria">
+          <div className="left">
+            {/* 搜索 */}
+            <Input.Search allowClear placeholder="请输入关键词搜索" onSearch={handleSearch} />
           </div>
-          <div className="lui-template-list-toolbar">
-            <div className="left">
-              <Operation key="operation" onChange={handleSorter}>
-                {/* 排序 */}
-                <Operation.SortGroup>
-                  <Operation.Sort key="fdCreateTime" name="fdCreateTime" title="创建时间"></Operation.Sort>
-                </Operation.SortGroup>
-                {totalSize && (
-                  <Operation.Paging name="pageNo" value={offset / pageSize} pageSize={pageSize} total={totalSize} />
-                )}
-              </Operation>
-            </div>
-            <div className="right">
-              <Space>
-                <Button onClick={refresh}>
-                  <Icon name="redo" />
-                </Button>
-                {/* 操作栏 */}
-                <React.Fragment>
+          <div className="right">
+            {/* 筛选器 */}
+            <Criteria key="criteria" onChange={handleCriteriaChange}></Criteria>
+          </div>
+        </div>
+        <div className="lui-template-list-toolbar">
+          <div className="left">
+            <Operation key="operation" onChange={handleSorter}>
+              {/* 排序 */}
+              <Operation.SortGroup>
+                <Operation.Sort key="fdCreateTime" name="fdCreateTime" title="创建时间"></Operation.Sort>
+              </Operation.SortGroup>
+              {totalSize && (
+                <Operation.Paging name="pageNo" value={offset / pageSize} pageSize={pageSize} total={totalSize} />
+              )}
+            </Operation>
+          </div>
+          <div className="right">
+            <Space>
+              <Button onClick={refresh}>
+                <Icon name="redo" />
+              </Button>
+              {/* 操作栏 */}
+              <React.Fragment>
+                <Auth.Auth
+                  authURL='/supplier/cmsSupplierPostPrice/add'
+                  authModuleName='cms-out-manage'
+                  unauthorizedPage={null}
+                >
                   <Button type="primary" onClick={handleAdd}>
                     新建
                   </Button>
-                  {/* <AddComponent visible={$addVisible} callback={$addClose}></AddComponent> */}
+                </Auth.Auth>
+                <Auth.Auth
+                  authURL='/supplier/cmsSupplierPostPrice/delete'
+                  authModuleName='cms-out-manage'
+                  unauthorizedPage={null}
+                >
                   <Button type="default" onClick={handleDeleteAll}>
                     批量删除
                   </Button>
-                </React.Fragment>
-              </Space>
-            </div>
-          </div>
-          <div className="lui-template-list-table">
-            <Table loading={status === 'loading'} {...tableProps} onRow={onRowClick} />
-          </div>
-          <div className="lui-template-list-page">
-            {totalSize ? (
-              <Pagination
-                showQuickJumper
-                showSizeChanger
-                refresh={true}
-                total={totalSize}
-                pageSize={pageSize}
-                onChange={handlePage}
-                onRefresh={refresh}
-              />
-            ) : null}
+                </Auth.Auth>
+                {/* <AddComponent visible={$addVisible} callback={$addClose}></AddComponent> */}
+              </React.Fragment>
+            </Space>
           </div>
         </div>
-      </Auth.Auth>
+        <div className="lui-template-list-table">
+          <Table loading={status === 'loading'} {...tableProps} onRow={onRowClick} />
+        </div>
+        <div className="lui-template-list-page">
+          {totalSize ? (
+            <Pagination
+              showQuickJumper
+              showSizeChanger
+              refresh={true}
+              total={totalSize}
+              pageSize={pageSize}
+              onChange={handlePage}
+              onRefresh={refresh}
+            />
+          ) : null}
+        </div>
+      </div>
     </React.Fragment>
   )
 }
