@@ -14,7 +14,7 @@ import XformAddress from '@/desktop/components/XformAddress'
 import XformRadio from '@/desktop/components/XformRadio'
 import XformDatetime from '@/desktop/components/XformDatetime'
 import XformCheckbox from '@/desktop/components/XformCheckbox'
-// import XformAttach from '@/desktop/components/XformAttach'
+import XformAttach from '@/desktop/components/XformAttach'
 import XformDetailTable from '@/desktop/components/XformDetailTable'
 import CMSXformModal, { EShowStatus } from '@/desktop/components/staff-cms/XformModal'
 import apiStaffAttConfig from '@/api/cmsStaffAttConfig'
@@ -946,7 +946,7 @@ const XForm = (props) => {
               }}
               columnSpan={1}
             ></GridItem>
-            {/* <GridItem column={1} row={22} rowSpan={1} columnSpan={2}>
+            <GridItem column={1} row={22} rowSpan={1} columnSpan={2}>
               <XformFieldset
                 labelTextAlign={'left'}
                 mobileContentAlign={'right'}
@@ -965,7 +965,7 @@ const XForm = (props) => {
                   <XformAttach {...sysProps} singleMaxSize={102400000} showStatus="view"></XformAttach>
                 </Form.Item>
               </XformFieldset>
-            </GridItem> */}
+            </GridItem>
             <GridItem
               column={2}
               row={22}
