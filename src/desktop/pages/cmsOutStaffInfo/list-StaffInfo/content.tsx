@@ -112,7 +112,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
       {
         title: '当前项目',
         dataIndex: 'fdProject',
-        render: (value) => value
+        render: (value) => value && value.fdName
       },
       /*首次入场时间*/
       {
@@ -259,7 +259,6 @@ const Content: React.FC<IContentViewProps> = (props) => {
     },
     [query, queryChange]
   )
-
   /** 分页操作 */
   const handlePage = useCallback(
     (pageNo: number, pageSize: number) => {

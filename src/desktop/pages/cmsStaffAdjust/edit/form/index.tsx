@@ -1039,23 +1039,18 @@ const XForm = (props) => {
               }}
               columnSpan={1}
             ></GridItem>
-            <GridItem column={1} row={22} rowSpan={1} columnSpan={2}>
+            {/* <GridItem column={1} row={22} rowSpan={1} columnSpan={2}>
               <XformFieldset
                 labelTextAlign={'left'}
                 mobileContentAlign={'right'}
                 title={fmtMsg(':cmsStaffAdjust.form.!{l482x9oheg8kfwghnzk}', '资料上传')}
                 layout={'horizontal'}
-                required={true}
               >
                 <Form.Item
                   name={'fdAtt'}
                   rules={[
                     {
                       validator: lengthValidator(200)
-                    },
-                    {
-                      required: true,
-                      message: fmtMsg(':required', '内容不能为空')
                     }
                   ]}
                 >
@@ -1068,7 +1063,7 @@ const XForm = (props) => {
                   />
                 </Form.Item>
               </XformFieldset>
-            </GridItem>
+            </GridItem> */}
             <GridItem
               column={2}
               row={22}

@@ -217,15 +217,22 @@ const Content: React.FC<IContentViewProps> = props => {
   }, [flowData, params])
 
   return (
-    <div className='lui-approve-template'>
-      {/* 操作区 */}
-      <div className='lui-approve-template-header'>
-        <Breadcrumb>
-          <Breadcrumb.Item>入场人员管理</Breadcrumb.Item>
-          <Breadcrumb.Item>查看</Breadcrumb.Item>
-        </Breadcrumb>
-        <div className='buttons'>
-          {/* {
+    <Auth.Auth
+      authURL='/staff/cmsStaffEntrance/get'
+      authModuleName='cms-out-manage'
+      unauthorizedPage={
+        <Status type={EStatusType._403} title='抱歉，您暂无权限访问当前页面' />
+      }
+    >
+      <div className='lui-approve-template'>
+        {/* 操作区 */}
+        <div className='lui-approve-template-header'>
+          <Breadcrumb>
+            <Breadcrumb.Item>入场人员管理</Breadcrumb.Item>
+            <Breadcrumb.Item>查看</Breadcrumb.Item>
+          </Breadcrumb>
+          <div className='buttons'>
+            {/* {
             data.fdProcessStatus !== '30' && data.fdProcessStatus !== '00' ? (
               <React.Fragment>
                 <Button type='primary' onClick={() => handleSave(false)}>提交</Button>
@@ -234,60 +241,62 @@ const Content: React.FC<IContentViewProps> = props => {
             ) : null
           }
           <Button type='default' onClick={handleDel}>删除</Button> */}
-          {_btn_submit}
-          {_btn_edit}
-          {_btn_delete}
-          <Button type='default' onClick={handleClose}>关闭</Button>
+            {_btn_submit}
+            {_btn_edit}
+            {_btn_delete}
+            <Button type='default' onClick={handleClose}>关闭</Button>
+          </div>
+        </div>
+        {/* 内容区 */}
+        <div className='lui-approve-template-content'>
+          <div className='left'>
+            {/* 表单信息 */}
+            <div className='form'>
+              <XForm formRef={formComponentRef} value={data || {}} />
+            </div>
+            {/* 机制页签 */}
+            <div className='tabs'>
+              <LBPMTabs
+                fdId={templateId}
+                processId={data?.mechanisms && data.mechanisms['lbpmProcess']?.fdProcessId}
+                getFormValue={() => formComponentRef.current && formComponentRef.current.getValue()}
+                extra={[
+                  {
+                    key: 'right',
+                    name: '权限管理',
+                    children: (
+                      <RightFragment
+                        wrapperRef={rightComponentRef}
+                        hasFlow={true}
+                        mechanism={data?.mechanisms && data?.mechanisms['sys-right']}
+                        getFormValue={() => formComponentRef.current && formComponentRef.current.getValue()} />
+                    )
+                  }
+                ]} />
+            </div>
+          </div>
+          <div className='right'>
+            {/* 审批操作 */}
+            <div className='lui-approve-template-main'>
+              <LBPMFormFragment
+                auditType={data.fdProcessStatus === '30' ? 'baseInfo' : 'audit'}
+                approveLayout='right'
+                wrappedComponentRef={lbpmComponentRef}
+                moduleCode='cms-out-manage'
+                mode='view'
+                onChange={(v) => setFlowData(v)}
+                mechanism={{
+                  formId: templateId,
+                  processTemplateId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdTemplateId,
+                  processId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdProcessId
+                }}
+                getFormValue={() => formComponentRef.current && formComponentRef.current.getValue()} />
+            </div>
+          </div>
         </div>
       </div>
-      {/* 内容区 */}
-      <div className='lui-approve-template-content'>
-        <div className='left'>
-          {/* 表单信息 */}
-          <div className='form'>
-            <XForm formRef={formComponentRef} value={data || {}} />
-          </div>
-          {/* 机制页签 */}
-          <div className='tabs'>
-            <LBPMTabs
-              fdId={templateId}
-              processId={data?.mechanisms && data.mechanisms['lbpmProcess']?.fdProcessId}
-              getFormValue={() => formComponentRef.current && formComponentRef.current.getValue()}
-              extra={[
-                {
-                  key: 'right',
-                  name: '权限管理',
-                  children: (
-                    <RightFragment
-                      wrapperRef={rightComponentRef}
-                      hasFlow={true}
-                      mechanism={data?.mechanisms && data?.mechanisms['sys-right']}
-                      getFormValue={() => formComponentRef.current && formComponentRef.current.getValue()} />
-                  )
-                }
-              ]} />
-          </div>
-        </div>
-        <div className='right'>
-          {/* 审批操作 */}
-          <div className='lui-approve-template-main'>
-            <LBPMFormFragment
-              auditType={data.fdProcessStatus === '30' ? 'baseInfo' : 'audit'}
-              approveLayout='right'
-              wrappedComponentRef={lbpmComponentRef}
-              moduleCode='cms-out-manage'
-              mode='view'
-              onChange={(v) => setFlowData(v)}
-              mechanism={{
-                formId: templateId,
-                processTemplateId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdTemplateId,
-                processId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdProcessId
-              }}
-              getFormValue={() => formComponentRef.current && formComponentRef.current.getValue()} />
-          </div>
-        </div>
-      </div>
-    </div>
+    </Auth.Auth>
+
   )
 }
 

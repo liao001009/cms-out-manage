@@ -19,7 +19,7 @@ const LBPMFormFragment = Module.getComponent('sys-lbpm', 'LBPMFormFragment', { l
 const RightFragment = Module.getComponent('sys-right', 'RightFragment', { loading: <Loading /> })
 
 const Content: React.FC<IContentViewProps> = props => {
-  const { data, history,match, routerPrefix } = props
+  const { data, history, match, routerPrefix } = props
   const params = match?.params
   // 机制组件引用
   const formComponentRef = useRef<any>()
@@ -106,17 +106,22 @@ const Content: React.FC<IContentViewProps> = props => {
       return
     }
     // 拼装提交数据
-    let values = await _formatValue(isDraft)
+    const values = await _formatValue(isDraft)
     // 文档提交前事件
     if (await _beforeSave(isDraft) === false) {
       return
     }
-    values = {
+    // 编辑页面文档状态为草稿时点击暂存存为草稿，点击提交流程流转，其他文档状态提交按钮只保存表单
+    const saveApi = isDraft ?
+      api.save
+      : (values.fdProcessStatus === ESysLbpmProcessStatus.DRAFT
+        || values.fdProcessStatus === ESysLbpmProcessStatus.WITHDRAW
+        || values.fdProcessStatus === ESysLbpmProcessStatus.REJECT ? api.update : api.save)
+    // 编辑暂存
+    saveApi({
       ...values,
       cmsStaffLeaveDetail: values.cmsStaffLeaveDetail.values
-    }
-    // 编辑提交
-    api.save(values as any).then(res => {
+    }).then(res => {
       if (res.success) {
         Message.success(isDraft ? '暂存成功' : '提交成功', 1, () => {
           history.goBack()
@@ -163,11 +168,11 @@ const Content: React.FC<IContentViewProps> = props => {
     const submitBtn = <Button type='primary' onClick={() => handleSave(false)}>提交</Button>
     return !hasDraftBtn ? (
       <Auth.Auth authURL='/staff/cmsStaffLeave/save' params={{
-        vo: { fdId:params['fdId']},
+        vo: { fdId: params['fdId'] },
       }}>{submitBtn}</Auth.Auth>
-    ): (role && validStatus) && submitBtn
+    ) : (role && validStatus) && submitBtn
 
-  }, [ data, flowData,params])
+  }, [data, flowData, params])
 
   // 暂存按钮
   const _btn_draft = useMemo(() => {
@@ -188,13 +193,13 @@ const Content: React.FC<IContentViewProps> = props => {
       // 如果有回复协同的操作，则要校验权限
       status === ESysLbpmProcessStatus.DRAFT && !lbpmComponentRef.current.checkOperationTypeExist(flowData.identity, EOperationType.handler_replyDraftCooperate)
         ? deleteBtn
-        :  <Auth.Auth authURL='/staff/cmsStaffLeave/delete' params={{
+        : <Auth.Auth authURL='/staff/cmsStaffLeave/delete' params={{
           vo: { fdId: params['fdId'] }
         }}>
           {deleteBtn}
         </Auth.Auth>
     )
-  }, [ flowData, params ])
+  }, [flowData, params])
 
   return (
     <div className='lui-approve-template'>
@@ -247,7 +252,7 @@ const Content: React.FC<IContentViewProps> = props => {
               approveLayout='right'
               wrappedComponentRef={lbpmComponentRef}
               moduleCode='cms-out-manage'
-              onChange={(v)=>setFlowData(v)}
+              onChange={(v) => setFlowData(v)}
               mechanism={{
                 formId: data?.fdTemplate?.fdId,
                 processTemplateId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdTemplateId,
