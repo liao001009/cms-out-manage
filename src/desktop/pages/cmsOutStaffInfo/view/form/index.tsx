@@ -428,61 +428,7 @@ const XForm = (props) => {
                 </Form.Item>
               </XformFieldset>
             </GridItem>
-            <GridItem column={1} row={18} rowSpan={1} columnSpan={2}>
-              <XformFieldset
-                labelTextAlign={'left'}
-                mobileContentAlign={'right'}
-                title={fmtMsg(':cmsOutStaffInfo.form.!{l3lczrijlhuq7nplue}', '当前所属招证内部团队')}
-                layout={'horizontal'}
-              >
-                <Form.Item
-                  name={'fdInnerTeam'}
-                  rules={[
-                    {
-                      validator: lengthValidator(100)
-                    }
-                  ]}
-                >
-                  <span>{value.fdInnerTeam && value.fdInnerTeam.fdName}</span>
-                </Form.Item>
-              </XformFieldset>
-            </GridItem>
-            <GridItem column={1} row={19} rowSpan={1} columnSpan={1}>
-              <XformFieldset
-                labelTextAlign={'left'}
-                mobileContentAlign={'right'}
-                title={fmtMsg(':cmsOutStaffInfo.form.!{l3ld0l9hh2caymedodf}', '首次入场时间')}
-                layout={'horizontal'}
-              >
-                <Form.Item name={'fdFirstEntranceDate'}>
-                  <XformDatetime
-                    {...sysProps}
-                    placeholder={fmtMsg(':cmsOutStaffInfo.form.!{l3ld0l9l51wc9fnxwu9}', '请输入')}
-                    dataPattern={'yyyy-MM-dd'}
-                    showStatus="view"
-                  ></XformDatetime>
-                </Form.Item>
-              </XformFieldset>
-            </GridItem>
-            <GridItem column={2} row={19} rowSpan={1} columnSpan={1}>
-              <XformFieldset
-                labelTextAlign={'left'}
-                mobileContentAlign={'right'}
-                title={fmtMsg(':cmsOutStaffInfo.form.!{l3ld0mr2k796uaafvk}', '上次调级时间')}
-                layout={'horizontal'}
-              >
-                <Form.Item name={'fdLastUpgradeDate'}>
-                  <XformDatetime
-                    {...sysProps}
-                    placeholder={fmtMsg(':cmsOutStaffInfo.form.!{l3ld0mr4gjrbtofso2h}', '请输入')}
-                    dataPattern={'yyyy-MM-dd'}
-                    showStatus="view"
-                  ></XformDatetime>
-                </Form.Item>
-              </XformFieldset>
-            </GridItem>
-            <GridItem column={1} row={20} rowSpan={1} columnSpan={2}></GridItem>
-            <GridItem column={1} row={21} rowSpan={1} columnSpan={2}></GridItem>
+            
             <GridItem column={1} row={11} rowSpan={1} columnSpan={1}>
               <XformFieldset
                 labelTextAlign={'left'}
@@ -658,6 +604,41 @@ const XForm = (props) => {
               <XformFieldset
                 labelTextAlign={'left'}
                 mobileContentAlign={'right'}
+                title={fmtMsg(':cmsOutStaffInfo.form.!{l47vinx108tvhhkd91lf}', '最高学历所在学校')}
+                layout={'horizontal'}
+              >
+                <Form.Item
+                  name={'fdHighestSchool'}
+                >
+                  <XformInput
+                    {...sysProps}
+                    placeholder={fmtMsg(':cmsOutStaffInfo.form.!{l47vinx6ev5crmzfeb6}', '请输入')}
+                    showStatus="view"
+                  ></XformInput>
+                </Form.Item>
+              </XformFieldset>
+            </GridItem>
+            <GridItem column={1} row={17} rowSpan={1} columnSpan={2}>
+              <XformFieldset
+                labelTextAlign={'left'}
+                mobileContentAlign={'right'}
+                title={fmtMsg(':cmsOutStaffInfo.form.!{l47virvmjz8pvkyfmo}', '毕业日期')}
+                layout={'horizontal'}
+              >
+                <Form.Item name={'fdGraduateDate'}>
+                  <XformDatetime
+                    {...sysProps}
+                    placeholder={fmtMsg(':cmsOutStaffInfo.form.!{l47virvs6dxj7wzki3q}', '请输入')}
+                    dataPattern={'yyyy-MM-dd'}
+                    showStatus="view"
+                  ></XformDatetime>
+                </Form.Item>
+              </XformFieldset>
+            </GridItem>
+            <GridItem column={1} row={18} rowSpan={1} columnSpan={2}>
+              <XformFieldset
+                labelTextAlign={'left'}
+                mobileContentAlign={'right'}
                 title={fmtMsg(':cmsOutStaffInfo.form.!{l3lc9l7am9lx5gkwgj}', '状态信息')}
                 layout={'horizontal'}
               >
@@ -704,7 +685,7 @@ const XForm = (props) => {
                 </Form.Item>
               </XformFieldset>
             </GridItem>
-            <GridItem column={1} row={17} rowSpan={1} columnSpan={1}>
+            <GridItem column={1} row={19} rowSpan={1} columnSpan={1}>
               <XformFieldset
                 labelTextAlign={'left'}
                 mobileContentAlign={'right'}
@@ -723,7 +704,7 @@ const XForm = (props) => {
                 </Form.Item>
               </XformFieldset>
             </GridItem>
-            <GridItem column={2} row={17} rowSpan={1} columnSpan={1}>
+            <GridItem column={2} row={19} rowSpan={1} columnSpan={1}>
               <XformFieldset
                 labelTextAlign={'left'}
                 mobileContentAlign={'right'}
@@ -754,6 +735,59 @@ const XForm = (props) => {
                     optionSource={'custom'}
                     showStatus="view"
                   ></XformSelect>
+                </Form.Item>
+              </XformFieldset>
+            </GridItem>
+            <GridItem column={1} row={20} rowSpan={1} columnSpan={2}>
+              <XformFieldset
+                labelTextAlign={'left'}
+                mobileContentAlign={'right'}
+                title={fmtMsg(':cmsOutStaffInfo.form.!{l3lczrijlhuq7nplue}', '当前所属招证内部团队')}
+                layout={'horizontal'}
+              >
+                <Form.Item
+                  name={'fdInnerTeam'}
+                  rules={[
+                    {
+                      validator: lengthValidator(100)
+                    }
+                  ]}
+                >
+                  <span>{value.fdInnerTeam && value.fdInnerTeam.fdName}</span>
+                </Form.Item>
+              </XformFieldset>
+            </GridItem>
+            <GridItem column={1} row={21} rowSpan={1} columnSpan={1}>
+              <XformFieldset
+                labelTextAlign={'left'}
+                mobileContentAlign={'right'}
+                title={fmtMsg(':cmsOutStaffInfo.form.!{l3ld0l9hh2caymedodf}', '首次入场时间')}
+                layout={'horizontal'}
+              >
+                <Form.Item name={'fdFirstEntranceDate'}>
+                  <XformDatetime
+                    {...sysProps}
+                    placeholder={fmtMsg(':cmsOutStaffInfo.form.!{l3ld0l9l51wc9fnxwu9}', '请输入')}
+                    dataPattern={'yyyy-MM-dd'}
+                    showStatus="view"
+                  ></XformDatetime>
+                </Form.Item>
+              </XformFieldset>
+            </GridItem>
+            <GridItem column={2} row={21} rowSpan={1} columnSpan={1}>
+              <XformFieldset
+                labelTextAlign={'left'}
+                mobileContentAlign={'right'}
+                title={fmtMsg(':cmsOutStaffInfo.form.!{l3ld0mr2k796uaafvk}', '上次调级时间')}
+                layout={'horizontal'}
+              >
+                <Form.Item name={'fdLastUpgradeDate'}>
+                  <XformDatetime
+                    {...sysProps}
+                    placeholder={fmtMsg(':cmsOutStaffInfo.form.!{l3ld0mr4gjrbtofso2h}', '请输入')}
+                    dataPattern={'yyyy-MM-dd'}
+                    showStatus="view"
+                  ></XformDatetime>
                 </Form.Item>
               </XformFieldset>
             </GridItem>

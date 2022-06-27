@@ -1254,6 +1254,10 @@ const XForm = (props) => {
                     }
                   ]}
                 >
+                  {
+                    console.log('values',value)
+                    
+                  }
                   <XformDetailTable
                     {...sysProps}
                     $$ref={detailForms.current.cmsStaffAdjustDetail}
