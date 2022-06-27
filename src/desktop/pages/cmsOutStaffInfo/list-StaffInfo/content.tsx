@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import { IContentViewProps } from '@ekp-runtime/render-module'
 import Icon from '@lui/icons'
 import { Input, Button, Space, Pagination } from '@lui/core'
@@ -11,9 +11,12 @@ import { useAdd } from '@/desktop/shared/add'
 import { $deleteAll } from '@/desktop/shared/deleteAll'
 import './index.scss'
 import { Auth } from '@ekp-infra/common'
+import ListImport from '@/desktop/components/listImport'
+
 const Content: React.FC<IContentViewProps> = (props) => {
   const { status, data, queryChange, query, refresh, history } = props
   const { content, totalSize, pageSize } = data
+  const [modalVisible, setModalVisible] = useState<boolean>(false)
 
   // 表格列定义
   const columns = useMemo(
@@ -176,9 +179,6 @@ const Content: React.FC<IContentViewProps> = (props) => {
       })
     }
   })
-  console.log(selectedRows)
-
-  /** 操作函数集 */
 
   //新建
   const { $add: $add } = useAdd('/cmsOutStaffInfo/add')
@@ -276,6 +276,15 @@ const Content: React.FC<IContentViewProps> = (props) => {
       }
     },
     [history]
+  )
+
+  //导入
+  const handleImportData = useCallback(
+    (event) => {
+      event.stopPropagation()
+      setModalVisible(true)
+    },
+    [history, selectedRows, refresh]
   )
 
   return (
@@ -405,6 +414,9 @@ const Content: React.FC<IContentViewProps> = (props) => {
                     批量删除
                   </Button>
                 </Auth.Auth>
+                <Button type="default" onClick={handleImportData}>
+                  导入
+                </Button>
               </React.Fragment>
             </Space>
           </div>
@@ -426,6 +438,11 @@ const Content: React.FC<IContentViewProps> = (props) => {
           ) : null}
         </div>
       </div>
+      <ListImport
+        fdEntityName='com.landray.cms.out.manage.core.entity.supplier.CmsOutStaffInfo'
+        visible={modalVisible}
+        onCancle={() => setModalVisible(false)}
+      />
     </React.Fragment>
   )
 }

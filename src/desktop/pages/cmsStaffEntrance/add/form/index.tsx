@@ -519,6 +519,12 @@ const XForm = (props) => {
                                 apiKey: apiStaffInfo,
                                 apiName: 'listStaffInfo',
                                 criteriaKey: 'presonCriertia',
+                                defaultTableCriteria:{
+                                  'fdStatusInfo':{
+                                    'searchKey':'$notIn',
+                                    'searchValue':['3','4']
+                                  }
+                                },
                                 chooseFdName: 'fdName',
                                 criteriaProps: ['fdProject.fdName', 'fdPost.fdName'],
                                 columnsProps: outStaffInfoColumns,

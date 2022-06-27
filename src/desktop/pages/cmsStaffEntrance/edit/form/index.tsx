@@ -524,6 +524,12 @@ const XForm = (props) => {
                                 apiName: 'listStaffInfo',
                                 chooseFdName: 'fdName',
                                 criteriaKey: 'presonCriertia',
+                                defaultTableCriteria:{
+                                  'fdStatusInfo':{
+                                    'searchKey':'$notIn',
+                                    'searchValue':['3','4']
+                                  }
+                                },
                                 columnsProps: outStaffInfoColumns,
                                 modalTitle: '外包人员信息',
                                 title: fmtMsg(':cmsStaffEntrance.form.!{l47ucie6axg62p00qnq}', '姓名'),
