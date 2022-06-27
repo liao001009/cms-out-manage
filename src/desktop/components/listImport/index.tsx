@@ -1,6 +1,6 @@
 import { Module } from '@ekp-infra/common'
 import { Modal } from '@lui/core'
-import React from 'React'
+import React from 'react'
 const Import = Module.getComponent('sys-mech-transport', 'Import')
 
 export interface IProps {
