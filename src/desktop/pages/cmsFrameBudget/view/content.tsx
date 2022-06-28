@@ -138,6 +138,7 @@ const Content: React.FC<IContentViewProps> = props => {
     <Auth.Auth
       authURL='/basedata/cmsFrameBudget/get'
       authModuleName='cms-out-manage'
+      params={{ vo: { fdId: id } }}
       unauthorizedPage={
         <Status type={EStatusType._403} title='抱歉，您暂无权限访问当前页面' />
       }

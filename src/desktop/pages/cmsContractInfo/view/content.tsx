@@ -19,7 +19,8 @@ const RightFragment = Module.getComponent('sys-right', 'RightFragment', { loadin
 const { confirm } = Modal
 
 const Content: React.FC<IContentViewProps> = props => {
-  const { data, history } = props
+  const { data, history, match } = props
+  const params = match?.params
   // 模板id
   const templateId = useMemo(() => {
     return data?.fdTemplate?.fdId
@@ -158,6 +159,7 @@ const Content: React.FC<IContentViewProps> = props => {
     <Auth.Auth
       authURL='/supplier/cmsContractInfo/get'
       authModuleName='cms-out-manage'
+      params={{ vo: { fdId: params['id'] } }}
       unauthorizedPage={
         <Status type={EStatusType._403} title='抱歉，您暂无权限访问当前页面' />
       }
