@@ -165,12 +165,12 @@ const Content: React.FC<IContentViewProps> = props => {
   const _btn_submit = useMemo(() => {
     const role = isFlowTaskRole(flowData)
     const status = data?.fdProcessStatus || getFlowStatus(flowData)
-    if (status === ESysLbpmProcessStatus.ABANDONED||status === ESysLbpmProcessStatus.COMPLETED) return null
+    if (status === ESysLbpmProcessStatus.ABANDONED || status === ESysLbpmProcessStatus.COMPLETED) return null
     const validStatus = status !== ESysLbpmProcessStatus.COMPLETED && status !== ESysLbpmProcessStatus.ABANDONED
     const submitBtn = <Button type='primary' onClick={() => handleSave(false)}>提交</Button>
     return !hasDraftBtn ? (
       <Auth.Auth authURL='/staff/cmsStaffAdjust/save' params={{
-        vo: { fdId: params['fdId'] },
+        vo: { fdId: params['id'] },
       }}>{submitBtn}</Auth.Auth>
     ) : (role && validStatus) && submitBtn
 
@@ -179,12 +179,12 @@ const Content: React.FC<IContentViewProps> = props => {
   // 编辑按钮
   const _btn_edit = useMemo(() => {
     const status = data.fdProcessStatus || getFlowStatus(flowData)
-    if (status === ESysLbpmProcessStatus.ABANDONED||status === ESysLbpmProcessStatus.COMPLETED) return null
+    if (status === ESysLbpmProcessStatus.ABANDONED || status === ESysLbpmProcessStatus.COMPLETED) return null
     const editBtn = <Button onClick={handleEdit}>编辑</Button>
     const authEditBtn = <Auth.Auth
       authURL='/staff/cmsStaffAdjust/edit'
       params={{
-        vo: { fdId: params['fdId'] }
+        vo: { fdId: params['id'] }
       }}
     >
       {editBtn}
@@ -207,17 +207,17 @@ const Content: React.FC<IContentViewProps> = props => {
       status === ESysLbpmProcessStatus.DRAFT && !lbpmComponentRef.current.checkOperationTypeExist(flowData.identity, EOperationType.handler_replyDraftCooperate)
         ? deleteBtn
         : <Auth.Auth authURL='/staff/cmsStaffAdjust/delete' params={{
-          vo: { fdId: params['fdId'] }
+          vo: { fdId: params['id'] }
         }}>
           {deleteBtn}
         </Auth.Auth>
     )
   }, [flowData, params])
-
   return (
     <Auth.Auth
       authURL='/staff/cmsStaffAdjust/get'
-      authModuleName='cms-out-manage'
+      //
+      params={{ vo: { fdId: params['id'] } }}
       unauthorizedPage={
         <Status type={EStatusType._403} title='抱歉，您暂无权限访问当前页面' />
       }
