@@ -19,7 +19,7 @@ import CMSXformModal, { EShowStatus } from '@/desktop/components/staff-cms/Xform
 import api from '@/api/cmsProjectInfo'
 import apiStaffAttConfig from '@/api/cmsStaffAttConfig'
 import apiStaffInfo from '@/api/cmsOutStaffInfo'
-import { outStaffInfoColumns, projectColumns } from '@/desktop/common'
+import { outStaffInfoColumns, projectColumns } from '@/desktop/pages/common/common'
 const Upload = Module.getComponent('sys-attach', 'Upload')
 
 const MECHANISMNAMES = {
@@ -35,6 +35,7 @@ const XForm = (props) => {
   const { formRef: formRef, value: value } = props
   const [fdStationStaus, setFdStationStaus] = useState<string>(value.fdStation)
   const [fdAdjustReasonStaus, setFdAdjustReasonStatus] = useState<string>(value.fdAdjustReason)
+  const [fdCurrProject,setFdCurrProject] = useState<any>({})
   const [form] = Form.useForm()
 
   const init = () => {
@@ -67,6 +68,7 @@ const XForm = (props) => {
 
   // 当前项目选择返回数据
   const handleProjectChange = (v) => {
+    setFdCurrProject(v)
     form.setFieldsValue({
       fdProjectPrincipal: v.fdProjectPrincipal,
       fdInnerPrincipal: v.fdInnerPrincipal
@@ -1044,7 +1046,6 @@ const XForm = (props) => {
                 mobileContentAlign={'right'}
                 title={fmtMsg(':cmsStaffAdjust.form.!{l482x9oheg8kfwghnzk}', '资料上传')}
                 layout={'horizontal'}
-                required={true}
               >
                 <Form.Item
                   name={'fdAtt'}
@@ -1052,10 +1053,6 @@ const XForm = (props) => {
                     {
                       validator: lengthValidator(200)
                     },
-                    {
-                      required: true,
-                      message: fmtMsg(':required', '内容不能为空')
-                    }
                   ]}
                 >
                   <Upload
@@ -1259,6 +1256,7 @@ const XForm = (props) => {
                     }
                   ]}
                 >
+                  
                   <XformDetailTable
                     {...sysProps}
                     $$ref={detailForms.current.cmsStaffAdjustDetail}
@@ -1283,6 +1281,16 @@ const XForm = (props) => {
                           columnsProps: outStaffInfoColumns,
                           criteriaKey: 'presonCriertia',
                           criteriaProps: ['fdPost.fdName', 'fdProject.fdName'],
+                          defaultTableCriteria:{
+                            'fdStatusInfo':{
+                              'searchKey':'$in',
+                              'searchValue':['3','4']
+                            },
+                            'fdProject.fdName':{
+                              'searchKey':'$contains',
+                              'searchValue':Object.keys(fdCurrProject).length ? fdCurrProject.fdName : undefined
+                            }
+                          },
                           modalTitle: '人员信息',
                           title: fmtMsg(':cmsStaffEntrance.form.!{l47ucie6axg62p00qnq}', '姓名'),
                           name: 'fdStaffName',

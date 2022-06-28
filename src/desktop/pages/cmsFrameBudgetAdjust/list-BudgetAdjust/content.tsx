@@ -11,9 +11,6 @@ import { useAdd } from '@/desktop/shared/add'
 import { $deleteAll } from '@/desktop/shared/deleteAll'
 import './index.scss'
 import { Auth } from '@ekp-infra/common'
-//@ts-ignore
-import Status, { EStatusType } from '@elements/status'
-
 const Content: React.FC<IContentViewProps> = (props) => {
   const { status, data, queryChange, query, refresh, history } = props
   const { content, totalSize, pageSize } = data
@@ -190,93 +187,97 @@ const Content: React.FC<IContentViewProps> = (props) => {
 
   return (
     <React.Fragment>
-      <Auth.Auth
-        authURL='/basedata/cmsFrameBudgetAdjust/listBudgetAdjust'
-        authModuleName='cms-out-manage'
-        unauthorizedPage={
-          <Status type={EStatusType._403} title='抱歉，您暂无权限访问当前页面' />
-        }
-      >
-        <div className="lui-template-list">
-          <div className="lui-template-list-criteria">
-            <div className="left">
-              {/* 搜索 */}
-              <Input.Search allowClear placeholder="请输入关键词搜索" onSearch={handleSearch} />
-            </div>
-            <div className="right">
-              {/* 筛选器 */}
-              <Criteria key="criteria" onChange={handleCriteriaChange}>
-                <Criteria.Calendar
-                  options={Criteria.Calendar.buildOptions()}
-                  name="fdBudgetYear"
-                  title="预算年度"
-                ></Criteria.Calendar>
-                <Criteria.Calendar
-                  options={Criteria.Calendar.buildOptions()}
-                  name="fdStartDate"
-                  title="预算执行开始日期"
-                ></Criteria.Calendar>
-                <Criteria.Calendar
-                  options={Criteria.Calendar.buildOptions()}
-                  name="fdEndDate"
-                  title="预算执行结束日期"
-                ></Criteria.Calendar>
-                <Criteria.Input name="fdFrame" title="所属框架"></Criteria.Input>
-                <Criteria.InputNum name="fdBudgetAmount" title="预算金额（万元）"></Criteria.InputNum>
-                <Criteria.InputNum name="fdAfterAdjustAmount" title="调整后金额（万元）"></Criteria.InputNum>
-                <Criteria.Calendar
-                  options={Criteria.Calendar.buildOptions()}
-                  name="fdAdjustTime"
-                  title="调整时间"
-                ></Criteria.Calendar>
-              </Criteria>
-            </div>
+
+      <div className="lui-template-list">
+        <div className="lui-template-list-criteria">
+          <div className="left">
+            {/* 搜索 */}
+            <Input.Search allowClear placeholder="请输入关键词搜索" onSearch={handleSearch} />
           </div>
-          <div className="lui-template-list-toolbar">
-            <div className="left">
-              <Operation key="operation" onChange={handleSorter}>
-                {/* 排序 */}
-                <Operation.SortGroup>
-                  <Operation.Sort key="fdCreateTime" name="fdCreateTime" title="创建时间"></Operation.Sort>
-                </Operation.SortGroup>
-              </Operation>
-            </div>
-            <div className="right">
-              <Space>
-                <Button onClick={refresh}>
-                  <Icon name="redo" />
-                </Button>
-                {/* 操作栏 */}
-                <React.Fragment>
+          <div className="right">
+            {/* 筛选器 */}
+            <Criteria key="criteria" onChange={handleCriteriaChange}>
+              <Criteria.Calendar
+                options={Criteria.Calendar.buildOptions()}
+                name="fdBudgetYear"
+                title="预算年度"
+              ></Criteria.Calendar>
+              <Criteria.Calendar
+                options={Criteria.Calendar.buildOptions()}
+                name="fdStartDate"
+                title="预算执行开始日期"
+              ></Criteria.Calendar>
+              <Criteria.Calendar
+                options={Criteria.Calendar.buildOptions()}
+                name="fdEndDate"
+                title="预算执行结束日期"
+              ></Criteria.Calendar>
+              <Criteria.Input name="fdFrame" title="所属框架"></Criteria.Input>
+              <Criteria.InputNum name="fdBudgetAmount" title="预算金额（万元）"></Criteria.InputNum>
+              <Criteria.InputNum name="fdAfterAdjustAmount" title="调整后金额（万元）"></Criteria.InputNum>
+              <Criteria.Calendar
+                options={Criteria.Calendar.buildOptions()}
+                name="fdAdjustTime"
+                title="调整时间"
+              ></Criteria.Calendar>
+            </Criteria>
+          </div>
+        </div>
+        <div className="lui-template-list-toolbar">
+          <div className="left">
+            <Operation key="operation" onChange={handleSorter}>
+              {/* 排序 */}
+              <Operation.SortGroup>
+                <Operation.Sort key="fdCreateTime" name="fdCreateTime" title="创建时间"></Operation.Sort>
+              </Operation.SortGroup>
+            </Operation>
+          </div>
+          <div className="right">
+            <Space>
+              <Button onClick={refresh}>
+                <Icon name="redo" />
+              </Button>
+              {/* 操作栏 */}
+              <React.Fragment>
+                <Auth.Auth
+                  authURL='/basedata/cmsFrameBudgetAdjust/add'
+                  authModuleName='cms-out-manage'
+                  unauthorizedPage={null}
+                >
                   <Button type="primary" onClick={handleAdd}>
                     新建
                   </Button>
+                </Auth.Auth>
+                <Auth.Auth
+                  authURL='/basedata/cmsFrameBudgetAdjust/delete'
+                  authModuleName='cms-out-manage'
+                  unauthorizedPage={null}
+                >
                   <Button type="default" onClick={handleDeleteAll}>
                     批量删除
                   </Button>
-                </React.Fragment>
-              </Space>
-            </div>
-          </div>
-          <div className="lui-template-list-table">
-            <Table loading={status === 'loading'} {...tableProps} onRow={onRowClick} />
-          </div>
-          <div className="lui-template-list-page">
-            {totalSize ? (
-              <Pagination
-                showQuickJumper
-                showSizeChanger
-                refresh={true}
-                total={totalSize}
-                pageSize={pageSize}
-                onChange={handlePage}
-                onRefresh={refresh}
-              />
-            ) : null}
+                </Auth.Auth>
+              </React.Fragment>
+            </Space>
           </div>
         </div>
-      </Auth.Auth>
-
+        <div className="lui-template-list-table">
+          <Table loading={status === 'loading'} {...tableProps} onRow={onRowClick} />
+        </div>
+        <div className="lui-template-list-page">
+          {totalSize ? (
+            <Pagination
+              showQuickJumper
+              showSizeChanger
+              refresh={true}
+              total={totalSize}
+              pageSize={pageSize}
+              onChange={handlePage}
+              onRefresh={refresh}
+            />
+          ) : null}
+        </div>
+      </div>
     </React.Fragment>
   )
 }

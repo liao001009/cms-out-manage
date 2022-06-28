@@ -18,7 +18,7 @@ import XformDetailTable from '@/desktop/components/XformDetailTable'
 import CMSXformModal, { EShowStatus } from '@/desktop/components/staff-cms/XformModal'
 import CMSXformRelation from '@/desktop/components/staff-cms/XformRelation'
 import { Module } from '@ekp-infra/common'
-import { outStaffInfoColumns, projectColumns, supplierColumns } from '@/desktop/common'
+import { outStaffInfoColumns, projectColumns, supplierColumns } from '@/desktop/pages/common/common'
 import { handleIdCard } from '@/utils/util'
 
 import api from '@/api/cmsProjectInfo'
@@ -524,6 +524,12 @@ const XForm = (props) => {
                                 apiName: 'listStaffInfo',
                                 chooseFdName: 'fdName',
                                 criteriaKey: 'presonCriertia',
+                                defaultTableCriteria: {
+                                  'fdStatusInfo': {
+                                    'searchKey': '$notIn',
+                                    'searchValue': ['3', '4']
+                                  }
+                                },
                                 columnsProps: outStaffInfoColumns,
                                 modalTitle: '外包人员信息',
                                 title: fmtMsg(':cmsStaffEntrance.form.!{l47ucie6axg62p00qnq}', '姓名'),
@@ -2090,23 +2096,18 @@ const XForm = (props) => {
               }}
               columnSpan={1}
             ></GridItem>
-            {/* <GridItem column={1} row={27} rowSpan={1} columnSpan={2}>
+            <GridItem column={1} row={27} rowSpan={1} columnSpan={2}>
               <XformFieldset
                 labelTextAlign={'left'}
                 mobileContentAlign={'right'}
                 title={fmtMsg(':cmsStaffEntrance.form.!{l482x9oheg8kfwghnzk}', '资料上传')}
                 layout={'horizontal'}
-                required={true}
               >
                 <Form.Item
                   name={'fdAtt'}
                   rules={[
                     {
                       validator: lengthValidator(200)
-                    },
-                    {
-                      required: true,
-                      message: fmtMsg(':required', '内容不能为空')
                     }
                   ]}
                 >
@@ -2115,11 +2116,11 @@ const XForm = (props) => {
                     fdEntityName='com.landray.cms.out.manage.core.entity.staff.CmsStaffEntrance'
                     multiple={false}
                     fdEntityKey='fdAtt'
-                    operation={{ edit: false, preview: false, download: false,print:false }}
+                    operation={{ edit: false, preview: false, download: false, print: false }}
                   />
                 </Form.Item>
               </XformFieldset>
-            </GridItem> */}
+            </GridItem>
             <GridItem
               column={2}
               row={27}

@@ -35,7 +35,8 @@ const Content: React.FC<IProps & IContentViewProps> = props => {
       const formValues = await formComponentRef.current.getValue() || {}
       values = {
         ...values,
-        ...formValues
+        ...formValues,
+        fdStatusInfo:'1'
       }
     }
     return values

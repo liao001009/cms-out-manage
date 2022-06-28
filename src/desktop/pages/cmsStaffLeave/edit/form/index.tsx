@@ -18,7 +18,7 @@ import XformTextarea from '@/desktop/components/XformTextarea'
 import CMSXformModal, { EShowStatus } from '@/desktop/components/staff-cms/XformModal'
 import api from '@/api/cmsProjectInfo'
 import apiStaffInfo from '@/api/cmsOutStaffInfo'
-import { outStaffInfoColumns, projectColumns } from '@/desktop/common'
+import { outStaffInfoColumns, projectColumns } from '@/desktop/pages/common/common'
 const MECHANISMNAMES = {}
 
 const XForm = (props) => {
@@ -46,7 +46,9 @@ const XForm = (props) => {
     form.setFieldsValue({
       fdBelongDept: v.fdBelongDept,
       fdBelongTeam: v.fdBelongTeam,
-      fdProjectNature: v.fdProjectNature
+      fdProjectNature: v.fdProjectNature,
+      fdProjectPrincipal: v.fdProjectPrincipal,
+      fdInnerPrincipal: v.fdInnerPrincipal
     })
   }
   return (
