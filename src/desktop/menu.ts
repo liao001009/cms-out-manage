@@ -71,6 +71,7 @@ const menu = [
     label: ':menu.cmsWorkOrder',
     icon: 'add-document',
     order: 5,
+    module: 'cms-out-order',
     // meta: {
     //   role: ['ROLE_CMSOUTORDER_DEFAULT']
     // },
