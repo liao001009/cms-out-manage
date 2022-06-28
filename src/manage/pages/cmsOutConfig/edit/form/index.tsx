@@ -33,8 +33,9 @@ const XForm = (props) => {
     <div className="lui-xform">
       <Form form={form} colPadding={false} onValuesChange={onValuesChange}>
         <XformAppearance>
-          <LayoutGrid columns={2} rows={10}>
-            <GridItem column={1} row={1} columnSpan={2} rowSpan={1}>
+          <LayoutGrid columns={2} rows={2}>
+
+            <GridItem column={1} row={2}>
               <XformFieldset
                 mobileContentAlign={'right'}
                 title={fmtMsg(':cmsOutConfig.form.!{l4m40sd6usk04pb2c6e}', '工位地点(深圳)')}
@@ -62,7 +63,7 @@ const XForm = (props) => {
                 </Form.Item>
               </XformFieldset>
             </GridItem>
-            <GridItem column={1} row={2} columnSpan={2} rowSpan={1}>
+            <GridItem column={2} row={2}>
               <XformFieldset
                 labelTextAlign={'left'}
                 mobileContentAlign={'right'}
@@ -91,7 +92,8 @@ const XForm = (props) => {
                 </Form.Item>
               </XformFieldset>
             </GridItem>
-            <GridItem column={1} row={3} columnSpan={2} rowSpan={1}>
+
+            <GridItem column={1} row={3}>
               <XformFieldset
                 labelTextAlign={'left'}
                 mobileContentAlign={'right'}
@@ -120,7 +122,7 @@ const XForm = (props) => {
                 </Form.Item>
               </XformFieldset>
             </GridItem>
-            <GridItem column={1} row={4} columnSpan={2} rowSpan={1}>
+            <GridItem column={2} row={3}>
               <XformFieldset
                 labelTextAlign={'left'}
                 mobileContentAlign={'right'}
@@ -149,7 +151,8 @@ const XForm = (props) => {
                 </Form.Item>
               </XformFieldset>
             </GridItem>
-            <GridItem column={1} row={5} columnSpan={2} rowSpan={1}>
+
+            <GridItem column={1} row={4}>
               <XformFieldset
                 labelTextAlign={'left'}
                 mobileContentAlign={'right'}
@@ -178,7 +181,7 @@ const XForm = (props) => {
                 </Form.Item>
               </XformFieldset>
             </GridItem>
-            <GridItem column={1} row={6} columnSpan={2} rowSpan={1}>
+            <GridItem column={2} row={4}>
               <XformFieldset
                 labelTextAlign={'left'}
                 mobileContentAlign={'right'}
@@ -207,7 +210,8 @@ const XForm = (props) => {
                 </Form.Item>
               </XformFieldset>
             </GridItem>
-            <GridItem column={1} row={7} columnSpan={2} rowSpan={1}>
+
+            <GridItem column={1} row={5}>
               <XformFieldset
                 labelTextAlign={'left'}
                 mobileContentAlign={'right'}
@@ -236,7 +240,7 @@ const XForm = (props) => {
                 </Form.Item>
               </XformFieldset>
             </GridItem>
-            <GridItem column={1} row={8} columnSpan={2} rowSpan={1}>
+            <GridItem column={2} row={5}>
               <XformFieldset
                 labelTextAlign={'left'}
                 mobileContentAlign={'right'}
@@ -265,7 +269,8 @@ const XForm = (props) => {
                 </Form.Item>
               </XformFieldset>
             </GridItem>
-            <GridItem column={1} row={9} columnSpan={2} rowSpan={1}>
+
+            <GridItem column={1} row={6}>
               <XformFieldset
                 labelTextAlign={'left'}
                 mobileContentAlign={'right'}
@@ -294,7 +299,7 @@ const XForm = (props) => {
                 </Form.Item>
               </XformFieldset>
             </GridItem>
-            <GridItem column={1} row={10} columnSpan={2} rowSpan={1}>
+            <GridItem column={2} row={6}>
               <XformFieldset
                 labelTextAlign={'left'}
                 mobileContentAlign={'right'}
@@ -323,6 +328,7 @@ const XForm = (props) => {
                 </Form.Item>
               </XformFieldset>
             </GridItem>
+            
           </LayoutGrid>
         </XformAppearance>
       </Form>
