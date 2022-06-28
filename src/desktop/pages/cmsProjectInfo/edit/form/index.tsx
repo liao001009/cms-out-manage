@@ -24,6 +24,11 @@ const XForm = (props) => {
 
   useEffect(() => {
     init()
+    if(Object.keys(value).length){
+      form.setFieldsValue({
+        fdFrame: value.fdFrame.fdId
+      })
+    }
   }, [])
 
   const init = async () => {
@@ -37,9 +42,6 @@ const XForm = (props) => {
         return item
       })
       setFrameArray(newValue)
-      form.setFieldsValue({
-        fdFrame: value.fdFrame.fdId
-      })
     } catch (error) {
       console.warn('框架类型出错', error)
     }
