@@ -18,7 +18,7 @@ import XformDetailTable from '@/desktop/components/XformDetailTable'
 import CMSXformModal, { EShowStatus } from '@/desktop/components/staff-cms/XformModal'
 import CMSXformRelation from '@/desktop/components/staff-cms/XformRelation'
 import { Module } from '@ekp-infra/common'
-import { outStaffInfoColumns, projectColumns, supplierColumns } from '@/desktop/common'
+import { outStaffInfoColumns, projectColumns, supplierColumns } from '@/desktop/pages/common/common'
 import { handleIdCard } from '@/utils/util'
 
 import api from '@/api/cmsProjectInfo'

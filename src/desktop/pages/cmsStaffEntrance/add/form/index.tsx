@@ -26,7 +26,7 @@ import apiStaffInfo from '@/api/cmsOutStaffInfo'
 import apiPostInfo from '@/api/cmsPostInfo'
 
 import { handleIdCard } from '@/utils/util'
-import { outStaffInfoColumns, projectColumns, supplierColumns } from '@/desktop/common'
+import { outStaffInfoColumns, projectColumns, supplierColumns } from '@/desktop/pages/common/common'
 
 const Upload = Module.getComponent('sys-attach', 'Upload')
 

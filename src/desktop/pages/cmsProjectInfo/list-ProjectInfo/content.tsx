@@ -96,13 +96,13 @@ const Content: React.FC<IContentViewProps> = (props) => {
       {
         title: '预计开始时间',
         dataIndex: 'fdStartDate',
-        render: (value) => value && mk.getFormatTime(value, 'YYYY-MM-DD HH:mm')
+        render: (value) => value && mk.getFormatTime(value, 'YYYY-MM-DD')
       },
       /*预计结束日期*/
       {
         title: '预计结束日期',
         dataIndex: 'fdEndDate',
-        render: (value) => value && mk.getFormatTime(value, 'YYYY-MM-DD HH:mm')
+        render: (value) => value && mk.getFormatTime(value, 'YYYY-MM-DD')
       }
     ],
     []
