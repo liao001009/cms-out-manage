@@ -172,7 +172,7 @@ const Content: React.FC<IContentViewProps> = props => {
     const submitBtn = <Button type='primary' onClick={() => handleSave(false)}>提交</Button>
     return !hasDraftBtn ? (
       <Auth.Auth authURL='/staff/cmsStaffAdjust/save' params={{
-        vo: { fdId: params['fdId'] },
+        vo: { fdId: params['id'] },
       }}>{submitBtn}</Auth.Auth>
     ) : (role && validStatus) && submitBtn
 
@@ -186,7 +186,7 @@ const Content: React.FC<IContentViewProps> = props => {
     const authEditBtn = <Auth.Auth
       authURL='/staff/cmsStaffAdjust/edit'
       params={{
-        vo: { fdId: params['fdId'] }
+        vo: { fdId: params['id'] }
       }}
     >
       {editBtn}
@@ -209,7 +209,7 @@ const Content: React.FC<IContentViewProps> = props => {
       status === ESysLbpmProcessStatus.DRAFT && !lbpmComponentRef.current.checkOperationTypeExist(flowData.identity, EOperationType.handler_replyDraftCooperate)
         ? deleteBtn
         : <Auth.Auth authURL='/staff/cmsStaffAdjust/delete' params={{
-          vo: { fdId: params['fdId'] }
+          vo: { fdId: params['id'] }
         }}>
           {deleteBtn}
         </Auth.Auth>
