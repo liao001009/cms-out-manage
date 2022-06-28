@@ -5,7 +5,7 @@ import Table, { useTable } from '@elem/mk-table'
 import Criteria from '@elem/criteria'
 import { $reduceCriteria } from '@/desktop/shared/criteria'
 import './index.scss'
-import { criertiaObj } from '@/desktop/common'
+import { criertiaObj } from '@/desktop/pages/common/common'
 
 export enum EShowStatus {
   /** 查看 */

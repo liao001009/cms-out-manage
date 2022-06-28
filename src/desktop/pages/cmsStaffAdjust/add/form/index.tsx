@@ -19,7 +19,7 @@ import CMSXformModal, { EShowStatus } from '@/desktop/components/staff-cms/Xform
 import api from '@/api/cmsProjectInfo'
 import apiStaffAttConfig from '@/api/cmsStaffAttConfig'
 import apiStaffInfo from '@/api/cmsOutStaffInfo'
-import { outStaffInfoColumns, projectColumns } from '@/desktop/common'
+import { outStaffInfoColumns, projectColumns } from '@/desktop/pages/common/common'
 const Upload = Module.getComponent('sys-attach', 'Upload')
 
 const MECHANISMNAMES = {
