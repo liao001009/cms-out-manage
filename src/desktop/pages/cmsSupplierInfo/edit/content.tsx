@@ -134,7 +134,7 @@ const Content: React.FC<IProps & IContentViewProps> = props => {
       <div className='lui-approve-template-header'>
         <Breadcrumb>
           <Breadcrumb.Item>供应商管理</Breadcrumb.Item>
-          <Breadcrumb.Item>编辑</Breadcrumb.Item>
+          <Breadcrumb.Item>{mode==='add'?'添加':'编辑'}</Breadcrumb.Item>
         </Breadcrumb>
         <div className='buttons'>
           {

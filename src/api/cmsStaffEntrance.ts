@@ -9,6 +9,7 @@ const api = {
   save: Api.build('staff/cmsStaffEntrance/save', http),
   // 入场申请(列表请求)
   listEntrance: Api.build('staff/cmsStaffEntrance/listEntrance', http),
+  loadNodeExtend:Api.build('staff/cmsStaffEntrance/loadNodeExtendPropertiesOnProcess', http),
 }
 
 export default api

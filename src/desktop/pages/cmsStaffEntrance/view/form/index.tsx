@@ -18,10 +18,6 @@ import XformDetailTable from '@/desktop/components/XformDetailTable'
 import CMSXformModal, { EShowStatus } from '@/desktop/components/staff-cms/XformModal'
 import CMSXformRelation from '@/desktop/components/staff-cms/XformRelation'
 import apiStaffAttConfig from '@/api/cmsStaffAttConfig'
-
-// import api from '@/api/cmsProjectInfo'
-// import apiSupplier from '@/api/cmsSupplierInfo'
-// import apiStaffInfo from '@/api/cmsOutStaffInfo'
 import apiPostInfo from '@/api/cmsPostInfo'
 import { Module } from '@ekp-infra/common'
 
@@ -37,7 +33,9 @@ const XForm = (props) => {
     cmsStaffProjectDetail: createRef() as any,
     cmsStaffImplDetail: createRef() as any
   })
-  const { formRef: formRef, value: value } = props
+  const { formRef: formRef, value: value,materialVis } = props
+  console.log('values',value)
+  
   const [form] = Form.useForm()
   // 对外暴露接口
   useApi({
@@ -975,37 +973,42 @@ const XForm = (props) => {
               }}
               columnSpan={1}
             ></GridItem>
-            <GridItem column={1} row={27} rowSpan={1} columnSpan={2}>
-              <XformFieldset
-                labelTextAlign={'left'}
-                mobileContentAlign={'right'}
-                title={fmtMsg(':cmsStaffEntrance.form.!{l482x9oheg8kfwghnzk}', '资料上传')}
-                layout={'horizontal'}
-                required={true}
-              >
-                <Form.Item
-                  name={'fdAtt'}
-                  rules={[
-                    {
-                      validator: lengthValidator(200)
-                    },
-                    {
-                      required: true,
-                      message: fmtMsg(':required', '内容不能为空')
-                    }
-                  ]}
-                >
-                  <Upload
-                    mode='file'
-                    fdEntityName='com.landray.cms.out.manage.core.entity.staff.CmsStaffEntrance'
-                    multiple={false}
-                    fdEntityKey='fdAtt'
-                    operation={{ edit: false, preview: false, download: false, print: false }}
-                    uploadMode={'list'}
-                  />
-                </Form.Item>
-              </XformFieldset>
-            </GridItem>
+            {
+              materialVis || value.mechanisms.attachment.length && value.mechanisms.attachment.some(item=>item.fdEntityKey==='fdAtt') ? (
+                <GridItem column={1} row={27} rowSpan={1} columnSpan={2}>
+                  <XformFieldset
+                    labelTextAlign={'left'}
+                    mobileContentAlign={'right'}
+                    title={fmtMsg(':cmsStaffEntrance.form.!{l482x9oheg8kfwghnzk}', '资料上传')}
+                    layout={'horizontal'}
+                    required={true}
+                  >
+                    <Form.Item
+                      name={'fdAtt'}
+                      rules={[
+                        {
+                          validator: lengthValidator(200)
+                        },
+                        {
+                          required: true,
+                          message: fmtMsg(':required', '内容不能为空')
+                        }
+                      ]}
+                    >
+                      <Upload
+                        mode='file'
+                        fdEntityName='com.landray.cms.out.manage.core.entity.staff.CmsStaffEntrance'
+                        multiple={false}
+                        fdEntityKey='fdAtt'
+                        operation={{ edit: false, preview: false, download: false, print: false }}
+                        uploadMode={'list'}
+                        buttonType='text'
+                      />
+                    </Form.Item>
+                  </XformFieldset>
+                </GridItem>
+              ) : null
+            }
             <GridItem
               column={2}
               row={20}
