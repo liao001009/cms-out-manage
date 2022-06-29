@@ -1,4 +1,4 @@
-import React, { createElement as h, useMemo, useRef, useState } from 'react'
+import React, { createElement as h, useMemo, useRef, useState,useEffect } from 'react'
 import { Auth, Module } from '@ekp-infra/common'
 import { IContentViewProps } from '@ekp-runtime/render-module'
 import Icon from '@lui/icons'
@@ -7,7 +7,7 @@ import { EBtnType } from '@lui/core/es/components/Button'
 import XForm from './form'
 import api from '@/api/cmsStaffLeave'
 import './index.scss'
-import { ESysLbpmProcessStatus, getFlowStatus, isFlowTaskRole } from '@/desktop/shared/util'
+import { ESysLbpmProcessStatus, getFlowStatus } from '@/desktop/shared/util'
 import { EOperationType } from '@/utils/status'
 
 Message.config({ maxCount: 1 })
@@ -26,7 +26,12 @@ const Content: React.FC<IContentViewProps> = props => {
   const lbpmComponentRef = useRef<any>()
   const rightComponentRef = useRef<any>()
   const [flowData, setFlowData] = useState<any>({}) // 流程数据
-
+  const [roleArr, setRoleArr] = useState<any>([])   // 流程角色
+  useEffect(() => {
+    mk.on('SYS_LBPM_AUDIT_FORM_INIT_DATA', (val) => {
+      val?.roles && setRoleArr(val.roles)
+    })
+  }, [])
   const hasDraftBtn = useMemo(() => {
     const status = data?.fdProcessStatus || getFlowStatus(flowData)
     /* 新建文档和草稿有暂存按钮 */
@@ -162,18 +167,21 @@ const Content: React.FC<IContentViewProps> = props => {
 
   // 提交按钮
   const _btn_submit = useMemo(() => {
-    const role = isFlowTaskRole(flowData)
-    const status = data?.fdProcessStatus || getFlowStatus(flowData)
-    const validStatus = status !== ESysLbpmProcessStatus.COMPLETED && status !== ESysLbpmProcessStatus.ABANDONED
+    // const role = isFlowTaskRole(flowData)
+    // const status = data?.fdProcessStatus || getFlowStatus(flowData)
+    // const validStatus = status !== ESysLbpmProcessStatus.COMPLETED && status !== ESysLbpmProcessStatus.ABANDONED
     const submitBtn = <Button type='primary' onClick={() => handleSave(false)}>提交</Button>
-    return !hasDraftBtn ? (
-      <Auth.Auth authURL='/staff/cmsStaffLeave/save' params={{
-        vo: { fdId: params['fdId'] },
-      }}>{submitBtn}</Auth.Auth>
-    ) : (role && validStatus) && submitBtn
-
+    // return !hasDraftBtn ? (
+    //   <Auth.Auth authURL='/staff/cmsStaffAdjust/save' params={{
+    //     vo: { fdId: params['fdId'] },
+    //   }}>{submitBtn}</Auth.Auth>
+    // ) : (role && validStatus) && submitBtn
+    if (roleArr && roleArr.length) {
+      return submitBtn
+    } else {
+      return null
+    }
   }, [data, flowData, params])
-
   // 暂存按钮
   const _btn_draft = useMemo(() => {
     if (
