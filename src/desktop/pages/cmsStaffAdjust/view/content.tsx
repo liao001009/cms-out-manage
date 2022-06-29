@@ -6,7 +6,7 @@ import XForm from './form'
 import api from '@/api/cmsStaffAdjust'
 import './index.scss'
 import { EOperationType, ESysLbpmProcessStatus } from '@/utils/status'
-import { getFlowStatus, isFlowTaskRole } from '@/desktop/shared/util'
+import { getFlowStatus } from '@/desktop/shared/util'
 //@ts-ignore
 import Status, { EStatusType } from '@elements/status'
 import apiLbpm from '@/api/cmsLbpm'
@@ -32,41 +32,45 @@ const Content: React.FC<IContentViewProps> = props => {
     return data?.fdTemplate?.fdId
   }, [data])
   const [flowData, setFlowData] = useState<any>({}) // 流程数据
-  const [materialVis,setMaterialVis] = useState<boolean>(true)
-
-
-  const hasDraftBtn = useMemo(() => {
-    const status = data?.fdProcessStatus || getFlowStatus(flowData)
-    /* 新建文档和草稿有暂存按钮 */
-    return status === ESysLbpmProcessStatus.DRAFT || status === ESysLbpmProcessStatus.REJECT || status === ESysLbpmProcessStatus.WITHDRAW
-  }, [data?.fdProcessStatus, flowData])
+  const [materialVis, setMaterialVis] = useState<boolean>(true)
+  const [roleArr, setRoleArr] = useState<any>([])   // 流程角色
+  useEffect(() => {
+    mk.on('SYS_LBPM_AUDIT_FORM_INIT_DATA', (val) => {
+      val?.roles && setRoleArr(val.roles)
+    })
+  }, [])
+  // const hasDraftBtn = useMemo(() => {
+  //   const status = data?.fdProcessStatus || getFlowStatus(flowData)
+  //   /* 新建文档和草稿有暂存按钮 */
+  //   return status === ESysLbpmProcessStatus.DRAFT || status === ESysLbpmProcessStatus.REJECT || status === ESysLbpmProcessStatus.WITHDRAW
+  // }, [data?.fdProcessStatus, flowData])
   // 机制组件引用
   const formComponentRef = useRef<any>()
   const lbpmComponentRef = useRef<any>()
   const rightComponentRef = useRef<any>()
   /** 获取资料上传节点 */
-  const getCurrentNode  = async () =>{
+  const getCurrentNode = async () => {
     try {
       const nodeInfosData = await apiLbpm.getCurrentNodeInfo({
         processId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdProcessId
       })
       const url = mk.getSysConfig('apiUrlPrefix') + '/cms-out-manage/staff/cmsStaffEntrance/loadNodeExtendPropertiesOnProcess'
-      const processData = await Axios.post(url,{
+      const processData = await Axios.post(url, {
         fdId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdProcessId
       })
-      if(!processData.data.length)return
-      const newArr = processData.data.filter(item=>{
-        return nodeInfosData.data.currentNodeCards.find(item2=>item.nodeId === item2.fdNodeId  && item2.fdCurrentHandlers.some(item3=>item3.id===mk.getSysConfig('currentUser').fdId))
+      if (!processData.data.length) return
+      const newArr = processData.data.filter(item => {
+        return nodeInfosData.data.currentNodeCards.find(item2 => item.nodeId === item2.fdNodeId && item2.fdCurrentHandlers.some(item3 => item3.id === mk.getSysConfig('currentUser').fdId))
       })
       setMaterialVis(newArr.length ? newArr[0].extendProperty.supplierApprove : false)
     } catch (error) {
-      console.error('errortest2',error)
+      console.error('errortest2', error)
       setMaterialVis(false)
     }
   }
-  useEffect(()=>{
+  useEffect(() => {
     getCurrentNode()
-  },[])
+  }, [])
 
   // 校验
   const _validate = async (isDraft: boolean) => {
@@ -192,17 +196,20 @@ const Content: React.FC<IContentViewProps> = props => {
 
   // 提交按钮
   const _btn_submit = useMemo(() => {
-    const role = isFlowTaskRole(flowData)
-    const status = data?.fdProcessStatus || getFlowStatus(flowData)
-    if (status === ESysLbpmProcessStatus.ABANDONED || status === ESysLbpmProcessStatus.COMPLETED) return null
-    const validStatus = status !== ESysLbpmProcessStatus.COMPLETED && status !== ESysLbpmProcessStatus.ABANDONED
+    // const role = isFlowTaskRole(flowData)
+    // const status = data?.fdProcessStatus || getFlowStatus(flowData)
+    // const validStatus = status !== ESysLbpmProcessStatus.COMPLETED && status !== ESysLbpmProcessStatus.ABANDONED
     const submitBtn = <Button type='primary' onClick={() => handleSave(false)}>提交</Button>
-    return !hasDraftBtn ? (
-      <Auth.Auth authURL='/staff/cmsStaffAdjust/save' params={{
-        vo: { fdId: params['id'] },
-      }}>{submitBtn}</Auth.Auth>
-    ) : (role && validStatus) && submitBtn
-
+    // return !hasDraftBtn ? (
+    //   <Auth.Auth authURL='/staff/cmsStaffAdjust/save' params={{
+    //     vo: { fdId: params['fdId'] },
+    //   }}>{submitBtn}</Auth.Auth>
+    // ) : (role && validStatus) && submitBtn
+    if (roleArr && roleArr.length) {
+      return submitBtn
+    } else {
+      return null
+    }
   }, [data, flowData, params])
 
   // 编辑按钮
