@@ -30,46 +30,45 @@ const Content: React.FC<IContentViewProps> = props => {
     return data?.fdTemplate?.fdId
   }, [data])
   const [flowData, setFlowData] = useState<any>({}) // 流程数据
-  const [materialVis,setMaterialVis] = useState<boolean>(true)
+  const [materialVis, setMaterialVis] = useState<boolean>(true)
   const [roleArr, setRoleArr] = useState<any>([])   // 流程角色
   useEffect(() => {
     mk.on('SYS_LBPM_AUDIT_FORM_INIT_DATA', (val) => {
       val?.roles && setRoleArr(val.roles)
     })
   }, [])
-//@ts-ignore
-  const hasDraftBtn = useMemo(() => {
-    const status = data?.fdProcessStatus || getFlowStatus(flowData)
-    /* 新建文档和草稿有暂存按钮 */
-    return status === ESysLbpmProcessStatus.DRAFT || status === ESysLbpmProcessStatus.REJECT || status === ESysLbpmProcessStatus.WITHDRAW
-  }, [data?.fdProcessStatus, flowData])
+  // const hasDraftBtn = useMemo(() => {
+  //   const status = data?.fdProcessStatus || getFlowStatus(flowData)
+  //   /* 新建文档和草稿有暂存按钮 */
+  //   return status === ESysLbpmProcessStatus.DRAFT || status === ESysLbpmProcessStatus.REJECT || status === ESysLbpmProcessStatus.WITHDRAW
+  // }, [data?.fdProcessStatus, flowData])
   // 机制组件引用
   const formComponentRef = useRef<any>()
   const lbpmComponentRef = useRef<any>()
   const rightComponentRef = useRef<any>()
   /** 获取资料上传节点 */
-  const getCurrentNode  = async () =>{
+  const getCurrentNode = async () => {
     try {
       const nodeInfosData = await apiLbpm.getCurrentNodeInfo({
         processId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdProcessId
       })
       const url = mk.getSysConfig('apiUrlPrefix') + '/cms-out-manage/staff/cmsStaffEntrance/loadNodeExtendPropertiesOnProcess'
-      const processData = await Axios.post(url,{
+      const processData = await Axios.post(url, {
         fdId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdProcessId
       })
-      if(!processData.data.length)return
-      const newArr = processData.data.filter(item=>{
-        return nodeInfosData.data.currentNodeCards.find(item2=>item.nodeId === item2.fdNodeId  && item2.fdCurrentHandlers.some(item3=>item3.id===mk.getSysConfig('currentUser').fdId))
+      if (!processData.data.length) return
+      const newArr = processData.data.filter(item => {
+        return nodeInfosData.data.currentNodeCards.find(item2 => item.nodeId === item2.fdNodeId && item2.fdCurrentHandlers.some(item3 => item3.id === mk.getSysConfig('currentUser').fdId))
       })
       setMaterialVis(newArr.length ? newArr[0].extendProperty.supplierApprove : false)
     } catch (error) {
-      console.error('errortest2',error)
+      console.error('errortest2', error)
       setMaterialVis(false)
     }
   }
-  useEffect(()=>{
+  useEffect(() => {
     getCurrentNode()
-  },[])
+  }, [])
 
   // 校验
   const _validate = async (isDraft: boolean) => {
@@ -286,7 +285,7 @@ const Content: React.FC<IContentViewProps> = props => {
           <div className='left'>
             {/* 表单信息 */}
             <div className='form'>
-              <XForm formRef={formComponentRef} value={data || {}} materialVis={materialVis}  />
+              <XForm formRef={formComponentRef} value={data || {}} materialVis={materialVis} />
             </div>
             {/* 机制页签 */}
             <div className='tabs'>
