@@ -68,6 +68,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
   )
 
   /** 筛选 */
+  //@ts-ignore
   const handleCriteriaChange = useCallback(
     (values) => {
       const newConditions = {
