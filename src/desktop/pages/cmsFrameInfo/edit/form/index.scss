@@ -1,4 +1,5 @@
 @import "../../../common/common.scss";
 $baseCls: frameInfo-form;
+$labelWidth:9;
 
-@include form-page($baseCls);
+@include form-page($baseCls,$labelWidth);

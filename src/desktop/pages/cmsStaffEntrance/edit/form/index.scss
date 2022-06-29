@@ -1,31 +1,5 @@
-.lui-xform {
-  background-color: #fff;
-  padding-bottom: 20px;
-  .ele-grid-item {
-    margin-left: -1px;
-    margin-top: -1px;
-    overflow: hidden;
-    padding:6px 40px;
+@import "../../../common/common.scss";
+$baseCls: staffEntrance-form;
+$labelWidth:11;
 
-    .lui-form-item {
-      margin-bottom: 0;
-    }
-
-    .ele-xform-fieldset {
-      align-items: center;
-      &-wrap {
-        flex: 1;
-      }
-      &-label-wrap{
-        width: 11em;
-        max-width: 11em;
-      }
-      .ele-xform-radio-group-row .ele-radio-text{
-        padding-right: 10px;
-      }
-    }
-    .ele-antd-form-item{
-      margin: 0;
-    }
-  }
-}
+@include form-page($baseCls,$labelWidth);

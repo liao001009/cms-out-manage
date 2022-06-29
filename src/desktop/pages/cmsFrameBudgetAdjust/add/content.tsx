@@ -9,6 +9,7 @@ import './index.scss'
 const Content: React.FC<IContentViewProps> = props => {
   const { data,match,  history } = props
   const id = match.params['id']
+  const baseCls = 'frame-budgetAdjust-content'
 
   // 机制组件引用
   const formComponentRef = useRef<any>()
@@ -113,27 +114,30 @@ const Content: React.FC<IContentViewProps> = props => {
   }, [])
 
   return (
-    <div className='lui-approve-template'>
-      {/* 操作区 */}
-      <div className='lui-approve-template-header'>
-        <Breadcrumb>
-          <Breadcrumb.Item>基本信息管理</Breadcrumb.Item>
-          <Breadcrumb.Item>框架预算调整</Breadcrumb.Item>
-          <Breadcrumb.Item>新建</Breadcrumb.Item>
-        </Breadcrumb>
-        <div className='buttons'>
-          <Button type='primary' onClick={() => handleSave(false)}>提交</Button>
-          <Button type='default' onClick={handleClose}>关闭</Button>
+    <div className={baseCls}>
+      <div className='lui-approve-template'>
+        {/* 操作区 */}
+        <div className='lui-approve-template-header'>
+          <Breadcrumb>
+            <Breadcrumb.Item>基本信息管理</Breadcrumb.Item>
+            <Breadcrumb.Item>框架预算调整</Breadcrumb.Item>
+            <Breadcrumb.Item>新建</Breadcrumb.Item>
+          </Breadcrumb>
+          <div className='buttons'>
+            <Button type='primary' onClick={() => handleSave(false)}>提交</Button>
+            <Button type='default' onClick={handleClose}>关闭</Button>
+          </div>
         </div>
-      </div>
-      {/* 内容区 */}
-      <div className='lui-approve-template-content'>
-        {/* 表单信息 */}
-        <div className='form'>
-          <XForm formRef={formComponentRef} value={{...data,...detailData} || {}} />
+        {/* 内容区 */}
+        <div className='lui-approve-template-content'>
+          {/* 表单信息 */}
+          <div className='form'>
+            <XForm formRef={formComponentRef} value={{...data,...detailData} || {}} />
+          </div>
         </div>
       </div>
     </div>
+    
   )
 }
 
