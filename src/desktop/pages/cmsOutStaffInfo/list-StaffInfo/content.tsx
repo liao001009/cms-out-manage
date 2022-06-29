@@ -15,9 +15,10 @@ import ListImport from '@/desktop/components/listImport'
 
 const Content: React.FC<IContentViewProps> = (props) => {
   const { status, data, queryChange, query, refresh, history } = props
+  const baseCls = 'outStaffInfo-list'
   const { content, totalSize, pageSize } = data
   const [modalVisible, setModalVisible] = useState<boolean>(false)
-
+  
   // 表格列定义
   const columns = useMemo(
     () => [
@@ -288,7 +289,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
   )
 
   return (
-    <React.Fragment>
+    <div className={baseCls}>
 
       <div className="lui-template-list">
         <div className="lui-template-list-criteria">
@@ -443,7 +444,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
         visible={modalVisible}
         onCancle={() => setModalVisible(false)}
       />
-    </React.Fragment>
+    </div>
   )
 }
 

@@ -133,7 +133,7 @@ const XformModal : React.FC<IProps> = (props) =>{
           showStatus === 'edit' || showStatus === 'add' ? (
             <Input placeholder='请输入' readOnly onClick={()=>setVisible(true)} value={suppName}/>
           ) : (
-            <span>{value.fdName}</span>
+            <span>{value && value.fdName}</span>
           )
         }
       </div>

@@ -64,7 +64,7 @@ const CMSXformRelation : React.FC<IProps> = (props) =>{
             }
           </Select>
         ) : (
-          <span>{value.fdName}</span>
+          <span>{value && value.fdName}</span>
         )
       }
       

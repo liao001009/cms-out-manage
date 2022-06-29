@@ -14,7 +14,7 @@ const Content: React.FC<IContentViewProps> = props => {
   const params = match?.params
   // 机制组件引用
   const formComponentRef = useRef<any>()
-
+  const baseCls = 'supplierInfo-content'
   // 关闭
   const handleClose = useCallback(() => {
     history.goBack()
@@ -59,26 +59,28 @@ const Content: React.FC<IContentViewProps> = props => {
         <Status type={EStatusType._403} title='抱歉，您暂无权限访问当前页面' />
       }
     >
-      <div className='lui-approve-template'>
-        {/* 操作区 */}
-        <div className='lui-approve-template-header'>
-          <Breadcrumb>
-            <Breadcrumb.Item>供应商管理</Breadcrumb.Item>
-            <Breadcrumb.Item>查看</Breadcrumb.Item>
-          </Breadcrumb>
-          <div className='buttons'>
-            {/* <Button type='primary' onClick={handleAddDeal}>添加合同信息</Button>
-          <Button type='default' onClick={handleDefandPrice}>维护岗位价格</Button> */}
-            <Button type='default' onClick={handleEdit}>编辑</Button>
-            <Button type='default' onClick={handleDel}>删除</Button>
-            <Button type='default' onClick={handleClose}>关闭</Button>
+      <div className={baseCls}>
+        <div className='lui-approve-template'>
+          {/* 操作区 */}
+          <div className='lui-approve-template-header'>
+            <Breadcrumb>
+              <Breadcrumb.Item>供应商管理</Breadcrumb.Item>
+              <Breadcrumb.Item>查看</Breadcrumb.Item>
+            </Breadcrumb>
+            <div className='buttons'>
+              {/* <Button type='primary' onClick={handleAddDeal}>添加合同信息</Button>
+            <Button type='default' onClick={handleDefandPrice}>维护岗位价格</Button> */}
+              <Button type='default' onClick={handleEdit}>编辑</Button>
+              <Button type='default' onClick={handleDel}>删除</Button>
+              <Button type='default' onClick={handleClose}>关闭</Button>
+            </div>
           </div>
-        </div>
-        {/* 内容区 */}
-        <div className='lui-approve-template-content'>
-          {/* 表单信息 */}
-          <div className='form'>
-            <XForm formRef={formComponentRef} value={data || {}} />
+          {/* 内容区 */}
+          <div className='lui-approve-template-content'>
+            {/* 表单信息 */}
+            <div className='form'>
+              <XForm formRef={formComponentRef} value={data || {}} />
+            </div>
           </div>
         </div>
       </div>

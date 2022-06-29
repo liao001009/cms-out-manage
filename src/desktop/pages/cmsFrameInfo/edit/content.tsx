@@ -1,4 +1,4 @@
-import React, { createElement as h, useRef } from 'react'
+import React, { createElement as h, Fragment, useCallback, useRef } from 'react'
 import { IContentViewProps } from '@ekp-runtime/render-module'
 import Icon from '@lui/icons'
 import {  Breadcrumb, Button, Message, Modal } from '@lui/core'
@@ -6,9 +6,13 @@ import { EBtnType } from '@lui/core/es/components/Button'
 import XForm from './form'
 import api from '@/api/cmsFrameInfo'
 import './index.scss'
+import { IProps } from '@/types/common'
 
-const Content: React.FC<IContentViewProps> = props => {
-  const { data,  history, routerPrefix } = props
+
+const Content: React.FC<IProps & IContentViewProps> = props => {
+  const bacls = 'frameInfo-content'
+  const { data,  history, routerPrefix,mode } = props
+  
   // 机制组件引用
   const formComponentRef = useRef<any>()
 
@@ -69,17 +73,18 @@ const Content: React.FC<IContentViewProps> = props => {
     if (await _beforeSave(isDraft) === false) {
       return
     }
-    // 编辑保存
-    api.save(values as any).then(res => {
+    const getDataApi = mode === 'add' ? api.add : api.save
+    // 编辑提交
+    getDataApi(values as any).then(res => {
       if (res.success) {
-        Message.success('保存成功', 1, () => {
+        Message.success(isDraft ? '暂存成功' : '提交成功' , 1, () => {
           history.goBack()
         })
       } else {
-        Message.error('保存失败', 1)
+        Message.error(isDraft ? '暂存失败' : '提交失败', 1)
       }
     }).catch(() => {
-      Message.error( '保存失败', 1)
+      Message.error(isDraft ? '暂存失败' : '提交失败', 1)
     })
   }
 
@@ -109,25 +114,44 @@ const Content: React.FC<IContentViewProps> = props => {
     })
   }
 
+  // 关闭
+  const handleClose = useCallback(() => {
+    history.goBack()
+  }, [])
+
+
   return (
-    <div className='lui-approve-template'>
-      {/* 操作区 */}
-      <div className='lui-approve-template-header'>
-        <Breadcrumb>
-          <Breadcrumb.Item>基本信息管理</Breadcrumb.Item>
-          <Breadcrumb.Item>框架信息</Breadcrumb.Item>
-          <Breadcrumb.Item>编辑</Breadcrumb.Item>
-        </Breadcrumb>
-        <div className='buttons'>
-          <Button type='primary' onClick={() => handleSave(true)}>保存</Button>
-          <Button type='default' onClick={handleDelete}>删除</Button>
+    <div className={bacls}>
+      <div className='lui-approve-template'>
+        {/* 操作区 */}
+        <div className='lui-approve-template-header'>
+          <Breadcrumb>
+            <Breadcrumb.Item>基本信息管理</Breadcrumb.Item>
+            <Breadcrumb.Item>框架信息</Breadcrumb.Item>
+            <Breadcrumb.Item>{mode==='add'?'添加':'编辑'}</Breadcrumb.Item>
+          </Breadcrumb>
+          <div className='buttons'>
+            {
+              mode === 'add' ? (
+                <Fragment>
+                  <Button type='primary' onClick={() => handleSave(false)}>提交</Button>
+                  <Button type='default' onClick={handleClose}>关闭</Button>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <Button type='primary' onClick={() => handleSave(true)}>暂存</Button>
+                  <Button type='default' onClick={handleDelete}>删除</Button>
+                </Fragment>
+              )
+            }
+          </div>
         </div>
-      </div>
-      {/* 内容区 */}
-      <div className='lui-approve-template-content'>
-        {/* 表单信息 */}
-        <div className='form'>
-          <XForm formRef={formComponentRef} value={data || {}} />
+        {/* 内容区 */}
+        <div className='lui-approve-template-content'>
+          {/* 表单信息 */}
+          <div className='form'>
+            <XForm formRef={formComponentRef} value={data || {}} />
+          </div>
         </div>
       </div>
     </div>

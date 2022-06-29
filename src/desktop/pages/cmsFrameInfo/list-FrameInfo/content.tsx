@@ -14,7 +14,7 @@ import { Auth } from '@ekp-infra/common'
 const Content: React.FC<IContentViewProps> = (props) => {
   const { status, data, queryChange, query, refresh, history } = props
   const { content, totalSize, pageSize } = data
-
+  const baseCls = 'frameInfo-list'
   // 表格列定义
   const columns = useMemo(
     () => [
@@ -182,8 +182,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
   )
 
   return (
-    <React.Fragment>
-
+    <div className={baseCls}>
       <div className="lui-template-list">
         <div className="lui-template-list-criteria">
           <div className="left">
@@ -271,7 +270,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
           ) : null}
         </div>
       </div>
-    </React.Fragment>
+    </div>
   )
 }
 

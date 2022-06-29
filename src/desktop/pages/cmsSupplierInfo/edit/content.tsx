@@ -13,6 +13,7 @@ const Content: React.FC<IProps & IContentViewProps> = props => {
   const { data, history, routerPrefix,mode } = props
   // 机制组件引用
   const formComponentRef = useRef<any>()
+  const baseCls = 'supplierInfo-content'
 
   // 校验
   const _validate = async (isDraft: boolean) => {
@@ -129,37 +130,40 @@ const Content: React.FC<IProps & IContentViewProps> = props => {
   }, [])
 
   return (
-    <div className='lui-approve-template'>
-      {/* 操作区 */}
-      <div className='lui-approve-template-header'>
-        <Breadcrumb>
-          <Breadcrumb.Item>供应商管理</Breadcrumb.Item>
-          <Breadcrumb.Item>{mode==='add'?'添加':'编辑'}</Breadcrumb.Item>
-        </Breadcrumb>
-        <div className='buttons'>
-          {
-            mode === 'add' ? (
-              <Fragment>
-                <Button type='primary' onClick={() => handleSave(false)}>提交</Button>
-                <Button type='default' onClick={handleClose}>关闭</Button>
-              </Fragment>
-            ) : (
-              <Fragment>
-                <Button type='primary' onClick={() => handleSave(true)}>暂存</Button>
-                <Button type='default' onClick={handleDelete}>删除</Button>
-              </Fragment>
-            )
-          }
+    <div className={baseCls}>
+      <div className='lui-approve-template'>
+        {/* 操作区 */}
+        <div className='lui-approve-template-header'>
+          <Breadcrumb>
+            <Breadcrumb.Item>供应商管理</Breadcrumb.Item>
+            <Breadcrumb.Item>{mode==='add'?'添加':'编辑'}</Breadcrumb.Item>
+          </Breadcrumb>
+          <div className='buttons'>
+            {
+              mode === 'add' ? (
+                <Fragment>
+                  <Button type='primary' onClick={() => handleSave(false)}>提交</Button>
+                  <Button type='default' onClick={handleClose}>关闭</Button>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <Button type='primary' onClick={() => handleSave(true)}>暂存</Button>
+                  <Button type='default' onClick={handleDelete}>删除</Button>
+                </Fragment>
+              )
+            }
+          </div>
         </div>
-      </div>
-      {/* 内容区 */}
-      <div className='lui-approve-template-content'>
-        {/* 表单信息 */}
-        <div className='form'>
-          <XForm formRef={formComponentRef} value={data || {}} />
+        {/* 内容区 */}
+        <div className='lui-approve-template-content'>
+          {/* 表单信息 */}
+          <div className='form'>
+            <XForm formRef={formComponentRef} value={data || {}} />
+          </div>
         </div>
       </div>
     </div>
+
   )
 }
 
