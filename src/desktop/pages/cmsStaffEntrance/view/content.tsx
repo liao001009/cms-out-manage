@@ -56,17 +56,20 @@ const Content: React.FC<IContentViewProps> = props => {
   const getCurrentNode  = async () =>{
     try {
       const nodeInfosData = await apiLbpm.getCurrentNodeInfo({
-        processId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdProcessId
+        processInstanceId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdProcessId
       })
       const url = mk.getSysConfig('apiUrlPrefix') + '/cms-out-manage/staff/cmsStaffEntrance/loadNodeExtendPropertiesOnProcess'
       const processData = await Axios.post(url,{
         fdId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdProcessId
       })
-      if(!processData.data.length)return
-      const newArr = processData.data.filter(item=>{
-        return nodeInfosData.data.currentNodeCards.find(item2=>item.nodeId === item2.fdNodeId  && item2.fdCurrentHandlers.some(item3=>item3.id===mk.getSysConfig('currentUser').fdId))
-      })
-      setMaterialVis(newArr.length ? newArr[0].extendProperty.supplierApprove : false)
+      if(nodeInfosData.data.currentNodeCards.length || processData.data.length){
+        const newArr = processData.data.filter(item=>{
+          return nodeInfosData.data.currentNodeCards.find(item2=>item.nodeId === item2.fdNodeId  && item2.fdCurrentHandlers.some(item3=>item3.id===mk.getSysConfig('currentUser').fdId))
+        })
+        setMaterialVis(newArr.length ? newArr[0].extendProperty.supplierApprove : false)
+      }else{
+        setMaterialVis(false)
+      }
     } catch (error) {
       console.error('errortest2',error)
       setMaterialVis(false)
