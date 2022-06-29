@@ -1,4 +1,4 @@
-@mixin common-page($baseCls) {
+@mixin list-page($baseCls) {
   .#{$baseCls} {
     .lui-template-list {
       padding: 16px;
@@ -25,7 +25,7 @@
 
 }
 
-@mixin form-page($baseCls) {
+@mixin content-page($baseCls) {
   .#{$baseCls}{
     .lui-approve-template {
       &-header {
@@ -62,7 +62,7 @@
   }
 }
 
-@mixin form-componments-page($baseCls) {
+@mixin form-page($baseCls) {
   .#{$baseCls}{
     .lui-xform {
       background-color: #fff;

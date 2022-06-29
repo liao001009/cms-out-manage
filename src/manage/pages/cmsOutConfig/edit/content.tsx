@@ -51,7 +51,7 @@ const Content: React.FC<IContentViewProps> = props => {
     return values
   }
   // 提交前事件
-  const _beforeSave = async (isDraft: boolean, value) => {
+  const _beforeSave = async (isDraft: boolean) => {
     // 提交前表单预处理
     if (formComponentRef.current) {
       const beforeFormErrors = await formComponentRef.current.beforeSubmit({ isDraft })
@@ -70,7 +70,7 @@ const Content: React.FC<IContentViewProps> = props => {
     // 拼装提交数据
     const values = await _formatValue(isDraft)
     // 文档提交前事件
-    if (await _beforeSave(isDraft, values) === false) {
+    if (await _beforeSave(isDraft) === false) {
       return
     }
     // 编辑提交

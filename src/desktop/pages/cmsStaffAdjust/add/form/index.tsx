@@ -1040,40 +1040,6 @@ const XForm = (props) => {
               }}
               columnSpan={1}
             ></GridItem>
-            <GridItem column={1} row={22} rowSpan={1} columnSpan={2}>
-              <XformFieldset
-                labelTextAlign={'left'}
-                mobileContentAlign={'right'}
-                title={fmtMsg(':cmsStaffAdjust.form.!{l482x9oheg8kfwghnzk}', '资料上传')}
-                layout={'horizontal'}
-              >
-                <Form.Item
-                  name={'fdAtt'}
-                  rules={[
-                    {
-                      validator: lengthValidator(200)
-                    },
-                  ]}
-                >
-                  <Upload
-                    mode='file'
-                    fdEntityName='com.landray.cms.out.manage.core.entity.staff.CmsStaffAdjust'
-                    multiple={false}
-                    fdEntityKey='fdAtt'
-                    operation={{ edit: false, preview: false, download: false, print: false }}
-                  />
-                </Form.Item>
-              </XformFieldset>
-            </GridItem>
-            <GridItem
-              column={2}
-              row={22}
-              rowSpan={1}
-              style={{
-                display: 'none'
-              }}
-              columnSpan={1}
-            ></GridItem>
             <GridItem
               column={2}
               row={16}
