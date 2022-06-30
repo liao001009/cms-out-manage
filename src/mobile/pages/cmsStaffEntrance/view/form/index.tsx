@@ -12,7 +12,7 @@ import XformMDatetime from '@/mobile/components/form/XformMDatetime'
 import XformMRelation from '@/mobile/components/form/XformMRelation'
 import XformMSelect from '@/mobile/components/form/XformMSelect'
 import XformMDetailTable from '@/mobile/components/form/XformMDetailTable'
-import XformRelation from '@/mobile/components/form/XformRelation'
+// import XformRelation from '@/mobile/components/form/XformRelation'
 import XformMRadio from '@/mobile/components/form/XformMRadio'
 import XformInput from '@/mobile/components/form/XformInput'
 import XformRadio from '@/mobile/components/form/XformRadio'
@@ -1217,7 +1217,7 @@ const XForm = (props) => {
                 title={fmtMsg(':cmsStaffEntrance.form.!{l47uub9dsn08ldijk8}', '厂商实施人员信息')}
                 label={fmtMsg(':cmsStaffEntrance.form.!{l47uub9dsn08ldijk8}', '厂商实施人员信息')}
                 defaultRowNumber={1}
-                mobileRender={['simple']}
+                mobileRender={['table']}
                 pcSetting={['pagination']}
                 showNumber={true}
                 layout={'vertical'}
@@ -1409,7 +1409,7 @@ const XForm = (props) => {
                       }
                     }
                   },
-                  {
+                  /* {
                     type: XformMRelation,
                     controlProps: {
                       title: fmtMsg(':cmsStaffEntrance.form.!{l47uub9dvrnp3vacbdc}', '岗位'),
@@ -1457,6 +1457,47 @@ const XForm = (props) => {
                       }
                     },
                     label: fmtMsg(':cmsStaffEntrance.form.!{l47uub9dvrnp3vacbdc}', '岗位'),
+                    options: {
+                      validateRules: {
+                        required: true,
+                        message: fmtMsg(':required', '内容不能为空')
+                      }
+                    }
+                  }, */
+                  
+
+                  {
+                    type: CMSXformRelation,
+                    controlProps: {
+                      title: fmtMsg(':cmsStaffEntrance.form.!{l47uj8xqn12hrn7qfeg}', '岗位'),
+                      name: 'fdPost',
+                      showFdName: 'fdName',
+                      renderMode: 'select',
+                      direction: 'column',
+                      rowCount: 3,
+                      modelName: 'com.landray.sys.xform.core.entity.design.SysXFormDesign',
+                      isForwardView: 'no',
+                      desktop: {
+                        type: CMSXformRelation
+                      },
+                      relationCfg: {
+                        appCode: '1g44id6v0w8wk87w1tojjnkomh1ni2cebpw0',
+                        xformName: '岗位信息',
+                        modelId: '1g44id73fw8wkc6w27c0s7933o6cop37few0',
+                        tableType: 'main',
+                        tableName: 'mk_model_202205280ut12',
+                        showFields: '$岗位名称$',
+                        refFieldName: '$fd_post_name$'
+                      },
+                      showStatus: 'view'
+                    },
+                    labelProps: {
+                      title: fmtMsg(':cmsStaffEntrance.form.!{l47uj8xqn12hrn7qfeg}', '岗位'),
+                      desktop: {
+                        layout: 'vertical'
+                      }
+                    },
+                    label: fmtMsg(':cmsStaffEntrance.form.!{l47uj8xqn12hrn7qfeg}', '岗位'),
                     options: {
                       validateRules: {
                         required: true,
