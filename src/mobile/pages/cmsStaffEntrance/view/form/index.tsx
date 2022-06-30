@@ -19,6 +19,8 @@ import XformRadio from '@/mobile/components/form/XformRadio'
 import XformMCheckbox from '@/mobile/components/form/XformMCheckbox'
 import XformAttachDemoMobile from '@/mobile/components/form/XformAttachDemoMobile'
 import XformMAttach from '@/mobile/components/form/XformMAttach'
+import CMSXformModal from '@/desktop/components/staff-cms/XformModal'
+import CMSXformRelation from '@/desktop/components/base-cms/CMSXformRelation'
 
 const MECHANISMNAMES = {
   fdAtt: 'attachmentDict',
@@ -191,7 +193,8 @@ const XForm = (props) => {
             required={true}
           >
             <Form.Item name={'fdProject'}>
-              <XformMRelation
+              {value?.fdProject?.fdName??''}
+              {/* <XformMRelation
                 {...sysProps}
                 renderMode={'singlelist'}
                 direction={'column'}
@@ -376,7 +379,7 @@ const XForm = (props) => {
                   ]
                 }}
                 showStatus="view"
-              ></XformMRelation>
+              ></XformMRelation> */}
             </Form.Item>
           </XformFieldset>
           <XformFieldset
@@ -609,7 +612,7 @@ const XForm = (props) => {
                 $$tableName="cmsStaffProjectDetail"
                 title={fmtMsg(':cmsStaffEntrance.form.!{l47ubnidlwzsgmgcbxm}', '项目外包人员信息')}
                 defaultRowNumber={1}
-                mobileRender={['simple']}
+                mobileRender={['table']}
                 pcSetting={['pagination']}
                 showNumber={true}
                 layout={'vertical'}
@@ -617,7 +620,7 @@ const XForm = (props) => {
                   fontWeight: 'bold'
                 }}
                 columns={[
-                  {
+                  /* {
                     type: XformMRelation,
                     controlProps: {
                       title: fmtMsg(':cmsStaffEntrance.form.!{l47ucie6axg62p00qnq}', '姓名'),
@@ -845,6 +848,42 @@ const XForm = (props) => {
                       }
                     },
                     label: fmtMsg(':cmsStaffEntrance.form.!{l47ucie6axg62p00qnq}', '姓名')
+                  }, */
+                  {
+                    type: CMSXformModal,
+                    controlProps: {
+                      modalTitle: '外包人员信息',
+                      chooseFdName: 'fdName',
+                      title: fmtMsg(':cmsStaffEntrance.form.!{l47ucie6axg62p00qnq}', '姓名'),
+                      name: 'fdStaffName',
+                      renderMode: 'singlelist',
+                      direction: 'column',
+                      rowCount: 3,
+                      modelName: 'com.landray.sys.xform.core.entity.design.SysXFormDesign',
+                      isForwardView: 'no',
+                      desktop: {
+                        type: CMSXformModal
+                      },
+
+                      relationCfg: {
+                        appCode: '1g44id6eaw8wk0aw2kn8m6v35g3cmkig7ew0',
+                        xformName: '外包人员信息',
+                        modelId: '1g44id6odw8wk75wge0p5v1s9g7s02ppnpw0',
+                        tableType: 'main',
+                        tableName: 'mk_model_202205284tv70',
+                        showFields: '$姓名$',
+                        refFieldName: '$fd_name$'
+                      },
+                      type: CMSXformModal,
+                      showStatus: 'view'
+                    },
+                    labelProps: {
+                      title: fmtMsg(':cmsStaffEntrance.form.!{l47ucie6axg62p00qnq}', '姓名'),
+                      desktop: {
+                        layout: 'vertical'
+                      }
+                    },
+                    label: fmtMsg(':cmsStaffEntrance.form.!{l47ucie6axg62p00qnq}', '姓名')
                   },
                   {
                     type: XformMRadio,
@@ -991,7 +1030,7 @@ const XForm = (props) => {
                       }
                     }
                   },
-                  {
+                  /* {
                     type: XformMRelation,
                     controlProps: {
                       title: fmtMsg(':cmsStaffEntrance.form.!{l47uj8xqn12hrn7qfeg}', '岗位'),
@@ -1032,6 +1071,45 @@ const XForm = (props) => {
                     labelProps: {
                       title: fmtMsg(':cmsStaffEntrance.form.!{l47uj8xqn12hrn7qfeg}', '岗位'),
                       mobile: {
+                        layout: 'vertical'
+                      }
+                    },
+                    label: fmtMsg(':cmsStaffEntrance.form.!{l47uj8xqn12hrn7qfeg}', '岗位'),
+                    options: {
+                      validateRules: {
+                        required: true,
+                        message: fmtMsg(':required', '内容不能为空')
+                      }
+                    }
+                  }, */
+                  {
+                    type: CMSXformRelation,
+                    controlProps: {
+                      title: fmtMsg(':cmsStaffEntrance.form.!{l47uj8xqn12hrn7qfeg}', '岗位'),
+                      name: 'fdPost',
+                      showFdName: 'fdName',
+                      renderMode: 'select',
+                      direction: 'column',
+                      rowCount: 3,
+                      modelName: 'com.landray.sys.xform.core.entity.design.SysXFormDesign',
+                      isForwardView: 'no',
+                      desktop: {
+                        type: CMSXformRelation
+                      },
+                      relationCfg: {
+                        appCode: '1g44id6v0w8wk87w1tojjnkomh1ni2cebpw0',
+                        xformName: '岗位信息',
+                        modelId: '1g44id73fw8wkc6w27c0s7933o6cop37few0',
+                        tableType: 'main',
+                        tableName: 'mk_model_202205280ut12',
+                        showFields: '$岗位名称$',
+                        refFieldName: '$fd_post_name$'
+                      },
+                      showStatus: 'view'
+                    },
+                    labelProps: {
+                      title: fmtMsg(':cmsStaffEntrance.form.!{l47uj8xqn12hrn7qfeg}', '岗位'),
+                      desktop: {
                         layout: 'vertical'
                       }
                     },
