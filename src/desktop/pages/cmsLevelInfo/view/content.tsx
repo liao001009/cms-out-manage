@@ -49,7 +49,7 @@ const Content: React.FC<IContentViewProps> = props => {
 
   return (
     <Auth.Auth
-      authURL='/basedata/cmsLevelInfo/get'
+      authURL='/cmsLevelInfo/get'
       authModuleName='cms-out-manage'
       params={{ vo: { fdId: params['id'] } }}
       unauthorizedPage={

@@ -1,4 +1,4 @@
-import React, { createElement as h, useMemo, useRef, useState,useEffect } from 'react'
+import React, { createElement as h, useMemo, useRef, useState, useEffect } from 'react'
 import { Auth, Module } from '@ekp-infra/common'
 import { IContentViewProps } from '@ekp-runtime/render-module'
 import Icon from '@lui/icons'
@@ -174,7 +174,7 @@ const Content: React.FC<IContentViewProps> = props => {
     // const validStatus = status !== ESysLbpmProcessStatus.COMPLETED && status !== ESysLbpmProcessStatus.ABANDONED
     const submitBtn = <Button type='primary' onClick={() => handleSave(false)}>提交</Button>
     // return !hasDraftBtn ? (
-    //   <Auth.Auth authURL='/staff/cmsStaffAdjust/save' params={{
+    //   <Auth.Auth authURL='/cmsStaffAdjust/save' params={{
     //     vo: { fdId: params['fdId'] },
     //   }}>{submitBtn}</Auth.Auth>
     // ) : (role && validStatus) && submitBtn
@@ -203,7 +203,7 @@ const Content: React.FC<IContentViewProps> = props => {
       // 如果有回复协同的操作，则要校验权限
       status === ESysLbpmProcessStatus.DRAFT && !lbpmComponentRef.current.checkOperationTypeExist(flowData.identity, EOperationType.handler_replyDraftCooperate)
         ? deleteBtn
-        : <Auth.Auth authURL='/staff/cmsStaffLeave/delete' params={{
+        : <Auth.Auth authURL='/cmsStaffLeave/delete' params={{
           vo: { fdId: params['fdId'] }
         }}>
           {deleteBtn}
@@ -262,7 +262,7 @@ const Content: React.FC<IContentViewProps> = props => {
                 mode='edit'
                 approveLayout='right'
                 wrappedComponentRef={lbpmComponentRef}
-                moduleCode='cms-out-manage'
+                moduleCode='cms-out-manage-leave'
                 onChange={(v) => setFlowData(v)}
                 mechanism={{
                   formId: data?.fdTemplate?.fdId,

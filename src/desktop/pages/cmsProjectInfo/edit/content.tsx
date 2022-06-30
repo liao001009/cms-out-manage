@@ -12,7 +12,7 @@ import { IProps } from '@/types/common'
 const bacls = 'projectInfo-content'
 
 const Content: React.FC<IProps & IContentViewProps> = props => {
-  const { data, history, routerPrefix,mode } = props
+  const { data, history, routerPrefix, mode } = props
   // 机制组件引用
   const formComponentRef = useRef<any>()
 
@@ -36,21 +36,19 @@ const Content: React.FC<IProps & IContentViewProps> = props => {
     // 表单机制数据
     if (formComponentRef.current) {
       const formValues = await formComponentRef.current.getValue() || {}
-      if(formValues.fdFrame){
+      if (formValues.fdFrame) {
         values = {
           ...values,
           ...formValues,
-          fdFrame:{
-            fdId:formValues.fdFrame
-          }
+          fdFrame: formValues.fdFrame
         }
-      }else{
+      } else {
         values = {
           ...values,
           ...formValues
         }
       }
-      if(formValues.mechanisms){
+      if (formValues.mechanisms) {
         delete values.mechanisms
       }
     }
@@ -85,7 +83,7 @@ const Content: React.FC<IProps & IContentViewProps> = props => {
     // 编辑提交
     getDataApi(values as any).then(res => {
       if (res.success) {
-        Message.success(isDraft ? '暂存成功' : '提交成功' , 1, () => {
+        Message.success(isDraft ? '暂存成功' : '提交成功', 1, () => {
           history.goBack()
         })
       } else {
@@ -134,7 +132,7 @@ const Content: React.FC<IProps & IContentViewProps> = props => {
         <div className='lui-approve-template-header'>
           <Breadcrumb>
             <Breadcrumb.Item>框架外包项目管理</Breadcrumb.Item>
-            <Breadcrumb.Item>{mode==='add'?'添加':'编辑'}</Breadcrumb.Item>
+            <Breadcrumb.Item>{mode === 'add' ? '添加' : '编辑'}</Breadcrumb.Item>
           </Breadcrumb>
           <div className='buttons'>
             {

@@ -110,8 +110,8 @@ const Content: React.FC<IContentViewProps> = props => {
     // 提交
     api.add({
       ...values,
-      cmsStaffProjectDetail:values.cmsStaffProjectDetail && values.cmsStaffProjectDetail.values || undefined,
-      cmsStaffImplDetail:values.cmsStaffImplDetail && values.cmsStaffImplDetail.values || undefined
+      cmsStaffProjectDetail: values.cmsStaffProjectDetail && values.cmsStaffProjectDetail.values || undefined,
+      cmsStaffImplDetail: values.cmsStaffImplDetail && values.cmsStaffImplDetail.values || undefined
     }).then(res => {
       if (res.success) {
         Message.success(isDraft ? '暂存成功' : '提交成功', 1, () => {
@@ -180,7 +180,7 @@ const Content: React.FC<IContentViewProps> = props => {
                 auditType='audit'
                 approveLayout='right'
                 wrappedComponentRef={lbpmComponentRef}
-                moduleCode='cms-out-manage'
+                moduleCode='cms-out-manage-entrance'
                 mode='add'
                 mechanism={{
                   formId: templateId,

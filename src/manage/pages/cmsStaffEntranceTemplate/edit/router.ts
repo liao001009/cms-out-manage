@@ -63,7 +63,14 @@ export default [
             return {
               templateData: lbpmTemplate[0],
               fdLbpmTemplateId: lbpmTemplate[0] && lbpmTemplate[0].fdId,
-              elements: lbpmTemplateContent.elements
+              elements: lbpmTemplateContent.elements,
+              innerForm: [
+                {
+                  fdSystemcod: 'INNER_SYSSTEM',
+                  fdModuleCode: 'cms-out-manage-entrance'
+                }
+              ],
+              moduleCode: 'cms-out-manage-entrance'
             }
           }
         } catch {}
