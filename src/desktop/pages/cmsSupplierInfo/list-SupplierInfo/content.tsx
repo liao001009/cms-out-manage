@@ -17,7 +17,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
   const { status, data, queryChange, query, refresh, history } = props
   const { content, totalSize, pageSize } = data
   const [modalVisible, setModalVisible] = useState<boolean>(false)
-
+  const baseCls = 'supplierInfo-list'
   // 表格列定义
   const columns = useMemo(
     () => [
@@ -197,7 +197,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
 
   return (
 
-    <React.Fragment>
+    <div className={baseCls}>
       <div className="lui-template-list">
         <div className="lui-template-list-criteria">
           <div className="left">
@@ -313,7 +313,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
         visible={modalVisible}
         onCancle={() => setModalVisible(false)}
       />
-    </React.Fragment>
+    </div>
   )
 }
 

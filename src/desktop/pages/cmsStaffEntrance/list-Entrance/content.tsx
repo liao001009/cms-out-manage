@@ -15,6 +15,7 @@ import './index.scss'
 
 const Content: React.FC<IContentViewProps> = (props) => {
   const { status, data, queryChange, query, refresh, history } = props
+  const baseCls = 'staffEntrance-list'
   const { content, totalSize, pageSize, offset } = data
   const [visible, setVisible] = useState<boolean>(false)
   const [templateData, setTemplateData] = useState<any>({})
@@ -296,8 +297,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
   )
 
   return (
-    <React.Fragment>
-
+    <div className={baseCls}>
       <div className="lui-template-list">
         <div className="lui-template-list-criteria">
           <div className="left">
@@ -452,7 +452,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
           /> : null
         }
       </div>
-    </React.Fragment>
+    </div>
   )
 }
 

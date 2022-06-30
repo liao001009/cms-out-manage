@@ -67,6 +67,8 @@ const XformModal: React.FC<IProps> = (props) => {
     rowIndex,
     defaultTableCriteria={}
   } = props
+  console.log('props',props)
+  
   const [listData, setListData] = useState<any>({})
   const [visible, setVisible] = useState<boolean>(false)
   const [fdName, setFdName] = useState<string>(value && value.fdName || '')
@@ -160,7 +162,7 @@ const XformModal: React.FC<IProps> = (props) => {
           showStatus === 'edit' || showStatus === 'add' ? (
             <Input placeholder='请输入' readOnly onClick={() => setVisible(true)} value={fdName} />
           ) : (
-            <span>{value[chooseFdName]}</span>
+            <span>{value && value[chooseFdName]}</span>
           )
         }
       </div>

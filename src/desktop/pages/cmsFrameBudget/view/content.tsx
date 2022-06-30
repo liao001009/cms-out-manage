@@ -15,6 +15,7 @@ const TabPane = Tabs.TabPane
 
 const Content: React.FC<IContentViewProps> = props => {
   const { data, match, history, queryChange, query } = props
+  const baseCls = 'frameBudget-content'
   const id = match.params['id']
   const [adjustArray, setAdjustArray] = useState<any>({})
   useEffect(() => {
@@ -143,47 +144,50 @@ const Content: React.FC<IContentViewProps> = props => {
         <Status type={EStatusType._403} title='抱歉，您暂无权限访问当前页面' />
       }
     >
-      <div className='lui-approve-template'>
-        {/* 操作区 */}
-        <div className='lui-approve-template-header'>
-          <Breadcrumb>
-            <Breadcrumb.Item>基本信息管理</Breadcrumb.Item>
-            <Breadcrumb.Item>框架预算</Breadcrumb.Item>
-            <Breadcrumb.Item>查看</Breadcrumb.Item>
-          </Breadcrumb>
-          <div className='buttons'>
-            <Button type='primary' onClick={handleHref}>框架预算调整</Button>
-            <Button type='default' onClick={handleEdit}>编辑</Button>
-            <Button type='default' onClick={handleDel}>删除</Button>
-            <Button type='default' onClick={handleClose}>关闭</Button>
+      <div className={baseCls}>
+        <div className='lui-approve-template'>
+          {/* 操作区 */}
+          <div className='lui-approve-template-header'>
+            <Breadcrumb>
+              <Breadcrumb.Item>基本信息管理</Breadcrumb.Item>
+              <Breadcrumb.Item>框架预算</Breadcrumb.Item>
+              <Breadcrumb.Item>查看</Breadcrumb.Item>
+            </Breadcrumb>
+            <div className='buttons'>
+              <Button type='primary' onClick={handleHref}>框架预算调整</Button>
+              <Button type='default' onClick={handleEdit}>编辑</Button>
+              <Button type='default' onClick={handleDel}>删除</Button>
+              <Button type='default' onClick={handleClose}>关闭</Button>
+            </div>
           </div>
-        </div>
-        {/* 内容区 */}
-        <div className='lui-approve-template-content'>
-          {/* 表单信息 */}
-          <div className='form'>
-            <XForm formRef={formComponentRef} value={data || {}} />
-          </div>
-          <div className='tab'>
-            <Tabs defaultActiveKey="1">
-              <TabPane tab="调整记录 " key="1">
-                <div className="lui-template-list-table">
-                  <Table {...tableProps} />
-                </div>
-                <div className="lui-template-list-page">
-                  {adjustArray.totalSize ? (
-                    <Pagination
-                      total={adjustArray.totalSize}
-                      pageSize={adjustArray.pageSize}
-                      onChange={handlePage}
-                    />
-                  ) : null}
-                </div>
-              </TabPane>
-            </Tabs>
+          {/* 内容区 */}
+          <div className='lui-approve-template-content'>
+            {/* 表单信息 */}
+            <div className='form'>
+              <XForm formRef={formComponentRef} value={data || {}} />
+            </div>
+            <div className='tab'>
+              <Tabs defaultActiveKey="1">
+                <TabPane tab="调整记录 " key="1">
+                  <div className="lui-template-list-table">
+                    <Table {...tableProps} />
+                  </div>
+                  <div className="lui-template-list-page">
+                    {adjustArray.totalSize ? (
+                      <Pagination
+                        total={adjustArray.totalSize}
+                        pageSize={adjustArray.pageSize}
+                        onChange={handlePage}
+                      />
+                    ) : null}
+                  </div>
+                </TabPane>
+              </Tabs>
+            </div>
           </div>
         </div>
       </div>
+
     </Auth.Auth>
 
   )

@@ -1,5 +1,6 @@
 import { createElement as h } from 'react'
-import Content from './content'
+import Content from '@/desktop/pages/cmsFrameInfo/edit/content'
+
 
 export default {
   // 类型：模块
@@ -29,11 +30,9 @@ export default {
     type: 'content-list',
     // 内容渲染组件
     render: Content,
-    // // 请求
-    // dataUrl: ({ param }) =>
-    //   api.init({
-    //     fdTemplate: { fdId: param.templateId },
-    //     mechanisms: { load: '*' }
-    //   })
+    props: {
+      // 编辑模式：新建
+      mode: 'add'
+    }
   }
 }

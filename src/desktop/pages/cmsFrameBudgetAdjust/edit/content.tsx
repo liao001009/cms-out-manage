@@ -10,6 +10,7 @@ import './index.scss'
 
 const Content: React.FC<IContentViewProps> = props => {
   const { data, history,query } = props
+  const baseCls = 'frame-budgetAdjust-content'
   const budgetId = query.budgetId
   const [detailData,setDetailData] = useState<any>([])
 
@@ -20,8 +21,6 @@ const Content: React.FC<IContentViewProps> = props => {
   const init = async () =>{
     try {
       const res = await api.get({ fdId: budgetId})
-      console.log('res',res)
-      
       setDetailData(res.data)
     } catch (error) {
       console.warn('框架类型出错',error)
@@ -137,27 +136,30 @@ const Content: React.FC<IContentViewProps> = props => {
   }
 
   return (
-    <div className='lui-approve-template'>
-      {/* 操作区 */}
-      <div className='lui-approve-template-header'>
-        <Breadcrumb>
-          <Breadcrumb.Item>基本信息管理</Breadcrumb.Item>
-          <Breadcrumb.Item>框架预算调整</Breadcrumb.Item>
-          <Breadcrumb.Item>编辑</Breadcrumb.Item>
-        </Breadcrumb>
-        <div className='buttons'>
-          <Button type='primary' onClick={() => handleSave(true)}>保存</Button>
-          <Button type='default' onClick={handleDelete}>删除</Button>
+    <div className={baseCls}>
+      <div className='lui-approve-template'>
+        {/* 操作区 */}
+        <div className='lui-approve-template-header'>
+          <Breadcrumb>
+            <Breadcrumb.Item>基本信息管理</Breadcrumb.Item>
+            <Breadcrumb.Item>框架预算调整</Breadcrumb.Item>
+            <Breadcrumb.Item>编辑</Breadcrumb.Item>
+          </Breadcrumb>
+          <div className='buttons'>
+            <Button type='primary' onClick={() => handleSave(true)}>保存</Button>
+            <Button type='default' onClick={handleDelete}>删除</Button>
+          </div>
         </div>
-      </div>
-      {/* 内容区 */}
-      <div className='lui-approve-template-content'>
-        {/* 表单信息 */}
-        <div className='form'>
-          <XForm formRef={formComponentRef}  value={{...data,...detailData} || {}} />
+        {/* 内容区 */}
+        <div className='lui-approve-template-content'>
+          {/* 表单信息 */}
+          <div className='form'>
+            <XForm formRef={formComponentRef}  value={{...data,...detailData} || {}} />
+          </div>
         </div>
       </div>
     </div>
+
   )
 }
 
