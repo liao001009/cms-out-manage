@@ -1002,7 +1002,7 @@ const XForm = (props) => {
                           multiple={false}
                           fdEntityKey='fdAtt'
                           operation={{ edit: false, preview: false, download: false, print: false }}
-                          uploadMode={'list'}
+                          uploadMode={materialVis ? undefined : 'list'}
                           buttonType='text'
                         />
                       </Form.Item>
