@@ -35,7 +35,7 @@ const Content: React.FC<IContentViewProps> = props => {
   }, [data])
 
   const [flowData, setFlowData] = useState<any>({}) // 流程数据
-  const [materialVis,setMaterialVis] = useState<boolean>(true)
+  const [materialVis, setMaterialVis] = useState<boolean>(true)
   const [roleArr, setRoleArr] = useState<any>([])   // 流程角色
   useEffect(() => {
     mk.on('SYS_LBPM_AUDIT_FORM_INIT_DATA', (val) => {
@@ -53,31 +53,31 @@ const Content: React.FC<IContentViewProps> = props => {
   const lbpmComponentRef = useRef<any>()
   const rightComponentRef = useRef<any>()
   /** 获取资料上传节点 */
-  const getCurrentNode  = async () =>{
+  const getCurrentNode = async () => {
     try {
       const nodeInfosData = await apiLbpm.getCurrentNodeInfo({
         processInstanceId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdProcessId
       })
-      const url = mk.getSysConfig('apiUrlPrefix') + '/cms-out-manage/staff/cmsStaffEntrance/loadNodeExtendPropertiesOnProcess'
-      const processData = await Axios.post(url,{
+      const url = mk.getSysConfig('apiUrlPrefix') + '/cms-out-manage/cmsStaffEntrance/loadNodeExtendPropertiesOnProcess'
+      const processData = await Axios.post(url, {
         fdId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdProcessId
       })
-      if(nodeInfosData.data.currentNodeCards.length || processData.data.length){
-        const newArr = processData.data.filter(item=>{
-          return nodeInfosData.data.currentNodeCards.find(item2=>item.nodeId === item2.fdNodeId  && item2.fdCurrentHandlers.some(item3=>item3.id===mk.getSysConfig('currentUser').fdId))
+      if (nodeInfosData.data.currentNodeCards.length || processData.data.length) {
+        const newArr = processData.data.filter(item => {
+          return nodeInfosData.data.currentNodeCards.find(item2 => item.nodeId === item2.fdNodeId && item2.fdCurrentHandlers.some(item3 => item3.id === mk.getSysConfig('currentUser').fdId))
         })
-        setMaterialVis(newArr.length ? newArr[0].extendProperty.supplierApprove==='false' ? false : true : false)
-      }else{
+        setMaterialVis(newArr.length ? newArr[0].extendProperty.supplierApprove === 'false' ? false : true : false)
+      } else {
         setMaterialVis(false)
       }
     } catch (error) {
-      console.error('errortest2',error)
+      console.error('errortest2', error)
       setMaterialVis(false)
     }
   }
-  useEffect(()=>{
+  useEffect(() => {
     getCurrentNode()
-  },[])
+  }, [])
 
   // 校验
   const _validate = async (isDraft: boolean) => {
@@ -156,8 +156,8 @@ const Content: React.FC<IContentViewProps> = props => {
     if (await _beforeSave(isDraft) === false) {
       return
     }
-    console.log('values',values)
-    
+    console.log('values', values)
+
     // 提交
     api.update({
       ...values,
@@ -210,7 +210,7 @@ const Content: React.FC<IContentViewProps> = props => {
     // const validStatus = status !== ESysLbpmProcessStatus.COMPLETED && status !== ESysLbpmProcessStatus.ABANDONED
     const submitBtn = <Button type='primary' onClick={() => handleSave(false)}>提交</Button>
     // return !hasDraftBtn ? (
-    //   <Auth.Auth authURL='/staff/cmsStaffAdjust/save' params={{
+    //   <Auth.Auth authURL='/cmsStaffAdjust/save' params={{
     //     vo: { fdId: params['fdId'] },
     //   }}>{submitBtn}</Auth.Auth>
     // ) : (role && validStatus) && submitBtn
@@ -227,7 +227,7 @@ const Content: React.FC<IContentViewProps> = props => {
     if (status === ESysLbpmProcessStatus.ABANDONED || status === ESysLbpmProcessStatus.COMPLETED) return null
     const editBtn = <Button onClick={handleEdit}>编辑</Button>
     const authEditBtn = <Auth.Auth
-      authURL='/staff/cmsStaffEntrance/edit'
+      authURL='/cmsStaffEntrance/edit'
       params={{
         vo: { fdId: params['fdId'] }
       }}
@@ -251,7 +251,7 @@ const Content: React.FC<IContentViewProps> = props => {
       // 如果有回复协同的操作，则要校验权限
       status === ESysLbpmProcessStatus.DRAFT && !lbpmComponentRef.current.checkOperationTypeExist(flowData.identity, EOperationType.handler_replyDraftCooperate)
         ? deleteBtn
-        : <Auth.Auth authURL='/staff/cmsStaffEntrance/delete' params={{
+        : <Auth.Auth authURL='/cmsStaffEntrance/delete' params={{
           vo: { fdId: params['fdId'] }
         }}>
           {deleteBtn}
@@ -261,7 +261,7 @@ const Content: React.FC<IContentViewProps> = props => {
 
   return (
     <Auth.Auth
-      authURL='/staff/cmsStaffEntrance/get'
+      authURL='/cmsStaffEntrance/get'
       params={{ vo: { fdId: params['id'] } }}
       unauthorizedPage={
         <Status type={EStatusType._403} title='抱歉，您暂无权限访问当前页面' />
@@ -326,7 +326,7 @@ const Content: React.FC<IContentViewProps> = props => {
                   auditType={data.fdProcessStatus === '30' ? 'baseInfo' : 'audit'}
                   approveLayout='right'
                   wrappedComponentRef={lbpmComponentRef}
-                  moduleCode='cms-out-manage'
+                  moduleCode='cms-out-manage-entrance'
                   mode='view'
                   onChange={(v) => setFlowData(v)}
                   mechanism={{

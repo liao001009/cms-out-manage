@@ -11,7 +11,7 @@ const { confirm } = Modal
 
 const Content: React.FC<IContentViewProps> = props => {
   //@ts-ignore
-  const { data,refresh, history } = props
+  const { data, refresh, history } = props
   // 模板id
 
   // 机制组件引用
@@ -24,7 +24,7 @@ const Content: React.FC<IContentViewProps> = props => {
 
 
   // const handleEdit = useCallback(() => {
-  //   history.goto(`/cmsOutOrder/edit/${data.fdId}`)
+  //   history.goto(`/cmsOutedit/${data.fdId}`)
   // }, [history])
 
   const handleDel = useCallback(() => {
@@ -61,7 +61,7 @@ const Content: React.FC<IContentViewProps> = props => {
         console.log('Cancel')
       },
     })
-  },[])
+  }, [])
 
   return (
     <div className='lui-approve-template'>

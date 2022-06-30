@@ -1882,7 +1882,7 @@
 
 "@lerna/project@3.21.0":
   version "3.21.0"
-  resolved "https://registry.nlark.com/@lerna/project/download/@lerna/project-3.21.0.tgz#5d784d2d10c561a00f20320bcdb040997c10502d"
+  resolved "https://registry.nlark.com/@lerna/download/@lerna/project-3.21.0.tgz#5d784d2d10c561a00f20320bcdb040997c10502d"
   integrity sha1-XXhNLRDFYaAPIDILzbBAmXwQUC0=
   dependencies:
     "@lerna/package" "3.16.0"

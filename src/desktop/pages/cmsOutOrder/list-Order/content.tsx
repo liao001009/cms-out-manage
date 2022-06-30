@@ -73,7 +73,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
   /** 操作函数集 */
 
   //新建
-  // const { $add: $add } = useAdd('/cmsOutOrder/add/!{selectedRow}')
+  // const { $add: $add } = useAdd('/cmsOutadd/!{selectedRow}')
   // const handleAdd = useCallback(
   //   (event) => {
   //     event.stopPropagation()
@@ -164,7 +164,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
     (record) => {
       return {
         onClick: () => {
-          history.goto(`/cmsOutOrder/view/${record.fdId}`)
+          history.goto(`/cmsOutview/${record.fdId}`)
         }
       }
     },

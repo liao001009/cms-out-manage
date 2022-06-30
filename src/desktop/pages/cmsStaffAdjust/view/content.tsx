@@ -54,16 +54,16 @@ const Content: React.FC<IContentViewProps> = props => {
       const nodeInfosData = await apiLbpm.getCurrentNodeInfo({
         processInstanceId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdProcessId
       })
-      const url = mk.getSysConfig('apiUrlPrefix') + '/cms-out-manage/staff/cmsStaffAdjust/loadNodeExtendPropertiesOnProcess'
+      const url = mk.getSysConfig('apiUrlPrefix') + '/cms-out-manage/cmsStaffAdjust/loadNodeExtendPropertiesOnProcess'
       const processData = await Axios.post(url, {
         fdId: data?.mechanisms && data.mechanisms['lbpmProcess']?.fdProcessId
       })
-      if(nodeInfosData.data.currentNodeCards.length || processData.data.length){
-        const newArr = processData.data.filter(item=>{
-          return nodeInfosData.data.currentNodeCards.find(item2=>item.nodeId === item2.fdNodeId  && item2.fdCurrentHandlers.some(item3=>item3.id===mk.getSysConfig('currentUser').fdId))
+      if (nodeInfosData.data.currentNodeCards.length || processData.data.length) {
+        const newArr = processData.data.filter(item => {
+          return nodeInfosData.data.currentNodeCards.find(item2 => item.nodeId === item2.fdNodeId && item2.fdCurrentHandlers.some(item3 => item3.id === mk.getSysConfig('currentUser').fdId))
         })
-        setMaterialVis(newArr.length ? newArr[0].extendProperty.supplierApprove==='false' ? false : true : false)
-      }else{
+        setMaterialVis(newArr.length ? newArr[0].extendProperty.supplierApprove === 'false' ? false : true : false)
+      } else {
         setMaterialVis(false)
       }
     } catch (error) {
@@ -204,7 +204,7 @@ const Content: React.FC<IContentViewProps> = props => {
     // const validStatus = status !== ESysLbpmProcessStatus.COMPLETED && status !== ESysLbpmProcessStatus.ABANDONED
     const submitBtn = <Button type='primary' onClick={() => handleSave(false)}>提交</Button>
     // return !hasDraftBtn ? (
-    //   <Auth.Auth authURL='/staff/cmsStaffAdjust/save' params={{
+    //   <Auth.Auth authURL='/cmsStaffAdjust/save' params={{
     //     vo: { fdId: params['fdId'] },
     //   }}>{submitBtn}</Auth.Auth>
     // ) : (role && validStatus) && submitBtn
@@ -221,7 +221,7 @@ const Content: React.FC<IContentViewProps> = props => {
     if (status === ESysLbpmProcessStatus.ABANDONED || status === ESysLbpmProcessStatus.COMPLETED) return null
     const editBtn = <Button onClick={handleEdit}>编辑</Button>
     const authEditBtn = <Auth.Auth
-      authURL='/staff/cmsStaffAdjust/edit'
+      authURL='/cmsStaffAdjust/edit'
       params={{
         vo: { fdId: params['id'] }
       }}
@@ -245,7 +245,7 @@ const Content: React.FC<IContentViewProps> = props => {
       // 如果有回复协同的操作，则要校验权限
       status === ESysLbpmProcessStatus.DRAFT && !lbpmComponentRef.current.checkOperationTypeExist(flowData.identity, EOperationType.handler_replyDraftCooperate)
         ? deleteBtn
-        : <Auth.Auth authURL='/staff/cmsStaffAdjust/delete' params={{
+        : <Auth.Auth authURL='/cmsStaffAdjust/delete' params={{
           vo: { fdId: params['id'] }
         }}>
           {deleteBtn}
@@ -254,8 +254,7 @@ const Content: React.FC<IContentViewProps> = props => {
   }, [flowData, params])
   return (
     <Auth.Auth
-      authURL='/staff/cmsStaffAdjust/get'
-      //
+      authURL='/cmsStaffAdjust/get'
       params={{ vo: { fdId: params['id'] } }}
       unauthorizedPage={
         <Status type={EStatusType._403} title='抱歉，您暂无权限访问当前页面' />
@@ -281,7 +280,7 @@ const Content: React.FC<IContentViewProps> = props => {
             <div className='left'>
               {/* 表单信息 */}
               <div className='form'>
-                <XForm formRef={formComponentRef} value={data || {}} materialVis={materialVis}  />
+                <XForm formRef={formComponentRef} value={data || {}} materialVis={materialVis} />
               </div>
               {/* 机制页签 */}
               <div className='tabs'>
@@ -312,7 +311,7 @@ const Content: React.FC<IContentViewProps> = props => {
                   approveLayout='right'
                   mode='view'
                   wrappedComponentRef={lbpmComponentRef}
-                  moduleCode='cms-out-manage'
+                  moduleCode='cms-out-manage-adjust'
                   onChange={(v) => setFlowData(v)}
                   mechanism={{
                     formId: templateId,
@@ -325,10 +324,7 @@ const Content: React.FC<IContentViewProps> = props => {
           </div>
         </div>
       </div>
-
-
     </Auth.Auth>
-
   )
 }
 

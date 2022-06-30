@@ -206,7 +206,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
               {/* 操作栏 */}
               <React.Fragment>
                 <Auth.Auth
-                  authURL='basedata/cmsFrameBudget/listFrameBudget'
+                  authURL='cmsFrameBudget/listFrameBudget'
                   authModuleName='cms-out-manage'
                   unauthorizedPage={null}
                 >
@@ -215,7 +215,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
                   </Button>
                 </Auth.Auth>
                 <Auth.Auth
-                  authURL='basedata/cmsFrameBudget/listFrameBudget'
+                  authURL='cmsFrameBudget/listFrameBudget'
                   authModuleName='cms-out-manage'
                   unauthorizedPage={null}
                 >
