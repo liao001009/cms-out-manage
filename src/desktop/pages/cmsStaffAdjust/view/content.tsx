@@ -62,7 +62,7 @@ const Content: React.FC<IContentViewProps> = props => {
         const newArr = processData.data.filter(item=>{
           return nodeInfosData.data.currentNodeCards.find(item2=>item.nodeId === item2.fdNodeId  && item2.fdCurrentHandlers.some(item3=>item3.id===mk.getSysConfig('currentUser').fdId))
         })
-        setMaterialVis(newArr.length ? newArr[0].extendProperty.supplierApprove : false)
+        setMaterialVis(newArr.length ? newArr[0].extendProperty.supplierApprove==='false' ? false : true : false)
       }else{
         setMaterialVis(false)
       }
