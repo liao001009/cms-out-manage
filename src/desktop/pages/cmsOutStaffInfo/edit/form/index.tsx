@@ -17,6 +17,7 @@ import XformModal from '@/desktop/components/supplier-cms/XformModal'
 import CMSXformRelation from '@/desktop/components/supplier-cms/XformRelation'
 import apiPostInfo from '@/api/cmsPostInfo'
 import { Module } from '@ekp-infra/common'
+// import { checkIdNo } from '@/utils/util'
 
 
 const Upload = Module.getComponent('sys-attach', 'Upload')
@@ -218,7 +219,10 @@ const XForm = (props) => {
                       {
                         required: true,
                         message: fmtMsg(':required', '内容不能为空')
-                      }
+                      },
+                      // {
+                      //   validator:checkIdNo()
+                      // }
                     ]}
                   >
                     <XformInput
