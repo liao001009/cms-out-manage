@@ -189,6 +189,9 @@
           align-items: center;
           &-wrap {
             flex: 1;
+            .ele-xform-radio-group-row .ele-radio-text{
+              padding-right:  0 !important;
+            }
           }
           &-label-wrap{
             width: #{$labelWidth}em;
