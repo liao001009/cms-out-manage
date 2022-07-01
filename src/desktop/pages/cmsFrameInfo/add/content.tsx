@@ -2,11 +2,11 @@ import React from 'react'
 import { Module } from '@ekp-infra/common'
 import { Loading } from '@lui/core'
 
-const ViewContent = Module.getComponent('cms-out-basedata', 'CmsFrameInfoView', { loading: <Loading /> })
+const AddContent = Module.getComponent('cms-out-basedata', 'CmsFrameInfoAdd', { loading: <Loading /> })
 
 const Content = (props) => {
   return (
-    <ViewContent {...props} />
+    <AddContent {...props} />
   )
 }
 export default Content

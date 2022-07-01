@@ -125,6 +125,9 @@ const createMenu = async () => {
       menuArr.push(menu[num])
     }
   })
+  menuArr.sort(function (a, b) {
+    return parseInt(a.order) - parseInt(b.order)
+  })
   return menuArr
 }
 export default createMenu

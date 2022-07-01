@@ -1,4 +1,5 @@
 import { createElement as h } from 'react'
+import api from '@/api/cmsStaffAdjust'
 import Content from './content'
 
 export default {
@@ -7,7 +8,7 @@ export default {
   // 页面标题
   title: '新建',
   // 路由
-  router: '/add',
+  router: '/add/:templateId',
   // 页面是否全屏，默认false
   fullscreen: true,
   // 临时解决方案，等runtime完善fullscreen逻辑后移除
@@ -20,7 +21,7 @@ export default {
       bottom: 0,
       overflow: 'auto',
       'zIndex': 99,
-      backgroundColor: '#f0f2f5'
+      backgroundColor: '#fff'
     }
   }, props.children),
   // 模块内容区
@@ -29,9 +30,11 @@ export default {
     type: 'content-list',
     // 内容渲染组件
     render: Content,
-    props: {
-      // 编辑模式：新建
-      mode: 'add'
-    }
+    // 请求
+    dataUrl: ({ param }) =>
+      api.init({
+        fdTemplate: { fdId: param.templateId },
+        mechanisms: { load: '*' }
+      })
   }
 }

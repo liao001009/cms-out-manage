@@ -9,4 +9,4 @@ const Content = (props) => {
     <ListContent {...props} />
   )
 }
-export default Content
+export default Content  
