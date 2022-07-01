@@ -40,7 +40,9 @@ const Content: React.FC<IProps & IContentViewProps> = props => {
         values = {
           ...values,
           ...formValues,
-          fdFrame: formValues.fdFrame
+          fdFrame: {
+            fdId: formValues.fdFrame
+          }
         }
       } else {
         values = {
@@ -48,6 +50,7 @@ const Content: React.FC<IProps & IContentViewProps> = props => {
           ...formValues
         }
       }
+      console.log('values', values)
       if (formValues.mechanisms) {
         delete values.mechanisms
       }
@@ -83,14 +86,14 @@ const Content: React.FC<IProps & IContentViewProps> = props => {
     // 编辑提交
     getDataApi(values as any).then(res => {
       if (res.success) {
-        Message.success(isDraft ? '暂存成功' : '提交成功', 1, () => {
+        Message.success(isDraft ? '保存成功' : '提交成功', 1, () => {
           history.goBack()
         })
       } else {
-        Message.error(isDraft ? '暂存失败' : '提交失败', 1)
+        Message.error(isDraft ? '保存失败' : '提交失败', 1)
       }
     }).catch(() => {
-      Message.error(isDraft ? '暂存失败' : '提交失败', 1)
+      Message.error(isDraft ? '保存失败' : '提交失败', 1)
     })
   }
 
@@ -143,7 +146,7 @@ const Content: React.FC<IProps & IContentViewProps> = props => {
                 </Fragment>
               ) : (
                 <Fragment>
-                  <Button type='primary' onClick={() => handleSave(true)}>暂存</Button>
+                  <Button type='primary' onClick={() => handleSave(true)}>保存</Button>
                   <Button type='default' onClick={handleDelete}>删除</Button>
                 </Fragment>
               )

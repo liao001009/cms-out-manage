@@ -253,7 +253,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
               {/* 操作栏 */}
               <React.Fragment>
                 <Auth.Auth
-                  authURL='/supplier/cmsSupplierInfo/add'
+                  authURL='/cmsSupplierInfo/add'
                   authModuleName='cms-out-manage'
                   unauthorizedPage={null}
                 >
@@ -262,7 +262,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
                   </Button>
                 </Auth.Auth>
                 <Auth.Auth
-                  authURL='/supplier/cmsSupplierInfo/delete'
+                  authURL='/cmsSupplierInfo/delete'
                   authModuleName='cms-out-manage'
                   unauthorizedPage={null}
                 >

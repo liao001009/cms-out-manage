@@ -156,7 +156,7 @@ const Content: React.FC<IContentViewProps> = props => {
 
   return (
     <Auth.Auth
-      authURL='/supplier/cmsSupplierEvalScore/get'
+      authURL='/cmsSupplierEvalScore/get'
 
       params={{ vo: { fdId: params['id'] } }}
       unauthorizedPage={

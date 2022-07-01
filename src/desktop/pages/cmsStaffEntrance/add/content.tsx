@@ -21,7 +21,7 @@ const Content: React.FC<IContentViewProps> = props => {
   // 模板id
   const templateId = match && match.params['templateId']
   const baseCls = 'staffEntrance-content'
-
+  console.log('data', data)
   // 机制组件引用
   const formComponentRef = useRef<any>()
   const lbpmComponentRef = useRef<any>()

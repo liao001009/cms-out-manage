@@ -18,7 +18,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
   const baseCls = 'outStaffInfo-list'
   const { content, totalSize, pageSize } = data
   const [modalVisible, setModalVisible] = useState<boolean>(false)
-  
+
   // 表格列定义
   const columns = useMemo(
     () => [
@@ -398,7 +398,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
               {/* 操作栏 */}
               <React.Fragment>
                 <Auth.Auth
-                  authURL='/supplier/cmsOutStaffInfo/add'
+                  authURL='/cmsOutStaffInfo/add'
                   authModuleName='cms-out-manage'
                   unauthorizedPage={null}
                 >
@@ -407,7 +407,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
                   </Button>
                 </Auth.Auth>
                 <Auth.Auth
-                  authURL='/supplier/cmsOutStaffInfo/delete'
+                  authURL='/cmsOutStaffInfo/delete'
                   authModuleName='cms-out-manage'
                   unauthorizedPage={null}
                 >

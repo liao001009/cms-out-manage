@@ -1,7 +1,7 @@
 import React, { createElement as h, Fragment, useCallback, useRef } from 'react'
 import { IContentViewProps } from '@ekp-runtime/render-module'
 import Icon from '@lui/icons'
-import {  Breadcrumb, Button, Message, Modal } from '@lui/core'
+import { Breadcrumb, Button, Message, Modal } from '@lui/core'
 import { EBtnType } from '@lui/core/es/components/Button'
 import XForm from './form'
 import api from '@/api/cmsPostInfo'
@@ -9,7 +9,7 @@ import './index.scss'
 import { IProps } from '@/types/common'
 
 const Content: React.FC<IProps & IContentViewProps> = props => {
-  const { data, history, routerPrefix,mode } = props
+  const { data, history, routerPrefix, mode } = props
   const baseCls = 'postInfo-content'
   // 机制组件引用
   const formComponentRef = useRef<any>()
@@ -22,7 +22,7 @@ const Content: React.FC<IProps & IContentViewProps> = props => {
         return false
       }
     }
-  
+
     return true
   }
 
@@ -37,15 +37,15 @@ const Content: React.FC<IProps & IContentViewProps> = props => {
       values = {
         ...values,
         ...formValues,
-        fdFrame:{
-          fdId:formValues.fdFrame
+        fdFrame: {
+          fdId: formValues.fdFrame
         }
       }
-      if(formValues.mechanisms){
+      if (formValues.mechanisms) {
         delete values.mechanisms
       }
     }
-    
+
     return values
   }
 
@@ -77,7 +77,7 @@ const Content: React.FC<IProps & IContentViewProps> = props => {
     // 编辑提交
     getDataApi(values as any).then(res => {
       if (res.success) {
-        Message.success(isDraft ? '暂存成功' : '提交成功' , 1, () => {
+        Message.success(isDraft ? '暂存成功' : '提交成功', 1, () => {
           history.goBack()
         })
       } else {
@@ -127,7 +127,7 @@ const Content: React.FC<IProps & IContentViewProps> = props => {
           <Breadcrumb>
             <Breadcrumb.Item>基本信息管理</Breadcrumb.Item>
             <Breadcrumb.Item>岗位信息</Breadcrumb.Item>
-            <Breadcrumb.Item>{mode==='add'?'添加':'编辑'}</Breadcrumb.Item>
+            <Breadcrumb.Item>{mode === 'add' ? '添加' : '编辑'}</Breadcrumb.Item>
           </Breadcrumb>
           <div className='buttons'>
             {

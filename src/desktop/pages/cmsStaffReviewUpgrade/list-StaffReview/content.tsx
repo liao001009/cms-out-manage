@@ -313,7 +313,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
               {/* 操作栏 */}
               <React.Fragment>
                 <Auth.Auth
-                  authURL='/supplier/cmsStaffReviewUpgrade/add'
+                  authURL='/cmsStaffReviewUpgrade/add'
                   authModuleName='cms-out-manage'
                   unauthorizedPage={null}
                 >
@@ -322,7 +322,7 @@ const Content: React.FC<IContentViewProps> = (props) => {
                   </Button>
                 </Auth.Auth>
                 <Auth.Auth
-                  authURL='/supplier/cmsStaffReviewUpgrade/delete'
+                  authURL='/cmsStaffReviewUpgrade/delete'
                   authModuleName='cms-out-manage'
                   unauthorizedPage={null}
                 >
