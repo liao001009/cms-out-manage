@@ -51,7 +51,7 @@ const lpackConfig = {
     //多语言服务
     langUrlPrefix: 'http://mktest.ywork.me/data/sys-lang'
   },
-  // modules: { 'cms-out-supplier': 'http://127.0.0.1:3403' },
+  modules: { 'cms-out-order': 'http://127.0.0.1:3059' },
   webpack: {
     resolve: {
       alias: {
