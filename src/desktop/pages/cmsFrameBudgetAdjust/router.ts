@@ -7,7 +7,7 @@ import EditCmpt from './edit'
 
 export default {
   /** 路由前缀 */
-  router: '/cmsFrameBudgetAdjust',
+  router: '/CmsFrameBudgetAdjust',
   /** 页面配置，第一个为首页 */
   pages: [ListBudgetAdjustCmpt, ListInnerBudgetAdjustCmpt, AddCmpt, ViewCmpt, EditCmpt]
 }

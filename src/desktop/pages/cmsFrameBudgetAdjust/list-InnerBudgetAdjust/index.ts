@@ -1,11 +1,11 @@
-import api from '@/api/cmsFrameBudgetAdjust'
+import api from '@/api/CmsFrameBudgetAdjust'
 import Content from './content'
 
 export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-manage:cmsFrameBudgetAdjust.list.InnerBudgetAdjust',
+  title: 'cms-out-manage:CmsFrameBudgetAdjust.list.InnerBudgetAdjust',
   // 路由
   router: '/listInnerBudgetAdjust',
   // 模块内容区

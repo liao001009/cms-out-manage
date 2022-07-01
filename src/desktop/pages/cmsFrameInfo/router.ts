@@ -6,7 +6,7 @@ import EditCmpt from './edit'
 
 export default {
   /** 路由前缀 */
-  router: '/cmsFrameInfo',
+  router: '/CmsFrameInfo',
   /** 页面配置，第一个为首页 */
   pages: [ListFrameInfoCmpt, AddCmpt, ViewCmpt, EditCmpt]
 }

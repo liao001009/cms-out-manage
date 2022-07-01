@@ -2,7 +2,7 @@ import { Api } from '@ekp-infra/common'
 import http from '@/utils/http'
 import { ICmsFrameInfoTemplate } from '@/types/cmsFrameInfoTemplate'
 
-const commonApi = Api.get<ICmsFrameInfoTemplate>('basedata/cmsFrameInfoTemplate', http)
+const commonApi = Api.get<ICmsFrameInfoTemplate>('cmsFrameInfoTemplate', http)
 
 const api = {
   ...commonApi,
