@@ -1,7 +1,5 @@
 import { createElement as h } from 'react'
-import Content from '@/desktop/pages/cmsFrameInfo/edit/content'
-
-
+import Content from './content'
 export default {
   // 类型：模块
   type: 'page',

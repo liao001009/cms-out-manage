@@ -32,6 +32,6 @@ export default {
     props: {
       // 编辑模式：新建
       mode: 'add'
-    }  
+    }
   }
 }

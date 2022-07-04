@@ -1,6 +1,6 @@
 import { createElement as h } from 'react'
 import Content from './content'
-import api from '@/api/cmsFrameBudgetAdjust'
+import api from '@/api/CmsFrameBudgetAdjust'
 
 export default {
   // 类型：页面
@@ -31,6 +31,6 @@ export default {
     // 内容渲染组件
     render: Content,
     dataUrl: ({ param }) =>
-      api.get({ fdId: param.id})
+      api.get({ fdId: param.id })
   }
 }

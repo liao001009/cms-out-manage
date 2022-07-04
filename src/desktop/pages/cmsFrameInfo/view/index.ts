@@ -1,6 +1,6 @@
 import { createElement as h } from 'react'
 import Content from './content'
-import api from '@/api/cmsFrameInfo'
+import api from '@/api/CmsFrameInfo'
 
 export default {
   // 类型：页面

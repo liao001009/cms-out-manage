@@ -1,5 +1,5 @@
 import { createElement as h } from 'react'
-import api from '@/api/cmsFrameBudgetAdjust'
+import api from '@/api/CmsFrameBudgetAdjust'
 import Content from './content'
 
 export default {
