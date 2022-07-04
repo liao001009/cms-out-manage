@@ -1,5 +1,0 @@
-@import "../../../common/common.scss";
-$baseCls: projectInfo-form;
-$labelWidth:9;
-
-@include form-page($baseCls,$labelWidth);
