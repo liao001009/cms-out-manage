@@ -1,4 +1,4 @@
-import api from '@/api/CmsFrameInfo'
+import api from '@/api/cmsFrameInfo'
 import Content from './content'
 
 export default {

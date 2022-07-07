@@ -1,6 +1,6 @@
 import { createElement as h } from 'react'
 import Content from './content'
-import api from '@/api/CmsFrameBudget'
+import api from '@/api/cmsFrameBudget'
 
 export default {
   // 类型：页面

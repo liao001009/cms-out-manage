@@ -1,4 +1,4 @@
-import api from '@/api/CmsFrameBudgetAdjust'
+import api from '@/api/cmsFrameBudgetAdjust'
 import Content from './content'
 
 export default {
