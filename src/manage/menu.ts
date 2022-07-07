@@ -29,5 +29,11 @@ export default [
     label: ':menu.cmsOutConfig',
     icon: 'desktop',
     module: 'cms-out-order'
-  }
+  },
+  {
+    key: '/cmsStaffReviewUpgradeTemplate',
+    label: ':menu.cmsStaffReviewUpgradeTemplate',
+    icon: 'desktop',
+    module: 'cms-out-supplier'
+  },
 ]

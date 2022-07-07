@@ -17,7 +17,7 @@ const menu = [
       // { key: '/cmsContractInfo/listContractInfo', label: ':menu.cmsContractInfo.listContractInfo' },
       // { key: '/cmsSupplierPostPrice/listPostPrice', label: ':menu.cmsSupplierPostPrice.listPostPrice' },
       { key: '/cmsOutStaffInfo/listStaffInfo', label: 'cms-out-manage:menu.cmsOutStaffInfo.listStaffInfo' },
-      // { key: '/cmsStaffReviewUpgrade/listStaffReview', label: ':menu.cmsStaffReviewUpgrade.listStaffReview' },
+      { key: '/cmsStaffReviewUpgrade/listStaffReview', label: ':menu.cmsStaffReviewUpgrade.listStaffReview' },
       // { key: '/cmsSupplierEvaluate/listSupplierEvaluate', label: ':menu.cmsSupplierEvaluate.listSupplierEvaluate' },
       // { key: '/cmsSupplierEvalScore/listEvaluateScore', label: ':menu.cmsSupplierEvalScore.listEvaluateScore' }
     ]

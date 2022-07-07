@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-manage:cmsStaffReviewUpgrade.list.StaffReview',
+  title: 'cms-out-supplier:cmsStaffReviewUpgrade.list.StaffReview',
   // 路由
   router: '/listStaffReview',
   // 模块内容区
@@ -15,7 +15,7 @@ export default {
     // 数据请求
     dataUrl: ({ query }) => {
       const { sorts } = query
-      return api['listStaffReview']({ ...query, sorts: { ...sorts, fdCreateTime: sorts?.fdCreateTime ? sorts.fdCreateTime : 'desc' } })
+      return api['listStaffReview']({ ...query, sorts: { ...sorts, fdCreateTime: sorts?.fdCreateTime ? sorts.fdCreateTime : 'desc' }, columns: ['fdProcessStatus', 'fdCreator', 'fdCreateTime', 'fdSubject', 'fdId'] })
     },
     // 内容渲染组件
     render: Content

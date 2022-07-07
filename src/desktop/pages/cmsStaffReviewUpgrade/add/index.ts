@@ -1,13 +1,13 @@
 import { createElement as h } from 'react'
 import Content from './content'
-
+import api from '@/api/cmsStaffReviewUpgrade'
 export default {
   // 类型：模块
   type: 'page',
   // 页面标题
   title: '新建',
   // 路由
-  router: '/add',
+  router: '/add/:templateId',
   // 页面是否全屏，默认false
   fullscreen: true,
   // 临时解决方案，等runtime完善fullscreen逻辑后移除
@@ -29,5 +29,10 @@ export default {
     type: 'content-list',
     // 内容渲染组件
     render: Content,
+    dataUrl: ({ param }) =>
+      api.init({
+        fdTemplate: { fdId: param.templateId },
+        mechanisms: { load: '*' }
+      })
   }
 }

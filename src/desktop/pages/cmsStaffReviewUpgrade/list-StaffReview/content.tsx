@@ -2,7 +2,7 @@ import React from 'react'
 import { Module } from '@ekp-infra/common'
 import { Loading } from '@lui/core'
 
-const ListContent = Module.getComponent('cms-out-supplier', 'CmsOutStaffReviewUpgradeList', { loading: <Loading /> })
+const ListContent = Module.getComponent('cms-out-supplier', 'CmsStaffReviewUpgradeList', { loading: <Loading /> })
 
 const Content = (props) => {
   return (
