@@ -8,7 +8,6 @@ export default [
       {
         key: '/cmsStaffReviewUpgradeTemplate',
         label: 'cms-out-manage:menu.cmsStaffReviewUpgradeTemplate',
-        icon: 'desktop',
         module: 'cms-out-supplier'
       }
     ]
@@ -19,32 +18,27 @@ export default [
     icon: 'desktop',
     children: [
       {
-        key: '/cmsStaffLeaveTemplate',
-        label: 'cms-out-manage:menu.cmsStaffLeaveTemplate',
-        module: 'cms-out-staff',
-        icon: 'desktop'
-      },
-      {
         key: '/cmsStaffAttConfigTemplate',
         label: 'cms-out-manage:menu.cmsStaffAttConfigTemplate',
         module: 'cms-out-staff',
-        icon: 'desktop'
       },
       {
         key: '/cmsStaffEntranceTemplate',
         label: 'cms-out-manage:menu.cmsStaffEntranceTemplate',
         module: 'cms-out-staff',
-        icon: 'desktop'
       },
       {
         key: '/cmsStaffAdjustTemplate',
         label: 'cms-out-manage:menu.cmsStaffAdjustTemplate',
         module: 'cms-out-staff',
-        icon: 'desktop'
+      },
+      {
+        key: '/cmsStaffLeaveTemplate',
+        label: 'cms-out-manage:menu.cmsStaffLeaveTemplate',
+        module: 'cms-out-staff',
       },
     ]
   },
-
   {
     key: '/cmsOutConfig',
     label: 'cms-out-manage:menu.cmsWorkOrder',
@@ -53,7 +47,6 @@ export default [
       {
         key: '/cmsOutConfig',
         label: 'cms-out-manage:menu.cmsOutConfig',
-        icon: 'desktop',
         module: 'cms-out-order'
       }
     ]
