@@ -35,21 +35,28 @@ const lpackConfig = {
     moduleName: moduleName,
     // 平台，desktop、manage、mobile
     platform: entryName,
-    // 模块代理
-    modulesUrlPrefix: 'http://mksmoke.ywork.me/web',
+    // 模块代理 
+    modulesUrlPrefix: 'http://192.168.50.145:8088/web',
     // 租户资源域名前缀
-    tenantUrlPrefix: 'http://mksmoke.ywork.me/web',
+    tenantUrlPrefix: 'http://mktest.ywork.me/web',
     // 组件库域名
     elementsUrlPrefix: {
-      manufact: 'http://mksmoke.ywork.me/web',
-      artifact: 'http://mksmoke.ywork.me/web'
+      manufact: 'http://mktest.ywork.me/web',
+      artifact: 'http://mktest.ywork.me/web'
       // artifact: 'http://127.0.0.1:8008'
     },
     // elementsUrlPrefix: 'http://127.0.0.1:8008',
     // 服务端域名
     apiUrlPrefix: 'http://192.168.50.145:8101/data',
     //多语言服务
-    langUrlPrefix: 'http://mksmoke.ywork.me/data/sys-lang'
+    langUrlPrefix: 'http://mktest.ywork.me/data/sys-lang'
+  },
+  modules: {
+    'cms-out-basedata': 'http://127.0.0.1:3340',
+    'cms-out-project': 'http://127.0.0.1:3278',
+    'cms-out-order': 'http://127.0.0.1:3059',
+    'cms-out-staff': 'http://127.0.0.1:3051',
+    'cms-out-supplier': 'http://127.0.0.1:'
   },
   webpack: {
     resolve: {

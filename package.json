@@ -9,7 +9,7 @@
     "dev": "yarn run dev:manage",
     "dev:desktop": "cross-env NODE_TARGET=desktop NODE_OPTIONS=--max_old_space_size=4096 lpack-mk start  --remote",
     "dev:manage": "cross-env NODE_TARGET=manage NODE_OPTIONS=--max_old_space_size=4096 lpack-mk start  --remote",
-    "dev:mobile": "cross-env NODE_TARGET=mobile lpack-mk start  --remote",
+    "dev:mobile": "cross-env NODE_TARGET=mobile NODE_OPTIONS=--max_old_space_size=5096 lpack-mk start  --remote",
     "build": "yarn run build:desktop && yarn run build:manage && yarn run build:mobile",
     "build:desktop": "cross-env NODE_TARGET=desktop lpack-mk build",
     "build:manage": "cross-env NODE_TARGET=manage lpack-mk build",

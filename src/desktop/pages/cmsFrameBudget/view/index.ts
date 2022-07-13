@@ -31,6 +31,6 @@ export default {
     // 内容渲染组件
     render: Content,
     dataUrl: ({ param }) =>
-      api.get({ fdId: param.id})
+      api.get({ fdId: param.id })
   }
 }
