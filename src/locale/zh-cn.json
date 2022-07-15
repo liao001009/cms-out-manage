@@ -109,6 +109,7 @@
         "cmsPersonnelManagement": "人员管理",
         "cmsProjectManagement": "项目管理",
         "cmsWorkOrder": "工单管理",
+        "cmsSupplierService": "供应商服务",
         "cmsPostInfoTemplate": "岗位信息模板",
         "cmsLevelInfoTemplate": "级别信息模板",
         "cmsFrameBudgetAdjustTemplate": "框架预算调整模板",
@@ -134,6 +135,7 @@
         "cmsSupplierEvaluateTemplate": "供应商评价模板",
         "cmsContractInfoTemplate": "合同信息模板",
         "mpc2wyyz6le8": "供应商管理",
+        "ourTalentPool": "本公司人才库",
         "cmsSupplierEvalScore": {
             "listEvaluateScore": "供应商评价打分"
         },
