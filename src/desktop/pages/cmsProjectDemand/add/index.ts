@@ -1,14 +1,16 @@
 import { createElement as h } from 'react'
+import api from '@/api/cmsProjectDemand'
 import Content from './content'
-import api from '@/api/cmsProjectWritten'
 
 export default {
-  // 类型：页面
+  // 类型：模块
   type: 'page',
   // 页面标题
-  title: '查看页面',
+  title: '新建',
   // 路由
-  router: '/view/:id',
+  router: '/add/:templateId',
+  // 页面是否全屏，默认false
+  fullscreen: true,
   // 临时解决方案，等runtime完善fullscreen逻辑后移除
   render: (props) => h('div', {
     style: {
@@ -19,18 +21,20 @@ export default {
       bottom: 0,
       overflow: 'auto',
       'zIndex': 99,
-      backgroundColor: '#fff'
+      backgroundColor: '#f0f2f5'
     }
   }, props.children),
-  // 页面是否全屏，默认false
-  fullscreen: true,
   // 模块内容区
   children: {
-    // 类型: 列表内容
-    type: 'content-detail',
+    // 内容类型: 列表
+    type: 'content-list',
     // 内容渲染组件
     render: Content,
+    // 请求
     dataUrl: ({ param }) =>
-      api.get({ fdId: param.id, mechanisms: { load: '*' } })
+      api.init({
+        fdTemplate: { fdId: param.templateId },
+        mechanisms: { load: '*' }
+      })
   }
 }

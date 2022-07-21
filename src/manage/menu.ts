@@ -50,5 +50,17 @@ export default [
         module: 'cms-out-order'
       }
     ]
+  },
+  {
+    key: '/cmsProjectDemandTemplate',
+    label: 'cms-out-manage:menu.cmsSupplierService',
+    icon: 'desktop',
+    children: [
+      {
+        key: '/cmsProjectDemandTemplate',
+        label: 'cms-out-manage:menu.cmsProjectDemandTemplate',
+        module: 'cms-out-project'
+      }
+    ]
   }
 ]
