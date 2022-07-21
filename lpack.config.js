@@ -56,7 +56,7 @@ const lpackConfig = {
     'cms-out-project': 'http://127.0.0.1:3278',
     'cms-out-order': 'http://127.0.0.1:3059',
     'cms-out-staff': 'http://127.0.0.1:3051',
-    'cms-out-supplier': 'http://127.0.0.1:'
+    'cms-out-supplier': 'http://127.0.0.1:3403'
   },
   webpack: {
     resolve: {
