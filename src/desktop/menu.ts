@@ -31,6 +31,7 @@ const menu = [
       { key: '/cmsTalentPoor', label: 'cms-out-manage:menu.ourTalentPool' },
       { key: '/cmsSupplierEntrance', label: 'cms-out-manage:menu.mjeghuh20rd' },
       { key: '/cmsSupplierLeave', label: 'cms-out-manage:menu.me1g6jcuktze' },
+      { key: '/cmsOrderResponse', label: 'cms-out-manage:menu.cmsOrderResponse.listOrder' },
     ]
   },
   /** 项目管理*/
@@ -44,6 +45,7 @@ const menu = [
     // },
     children: [
       { key: '/cmsProjectInfo', label: 'cms-out-manage:menu.mbvr4bpjdbc' },
+      { key: '/cmsProjectDemand', label: 'cms-out-manage:menu.mhhk3h8jkmcl' }
     ]
   },
   /** 人员管理*/

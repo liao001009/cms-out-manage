@@ -135,9 +135,13 @@
         "cmsSupplierEvaluateTemplate": "供应商评价模板",
         "cmsContractInfoTemplate": "合同信息模板",
         "mpc2wyyz6le8": "供应商管理",
+        "mhhk3h8jkmcl": "项目需求",
         "ourTalentPool": "本公司人才库",
         "cmsSupplierEvalScore": {
             "listEvaluateScore": "供应商评价打分"
+        },
+        "cmsOrderResponse": {
+            "listOrder": "订单响应"
         },
         "cmsSupplierEvaluate": {
             "listSupplierEvaluate": "供应商评价"
