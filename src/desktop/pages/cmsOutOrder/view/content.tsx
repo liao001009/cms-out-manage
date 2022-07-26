@@ -1,92 +1,12 @@
-import React, { useRef, useCallback } from 'react'
-import { IContentViewProps } from '@ekp-runtime/render-module'
-import { Breadcrumb, Button, Message, Modal } from '@lui/core'
-import XForm from './form'
-import api from '@/api/cmsOutOrder'
-import './index.scss'
+import React from 'react'
+import { Module } from '@ekp-infra/common'
+import { Loading } from '@lui/core'
 
-Message.config({ maxCount: 1 })
+const ViewContent = Module.getComponent('cms-out-order', 'CmsOutOrderView', { loading: <Loading /> })
 
-const { confirm } = Modal
-
-const Content: React.FC<IContentViewProps> = props => {
-  //@ts-ignore
-  const { data, refresh, history } = props
-  // 模板id
-
-  // 机制组件引用
-  const formComponentRef = useRef<any>()
-
-  // 关闭
-  const handleClose = useCallback(() => {
-    history.goBack()
-  }, [])
-
-
-  // const handleEdit = useCallback(() => {
-  //   history.goto(`/cmsOutedit/${data.fdId}`)
-  // }, [history])
-
-  const handleDel = useCallback(() => {
-    confirm({
-      content: '确认删除此记录？',
-      onOk () {
-        api.delete({ fdId: data.fdId }).then(res => {
-          console.log('删除结果', res)
-          if (res.success) {
-            Message.success('删除成功')
-            history.goBack()
-          }
-        })
-      },
-      onCancel () {
-        console.log('Cancel')
-      },
-    })
-  }, [])
-
-  const handleDone = useCallback(() => {
-    confirm({
-      content: '确认己处理此帐号？',
-      onOk () {
-        api.updateRemoveTodo({ fdId: data.fdId }).then(res => {
-          console.log('处理结果', res)
-          if (res.success) {
-            Message.success('处理成功')
-            refresh()
-          }
-        })
-      },
-      onCancel () {
-        console.log('Cancel')
-      },
-    })
-  }, [])
-
+const Content = (props) => {
   return (
-    <div className='lui-approve-template'>
-      {/* 操作区 */}
-      <div className='lui-approve-template-header'>
-        <Breadcrumb>
-          <Breadcrumb.Item>工单管理</Breadcrumb.Item>
-          <Breadcrumb.Item>查看</Breadcrumb.Item>
-        </Breadcrumb>
-        <div className='buttons'>
-          <Button type='primary' onClick={handleDone}>处理</Button>
-          {/*<Button type='primary' onClick={handleEdit}>编辑</Button>*/}
-          <Button type='default' onClick={handleDel}>删除</Button>
-          <Button type='default' onClick={handleClose}>关闭</Button>
-        </div>
-      </div>
-      {/* 内容区 */}
-      <div className='lui-approve-template-content'>
-        {/* 表单信息 */}
-        <div className='form'>
-          <XForm formRef={formComponentRef} value={data || {}} />
-        </div>
-      </div>
-    </div>
+    <ViewContent {...props} />
   )
 }
-
 export default Content

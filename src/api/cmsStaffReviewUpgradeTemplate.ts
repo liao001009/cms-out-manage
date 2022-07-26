@@ -7,7 +7,7 @@ const commonApi = Api.get<ICmsStaffReviewUpgradeTemplate>('cmsStaffReviewUpgrade
 const api = {
   ...commonApi,
   // 模板发布
-  publish: Api.build('/supplier/cmsStaffReviewUpgradeTemplate/publish', http)
+  publish: Api.build('/cmsStaffReviewUpgradeTemplate/publish', http)
 }
 
 export default api

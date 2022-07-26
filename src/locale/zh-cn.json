@@ -109,11 +109,13 @@
         "cmsPersonnelManagement": "人员管理",
         "cmsProjectManagement": "项目管理",
         "cmsWorkOrder": "工单管理",
+        "cmsSupplierService": "供应商服务",
         "cmsPostInfoTemplate": "岗位信息模板",
         "cmsLevelInfoTemplate": "级别信息模板",
         "cmsFrameBudgetAdjustTemplate": "框架预算调整模板",
         "cmsFrameBudgetTemplate": "框架预算模板",
         "cmsFrameInfoTemplate": "框架信息模板",
+        "cmsStaffReviewTemplate": "外包人员评审模板",
         "cmsPostInfo": "岗位信息",
         "cmsLevelInfo": "级别信息",
         "cmsFrameBudgetAdjust": "框架预算调整",
@@ -134,8 +136,14 @@
         "cmsSupplierEvaluateTemplate": "供应商评价模板",
         "cmsContractInfoTemplate": "合同信息模板",
         "mpc2wyyz6le8": "供应商管理",
+        "mhhk3h8jkmcl": "项目需求",
+        "cmsProjectDemandTemplate": "项目需求模板",
+        "ourTalentPool": "本公司人才库",
         "cmsSupplierEvalScore": {
             "listEvaluateScore": "供应商评价打分"
+        },
+        "cmsOrderResponse": {
+            "listOrder": "订单响应"
         },
         "cmsSupplierEvaluate": {
             "listSupplierEvaluate": "供应商评价"

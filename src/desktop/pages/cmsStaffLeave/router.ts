@@ -3,7 +3,6 @@ import AddCmpt from './add'
 import ViewCmpt from './view'
 import EditCmpt from './edit'
 
-
 export default {
   /** 路由前缀 */
   router: '/cmsStaffLeave',
