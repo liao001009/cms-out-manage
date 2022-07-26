@@ -60,7 +60,12 @@ export default [
         key: '/cmsProjectDemandTemplate',
         label: 'cms-out-manage:menu.cmsProjectDemandTemplate',
         module: 'cms-out-project'
-      }
+      },
+      {
+        key: '/cmsStaffReviewTemplate',
+        label: 'cms-out-manage:menu.cmsStaffReviewTemplate',
+        module: 'cms-out-project'
+      },
     ]
   }
 ]
