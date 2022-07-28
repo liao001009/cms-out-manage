@@ -32,6 +32,8 @@ const menu = [
       { key: '/cmsSupplierEntrance', label: 'cms-out-manage:menu.mjeghuh20rd' },
       { key: '/cmsSupplierLeave', label: 'cms-out-manage:menu.me1g6jcuktze' },
       { key: '/cmsOrderResponse', label: 'cms-out-manage:menu.cmsOrderResponse.listOrder' },
+      { key: '/cmsSupplierDemand', label: 'cms-out-manage:menu.mhhk3h8jkmcl' },
+      { key: '/cmsQuitRegister', label: 'cms-out-manage:menu.cmsQuitRegister' }
     ]
   },
   /** 项目管理*/

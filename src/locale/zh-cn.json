@@ -104,6 +104,16 @@
             "FrameInfo": "框架信息"
         }
     },
+    "cmsProjectDemand": {
+        "list": {
+            "Demand": "项目需求列表"
+        }
+    },
+    "cmsQuitRegister": {
+        "list": {
+            "Quit": "离职登记"
+        }
+    },
     "menu": {
         "cmsBasicInformation": "基本信息管理",
         "cmsPersonnelManagement": "人员管理",
@@ -139,6 +149,7 @@
         "mhhk3h8jkmcl": "项目需求",
         "cmsProjectDemandTemplate": "项目需求模板",
         "ourTalentPool": "本公司人才库",
+        "cmsQuitRegister": "离职登记",
         "cmsSupplierEvalScore": {
             "listEvaluateScore": "供应商评价打分"
         },
