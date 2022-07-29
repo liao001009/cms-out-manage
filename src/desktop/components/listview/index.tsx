@@ -12,15 +12,17 @@ export interface IProps {
   columns : any
   /**点击行跳转路径 */
   onRowUrl? : string 
+  /** 是否需要分页 */
+  isPagination? : boolean
+
 }
 
 const baseCls = 'lui-template-list'
 
 const ContractListView: React.FC<IProps> = (props) => {
-  const { apiRequest, params, columns, onRowUrl } = props
+  const { apiRequest, params, columns, onRowUrl, isPagination } = props
   const [listParam, setListParam] = useState<any>({
     ...params,
-    // sorts: { fdCreateTime: 'desc' }
   })
   const [listData, setListData] = useState<any>({})
   const [tableStatus, setTableStatus] = useState<boolean>(false)
@@ -87,7 +89,7 @@ const ContractListView: React.FC<IProps> = (props) => {
       return {
         onClick: () => {
           if(onRowUrl){
-            window.open(mk.getSysConfig('modulesUrlPrefix')+`${onRowUrl}${record.fdId}`,'_blank')
+            window.open(mk.getSysConfig('modulesUrlPrefix')+`/sys-lbpm/desktop/#${onRowUrl}${record.fdId}`,'_blank')
           }
           //暂时不知道跳转那里
           //history.goto(`/cmsContractInfo/view/${record.fdId}`)
@@ -105,7 +107,7 @@ const ContractListView: React.FC<IProps> = (props) => {
           <Table loading={tableStatus} {...tableProps} onRow={onRowClick} />
         </div>
         <div className={`${baseCls}-page`}>
-          {totalSize ? (
+          {isPagination && totalSize ? (
             <Pagination
               showQuickJumper
               showSizeChanger
