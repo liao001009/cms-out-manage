@@ -89,7 +89,7 @@ const ContractListView: React.FC<IProps> = (props) => {
       return {
         onClick: () => {
           if(onRowUrl){
-            window.open(mk.getSysConfig('modulesUrlPrefix')+`/cms-out-manage/desktop/#${onRowUrl}${record.fdId}`,'_blank')
+            window.open(mk.getSysConfig('modulesUrlPrefix')+`/#/desktop/cms-out-manage${onRowUrl}${record.fdId}`,'_blank')
           }
           //暂时不知道跳转那里
           //history.goto(`/cmsContractInfo/view/${record.fdId}`)
