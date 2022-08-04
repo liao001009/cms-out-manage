@@ -79,7 +79,7 @@ export default [
       {
         key: '/cmsProjectSelectInfoTemplate',
         label: 'cms-out-manage:menu.cmsProjectSelectInfoTemplate',
-        module: 'csm-out-project'
+        module: 'cms-out-project'
       }
     ]
   }
