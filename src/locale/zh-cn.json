@@ -15,6 +15,9 @@
     "cmsFrameInfoTemplate": {
         "name": "框架信息模板"
     },
+    "cmsProjectSelectInfoTemplate": {
+        "name": "发布中选信息模板"
+    },
     "cmsPostInfo": {
         "form": {
             "!{l3gpyjl8qwu0o4wcuce}": "核心要求",
@@ -118,6 +121,7 @@
         "cmsBasicInformation": "基本信息管理",
         "cmsPersonnelManagement": "人员管理",
         "cmsProjectManagement": "项目管理",
+        "cmsFailNoticeTemplate": "落选通知模板",
         "cmsWorkOrder": "工单管理",
         "cmsSupplierService": "供应商服务",
         "cmsPostInfoTemplate": "岗位信息模板",
@@ -150,6 +154,8 @@
         "cmsProjectDemandTemplate": "项目需求模板",
         "ourTalentPool": "本公司人才库",
         "cmsQuitRegister": "离职登记",
+        "cmsProjectSelectInfoTemplate": "发布中选信息模板",
+        "cmsSelectConfirmTemplate": "中选确认模板",
         "cmsSupplierEvalScore": {
             "listEvaluateScore": "供应商评价打分"
         },

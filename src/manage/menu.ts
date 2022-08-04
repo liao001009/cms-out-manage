@@ -9,7 +9,17 @@ export default [
         key: '/cmsStaffReviewUpgradeTemplate',
         label: 'cms-out-manage:menu.cmsStaffReviewUpgradeTemplate',
         module: 'cms-out-supplier'
-      }
+      },
+      {
+        key: '/cmsSelectConfirmTemplate',
+        label: 'cms-out-manage:menu.cmsSelectConfirmTemplate',
+        module: 'cms-out-supplier'
+      },
+      {
+        key: '/cmsFailNoticeTemplate',
+        label: 'cms-out-manage:menu.cmsFailNoticeTemplate',
+        module: 'cms-out-supplier'
+      },
     ]
   },
   {
@@ -66,6 +76,11 @@ export default [
         label: 'cms-out-manage:menu.cmsStaffReviewTemplate',
         module: 'cms-out-project'
       },
+      {
+        key: '/cmsProjectSelectInfoTemplate',
+        label: 'cms-out-manage:menu.cmsProjectSelectInfoTemplate',
+        module: 'csm-out-project'
+      }
     ]
   }
 ]
