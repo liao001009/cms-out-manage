@@ -21,7 +21,7 @@ export default {
       bottom: 0,
       overflow: 'auto',
       'zIndex': 99,
-      backgroundColor: '#fff'
+      backgroundColor: '#f0f2f5'
     }
   }, props.children),
   // 模块内容区
@@ -30,6 +30,10 @@ export default {
     type: 'content-view',
     // 内容渲染组件
     render: Content,
+    props: {
+      // 编辑模式：新建
+      mode: 'edit'
+    },
     // 请求
     dataUrl: ({ param }) =>
       api.edit({
