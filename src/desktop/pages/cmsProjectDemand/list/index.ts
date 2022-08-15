@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-project:cmsProjectDemand.list.Demand',
+  title: 'cms-out-manage:cmsProjectDemand.list.Demand',
   // 路由
   router: '/listDemand',
   // 模块内容区
