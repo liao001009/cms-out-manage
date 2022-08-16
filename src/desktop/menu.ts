@@ -31,8 +31,8 @@ const menu = [
       { key: '/cmsTalentPoor', label: 'cms-out-manage:menu.ourTalentPool' },
       { key: '/cmsSupplierEntrance', label: 'cms-out-manage:menu.mjeghuh20rd' },
       { key: '/cmsSupplierLeave', label: 'cms-out-manage:menu.me1g6jcuktze' },
-      { key: '/cmsOrderResponse', label: 'cms-out-manage:menu.cmsOrderResponse.listOrder' },
       { key: '/cmsSupplierDemand', label: 'cms-out-manage:menu.mhhk3h8jkmcl' },
+      { key: '/cmsOrderResponse', label: 'cms-out-manage:menu.cmsOrderResponse.listOrder' },
       { key: '/cmsQuitRegister', label: 'cms-out-manage:menu.cmsQuitRegister' },
       { key: '/cmsSelectConfirm', label: 'cms-out-manage:menu.cmsSelectConfirm' }
 
