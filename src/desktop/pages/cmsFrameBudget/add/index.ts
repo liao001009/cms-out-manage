@@ -1,6 +1,6 @@
 import { createElement as h } from 'react'
 import Content from './content'
-
+import api from '@/api/cmsFrameBudget'
 export default {
   // 类型：模块
   type: 'page',
@@ -30,10 +30,9 @@ export default {
     // 内容渲染组件
     render: Content,
     // // 请求
-    // dataUrl: ({ param }) =>
-    //   api.init({
-    //     fdTemplate: { fdId: param.templateId },
-    //     mechanisms: { load: '*' }
-    //   })
+    dataUrl: () =>
+      api.init({
+        mechanisms: { load: '*' }
+      })
   }
 }
