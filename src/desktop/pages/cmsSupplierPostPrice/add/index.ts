@@ -1,5 +1,5 @@
 import { createElement as h } from 'react'
-import Content from './content'
+import Content from '@/desktop/pages/cmsSupplierPostPrice/edit/content'
 
 export default {
   // 类型：模块
@@ -20,7 +20,7 @@ export default {
       bottom: 0,
       overflow: 'auto',
       'zIndex': 99,
-      backgroundColor: '#fff'
+      backgroundColor: '#f0f2f5'
     }
   }, props.children),
   // 模块内容区
@@ -29,5 +29,9 @@ export default {
     type: 'content-list',
     // 内容渲染组件
     render: Content,
+    props: {
+      // 编辑模式：新建
+      mode: 'add'
+    }
   }
 }
