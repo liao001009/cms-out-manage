@@ -8,6 +8,7 @@ export default {
   title: 'cms-out-project:cmsProjectInterview.list.Interview',
   // 路由
   router: '/listInterview',
+  keepalive: false,
   // 模块内容区
   children: {
     // 内容类型: 列表

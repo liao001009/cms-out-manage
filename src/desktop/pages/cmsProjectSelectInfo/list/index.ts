@@ -8,6 +8,7 @@ export default {
   title: '列表页面',
   // 路由
   router: '/listSelectInfo',
+  keepalive: false,
   // 模块内容区
   children: {
     // 内容类型: 列表

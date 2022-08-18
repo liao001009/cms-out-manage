@@ -8,6 +8,7 @@ export default {
   title: 'cms-out-supplier:cmsOrderResponse.list.Order',
   // 路由
   router: '/listOrder',
+  keepalive: false,
   // 模块内容区
   children: {
     // 内容类型: 列表

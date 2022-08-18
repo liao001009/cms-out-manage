@@ -8,8 +8,10 @@ export default {
   title: 'cms-out-manage:cmsProjectInfo.list.ProjectInfo',
   // 路由
   router: '/listProjectInfo',
+  keepalive: false,
   // 模块内容区
   children: {
+    
     // 内容类型: 列表
     type: 'content-list',
     // 数据请求

@@ -8,6 +8,7 @@ export default {
   title: 'cms-out-project:cmsProjectWritten.list.Written',
   // 路由
   router: '/listWritten',
+  keepalive: false,
   // 模块内容区
   children: {
     // 内容类型: 列表

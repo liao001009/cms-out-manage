@@ -8,6 +8,7 @@ export default {
   title: 'cms-out-manage:cmsStaffEntrance.list.Entrance',
   // 路由
   router: '/listEntrance',
+  keepalive: false,
   // 模块内容区
   children: {
     // 内容类型: 列表

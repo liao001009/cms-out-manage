@@ -8,6 +8,7 @@ export default {
   title: 'cms-out-manage:cmsFrameInfo.list.FrameInfo',
   // 路由
   router: '/listFrameInfo',
+  keepalive: false,
   // 模块内容区
   children: {
     // 内容类型: 列表
