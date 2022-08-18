@@ -49,18 +49,18 @@ export default [
       },
     ]
   },
-  {
-    key: '/cmsOutConfig',
-    label: 'cms-out-manage:menu.cmsWorkOrder',
-    icon: 'desktop',
-    children: [
-      {
-        key: '/cmsOutConfig',
-        label: 'cms-out-manage:menu.cmsOutConfig',
-        module: 'cms-out-order'
-      }
-    ]
-  },
+  // {
+  //   key: '/cmsOutConfig',
+  //   label: 'cms-out-manage:menu.cmsWorkOrder',
+  //   icon: 'desktop',
+  //   children: [
+  //     {
+  //       key: '/cmsOutConfig',
+  //       label: 'cms-out-manage:menu.cmsOutConfig',
+  //       module: 'cms-out-order'
+  //     }
+  //   ]
+  // },
   {
     key: '/cmsProjectDemandTemplate',
     label: 'cms-out-manage:menu.cmsSupplierService',
@@ -80,6 +80,18 @@ export default [
         key: '/cmsProjectSelectInfoTemplate',
         label: 'cms-out-manage:menu.cmsProjectSelectInfoTemplate',
         module: 'cms-out-project'
+      }
+    ]
+  },
+  {
+    key: '/cmsOutConfig',
+    label: 'cms-out-manage:menu.systemMenu',
+    icon: 'desktop',
+    children: [
+      {
+        key: '/cmsOutConfig',
+        label: 'cms-out-manage:menu.systemMenu',
+        module: 'cms-out-manage'
       }
     ]
   }
