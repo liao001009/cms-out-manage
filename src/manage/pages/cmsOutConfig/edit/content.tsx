@@ -108,16 +108,16 @@ const Content: React.FC<IContentViewProps> = props => {
       <div className='form'>
         <Tabs defaultActiveKey={activeKey} onChange={ val => onChange(val)}>
           <TabPane tab={'权限配置'} key={'role'}>
-            <div className={`${baseCls}-head`}>
+            <RoleIndex formRef={formComponentRef} value={tabData || {}} />
+            <div style={{marginLeft: '15em'}}>
               <Button type='primary' onClick={() => handleSave(false, 'role')}>保存</Button>
             </div>
-            <RoleIndex formRef={formComponentRef} value={tabData || {}} />
           </TabPane>
           <TabPane tab={'工单处理分工设置'} key={'order'}>
-            <div className={`${baseCls}-head`}>
+            <OrderIndex formRef={formComponentRef} value={tabData || {}} />
+            <div style={{marginLeft: '15em'}}>
               <Button type='primary' onClick={() => handleSave(false, 'order')}>保存</Button>
             </div>
-            <OrderIndex formRef={formComponentRef} value={tabData || {}} />
           </TabPane>
         </Tabs>
       </div>
