@@ -1,0 +1,20 @@
+.cmsOutConfig-content{
+
+  padding: 16px;
+
+  &-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    float: right;
+
+    &-text {
+      font-size: 24px;
+      font-weight: 500;
+    }
+  }
+  &-content {
+    padding: 10px;
+  }
+}

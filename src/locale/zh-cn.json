@@ -186,7 +186,8 @@
         "cmsOutOrderTemplate": "工单管理模板",
         "cmsOutConfigTemplate": "权限配置模板",
         "cmsOutConfig": "权限配置",
-        "cmsOutOrder": "工单管理"
+        "cmsOutOrder": "工单管理",
+        "systemMenu": "系统配置"
     },
     "cmsStaffAdjustTemplate": {
         "name": "驻场人员调整模板"
