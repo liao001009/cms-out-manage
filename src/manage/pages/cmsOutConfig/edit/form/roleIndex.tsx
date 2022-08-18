@@ -1,15 +1,12 @@
-import React, {useRef} from 'react'
-import './index.scss'
-import {Form} from '@lui/core'
-import {useApi, useSystem} from '@/desktop/shared/formHooks'
-import XformAppearance from '@/desktop/components/form/XformAppearance'
-import LayoutGrid from '@/desktop/components/form/LayoutGrid'
-import GridItem from '@/desktop/components/form/GridItem'
-import XformFieldset from '@/desktop/components/form/XformFieldset'
 import XformInput from '@/desktop/components/form/XformInput'
+import { useApi, useSystem } from '@/desktop/shared/formHooks'
+import {  Form } from '@lui/core'
+import React, { useRef } from 'react'
+import './index.scss'
 
 const MECHANISMNAMES = {}
 
+const baseCls = 'cmsOutConfig-form'
 const RoleIndex = (props) => {
   console.log('props------',props)
   const detailForms = useRef({})
@@ -29,53 +26,49 @@ const RoleIndex = (props) => {
     detailForms
   })
   return (
+    <div className={baseCls}>
+      <div className="lui-xform">
+        <Form form={form} colPadding={false} onValuesChange={onValuesChange}
+          labelCol={{ span: 4 }}
+          wrapperCol={{ span: 8 }}
+          layout="horizontal"
+        >
+          <Form.Item
+            name={'fdSupplierAdminRoleId'}
+            label="供应商管理员角色ID"
+            rules={[
+              {
+                required: true,
+                message: '内容不能为空'
+              }
+            ]}
+          >
+            <XformInput
+              {...sysProps}
+              placeholder={'请输入'}
+              showStatus="edit"
+            ></XformInput>
+          </Form.Item>
 
-
-
-    <div className="lui-xform">
-      <Form form={form} colPadding={false} onValuesChange={onValuesChange}>
-        <XformAppearance>
-          <LayoutGrid columns={2} rows={2}>
-            <GridItem column={0} row={1}>
-              <XformFieldset
-                mobileContentAlign={'right'}
-                title={'供应商管理员角色ID'}
-                layout={'horizontal'}
-                required={true}
-              >
-                <Form.Item
-                  name={'fdSupplierAdminRoleId'}
-                >
-                  <XformInput
-                    {...sysProps}
-                    placeholder={'请输入'}
-                    showStatus="edit"
-                  ></XformInput>
-                </Form.Item>
-
-              </XformFieldset>
-            </GridItem>
-            <GridItem column={1} row={1}>
-              <XformFieldset
-                mobileContentAlign={'right'}
-                title={'普通供应商管理员角色ID'}
-                layout={'horizontal'}
-                required={true}
-              >
-                <Form.Item
-                  name={'fdSupplierUserRoleId'}
-                >
-                  <XformInput
-                    {...sysProps}
-                    placeholder={'请输入'}
-                    showStatus="edit"
-                  ></XformInput>
-                </Form.Item>
-              </XformFieldset>
-            </GridItem>
-          </LayoutGrid>
-        </XformAppearance>
-      </Form>
+          <Form.Item
+            name={'fdSupplierUserRoleId'}
+            label="普通供应商管理员角色ID"
+            rules={[
+              {
+                required: true,
+                message: '内容不能为空'
+              }
+            ]}
+          >
+            <XformInput
+              {...sysProps}
+              placeholder={'请输入'}
+              showStatus="edit"
+            ></XformInput>
+          </Form.Item>
+               
+        </Form>
+      </div>
     </div>
   )
 }
