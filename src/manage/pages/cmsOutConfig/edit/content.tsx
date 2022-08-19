@@ -90,6 +90,8 @@ const Content: React.FC<IContentViewProps> = props => {
 
 
   useEffect(()=>{
+    console.log('activeKey-----',activeKey)
+    
     const api = activeKey === 'role' ? apiOutManageConfig.getRoleConfig : apiOutManageConfig.getOrderConfig
     api({}).then(res => {
       setTabData(res.data)
@@ -107,7 +109,7 @@ const Content: React.FC<IContentViewProps> = props => {
     <div className={`${baseCls}`}>
       <div className='form'>
         <Tabs defaultActiveKey={activeKey} onChange={ val => onChange(val)}>
-          <TabPane tab={'权限配置'} key={'role'}>
+          <TabPane tab={'组织权限配置'} key={'role'}>
             <RoleIndex formRef={formComponentRef} value={tabData || {}} />
             <div style={{marginLeft: '15em'}}>
               <Button type='primary' onClick={() => handleSave(false, 'role')}>保存</Button>
