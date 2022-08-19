@@ -119,6 +119,7 @@
     },
     "menu": {
         "cmsBasicInformation": "基本信息管理",
+        "cmsQuitRegisterTemplate": "离职登记模板",
         "cmsPersonnelManagement": "人员管理",
         "cmsProjectManagement": "项目管理",
         "cmsFailNoticeTemplate": "落选通知模板",
@@ -155,7 +156,7 @@
         "ourTalentPool": "本公司人才库",
         "cmsQuitRegister": "离职登记",
         "cmsProjectSelectInfoTemplate": "发布中选信息模板",
-        "cmsSelectConfirm":"中选确认",
+        "cmsSelectConfirm": "中选确认",
         "cmsSelectConfirmTemplate": "中选确认模板",
         "cmsSupplierEvalScore": {
             "listEvaluateScore": "供应商评价打分"

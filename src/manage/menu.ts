@@ -20,6 +20,11 @@ export default [
         label: 'cms-out-manage:menu.cmsFailNoticeTemplate',
         module: 'cms-out-supplier'
       },
+      {
+        key: '/cmsQuitRegisterTemplate',
+        label: 'cms-out-manage:menu.cmsQuitRegisterTemplate',
+        module: 'cms-out-supplier'
+      }
     ]
   },
   {
