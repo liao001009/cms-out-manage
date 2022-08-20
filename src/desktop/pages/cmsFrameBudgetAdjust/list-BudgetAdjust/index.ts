@@ -8,6 +8,7 @@ export default {
   title: 'cms-out-manage:CmsFrameBudgetAdjust.list.BudgetAdjust',
   // 路由
   router: '/listBudgetAdjust',
+  keepalive: false,
   // 模块内容区
   children: {
     // 内容类型: 列表

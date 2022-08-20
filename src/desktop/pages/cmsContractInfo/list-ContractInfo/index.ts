@@ -8,6 +8,7 @@ export default {
   title: 'cms-out-manage:cmsContractInfo.list.ContractInfo',
   // 路由
   router: '/listContractInfo',
+  keepalive: false,
   // 模块内容区
   children: {
     // 内容类型: 列表

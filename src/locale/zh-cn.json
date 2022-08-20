@@ -15,6 +15,9 @@
     "cmsFrameInfoTemplate": {
         "name": "框架信息模板"
     },
+    "cmsProjectSelectInfoTemplate": {
+        "name": "发布中选信息模板"
+    },
     "cmsPostInfo": {
         "form": {
             "!{l3gpyjl8qwu0o4wcuce}": "核心要求",
@@ -104,16 +107,30 @@
             "FrameInfo": "框架信息"
         }
     },
+    "cmsProjectDemand": {
+        "list": {
+            "Demand": "项目需求列表"
+        }
+    },
+    "cmsQuitRegister": {
+        "list": {
+            "Quit": "离职登记"
+        }
+    },
     "menu": {
         "cmsBasicInformation": "基本信息管理",
+        "cmsQuitRegisterTemplate": "离职登记模板",
         "cmsPersonnelManagement": "人员管理",
         "cmsProjectManagement": "项目管理",
+        "cmsFailNoticeTemplate": "落选通知模板",
         "cmsWorkOrder": "工单管理",
+        "cmsSupplierService": "供应商服务",
         "cmsPostInfoTemplate": "岗位信息模板",
         "cmsLevelInfoTemplate": "级别信息模板",
         "cmsFrameBudgetAdjustTemplate": "框架预算调整模板",
         "cmsFrameBudgetTemplate": "框架预算模板",
         "cmsFrameInfoTemplate": "框架信息模板",
+        "cmsStaffReviewTemplate": "外包人员评审模板",
         "cmsPostInfo": "岗位信息",
         "cmsLevelInfo": "级别信息",
         "cmsFrameBudgetAdjust": "框架预算调整",
@@ -134,8 +151,18 @@
         "cmsSupplierEvaluateTemplate": "供应商评价模板",
         "cmsContractInfoTemplate": "合同信息模板",
         "mpc2wyyz6le8": "供应商管理",
+        "mhhk3h8jkmcl": "项目需求",
+        "cmsProjectDemandTemplate": "项目需求模板",
+        "ourTalentPool": "本公司人才库",
+        "cmsQuitRegister": "离职登记",
+        "cmsProjectSelectInfoTemplate": "发布中选信息模板",
+        "cmsSelectConfirm": "中选确认",
+        "cmsSelectConfirmTemplate": "中选确认模板",
         "cmsSupplierEvalScore": {
             "listEvaluateScore": "供应商评价打分"
+        },
+        "cmsOrderResponse": {
+            "listOrder": "订单响应"
         },
         "cmsSupplierEvaluate": {
             "listSupplierEvaluate": "供应商评价"
@@ -160,7 +187,8 @@
         "cmsOutOrderTemplate": "工单管理模板",
         "cmsOutConfigTemplate": "权限配置模板",
         "cmsOutConfig": "权限配置",
-        "cmsOutOrder": "工单管理"
+        "cmsOutOrder": "工单管理",
+        "systemMenu": "系统配置"
     },
     "cmsStaffAdjustTemplate": {
         "name": "驻场人员调整模板"

@@ -1,0 +1,5 @@
+@import '../../common/common.scss';
+
+$baseCls: cmsOutConfig-conten;
+
+@include content-right-page($baseCls)

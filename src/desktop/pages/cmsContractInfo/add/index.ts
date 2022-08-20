@@ -1,5 +1,5 @@
 import { createElement as h } from 'react'
-import api from '@/api/cmsSupplierInfo'
+// import api from '@/api/cmsSupplierInfo'
 
 import Content from './content'
 
@@ -22,7 +22,7 @@ export default {
       bottom: 0,
       overflow: 'auto',
       'zIndex': 99,
-      backgroundColor: '#fff'
+      backgroundColor: '#f0f2f5'
     }
   }, props.children),
   // 模块内容区
@@ -32,7 +32,11 @@ export default {
     // 内容渲染组件
     render: Content,
     // 请求
-    dataUrl: ({ param }) =>
-      api.get({ fdId:param.id })
+    // dataUrl: ({ param }) =>
+    //   api.get({ fdId:param.id })
+    props: {
+      // 编辑模式：新建
+      mode: 'add'
+    }
   }
 }

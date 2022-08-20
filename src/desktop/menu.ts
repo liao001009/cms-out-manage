@@ -7,7 +7,6 @@ const menu = [
     key: '/~~pc2wyyz6le8',
     label: 'cms-out-manage:menu.mpc2wyyz6le8',
     icon: 'add-document',
-    module: 'cms-out-supplier',
     order: 1,
     // meta: {
     //   role: ['ROLE_CMSOUTSUPPLIER_DEFAULT']
@@ -22,17 +21,35 @@ const menu = [
       // { key: '/cmsSupplierEvalScore/listEvaluateScore', label: ':menu.cmsSupplierEvalScore.listEvaluateScore' }
     ]
   },
+  /**供应商服务 */
+  {
+    key: '/cmsTalentPoor',
+    label: 'cms-out-manage:menu.cmsSupplierService',
+    icon: 'add-document',
+    order: 2,
+    children: [
+      { key: '/cmsTalentPoor', label: 'cms-out-manage:menu.ourTalentPool' },
+      { key: '/cmsSupplierEntrance', label: 'cms-out-manage:menu.mjeghuh20rd' },
+      { key: '/cmsSupplierLeave', label: 'cms-out-manage:menu.me1g6jcuktze' },
+      { key: '/cmsSupplierDemand', label: 'cms-out-manage:menu.mhhk3h8jkmcl' },
+      { key: '/cmsOrderResponse', label: 'cms-out-manage:menu.cmsOrderResponse.listOrder' },
+      { key: '/cmsQuitRegister', label: 'cms-out-manage:menu.cmsQuitRegister' },
+      { key: '/cmsSelectConfirm', label: 'cms-out-manage:menu.cmsSelectConfirm' }
+
+    ]
+  },
   /** 项目管理*/
   {
     key: '/cmsProjectInfo',
     label: 'cms-out-manage:menu.cmsProjectManagement',
     icon: 'add-document',
-    order: 2,
+    order: 3,
     // meta: {
     //   role: ['ROLE_CMSOUTPROJECT_ADMIN']
     // },
     children: [
-      { key: '/cmsProjectInfo', label: 'cms-out-manage:menu.mbvr4bpjdbc', icon: 'add-document' },
+      { key: '/cmsProjectInfo', label: 'cms-out-manage:menu.mbvr4bpjdbc' },
+      { key: '/cmsProjectDemand', label: 'cms-out-manage:menu.mhhk3h8jkmcl' }
     ]
   },
   /** 人员管理*/
@@ -40,14 +57,14 @@ const menu = [
     key: '/cmsStaffEntrance',
     label: 'cms-out-manage:menu.cmsPersonnelManagement',
     icon: 'add-document',
-    order: 3,
+    order: 4,
     // meta: {
     //   role: ['ROLE_CMSOUTSTAFF_DEFAULT']
     // },
     children: [
-      { key: '/cmsStaffEntrance', label: 'cms-out-manage:menu.mjeghuh20rd', icon: 'add-document' },
-      { key: '/cmsStaffAdjust', label: 'cms-out-manage:menu.mdip4klbk717', icon: 'add-document' },
-      { key: '/cmsStaffLeave', label: 'cms-out-manage:menu.me1g6jcuktze', icon: 'add-document' },
+      { key: '/cmsStaffEntrance', label: 'cms-out-manage:menu.mjeghuh20rd' },
+      { key: '/cmsStaffAdjust', label: 'cms-out-manage:menu.mdip4klbk717' },
+      { key: '/cmsStaffLeave', label: 'cms-out-manage:menu.me1g6jcuktze' },
     ]
   },
   /**基本信息管理 */
@@ -55,16 +72,16 @@ const menu = [
     key: '/cmsFrameInfo',
     label: 'cms-out-manage:menu.cmsBasicInformation',
     icon: 'add-document',
-    order: 4,
+    order: 5,
     // meta: {
     //   role: ['ROLE_CMSOUTMANAGE_ADMIN']
     // },
     children: [
-      { key: '/cmsFrameInfo', label: 'cms-out-manage:menu.cmsFrameInfo', icon: 'add-document' },
-      { key: '/cmsFrameBudget', label: 'cms-out-manage:menu.cmsFrameBudget', icon: 'add-document' },
-      // { key: '/cmsFrameBudgetAdjust', label: 'cms-out-manage:menu.cmsFrameBudgetAdjust', icon: 'add-document'},
-      { key: '/cmsLevelInfo', label: 'cms-out-manage:menu.cmsLevelInfo', icon: 'add-document' },
-      { key: '/cmsPostInfo', label: 'cms-out-manage:menu.cmsPostInfo', icon: 'add-document' },
+      { key: '/cmsFrameInfo', label: 'cms-out-manage:menu.cmsFrameInfo' },
+      { key: '/cmsFrameBudget', label: 'cms-out-manage:menu.cmsFrameBudget' },
+      // { key: '/cmsFrameBudgetAdjust', label: 'cms-out-manage:menu.cmsFrameBudgetAdjust'},
+      { key: '/cmsLevelInfo', label: 'cms-out-manage:menu.cmsLevelInfo' },
+      { key: '/cmsPostInfo', label: 'cms-out-manage:menu.cmsPostInfo' },
     ]
   },
   /**工单管理 */
@@ -72,7 +89,7 @@ const menu = [
     key: '/cmsOutOrder',
     label: 'cms-out-manage:menu.cmsWorkOrder',
     icon: 'add-document',
-    order: 5,
+    order: 6,
     // meta: {
     //   role: ['ROLE_CMSOUTORDER_DEFAULT']
     // },
@@ -80,7 +97,6 @@ const menu = [
       {
         key: '/cmsOutOrder',
         label: 'cms-out-manage:menu.cmsWorkOrder',
-        icon: 'add-document',
       }
     ]
   }
@@ -113,9 +129,9 @@ const createMenu = async () => {
       role: 'ROLE_CMSOUTORDER_DEFAULT'
     }
   ]
-  // // const moduleApi =await Module.getApi('cms-out-order')
-  // const orderMenu =await moduleApi.menuApi()
-  // console.log('orderMenu',orderMenu)
+  // const moduleApi =await Module.getApi('cms-out-order')
+  // const orderMenu = await moduleApi.menuApi()
+  // console.log('orderMenu', orderMenu)
   const menuArr: any = []
   const res = await api.roleCheck([...params])
   Object.keys(res.data).forEach(i => {
@@ -128,6 +144,7 @@ const createMenu = async () => {
     return parseInt(a.order) - parseInt(b.order)
   })
   return menuArr
+
 }
 export default createMenu
 

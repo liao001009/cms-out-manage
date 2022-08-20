@@ -9,6 +9,21 @@ export default [
         key: '/cmsStaffReviewUpgradeTemplate',
         label: 'cms-out-manage:menu.cmsStaffReviewUpgradeTemplate',
         module: 'cms-out-supplier'
+      },
+      {
+        key: '/cmsSelectConfirmTemplate',
+        label: 'cms-out-manage:menu.cmsSelectConfirmTemplate',
+        module: 'cms-out-supplier'
+      },
+      {
+        key: '/cmsFailNoticeTemplate',
+        label: 'cms-out-manage:menu.cmsFailNoticeTemplate',
+        module: 'cms-out-supplier'
+      },
+      {
+        key: '/cmsQuitRegisterTemplate',
+        label: 'cms-out-manage:menu.cmsQuitRegisterTemplate',
+        module: 'cms-out-supplier'
       }
     ]
   },
@@ -39,15 +54,49 @@ export default [
       },
     ]
   },
+  // {
+  //   key: '/cmsOutConfig',
+  //   label: 'cms-out-manage:menu.cmsWorkOrder',
+  //   icon: 'desktop',
+  //   children: [
+  //     {
+  //       key: '/cmsOutConfig',
+  //       label: 'cms-out-manage:menu.cmsOutConfig',
+  //       module: 'cms-out-order'
+  //     }
+  //   ]
+  // },
+  {
+    key: '/cmsProjectDemandTemplate',
+    label: 'cms-out-manage:menu.cmsSupplierService',
+    icon: 'desktop',
+    children: [
+      {
+        key: '/cmsProjectDemandTemplate',
+        label: 'cms-out-manage:menu.cmsProjectDemandTemplate',
+        module: 'cms-out-project'
+      },
+      {
+        key: '/cmsStaffReviewTemplate',
+        label: 'cms-out-manage:menu.cmsStaffReviewTemplate',
+        module: 'cms-out-project'
+      },
+      {
+        key: '/cmsProjectSelectInfoTemplate',
+        label: 'cms-out-manage:menu.cmsProjectSelectInfoTemplate',
+        module: 'cms-out-project'
+      }
+    ]
+  },
   {
     key: '/cmsOutConfig',
-    label: 'cms-out-manage:menu.cmsWorkOrder',
+    label: 'cms-out-manage:menu.systemMenu',
     icon: 'desktop',
     children: [
       {
         key: '/cmsOutConfig',
-        label: 'cms-out-manage:menu.cmsOutConfig',
-        module: 'cms-out-order'
+        label: 'cms-out-manage:menu.systemMenu',
+        module: 'cms-out-manage'
       }
     ]
   }

@@ -8,6 +8,7 @@ export default {
   title: 'cms-out-manage:cmsSupplierEvaluate.list.SupplierEvaluate',
   // 路由
   router: '/listSupplierEvaluate',
+  keepalive: false,
   // 模块内容区
   children: {
     // 内容类型: 列表

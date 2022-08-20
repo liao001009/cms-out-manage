@@ -36,28 +36,28 @@ const lpackConfig = {
     // 平台，desktop、manage、mobile
     platform: entryName,
     // 模块代理 
-    modulesUrlPrefix: 'http://192.168.50.145:8088/web',
+    modulesUrlPrefix: 'http://192.168.50.145:7088/web',
     // 租户资源域名前缀
-    tenantUrlPrefix: 'http://mktest.ywork.me/web',
+    tenantUrlPrefix: 'http://192.168.50.145:7088/web',
     // 组件库域名
     elementsUrlPrefix: {
-      manufact: 'http://mktest.ywork.me/web',
-      artifact: 'http://mktest.ywork.me/web'
+      manufact: 'http://192.168.50.145:7088/web',
+      artifact: 'http://192.168.50.145:7088/web'
       // artifact: 'http://127.0.0.1:8008'
     },
     // elementsUrlPrefix: 'http://127.0.0.1:8008',
     // 服务端域名
     apiUrlPrefix: 'http://192.168.50.145:8101/data',
     //多语言服务
-    langUrlPrefix: 'http://mktest.ywork.me/data/sys-lang'
+    langUrlPrefix: 'http://192.168.50.145:7088/data/sys-lang'
   },
-  modules: {
-    'cms-out-basedata': 'http://127.0.0.1:3340',
-    'cms-out-project': 'http://127.0.0.1:3278',
-    'cms-out-order': 'http://127.0.0.1:3059',
-    'cms-out-staff': 'http://127.0.0.1:3051',
-    'cms-out-supplier': 'http://127.0.0.1:'
-  },
+  // modules: {
+  //   'cms-out-basedata': 'http://127.0.0.1:3340',
+  //   'cms-out-project': 'http://127.0.0.1:3278',
+  //   'cms-out-order': 'http://127.0.0.1:3059',
+  //   'cms-out-staff': 'http://127.0.0.1:3051',
+  //   'cms-out-supplier': 'http://127.0.0.1:3403'
+  // },
   webpack: {
     resolve: {
       alias: {
