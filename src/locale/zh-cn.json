@@ -188,7 +188,11 @@
         "cmsOutConfigTemplate": "权限配置模板",
         "cmsOutConfig": "权限配置",
         "cmsOutOrder": "工单管理",
-        "systemMenu": "系统配置"
+        "systemMenu": "系统配置",
+        "m4anonsipbg9": "考勤统计",
+        "msiy3c4m0m8": "考勤数据",
+        "m4yjqczqyqak": "加班申请",
+        "mxx4gl052ece": "调休/请假申请"
     },
     "cmsStaffAdjustTemplate": {
         "name": "驻场人员调整模板"
