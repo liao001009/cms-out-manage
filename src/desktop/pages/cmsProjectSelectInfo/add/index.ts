@@ -13,6 +13,7 @@ export default {
   router: '/add/:fdId',
   // 页面是否全屏，默认false
   fullscreen: true,
+  keepalive: false,
   // 临时解决方案，等runtime完善fullscreen逻辑后移除
   render: (props) => h('div', {
     style: {
@@ -33,16 +34,16 @@ export default {
     // 内容渲染组件
     render: Content,
     // 请求
-    dataUrl: async ({ param }) =>{
+    dataUrl: async ({ param }) => {
       const res = await apiTemplate.list({
-        sorts: { 
-          fdCreateTime:  ESortType.DESC
+        sorts: {
+          fdCreateTime: ESortType.DESC
         },
         columns: ['fdId', 'fdName', 'fdCode', 'fdCreator', 'fdCreateTime']
       })
       return api.init({
-        'fdProjectDemand':{
-          'fdId':param.fdId
+        'fdProjectDemand': {
+          'fdId': param.fdId
         },
         fdTemplate: { fdId: res.data.content[0].fdId },
         mechanisms: { load: '*' }

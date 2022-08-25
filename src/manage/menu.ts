@@ -4,6 +4,9 @@ export default [
     key: '/cmsStaffLeaveTemplate',
     label: 'cms-out-manage:menu.mpc2wyyz6le8',
     icon: 'desktop',
+    meta: {
+      role: ['ROLE_CMSOUTMANAGE_SETTING']
+    },
     children: [
       {
         key: '/cmsStaffReviewUpgradeTemplate',
@@ -31,6 +34,9 @@ export default [
     key: '/cmsStaffEntranceTemplate',
     label: 'cms-out-manage:menu.cmsPersonnelManagement',
     icon: 'desktop',
+    meta: {
+      role: ['ROLE_CMSOUTMANAGE_SETTING']
+    },
     children: [
       {
         key: '/cmsStaffAttConfigTemplate',
@@ -70,6 +76,9 @@ export default [
     key: '/cmsProjectDemandTemplate',
     label: 'cms-out-manage:menu.cmsSupplierService',
     icon: 'desktop',
+    meta: {
+      role: ['ROLE_CMSOUTMANAGE_SETTING']
+    },
     children: [
       {
         key: '/cmsProjectDemandTemplate',
@@ -92,6 +101,9 @@ export default [
     key: '/cmsOutConfig',
     label: 'cms-out-manage:menu.systemMenu',
     icon: 'desktop',
+    meta: {
+      role: ['ROLE_CMSOUTMANAGE_SETTING']
+    },
     children: [
       {
         key: '/cmsOutConfig',

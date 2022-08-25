@@ -24,6 +24,7 @@ export default {
   }, props.children),
   // 页面是否全屏，默认false
   fullscreen: true,
+  keepalive: false,
   // 模块内容区
   children: {
     // 类型: 列表内容
@@ -31,6 +32,6 @@ export default {
     // 内容渲染组件
     render: Content,
     dataUrl: ({ param }) =>
-      api.get({ fdId: param.id})
+      api.get({ fdId: param.id })
   }
 }
