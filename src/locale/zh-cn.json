@@ -124,6 +124,10 @@
         "cmsProjectManagement": "项目管理",
         "cmsFailNoticeTemplate": "落选通知模板",
         "cmsWorkOrder": "工单管理",
+        "m4yjqczqyqak": "加班申请",
+        "mxx4gl052ece": "调休/请假申请",
+        "cmsLeaveApplyTemplate": "调休/请假申请模板",
+        "cmsOverWorkTemplate": "加班申请模板",
         "cmsSupplierService": "供应商服务",
         "cmsPostInfoTemplate": "岗位信息模板",
         "cmsLevelInfoTemplate": "级别信息模板",
@@ -190,9 +194,7 @@
         "cmsOutOrder": "工单管理",
         "systemMenu": "系统配置",
         "m4anonsipbg9": "考勤统计",
-        "msiy3c4m0m8": "考勤数据",
-        "m4yjqczqyqak": "加班申请",
-        "mxx4gl052ece": "调休/请假申请"
+        "msiy3c4m0m8": "考勤数据"
     },
     "cmsStaffAdjustTemplate": {
         "name": "驻场人员调整模板"
