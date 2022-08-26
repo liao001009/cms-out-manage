@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-staff:cmsStaffLeave.list.Leave',
+  title: 'cms-out-staff:menu.mxx4gl052ece',
   // 路由
   router: '/listLeave',
   // 模块内容区

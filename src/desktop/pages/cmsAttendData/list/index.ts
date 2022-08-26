@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-manage:cmsAttendData.list.Attend',
+  title: 'cms-out-manage:menu.m4anonsipbg9',
   // 路由
   router: '/listAttend',
   // 模块内容区
