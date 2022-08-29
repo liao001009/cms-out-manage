@@ -58,6 +58,16 @@ export default [
         label: 'cms-out-manage:menu.cmsStaffLeaveTemplate',
         module: 'cms-out-staff',
       },
+      {
+        key: '/cmsOverWorkTemplate',
+        label: 'cms-out-manage:menu.cmsOverWorkTemplate',
+        module: 'cms-out-staff',
+      },
+      {
+        key: '/cmsLeaveApplyTemplate',
+        label: 'cms-out-manage:menu.cmsLeaveApplyTemplate',
+        module: 'cms-out-staff',
+      },
     ]
   },
   // {

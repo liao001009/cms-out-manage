@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-staff:cmsOverWork.list.OverWork',
+  title: 'cms-out-staff:menu.m4yjqczqyqak',
   // 路由
   router: '/listOverWork',
   // 模块内容区
