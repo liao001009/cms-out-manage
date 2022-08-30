@@ -1,5 +1,6 @@
 import { createElement as h } from 'react'
 import Content from '@/desktop/pages/cmsOutStaffInfo/edit/content'
+import api from '@/api/cmsOutStaffInfo'
 
 export default {
   // 类型：模块
@@ -34,5 +35,10 @@ export default {
       // 编辑模式：新建
       mode: 'add'
     },
+    // 请求
+    dataUrl: ({ param }) =>
+      api.init({
+        mechanisms: { load: '*' }
+      })
   }
 }

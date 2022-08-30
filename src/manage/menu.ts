@@ -119,7 +119,13 @@ export default [
         key: '/cmsOutConfig',
         label: 'cms-out-manage:menu.systemMenu',
         module: 'cms-out-manage'
+      },
+      {
+        key: '/cmsOutEnum',
+        label: 'cms-out-manage:menu.cmsOutEnum',
+        module: 'cms-out-basedata'
       }
     ]
-  }
+  },
+
 ]
