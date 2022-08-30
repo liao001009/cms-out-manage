@@ -177,6 +177,7 @@
         "cmsOutStaffInfo": {
             "listStaffInfo": "外包人员信息"
         },
+        "cmsOutEnum": "数据选项配置",
         "cmsSupplierPostPrice": {
             "listPostPrice": "岗位价格"
         },
