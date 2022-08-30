@@ -1,4 +1,4 @@
-import ListOrderCmpt from './list'
+import ListOrderCmpt from './list-Order'
 import ViewCmpt from './view'
 
 export default {
