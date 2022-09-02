@@ -7,13 +7,13 @@ export interface IProps {
   /** 请求体 */
   apiRequest: any
   /**请求参数 */
-  params? : any
+  params?: any
   /** 表格列定义 */
-  columns : any
+  columns: any
   /**点击行跳转路径 */
-  onRowUrl? : string 
+  onRowUrl?: string
   /** 是否需要分页 */
-  isPagination? : boolean
+  isPagination?: boolean
 
 }
 
@@ -33,7 +33,7 @@ const ContractListView: React.FC<IProps> = (props) => {
     getDataInfo(listParam)
   }, [])
 
-  
+
   // 表格hook
   const { tableProps } = useTable({
     // 数据源
@@ -43,7 +43,7 @@ const ContractListView: React.FC<IProps> = (props) => {
       Object.assign({}, d, { fdIndex: i })
     ),
     // 显示序号列
-    serial: false,
+    serial: true,
     // 列定义
     columns,
     // 支持行选择
@@ -88,15 +88,8 @@ const ContractListView: React.FC<IProps> = (props) => {
     (record) => {
       return {
         onClick: () => {
-          if(onRowUrl){
-            // window.open(mk.getSysConfig('modulesUrlPrefix')+`/#/desktop/cms-out-manage${onRowUrl}${record.fdId}`,'_blank')
-            debugger
-            mk.openLink({
-              url: mk.getSysConfig('modulesUrlPrefix')+`/#/desktop/cms-out-manage${onRowUrl}${record.fdId}`,
-              target: '_blank',
-              // event: event,
-              // title: ''
-            })
+          if (onRowUrl) {
+            window.open(mk.getSysConfig('modulesUrlPrefix') + `/#/desktop/cms-out-manage${onRowUrl}${record.fdId}`, '_blank')
           }
           //暂时不知道跳转那里
           //history.goto(`/cmsContractInfo/view/${record.fdId}`)
@@ -122,7 +115,7 @@ const ContractListView: React.FC<IProps> = (props) => {
               total={totalSize}
               pageSize={pageSize}
               onChange={handlePage}
-              onRefresh={()=>{getDataInfo(listParam)}}
+              onRefresh={() => { getDataInfo(listParam) }}
             />
           ) : null}
         </div>
