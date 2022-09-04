@@ -1,4 +1,5 @@
 .lui-template-list {
+
   // padding: 16px;
   &-toolbar {
     display: flex;
@@ -6,15 +7,23 @@
     justify-content: space-between;
     align-items: center;
   }
+
   &-page {
     display: flex;
     justify-content: center;
     margin-top: 15px;
   }
+
   &-criteria {
     margin-bottom: 15px;
+
     .left {
       float: left;
     }
   }
+}
+
+.ele-mk-table.ele-antd-table-wrapper tbody > tr > td {
+  font-size: 14px !important;
+  color: #333 !important;
 }
