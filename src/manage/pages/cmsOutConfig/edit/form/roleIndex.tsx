@@ -10,7 +10,6 @@ const Address = Module.getComponent('sys-org', 'Address')
 
 const baseCls = 'cmsOutConfig-form'
 const RoleIndex = (props) => {
-  console.log('props------',props)
   const detailForms = useRef({})
   const { formRef: formRef, value: value } = props
   const [form] = Form.useForm()
