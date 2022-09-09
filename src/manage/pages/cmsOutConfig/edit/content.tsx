@@ -13,10 +13,11 @@ const Content: React.FC<IContentViewProps> = props => {
   const { data } = props
   
   // 机制组件引用
-  const formComponentRef = useRef<any>()
+  const formComponentRefRole = useRef<any>()
+  const formComponentRefOrder = useRef<any>()
 
   // 校验
-  const _validate = async (isDraft: boolean) => {
+  const _validate = async (isDraft: boolean,formComponentRef: any  ) => {
     // 表单校验
     if (formComponentRef.current && !isDraft) {
       const formErrors = await formComponentRef.current.validate()
@@ -28,7 +29,7 @@ const Content: React.FC<IContentViewProps> = props => {
   }
 
   // 提交数据封装
-  const _formatValue = async (isDraft: boolean) => {
+  const _formatValue = async (isDraft: boolean, formComponentRef: any) => {
     let values = {
       ...data,
     }
@@ -48,7 +49,7 @@ const Content: React.FC<IContentViewProps> = props => {
     return values
   }
   // 提交前事件
-  const _beforeSave = async (isDraft: boolean) => {
+  const _beforeSave = async (isDraft: boolean, formComponentRef: any) => {
     // 提交前表单预处理
     if (formComponentRef.current) {
       const beforeFormErrors = await formComponentRef.current.beforeSubmit({ isDraft })
@@ -60,15 +61,15 @@ const Content: React.FC<IContentViewProps> = props => {
   }
 
 
-  const handleSave = async (isDraft: boolean, activeKey: string) => {
+  const handleSave = async (isDraft: boolean, activeKey: string, formComponentRef: any) => {
     // 校验文档
-    if (await _validate(isDraft) === false) {
+    if (await _validate(isDraft,formComponentRef) === false) {
       return
     }
     // 拼装提交数据
-    const values = await _formatValue(isDraft)
+    const values = await _formatValue(isDraft,formComponentRef)
     // 文档提交前事件
-    if (await _beforeSave(isDraft) === false) {
+    if (await _beforeSave(isDraft,formComponentRef) === false) {
       return
     }
     // 编辑提交
@@ -90,8 +91,6 @@ const Content: React.FC<IContentViewProps> = props => {
 
 
   useEffect(()=>{
-    console.log('activeKey-----',activeKey)
-    
     const api = activeKey === 'role' ? apiOutManageConfig.getRoleConfig : apiOutManageConfig.getOrderConfig
     api({}).then(res => {
       setTabData(res.data)
@@ -110,15 +109,15 @@ const Content: React.FC<IContentViewProps> = props => {
       <div className='form'>
         <Tabs defaultActiveKey={activeKey} onChange={ val => onChange(val)}>
           <TabPane tab={'组织权限配置'} key={'role'}>
-            <RoleIndex formRef={formComponentRef} value={tabData || {}} />
+            <RoleIndex formRef={formComponentRefRole} value={tabData || {}} />
             <div style={{marginLeft: '15em'}}>
-              <Button type='primary' onClick={() => handleSave(false, 'role')}>保存</Button>
+              <Button type='primary' onClick={() => handleSave(false, 'role', formComponentRefRole)}>保存</Button>
             </div>
           </TabPane>
           <TabPane tab={'工单处理分工设置'} key={'order'}>
-            <OrderIndex formRef={formComponentRef} value={tabData || {}} />
+            <OrderIndex formRef={formComponentRefOrder} value={tabData || {}} />
             <div style={{marginLeft: '15em'}}>
-              <Button type='primary' onClick={() => handleSave(false, 'order')}>保存</Button>
+              <Button type='primary' onClick={() => handleSave(false, 'order', formComponentRefOrder)}>保存</Button>
             </div>
           </TabPane>
         </Tabs>
