@@ -1,6 +1,6 @@
 import { createElement as h } from 'react'
 import Content from './content'
-import api from '@/api/cmsStaffLeave'
+import api from '@/api/cmsLeaveApply'
 
 export default {
   // 类型：页面
@@ -19,7 +19,7 @@ export default {
       bottom: 0,
       overflow: 'auto',
       'zIndex': 99,
-      backgroundColor: '#f0f2f5'
+      backgroundColor: '#fff'
     }
   }, props.children),
   // 页面是否全屏，默认false

@@ -1,6 +1,6 @@
 import { createElement as h } from 'react'
 import api from '@/api/cmsAttendData'
-import Content from './content'
+import Content from '../edit/content'
 
 export default {
   // 类型：模块
