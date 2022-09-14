@@ -1,4 +1,5 @@
 import { createElement as h } from 'react'
+import api from '@/api/cmsSupplierEvalScore'
 import Content from './content'
 
 export default {
@@ -7,10 +8,9 @@ export default {
   // 页面标题
   title: '新建',
   // 路由
-  router: '/add',
+  router: '/add/:templateId',
   // 页面是否全屏，默认false
   fullscreen: true,
-  keepalive: false,
   // 临时解决方案，等runtime完善fullscreen逻辑后移除
   render: (props) => h('div', {
     style: {
@@ -30,5 +30,11 @@ export default {
     type: 'content-list',
     // 内容渲染组件
     render: Content,
+    // 请求
+    dataUrl: ({ param }) =>
+      api.init({
+        fdTemplate: { fdId: param.templateId },
+        mechanisms: { load: '*' }
+      })
   }
 }

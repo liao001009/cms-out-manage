@@ -2,7 +2,7 @@ import React from 'react'
 import { Module } from '@ekp-infra/common'
 import { Loading } from '@lui/core'
 
-const ViewContent = Module.getComponent('cms-out-staff', 'CmsOutAttendDataView', { loading: <Loading /> })
+const ViewContent = Module.getComponent('cms-out-staff', 'CmsOverWorkView', { loading: <Loading /> })
 
 const Content = (props) => {
   return (

@@ -1,6 +1,6 @@
 import { createElement as h } from 'react'
 import api from '@/api/cmsAttendCount'
-import Content from './content'
+import Content from '@/desktop/pages/cmsAttendCount/edit/content'
 
 export default {
   // 类型：模块
@@ -21,7 +21,7 @@ export default {
       bottom: 0,
       overflow: 'auto',
       'zIndex': 99,
-      backgroundColor: '#f0f2f5'
+      backgroundColor: '#fff'
     }
   }, props.children),
   // 模块内容区
@@ -39,6 +39,6 @@ export default {
       api.init({
         mechanisms: { load: '*' }
       }),
-
+    
   }
 }

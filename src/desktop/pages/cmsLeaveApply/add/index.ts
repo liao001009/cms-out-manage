@@ -1,5 +1,5 @@
 import { createElement as h } from 'react'
-import api from '@/api/cmsStaffLeave'
+import api from '@/api/cmsLeaveApply'
 import Content from './content'
 
 export default {
@@ -21,7 +21,7 @@ export default {
       bottom: 0,
       overflow: 'auto',
       'zIndex': 99,
-      backgroundColor: '#f0f2f5'
+      backgroundColor: '#fff'
     }
   }, props.children),
   // 模块内容区
