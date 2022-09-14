@@ -2,12 +2,11 @@ import React from 'react'
 import { Module } from '@ekp-infra/common'
 import { Loading } from '@lui/core'
 
-const EditContent = Module.getComponent('cms-out-staff', 'CmsLeaveApplyEdit', { loading: <Loading /> })
-
+const ListContent = Module.getComponent('cms-out-staff', 'CmsAttendCountList', { loading: <Loading /> })
 
 const Content = (props) => {
   return (
-    <EditContent {...props} />
+    <ListContent {...props} />
   )
 }
 export default Content

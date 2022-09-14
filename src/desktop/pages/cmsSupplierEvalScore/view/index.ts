@@ -24,7 +24,6 @@ export default {
   }, props.children),
   // 页面是否全屏，默认false
   fullscreen: true,
-  keepalive: false,
   // 模块内容区
   children: {
     // 类型: 列表内容
