@@ -27,7 +27,17 @@ export default [
         key: '/cmsQuitRegisterTemplate',
         label: 'cms-out-manage:menu.cmsQuitRegisterTemplate',
         module: 'cms-out-supplier'
-      }
+      },
+      {
+        key: '/cmsSupplierEvaluateTemplate',
+        label: 'cms-out-manage:menu.cmsSupplierEvaluateTemplate',
+        module: 'cms-out-supplier'
+      },
+      {
+        key: '/cmsSupplierEvalScoreTemplate',
+        label: 'cms-out-manage:menu.cmsSupplierEvalScoreTemplate',
+        module: 'cms-out-supplier'
+      },
     ]
   },
   {
