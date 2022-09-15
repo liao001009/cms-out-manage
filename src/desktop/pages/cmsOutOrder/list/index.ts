@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-manage:cmsStaffAdjust.list.Adjust',
+  title: 'cms-out-manage:menu.cmsWorkOrder',
   // 路由
   router: '/listOrder',
   keepalive: false,

@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: ':menu.cmsOrderEntranceGuard',
+  title: 'cms-out-manage:menu.cmsOrderEntranceGuard',
   // 路由
   router: '/listOrder',
   // 模块内容区
