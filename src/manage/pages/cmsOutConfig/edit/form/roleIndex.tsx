@@ -70,7 +70,7 @@ const RoleIndex = (props) => {
             ></XformInput>
           </Form.Item>
 
-          <Form.Item
+          {/* <Form.Item
             name={'fdPersonClassId'}
             label="外部人员分类ID"
             rules={[
@@ -85,7 +85,7 @@ const RoleIndex = (props) => {
               placeholder={'请输入'}
               showStatus="edit"
             ></XformInput>
-          </Form.Item>
+          </Form.Item> */}
 
 
           <Form.Item
@@ -105,7 +105,7 @@ const RoleIndex = (props) => {
             ></XformInput>
           </Form.Item>
 
-          <Form.Item
+          {/* <Form.Item
             name={'fdSupplierUserRoleId'}
             label="普通供应商管理员角色ID"
             rules={[
@@ -120,7 +120,7 @@ const RoleIndex = (props) => {
               placeholder={'请输入'}
               showStatus="edit"
             ></XformInput>
-          </Form.Item>
+          </Form.Item> */}
                
         </Form>
       </div>
