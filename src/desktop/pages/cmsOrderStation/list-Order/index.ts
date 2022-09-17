@@ -13,7 +13,7 @@ export default {
     // 内容类型: 列表
     type: 'content-list',
     // 数据请求
-    dataUrl: ({ query }) => api['listOrder']({ ...query, conditions: { fdOrderType: '2' } }),
+    dataUrl: ({ query }) => api['listOrder']({ ...query, conditions: { fdOrderType: '5' } }),
     // 内容渲染组件
     render: Content
   }
