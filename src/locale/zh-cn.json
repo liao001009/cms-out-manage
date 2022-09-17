@@ -298,6 +298,9 @@
         "cmsSupplierEvalScore": {
             "listEvaluateScore": "供应商评价打分"
         },
+        "cmsOutStaffEvalTemplate": "外包人员评价模板",
+        "cmsOutStaffEvalScoreTemplate": "外包人员评价考核打分模板",
+        "cmsOutProjectEvalTemplate": "外包项目评价模板",
         "cmsOrderResponse": {
             "listOrder": "订单响应"
         },
