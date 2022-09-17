@@ -4,7 +4,7 @@ import AddCmpt from './add'
 import EditCmpt from './edit'
 export default {
   /** 路由前缀 */
-  router: '/cmsOutOrder',
+  router: '/cmsOutProjectEval',
   /** 页面配置，第一个为首页 */
   pages: [ListLevelInfoCmpt, ViewCmpt, AddCmpt, EditCmpt]
 }
