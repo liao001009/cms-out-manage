@@ -203,6 +203,26 @@ const OrderIndex = (props) => {
               showStatus="edit"
             ></XformAddress>
           </Form.Item>
+          <Form.Item name={'fdCoding'}
+            label={'Coding'}
+            rules={[
+              {
+                required: true,
+                message: '不能为空'
+              }
+            ]}
+          >
+            <XformAddress
+              {...sysProps}
+              org={{
+                orgTypeArr: ['8'],
+                defaultValueType: 'null'
+              }}
+              range={'all'}
+              preSelectType={'fixed'}
+              showStatus="edit"
+            ></XformAddress>
+          </Form.Item>
         </Form>
       </div>
     </div>

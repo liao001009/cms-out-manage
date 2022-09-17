@@ -1,8 +1,6 @@
 import { createElement as h } from 'react'
 import api from '@/api/cmsProjectSelectInfo'
-import apiTemplate from '@/api/cmsProjectSelectInfoTemplate'
 import Content from './content'
-import { ESortType } from '@ekp-infra/common/dist/types'
 
 export default {
   // 类型：模块
@@ -10,10 +8,9 @@ export default {
   // 页面标题
   title: '新建',
   // 路由
-  router: '/add/:fdId',
+  router: '/add/:templateId/:fdId',
   // 页面是否全屏，默认false
   fullscreen: true,
-  keepalive: false,
   // 临时解决方案，等runtime完善fullscreen逻辑后移除
   render: (props) => h('div', {
     style: {
@@ -24,7 +21,7 @@ export default {
       bottom: 0,
       overflow: 'auto',
       'zIndex': 99,
-      backgroundColor: '#f0f2f5'
+      backgroundColor: '#fff'
     }
   }, props.children),
   // 模块内容区
@@ -34,20 +31,13 @@ export default {
     // 内容渲染组件
     render: Content,
     // 请求
-    dataUrl: async ({ param }) => {
-      const res = await apiTemplate.list({
-        sorts: {
-          fdCreateTime: ESortType.DESC
-        },
-        columns: ['fdId', 'fdName', 'fdCode', 'fdCreator', 'fdCreateTime']
-      })
-      return api.init({
+    dataUrl: async ({ param }) =>
+      api.init({
         'fdProjectDemand': {
           'fdId': param.fdId
         },
-        fdTemplate: { fdId: res.data.content[0].fdId },
+        fdTemplate: { fdId: param.templateId },
         mechanisms: { load: '*' }
       })
-    }
   }
 }
