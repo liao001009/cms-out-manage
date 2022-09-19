@@ -8,6 +8,7 @@ export default {
   title: 'cms-out-manage:menu.cmsOutAccountQuery',
   // 路由
   router: '/listAccount',
+  keepalive: false,
   // 模块内容区
   children: {
     // 内容类型: 列表
