@@ -8,6 +8,7 @@ export default {
   title: 'cms-out-staff:menu.m4yjqczqyqak',
   // 路由
   router: '/listOverWork',
+  keepalive: false,
   // 模块内容区
   children: {
     // 内容类型: 列表
