@@ -152,5 +152,27 @@ export default [
       }
     ]
   },
+  {
+    key: '/cmsFeedbackCollectionTemplate',
+    label: 'cms-out-manage:menu.feedbackMenu',
+    icon: 'desktop',
+    children: [
+      {
+        key: '/cmsFeedbackCollectionTemplate',
+        label: 'cms-out-manage:menu.cmsFeedbackCollectionTemplate',
+        module: 'cms-out-information'
+      },
+      {
+        key: '/cmsFeedbackCollSubTemplate',
+        label: 'cms-out-manage:menu.cmsFeedbackCollSubTemplate',
+        module: 'cms-out-information'
+      },
+      {
+        key: '/cmsInfoReleaseTemplate',
+        label: 'cms-out-manage:menu.cmsInfoReleaseTemplate',
+        module: 'cms-out-information'
+      }
+    ]
+  }
 
 ]

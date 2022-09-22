@@ -299,6 +299,13 @@
         "cmsOrderStation": "工位工单",
         "cmsOrderEntranceGuard": "门禁工单",
         "cmsOrderNetworkAuth": "网络权限工单",
+        "cmsInfoReleaseTemplate": "信息发布类模板",
+        "cmsFeedbackCollSubTemplate": "反馈收集类子流程模板",
+        "cmsFeedbackCollectionTemplate": "反馈收集类模板",
+        "mpympxe92ogd": "反馈收集类子流程",
+        "m51q43fd1os": "反馈收集类",
+        "mcpyk15qvc0d": "信息发布类",
+        "feedbackMenu": "信息发布与收集模板",
         "cmsSupplierEvalScore": {
             "listEvaluateScore": "供应商评价打分"
         },
