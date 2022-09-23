@@ -306,6 +306,8 @@
         "m51q43fd1os": "反馈收集类",
         "mcpyk15qvc0d": "信息发布类",
         "feedbackMenu": "信息发布与收集模板",
+        "feedbackMenuDesktop": "信息发布与收集",
+        "cmsFailNotice": "落选通知",
         "cmsSupplierEvalScore": {
             "listEvaluateScore": "供应商评价打分"
         },
