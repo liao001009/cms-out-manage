@@ -8,6 +8,7 @@ export default {
   title: 'cms-out-information:cmsInfoRelease.list.InfoRelease',
   // 路由
   router: '/listInfoRelease',
+  keepalive: false,
   // 模块内容区
   children: {
     // 内容类型: 列表
