@@ -8,6 +8,7 @@ export default {
   title: 'cms-out-information:cmsFeedbackCollection.list.FeedbackCollection',
   // 路由
   router: '/listFeedbackCollection',
+  keepalive: false,
   // 模块内容区
   children: {
     // 内容类型: 列表

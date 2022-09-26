@@ -8,6 +8,7 @@ export default {
   title: 'cms-out-manage:menu.cmsOutProjectEval',
   // 路由
   router: '/listOutProjectEval',
+  keepalive: false,
   // 模块内容区
   children: {
     // 内容类型: 列表

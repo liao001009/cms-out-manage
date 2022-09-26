@@ -8,6 +8,7 @@ export default {
   title: 'cms-out-information:cmsFeedbackCollSub.list.FeedbackCollSub',
   // 路由
   router: '/listFeedbackCollSub',
+  keepalive: false,
   // 模块内容区
   children: {
     // 内容类型: 列表
