@@ -47,17 +47,18 @@ const lpackConfig = {
     },
     // elementsUrlPrefix: 'http://127.0.0.1:8008',
     // 服务端域名
-    apiUrlPrefix: 'http://192.168.50.145:8101/data',
+    apiUrlPrefix: 'http://192.168.50.145:7101/data',
     //多语言服务
     langUrlPrefix: 'http://192.168.50.145:7088/data/sys-lang'
   },
-  // modules: {
-  //   'cms-out-basedata': 'http://127.0.0.1:3340',
-  //   'cms-out-project': 'http://127.0.0.1:3278',
-  //   'cms-out-order': 'http://127.0.0.1:3059',
-  //   'cms-out-staff': 'http://127.0.0.1:3051',
-  //   'cms-out-supplier': 'http://127.0.0.1:3403'
-  // },
+  modules: {
+    'cms-out-basedata': 'http://127.0.0.1:3340',
+    'cms-out-project': 'http://127.0.0.1:3278',
+    'cms-out-order': 'http://127.0.0.1:3059',
+    'cms-out-staff': 'http://127.0.0.1:3051',
+    'cms-out-supplier': 'http://127.0.0.1:3403',
+    'cms-out-information': 'http://127.0.0.1:3595'
+  },
   webpack: {
     resolve: {
       alias: {
