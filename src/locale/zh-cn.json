@@ -245,10 +245,14 @@
     },
     "menu": {
         "cmsBasicInformation": "基本信息管理",
+        "cmsOutAccountQuery": "系统账号查询",
         "cmsQuitRegisterTemplate": "离职登记模板",
         "cmsPersonnelManagement": "人员管理",
         "cmsProjectManagement": "项目管理",
         "cmsFailNoticeTemplate": "落选通知模板",
+        "cmsOutStaffEval": "外包人员评价",
+        "cmsOutStaffEvalScore": "外包人员评价考核打分",
+        "cmsOutProjectEval": "外包项目评价",
         "cmsWorkOrder": "工单管理",
         "m4yjqczqyqak": "加班申请",
         "mxx4gl052ece": "调休/请假申请",
@@ -295,9 +299,21 @@
         "cmsOrderStation": "工位工单",
         "cmsOrderEntranceGuard": "门禁工单",
         "cmsOrderNetworkAuth": "网络权限工单",
+        "cmsInfoReleaseTemplate": "信息发布类模板",
+        "cmsFeedbackCollSubTemplate": "反馈收集类子流程模板",
+        "cmsFeedbackCollectionTemplate": "反馈收集类模板",
+        "mpympxe92ogd": "反馈收集类子流程",
+        "m51q43fd1os": "反馈收集类",
+        "mcpyk15qvc0d": "信息发布类",
+        "feedbackMenu": "信息发布与收集模板",
+        "feedbackMenuDesktop": "信息发布与收集",
+        "cmsFailNotice": "落选通知",
         "cmsSupplierEvalScore": {
             "listEvaluateScore": "供应商评价打分"
         },
+        "cmsOutStaffEvalTemplate": "外包人员评价模板",
+        "cmsOutStaffEvalScoreTemplate": "外包人员评价考核打分模板",
+        "cmsOutProjectEvalTemplate": "外包项目评价模板",
         "cmsOrderResponse": {
             "listOrder": "订单响应"
         },
@@ -328,7 +344,8 @@
         "cmsOutOrder": "工单管理",
         "systemMenu": "系统配置",
         "m4anonsipbg9": "考勤统计",
-        "msiy3c4m0m8": "考勤数据"
+        "msiy3c4m0m8": "考勤数据",
+        "cmsValidAttDay": "月度有效出勤天数"
     },
     "cmsStaffAdjustTemplate": {
         "name": "驻场人员调整模板"

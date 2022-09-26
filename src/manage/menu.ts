@@ -38,6 +38,21 @@ export default [
         label: 'cms-out-manage:menu.cmsSupplierEvalScoreTemplate',
         module: 'cms-out-supplier'
       },
+      {
+        key: '/cmsOutProjectEvalTemplate',
+        label: 'cms-out-manage:menu.cmsOutProjectEvalTemplate',
+        module: 'cms-out-supplier'
+      },
+      {
+        key: '/cmsOutStaffEvalScoreTemplate',
+        label: 'cms-out-manage:menu.cmsOutStaffEvalScoreTemplate',
+        module: 'cms-out-supplier'
+      },
+      {
+        key: '/cmsOutStaffEvalTemplate',
+        label: 'cms-out-manage:menu.cmsOutStaffEvalTemplate',
+        module: 'cms-out-supplier'
+      }
     ]
   },
   {
@@ -137,5 +152,27 @@ export default [
       }
     ]
   },
+  {
+    key: '/cmsFeedbackCollectionTemplate',
+    label: 'cms-out-manage:menu.feedbackMenu',
+    icon: 'desktop',
+    children: [
+      {
+        key: '/cmsFeedbackCollectionTemplate',
+        label: 'cms-out-manage:menu.cmsFeedbackCollectionTemplate',
+        module: 'cms-out-information'
+      },
+      {
+        key: '/cmsFeedbackCollSubTemplate',
+        label: 'cms-out-manage:menu.cmsFeedbackCollSubTemplate',
+        module: 'cms-out-information'
+      },
+      {
+        key: '/cmsInfoReleaseTemplate',
+        label: 'cms-out-manage:menu.cmsInfoReleaseTemplate',
+        module: 'cms-out-information'
+      }
+    ]
+  }
 
 ]
