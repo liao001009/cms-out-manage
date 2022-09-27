@@ -1,6 +1,6 @@
 import { createElement as h } from 'react'
 import Content from './content'
-import api from '@/api/cmsOutStaffEval'
+import api from '@/api/cmsOutStaffEvalScore'
 
 export default {
   // 类型：页面
