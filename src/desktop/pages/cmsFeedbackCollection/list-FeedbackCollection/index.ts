@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-information:cmsFeedbackCollection.list.FeedbackCollection',
+  title: 'cms-out-manage:cmsFeedbackCollection.list.FeedbackCollection',
   // 路由
   router: '/listFeedbackCollection',
   keepalive: false,
