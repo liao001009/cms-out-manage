@@ -369,6 +369,21 @@
             "Config": "附件配置"
         }
     },
+    "cmsFeedbackCollection": {
+        "list": {
+            "FeedbackCollection": "反馈收集类列表"
+        }
+    },
+    "cmsInfoRelease": {
+        "list": {
+            "InfoRelease": "信息发布类列表"
+        }
+    },
+    "cmsFeedbackCollSub": {
+        "list": {
+            "FeedbackCollSub": "反馈收集类子流程列表"
+        }
+    },
     "cmsStaffAdjust": {
         "form": {
             "!{l482x9oheg8kfwghnzk}": "资料上传",
