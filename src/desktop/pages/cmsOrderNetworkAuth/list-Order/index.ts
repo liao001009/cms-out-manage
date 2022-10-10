@@ -16,7 +16,7 @@ export default {
     // 数据请求
     dataUrl: ({ query }) => {
       const { sorts } = query
-      return api['listOrder']({ ...query, sorts: { ...sorts, fdCreateTime: sorts?.fdCreateTime ? sorts.fdCreateTime : 'desc' }, conditions: { fdOrderType: '7' } })
+      return api['listOrder']({ ...query, sorts: { ...sorts, fdCreateTime: sorts?.fdCreateTime ? sorts.fdCreateTime : 'desc' }, conditions: { ...query.conditions, fdOrderType: '7' } })
     },
     // 内容渲染组件
     render: Content
