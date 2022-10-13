@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-information:cmsFeedbackCollSub.list.FeedbackCollSub',
+  title: 'cms-out-manage:cmsFeedbackCollSub.list.FeedbackCollSub',
   // 路由
   router: '/listFeedbackCollSub',
   keepalive: false,
