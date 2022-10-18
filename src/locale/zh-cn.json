@@ -250,7 +250,7 @@
         "cmsPersonnelManagement": "人员管理",
         "cmsProjectManagement": "项目管理",
         "cmsFailNoticeTemplate": "落选通知模板",
-        "cmsOutStaffEval": "外包人员评价",
+        "cmsOutStaffEval": "外包人员评价启动",
         "cmsOutStaffEvalScore": "外包人员评价考核打分",
         "cmsOutStaffExamInfo": "外包人员考核信息查询",
         "cmsOutSupplierEntrance": "供应商中选人员入场率",
@@ -964,7 +964,7 @@
         "fdCreateTime": "创建时间",
         "fdCreator": "创建者",
         "list": {
-            "SupplierEvaluate": "供应商评价"
+            "SupplierEvaluate": "供应商评价启动"
         }
     },
     "cmsContractInfo": {
