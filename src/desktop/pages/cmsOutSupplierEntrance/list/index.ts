@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-report:menu.cmsOutSupplierEntrance',
+  title: 'cms-out-manage:menu.cmsOutSupplierEntrance',
   // 路由
   router: '/listMain',
   // 模块内容区
