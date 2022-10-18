@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-manage:menu.cmsOutStaffEval',
+  title: 'cms-out-manage:menu.cmsOutStaffEvalScore',
   // 路由
   router: '/listOutStaffEvalScore',
   keepalive: false,

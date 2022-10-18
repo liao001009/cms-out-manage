@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-report:menu.cmsOutLeaveRate',
+  title: 'cms-out-manage:menu.cmsOutLeaveRate',
   // 路由
   router: '/listOutLeaveRate',
   // 模块内容区
