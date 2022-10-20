@@ -328,7 +328,7 @@
             "listOrder": "订单响应"
         },
         "cmsSupplierEvaluate": {
-            "listSupplierEvaluate": "供应商评价"
+            "listSupplierEvaluate": "供应商评价启动"
         },
         "cmsStaffReviewUpgrade": {
             "listStaffReview": "外包人员评审（调级）"
