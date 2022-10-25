@@ -8,12 +8,16 @@ export default {
   title: 'cms-out-manage:menu.cmsOutDemandResponse',
   // 路由
   router: '/listMain',
+  keepalive: false,
   // 模块内容区
   children: {
     // 内容类型: 列表
     type: 'content-list',
     // 数据请求
-    dataUrl: ({ query }) => api['listMain'](query),
+    dataUrl: ({ query }) => {
+      const { sorts } = query
+      return api['listMain']({ ...query, sorts: { ...sorts, fdCreateTime: sorts?.fdCreateTime ? sorts.fdCreateTime : 'desc' } })
+    },
     // 内容渲染组件
     render: Content
   }

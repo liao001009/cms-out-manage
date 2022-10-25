@@ -11,6 +11,7 @@ export default {
   router: '/edit/:id',
   // 页面是否全屏，默认false
   fullscreen: true,
+  keepalive: false,
   // 临时解决方案，等runtime完善fullscreen逻辑后移除
   render: (props) => h('div', {
     style: {
@@ -30,6 +31,9 @@ export default {
     type: 'content-view',
     // 内容渲染组件
     render: Content,
+    props: {
+      mode: 'edit'
+    },
     // 请求
     dataUrl: ({ param }) =>
       api.edit({
