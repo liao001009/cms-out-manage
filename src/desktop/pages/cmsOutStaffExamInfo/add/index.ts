@@ -1,4 +1,3 @@
-import { createElement as h } from 'react'
 import Content from './content'
 
 export default {
@@ -9,20 +8,7 @@ export default {
   // 路由
   router: '/add',
   // 页面是否全屏，默认false
-  fullscreen: true,
-  // 临时解决方案，等runtime完善fullscreen逻辑后移除
-  render: (props) => h('div', {
-    style: {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      overflow: 'auto',
-      'zIndex': 99,
-      backgroundColor: '#fff'
-    }
-  }, props.children),
+  keepalive: false,
   // 模块内容区
   children: {
     // 内容类型: 列表

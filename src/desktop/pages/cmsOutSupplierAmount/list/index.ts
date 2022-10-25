@@ -8,12 +8,16 @@ export default {
   title: 'cms-out-manage:menu.cmsOutSupplierAmount',
   // 路由
   router: '/listAmount',
+  keepalive: false,
   // 模块内容区
   children: {
     // 内容类型: 列表
     type: 'content-list',
     // 数据请求
-    dataUrl: ({ query }) => api['listAmount'](query),
+    dataUrl: ({ query }) => {
+      const { sorts } = query
+      return api['listAmount']({ ...query, sorts: { ...sorts, fdCreateTime: sorts?.fdCreateTime ? sorts.fdCreateTime : 'desc' } })
+    },
     // 内容渲染组件
     render: Content
   }

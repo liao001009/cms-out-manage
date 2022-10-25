@@ -9,6 +9,7 @@ export default {
   title: '查看页面',
   // 路由
   router: '/view/:id',
+  keepalive: false,
   // 临时解决方案，等runtime完善fullscreen逻辑后移除
   render: (props) => h('div', {
     style: {
