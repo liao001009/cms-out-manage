@@ -5,9 +5,10 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-manage:cmsAttendData.list.Attend',
+  title: 'cms-out-manage:menu.msiy3c4m0m8',
   // 路由
   router: '/listAttend',
+  keepalive: false,
   // 模块内容区
   children: {
     // 内容类型: 列表
