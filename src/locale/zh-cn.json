@@ -280,12 +280,12 @@
         "cmsFrameBudgetAdjust": "框架预算调整",
         "cmsFrameBudget": "框架预算",
         "cmsFrameInfo": "框架信息",
-        "cmsStaffAdjustTemplate": "驻场人员调整模板",
+        "cmsStaffAdjustTemplate": "项目或权限调整模板",
         "cmsStaffEntranceTemplate": "入场申请模板",
         "cmsStaffLeaveTemplate": "离场申请模板",
         "cmsStaffAttConfigTemplate": "附件模板配置模板",
         "me1g6jcuktze": "离场申请",
-        "mdip4klbk717": "驻场人员调整",
+        "mdip4klbk717": "项目或权限调整",
         "mjeghuh20rd": "入场申请",
         "cmsSupplierInfoTemplate": "供应商信息模板",
         "cmsSupplierEvalScoreTemplate": "供应商评价打分模板",
@@ -358,7 +358,7 @@
         "cmsValidAttDay": "月度有效出勤天数"
     },
     "cmsStaffAdjustTemplate": {
-        "name": "驻场人员调整模板"
+        "name": "项目或权限调整模板"
     },
     "cmsStaffEntranceTemplate": {
         "name": "入场申请模板"
@@ -470,7 +470,7 @@
             "!{l47tew2lx3mngvk63i}": "请输入",
             "!{l47tdsgnsqlan2qugs}": "主题",
             "!{l47tdsgrggkbannq8wq}": "请输入",
-            "!{l47tccxkxgt8l4u79b}": "驻场人员调整"
+            "!{l47tccxkxgt8l4u79b}": "项目或权限调整"
         },
         "fdCreateTime": "创建时间",
         "fdCreatorDept": "创建者部门",
