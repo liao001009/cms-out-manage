@@ -140,9 +140,14 @@ export default [
       role: ['ROLE_CMSOUTMANAGE_SETTING']
     },
     children: [
+      // {
+      //   key: '/cmsOutConfig',
+      //   label: 'cms-out-manage:menu.systemMenu',
+      //   module: 'cms-out-manage'
+      // },
       {
         key: '/cmsOutConfig',
-        label: 'cms-out-manage:menu.systemMenu',
+        label: 'cms-out-manage:menu.cmsOutConfig',
         module: 'cms-out-manage'
       },
       {
