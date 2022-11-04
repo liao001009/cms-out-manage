@@ -351,6 +351,7 @@
         "cmsOutOrderTemplate": "工单管理模板",
         "cmsOutConfigTemplate": "权限配置模板",
         "cmsOutConfig": "权限配置",
+        "cmsOutPreConfig": "系统配置",
         "cmsOutOrder": "工单管理",
         "systemMenu": "系统配置",
         "m4anonsipbg9": "考勤统计",
