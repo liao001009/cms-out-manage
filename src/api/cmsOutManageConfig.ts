@@ -10,6 +10,8 @@ const api = {
   updateRole: Api.build('cmsOutManageConfig/updateRole', http),
   getOrderConfig: Api.build('cmsOutManageConfig/getOrderConfig', http),
   updateOrder: Api.build('cmsOutManageConfig/updateOrder', http),
+  getProConfigData: Api.build('cmsOutManageConfig/getCommonConfigData', http),
+  updateProConfigData: Api.build('cmsOutManageConfig/updateCommonConfigData', http)
 }
 
 export default api
