@@ -1,5 +1,4 @@
 import { createElement as h } from 'react'
-import api from '@/api/cmsAttendData'
 import Content from '../edit/content'
 
 export default {
@@ -34,12 +33,6 @@ export default {
     props: {
       //页面：新建
       mode: 'add'
-    },
-    // 请求
-    dataUrl: ({ param }) =>
-      api.init({
-        fdTemplate: { fdId: param.templateId },
-        mechanisms: { load: '*' }
-      })
+    }
   }
 }
