@@ -250,7 +250,7 @@
         "cmsPersonnelManagement": "人员管理",
         "cmsProjectManagement": "项目管理",
         "cmsFailNoticeTemplate": "落选通知模板",
-        "cmsOutStaffEval": "外包人员评价启动",
+        "cmsOutStaffEval": "外包人员评价",
         "cmsOutStaffEvalScore": "外包人员评价打分",
         "cmsOutStaffExamInfo": "外包人员考核信息查询",
         "cmsOutSupplierEntrance": "供应商中选人员入场率",
@@ -354,7 +354,7 @@
         "cmsOutPreConfig": "系统配置",
         "cmsOutOrder": "工单管理",
         "systemMenu": "系统配置",
-        "m4anonsipbg9": "考勤统计",
+        "m4anonsipbg9": "工时费用统计",
         "msiy3c4m0m8": "考勤数据",
         "cmsValidAttDay": "月度有效出勤天数"
     },
