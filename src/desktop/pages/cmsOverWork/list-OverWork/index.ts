@@ -5,7 +5,7 @@ export default {
   // 类型：模块
   type: 'page',
   // 页面标题
-  title: 'cms-out-staff:cmsOverWork.list.OverWork',
+  title: 'cms-out-manage:menu.m4yjqczqyqak',
   // 路由
   router: '/listOverWork',
   keepalive: false,
@@ -16,7 +16,6 @@ export default {
     // 数据请求
     dataUrl: ({ query }) => {
       const { sorts } = query
-      // columns: ['fdId', 'fdName', 'fdCode', 'fdCreator', 'fdCreateTime'],
       return api['listOverWork']({
         ...query,
         sorts: { ...sorts, fdCreateTime: sorts?.fdCreateTime ? sorts.fdCreateTime : 'desc' },
