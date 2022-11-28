@@ -7,7 +7,7 @@ export default {
   // 页面标题
   title: '新建',
   // 路由
-  router: '/add/:id',
+  router: '/add/:id/:isSupplement',
   // 页面是否全屏，默认false
   fullscreen: true,
   keepalive: false,
