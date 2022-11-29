@@ -28,7 +28,7 @@ const ContractListView: React.FC<IProps> = (props) => {
 
   useEffect(() => {
     getDataInfo(listParam)
-  }, [listData])
+  }, [listParam])
 
 
   // 表格hook
