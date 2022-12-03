@@ -78,7 +78,6 @@ const ContractListView: React.FC<IProps> = (props) => {
       offset, pageSize, pageNo
     }
     setListParam(params)
-    setListData(params)
   }
 
   const onRowClick = useCallback(
