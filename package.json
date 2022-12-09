@@ -48,7 +48,7 @@
     "@ekp-runtime/module": "^1.1.37",
     "@ekp-runtime/render-module": "^0.0.250",
     "@ekp-runtime/utils": "^0.0.317",
-    "@lui/core": "^5.1.0-beta.208",
+    "@lui/core": "^5.1.0-beta.349",
     "@mui/core": "^5.0.0-beta.68",
     "@mui/pro": "^5.0.0-beta.68",
     "axios": "^0.18.0",
