@@ -373,7 +373,7 @@ export const outStaffInfoColumns = [
     }
   }
 ]
-//中选确认
+//中选信息
 export const selectConfirmColumns = [
   /*项目名称*/
   {
@@ -1014,8 +1014,8 @@ const projectCriertia = () => {
       ></Criteria.Criterion>
       <Criteria.Org orgType={2} title="所属部门" name="fdBelongDept.fdName"></Criteria.Org>
       <Criteria.Org orgType={2} title="所属组/团队" name="fdBelongTeam.fdName"></Criteria.Org>
-      <Criteria.Org orgType={8} title="项目负责人" name="fdProjectPrincipal.fdName"></Criteria.Org>
-      <Criteria.Org orgType={8} title="内部责任人" name="fdInnerPrincipal.fdName"></Criteria.Org>
+      <Criteria.Org orgType={8} options={[]} placeholder='请输入姓名' title="项目负责人" name="fdProjectPrincipal.fdName"></Criteria.Org>
+      <Criteria.Org orgType={8} options={[]} placeholder='请输入姓名' title="内部责任人" name="fdInnerPrincipal.fdName"></Criteria.Org>
       <Criteria.Calendar
         options={Criteria.Calendar.buildOptions()}
         name="fdProjectDate"
@@ -1211,7 +1211,7 @@ export const demandSupplier = () => {
 export const projectSelectInfoCriertia = () => {
   return (
     <React.Fragment>
-      <Criteria.Org orgType={8} title="创建人" name="fdCreator.fdId"></Criteria.Org>
+      <Criteria.Org orgType={8} options={[]} placeholder='请输入姓名' title="创建人" name="fdCreator.fdId"></Criteria.Org>
       <Criteria.Calendar
         options={Criteria.Calendar.buildOptions()}
         name="fdCreateTime"
