@@ -43,11 +43,11 @@ export default [
         label: 'cms-out-manage:menu.cmsOutProjectEvalTemplate',
         module: 'cms-out-supplier'
       },
-      {
-        key: '/cmsOutStaffEvalScoreTemplate',
-        label: 'cms-out-manage:menu.cmsOutStaffEvalScoreTemplate',
-        module: 'cms-out-supplier'
-      },
+      // {
+      //   key: '/cmsOutStaffEvalScoreTemplate',
+      //   label: 'cms-out-manage:menu.cmsOutStaffEvalScoreTemplate',
+      //   module: 'cms-out-supplier'
+      // },
       {
         key: '/cmsOutStaffEvalTemplate',
         label: 'cms-out-manage:menu.cmsOutStaffEvalTemplate',

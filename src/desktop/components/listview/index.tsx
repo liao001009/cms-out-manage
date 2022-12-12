@@ -84,7 +84,6 @@ const ContractListView: React.FC<IProps> = (props) => {
     (record) => {
       return {
         onClick: () => {
-          console.log('url555', mk.getSysConfig('modulesUrlPrefix') + `/#/desktop/cms-out-manage${onRowUrl}${record.fdId}`)
           if (onRowUrl) {
             // mk.openLink({
             //   url: mk.getSysConfig('modulesUrlPrefix') + `/#/desktop/cms-out-manage${onRowUrl}${record.fdId}`,
