@@ -12,15 +12,13 @@ export interface IProps {
   columns: any
   /**点击行跳转路径 */
   onRowUrl?: string
-  /** 是否需要分页 */
-  isPagination?: boolean
-
+  history?: any
 }
 
 const baseCls = 'lui-template-list'
 
 const ContractListView: React.FC<IProps> = (props) => {
-  const { apiRequest, params, columns, onRowUrl, isPagination } = props
+  const { apiRequest, params, columns, onRowUrl, history } = props
   const [listParam, setListParam] = useState<any>({
     ...params,
   })
@@ -31,7 +29,7 @@ const ContractListView: React.FC<IProps> = (props) => {
 
   useEffect(() => {
     getDataInfo(listParam)
-  }, [])
+  }, [listParam])
 
 
   // 表格hook
@@ -81,20 +79,19 @@ const ContractListView: React.FC<IProps> = (props) => {
       offset, pageSize, pageNo
     }
     setListParam(params)
-    setListData(params)
   }
-
   const onRowClick = useCallback(
     (record) => {
       return {
         onClick: () => {
-          if(onRowUrl){
-            mk.openLink({
-              url: mk.getSysConfig('modulesUrlPrefix')+`/#/desktop/cms-out-manage${onRowUrl}${record.fdId}`,
-              target: '_self',
-              // event: event,
-              // title: ''
-            })
+          if (onRowUrl) {
+            // mk.openLink({
+            //   url: mk.getSysConfig('modulesUrlPrefix') + `/#/desktop/cms-out-manage${onRowUrl}${record.fdId}`,
+            //   target: '_self',
+            //   // event: event,
+            //   // title: ''
+            // })
+            history.goto(`${onRowUrl}${record.fdId}`)
           }
           //暂时不知道跳转那里
           //history.goto(`/cmsContractInfo/view/${record.fdId}`)
@@ -102,7 +99,7 @@ const ContractListView: React.FC<IProps> = (props) => {
         }
       }
     },
-    [history]
+    [onRowUrl]
   )
 
   return (
@@ -112,7 +109,7 @@ const ContractListView: React.FC<IProps> = (props) => {
           <Table loading={tableStatus} {...tableProps} onRow={onRowClick} />
         </div>
         <div className={`${baseCls}-page`}>
-          {isPagination && totalSize ? (
+          {totalSize ? (
             <Pagination
               showQuickJumper
               showSizeChanger

@@ -1,7 +1,7 @@
 import { IBaseType } from '@ekp-infra/common/dist/types'
 import { IOrgElement } from '@ekp-infra/common/dist/types'
 
-/*考勤统计*/
+/*工时费用统计*/
 export interface ICmsAttendCount extends IBaseType {
   //创建人
   fdCreator: Partial<IOrgElement>
@@ -41,7 +41,7 @@ export interface ICmsAttendCount extends IBaseType {
   fdProject: any
   //统计
   fdStatistic: string
-  //考勤统计
+  //工时费用统计
   fdCol5ifn69: string
   //团队
   fdTeam: Partial<IOrgElement>
