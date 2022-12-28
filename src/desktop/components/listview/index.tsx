@@ -12,12 +12,13 @@ export interface IProps {
   columns: any
   /**点击行跳转路径 */
   onRowUrl?: string
+  history?: any
 }
 
 const baseCls = 'lui-template-list'
 
 const ContractListView: React.FC<IProps> = (props) => {
-  const { apiRequest, params, columns, onRowUrl } = props
+  const { apiRequest, params, columns, onRowUrl, history } = props
   const [listParam, setListParam] = useState<any>({
     ...params,
   })
@@ -79,18 +80,18 @@ const ContractListView: React.FC<IProps> = (props) => {
     }
     setListParam(params)
   }
-
   const onRowClick = useCallback(
     (record) => {
       return {
         onClick: () => {
           if (onRowUrl) {
-            mk.openLink({
-              url: mk.getSysConfig('modulesUrlPrefix') + `/#/desktop/cms-out-manage${onRowUrl}${record.fdId}`,
-              target: '_self',
-              // event: event,
-              // title: ''
-            })
+            // mk.openLink({
+            //   url: mk.getSysConfig('modulesUrlPrefix') + `/#/desktop/cms-out-manage${onRowUrl}${record.fdId}`,
+            //   target: '_self',
+            //   // event: event,
+            //   // title: ''
+            // })
+            history.goto(`${onRowUrl}${record.fdId}`)
           }
           //暂时不知道跳转那里
           //history.goto(`/cmsContractInfo/view/${record.fdId}`)
@@ -98,7 +99,7 @@ const ContractListView: React.FC<IProps> = (props) => {
         }
       }
     },
-    [history]
+    [onRowUrl]
   )
 
   return (
