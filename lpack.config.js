@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 const { MkPlugin } = require('@lpack/boilerplate-generator-mk/lib/webpack/plugin')
 
@@ -30,36 +31,36 @@ const lpackConfig = {
   // 变量，业务模块可通过process.env.xxx获取相关值
   variables: {
     // 开发环境模拟用户身份
-    xAuthDebugger: 'caixy',
+    xAuthDebugger: 'liuf',
     // 模块名
     moduleName: moduleName,
     // 平台，desktop、manage、mobile
     platform: entryName,
     // 模块代理 
-    modulesUrlPrefix: 'http://192.168.50.145:7088/web',
+    modulesUrlPrefix: 'https://mkzszq.ywork.me/web',
     // 租户资源域名前缀
-    tenantUrlPrefix: 'http://192.168.50.145:7088/web',
+    tenantUrlPrefix: 'https://mkzszq.ywork.me/web',
     // 组件库域名
     elementsUrlPrefix: {
-      manufact: 'http://192.168.50.145:7088/web',
-      artifact: 'http://192.168.50.145:7088/web'
+      manufact: 'https://mksmoke.ywork.me/web',
+      artifact: 'https://mksmoke.ywork.me/web'
       // artifact: 'http://127.0.0.1:8008'
     },
     enabledGlobalLui: true,
     enabledGlobalMui: true,
     // elementsUrlPrefix: 'http://127.0.0.1:8008',
     // 服务端域名
-    apiUrlPrefix: 'http://192.168.50.145:7101/data',
+    apiUrlPrefix: 'https://mkzszq.ywork.me/data',
     //多语言服务
-    langUrlPrefix: 'http://192.168.50.145:7088/data/sys-lang'
+    langUrlPrefix: 'https://mkzszq.ywork.me/data/sys-lang'
   },
   modules: {
-    'cms-out-basedata': 'http://127.0.0.1:3340',
+    // 'cms-out-basedata': 'http://127.0.0.1:3340',
     'cms-out-project': 'http://127.0.0.1:3278',
-    'cms-out-order': 'http://127.0.0.1:3059',
-    'cms-out-staff': 'http://127.0.0.1:3051',
-    'cms-out-supplier': 'http://127.0.0.1:3403',
-    'cms-out-information': 'http://127.0.0.1:3595'
+    // 'cms-out-order': 'http://127.0.0.1:3059',
+    // 'cms-out-staff': 'http://127.0.0.1:3051',
+    // 'cms-out-supplier': 'http://127.0.0.1:3403',
+    // 'cms-out-information': 'http://127.0.0.1:3595'
   },
   webpack: {
     resolve: {

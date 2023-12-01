@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { createElement as h } from 'react'
 import Content from '@/desktop/pages/cmsOutStaffInfo/edit/content'
 import api from '@/api/cmsOutStaffInfo'
