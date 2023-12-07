@@ -36,10 +36,14 @@ const lpackConfig = {
     moduleName: moduleName,
     // 平台，desktop、manage、mobile
     platform: entryName,
-    // 模块代理 
+    // 模块代理 ----------------------------------------------------------------------------------------
     modulesUrlPrefix: 'https://mkzszq.ywork.me/web',
+    // modulesUrlPrefix: 'http://192.168.43.128:9102/web',
+
     // 租户资源域名前缀
     tenantUrlPrefix: 'https://mkzszq.ywork.me/web',
+    // tenantUrlPrefix: 'http://192.168.43.128:9102/web',
+
     // 组件库域名
     elementsUrlPrefix: {
       manufact: 'https://mksmoke.ywork.me/web',
@@ -51,8 +55,11 @@ const lpackConfig = {
     // elementsUrlPrefix: 'http://127.0.0.1:8008',
     // 服务端域名
     apiUrlPrefix: 'https://mkzszq.ywork.me/data',
+    // apiUrlPrefix: 'http://192.168.43.128:9102/data',
     //多语言服务
-    langUrlPrefix: 'https://mkzszq.ywork.me/data/sys-lang'
+    langUrlPrefix: 'https://mkzszq.ywork.me/data/sys-lang',
+    // langUrlPrefix: 'http://192.168.43.128:9102/sys-lang'
+//----------------------------------------------------------------------------------------
   },
   modules: {
     // 'cms-out-basedata': 'http://127.0.0.1:3340',
