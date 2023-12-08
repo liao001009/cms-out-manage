@@ -7,7 +7,7 @@ export default {
   // 页面标题
   title: '面试工作台',
   // 路由
-  router: '/view',
+  router: '/interviewAI',
   //全屏
   fullscreen: true,
   // 模块内容区
