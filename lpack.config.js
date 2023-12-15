@@ -46,8 +46,8 @@ const lpackConfig = {
 
     // 组件库域名
     elementsUrlPrefix: {
-      manufact: 'https://mksmoke.ywork.me/web',
-      artifact: 'https://mksmoke.ywork.me/web'
+      manufact: 'https://mkzszq.ywork.me/web',
+      artifact: 'https://mkzszq.ywork.me/web'
       // artifact: 'http://127.0.0.1:8008'
     },
     enabledGlobalLui: true,

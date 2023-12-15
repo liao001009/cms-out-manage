@@ -154,6 +154,11 @@ export default [
         key: '/cmsOutEnum',
         label: 'cms-out-manage:menu.cmsOutEnum',
         module: 'cms-out-basedata'
+      },
+      {
+        key: '/cmsOutInterviewWorkbenchConfiguration',
+        label: '面试工作台配置',
+        module: 'cms-out-manage'
       }
     ]
   },
